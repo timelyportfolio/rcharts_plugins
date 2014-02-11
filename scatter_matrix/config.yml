@@ -1,0 +1,26 @@
+scatter_matrix:
+  jshead: [bootstrap/js/vendor/jquery-1.8.2.min.js, 
+  bootstrap/js/vendor/bootstrap.min.js,
+  bootstrap_select/bootstrap-select.min.js,
+  js/d3.v3.min.js, 
+  js/box.js, 
+  js/lodash/dist/lodash.min.js,
+  js/scatter_matrix.js
+  ]
+  css: [bootstrap/css/bootstrap.min.css,
+  css/scatter_matrix.css,
+  bootstrap_select/bootstrap-select.min.css]
+  cdn:
+    jshead: 
+      - "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+      - "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"
+      - "http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js"
+      - "http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"
+      - "http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.3.5/bootstrap-select.min.js"
+      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/js/box.js"
+      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/js/scatter_matrix.js"
+    css:
+      - "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/css/scatter_matrix.css"
+      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/css/bootstrap-select/bootstrap-select.min.css"
+
