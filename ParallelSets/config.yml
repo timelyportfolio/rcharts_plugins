@@ -1,0 +1,7 @@
+scatter_matrix:
+  jshead: [d3-parsets/d3.parsets.js]
+  css: [d3-parsets/d3.parsets.css]
+  cdn:
+    jshead: 
+    css:
+
