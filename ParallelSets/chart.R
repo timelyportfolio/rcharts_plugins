@@ -5,10 +5,11 @@ library(rCharts)
 
 
 d <- read.csv('~/Downloads/titanic.csv')
+## uncomment and stick wherever
 # ParallelSets = setRefClass('ParallelSets', contains = 'rCharts', methods = list(
 # 	initialize = function(){
 # 		callSuper()
-# 		LIB <<- get_lib("/home/ben/rchart_plugins/ParallelSets")
+# 		LIB <<- get_lib("http://benjh33.github.io/rchart_plugins/ParallelSets")
 # 		lib <<- "ParallelSets"
 # 		templates$script <<- '
 # 		<script type="text/javascript">
