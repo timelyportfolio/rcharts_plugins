@@ -1,0 +1,24 @@
+			<script type="text/javascript">
+			function draw{{chartId}}(){
+			var params = {{{ chartParams }}}
+			var scatter = {{{ scatter }}}.id(params.id)
+			
+			if(!params.data){
+			d3.json(params.data_file, function(error, d) {
+			d3.select("#" + params.id)
+			.datum(d)
+			.call(scatter)
+			});
+			} else {
+			d3.select("# + params.id")
+			.datum(params.data)
+			.call(scatter)
+			}
+			return scatter;
+			};
+			
+			$(document).ready(function(){
+			draw{{chartId}}()
+			});
+			
+			</script>
