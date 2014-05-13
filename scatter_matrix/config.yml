@@ -17,10 +17,10 @@ scatter_matrix:
       - "http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js"
       - "http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"
       - "http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.3.5/bootstrap-select.min.js"
-      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/js/box.js"
-      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/js/scatter_matrix.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/scatter_matrix/js/box.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/scatter_matrix/js/scatter_matrix.js"
     css:
       - "http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/css/scatter_matrix.css"
-      - "http://benjh33.github.io/rchart_plugins/scatter_matrix/css/bootstrap-select/bootstrap-select.min.css"
+      - "http://mostlyconjecture.com/rcharts_plugins/scatter_matrix/css/scatter_matrix.css"
+      - "http://mostlyconjecture.com/rcharts_plugins/scatter_matrix/css/bootstrap-select/bootstrap-select.min.css"
 

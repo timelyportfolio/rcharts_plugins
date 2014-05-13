@@ -1,0 +1,40 @@
+/*@import url(../style.css?aea6f0a);
+*/
+
+.axis {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  stroke: #000;
+}
+
+.link {
+  fill: none;
+  stroke: #999;
+  stroke-width: 1px;
+  stroke-opacity: .2;
+}
+
+.link.active {
+  stroke: #f86161;
+  stroke-width: 2px;
+  stroke-opacity: .8;
+}
+.link.clicked {
+  stroke: #724a4a;
+  stroke-width: 2px;
+  stroke-opacity: .8;
+}
+
+.node circle.clicked {
+  stroke: #724a4a;
+  stroke-width: 3px;
+}
+
+.node circle.active {
+  stroke: #f86161;
+  stroke-width: 3px;
+}
+
