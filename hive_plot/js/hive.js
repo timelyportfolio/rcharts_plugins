@@ -130,7 +130,7 @@ d3.hivePlot = function module() {
           .attr("width", width)
           .attr("height", height)
         .append("g")
-          .attr("transform", "translate(" + (outerRadius+innerRadius+margin) + "," + 
+          .attr("transform", "translate(" + (outerRadius+innerRadius+margin ) + "," + 
            (radius(twelveOclock) * 1.1 + margin*3) + ")");
 
       // Draw the axes.

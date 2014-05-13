@@ -20,12 +20,14 @@
 .link.active {
   stroke: #f86161;
   stroke-width: 2px;
-  stroke-opacity: .8;
+  stroke-opacity: .5;
 }
 .link.clicked {
   stroke: #724a4a;
   stroke-width: 2px;
   stroke-opacity: .8;
+  position: absolute;
+  z-index: 100
 }
 
 .node circle.clicked {

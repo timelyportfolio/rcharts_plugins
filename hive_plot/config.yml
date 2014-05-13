@@ -5,5 +5,5 @@ hive_plot:
     jshead: 
       - "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
       - "http://d3js.org/d3.v3.min.js"
-      - "http://mostlyconjecture.com/rcharts_plugins/hive_plot/js/d3.hive.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/hive_plot/js/hive.js"
     css: http://mostlyconjecture.com/rcharts_plugins/hive_plot/css/style.css
