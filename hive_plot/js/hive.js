@@ -1,11 +1,13 @@
 d3.hivePlot = function module() {
-  var width = 960,
-      height = 850,
-      innerRadius = 40,
-      outerRadius = 640,
+  var innerRadius = 40,
+      margin = 20,
+      outerRadius = 500,
+      width = (outerRadius + innerRadius) * 2 + margin * 2,
+      height = (outerRadius + innerRadius) * 2 + margin * 2,
       majorAngle = 2 * Math.PI / 3,
       minorAngle = 1 * Math.PI / 12,
-      sortby = id = null;
+      sortby = id = null,
+      nodesize = 4;
 
       // original domain setup set up angle according to links in and out.
       // .domain(["source", "source-target", "target-source", "target"])
@@ -26,11 +28,6 @@ d3.hivePlot = function module() {
           nodes = dat.data,
           formatNumber = d3.format(",d"),
           defaultInfo;
-      var svg = d3.select("#" + id).append("svg")
-          .attr("width", width)
-          .attr("height", height)
-        .append("g")
-          .attr("transform", "translate(" + outerRadius * .60 + "," + outerRadius * .35 + ")");
 
           // Construct an index by node name.
       nodes.forEach(function(d) {
@@ -116,9 +113,10 @@ d3.hivePlot = function module() {
 
       // Compute the rank for each type, with padding between packages.
       nodesByType.forEach(function(type) {
-        var lastName = type.values[0].productName, count = 0;
+        var lastColor = type.values[0].color, count = 0;
         type.values.forEach(function(d, i) {
-          if (d.productName != lastName) lastName = d.productName, count += 2;
+          if (d.color != lastColor) lastColor = d.color, count += 2;
+          // figuring out what this does
           d.index = count++;
         });
         type.count = count - 1;
@@ -126,6 +124,14 @@ d3.hivePlot = function module() {
 
       // Set the radius domain.
       radius.domain(d3.extent(nodes, function(d) { return d.index; }));
+      twelveOclock = nodesByType[0].values[nodesByType[0].values.length - 1].index
+
+      var svg = d3.select("#" + id).append("svg")
+          .attr("width", width)
+          .attr("height", height)
+        .append("g")
+          .attr("transform", "translate(" + (outerRadius+innerRadius+margin) + "," + 
+           (radius(twelveOclock) * 1.1 + margin*3) + ")");
 
       // Draw the axes.
       svg.selectAll(".axis")
@@ -134,7 +140,7 @@ d3.hivePlot = function module() {
           .attr("class", "axis")
           .attr("transform", function(d) { return "rotate(" + degrees(angle(d.key)) + ")"; })
           .attr("x1", radius(-2))
-          .attr("x2", function(d) { return radius(d.count + 2); });
+          .attr("x2", function(d) { return radius(d.count); }); // + 2
 
       // Draw the links.
       svg.append("g")
@@ -165,7 +171,7 @@ d3.hivePlot = function module() {
           .attr("transform", function(d) { return "rotate(" + 
             degrees(angle(d.type)) + ")"; })
           .attr("cx", function(d) { return radius(d.node.index); })
-          .attr("r", 4)
+          .attr("r", nodesize)
           .on("mouseover", nodeMouseover)
           .on("mouseout", mouseout)
           .on("click", nodeClick);
@@ -185,7 +191,7 @@ d3.hivePlot = function module() {
         info.html(d.node.text + " has <br>" + d.node.degree + " connections." + " Average edge weight:" + Math.round(d3.sum(d.node.weights)/d.node.degree*100)/100)
       }
       function nodeClick(d) {
-        d3.selectAll(".link .node").classed("clicked", false);
+        d3.selectAll(".clicked").classed("clicked", false);
         d3.selectAll(".link .node").classed("active", false);
         svg.selectAll(".link").classed("clicked", function(p) { return p.source === d || p.target === d; });
         d3.select(this).classed("clicked", true);
@@ -296,6 +302,11 @@ d3.hivePlot = function module() {
     width = _;
     return hivePlot;
   };
+  hivePlot.margin = function(_) {
+    if(!arguments.length) return margin;
+    margin = _;
+    return hivePlot;
+  };
     hivePlot.height = function(_) {
     if(!arguments.length) return height;
     height = _;
@@ -324,6 +335,11 @@ d3.hivePlot = function module() {
   hivePlot.sortby = function(_) {
     if(!arguments.length) return sortby;
     sortby = _;
+    return hivePlot;
+  };
+  hivePlot.nodesize = function(_) {
+    if(!arguments.length) return nodesize;
+    nodesize = _;
     return hivePlot;
   };
   function degrees(radians) {
