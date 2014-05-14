@@ -11,14 +11,6 @@ d3.hivePlot = function module() {
 
       // original domain setup set up angle according to links in and out.
       // .domain(["source", "source-target", "target-source", "target"])
-  var angle = d3.scale.ordinal()
-      .domain(["1", "2", "3", "4"]) // change to however many you like
-      .range([0, majorAngle - minorAngle, majorAngle + minorAngle, 2 * majorAngle]);
-
-  var radius = d3.scale.linear()
-      .range([innerRadius, outerRadius]);
-
-  var color = d3.scale.category20();
 
   // Load the data and display the plot!
   function hivePlot(_selection) {
@@ -29,7 +21,16 @@ d3.hivePlot = function module() {
           formatNumber = d3.format(",d"),
           defaultInfo;
 
-          // Construct an index by node name.
+      var angle = d3.scale.ordinal()
+          .domain(["1", "2", "3", "4"]) // change to however many you like
+          .range([0, majorAngle - minorAngle, majorAngle + minorAngle, 2 * majorAngle]);
+
+      var radius = d3.scale.linear()
+          .range([innerRadius, outerRadius]);
+
+      var color = d3.scale.category20();
+ 
+      // Construct an index by node name.
       nodes.forEach(function(d) {
         d.edges = [];
         d.productName = d.name.split(".")[1];
@@ -115,7 +116,7 @@ d3.hivePlot = function module() {
       nodesByType.forEach(function(type) {
         var lastColor = type.values[0].color, count = 0;
         type.values.forEach(function(d, i) {
-          if (d.color != lastColor) lastColor = d.color, count += 2;
+          if (d.color != lastColor) lastColor = d.color, count += 1;
           // figuring out what this does
           d.index = count++;
         });
