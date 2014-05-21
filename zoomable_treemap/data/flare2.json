@@ -1,0 +1,1257 @@
+{
+    "id" : 1,
+    "name" : "flare",
+    "children" : [{
+        "id" : 2,
+        "name" : "analytics",
+        "children" : [{
+            "id" : 3,
+            "name" : "cluster",
+            "children" : [{
+                "id" : 4,
+                "name" : "AgglomerativeCluster",
+                "size" : 3938
+            },
+            {
+                "id" : 5,
+                "name" : "CommunityStructure",
+                "size" : 3812
+            },
+            {
+                "id" : 6,
+                "name" : "HierarchicalCluster",
+                "size" : 6714
+            },
+            {
+                "id" : 7,
+                "name" : "MergeEdge",
+                "size" : 743
+            }]
+        },
+        {
+            "id" : 8,
+            "name" : "graph",
+            "children" : [{
+                "id" : 9,
+                "name" : "BetweennessCentrality",
+                "size" : 3534
+            },
+            {
+                "id" : 10,
+                "name" : "LinkDistance",
+                "size" : 5731
+            },
+            {
+                "id" : 11,
+                "name" : "MaxFlowMinCut",
+                "size" : 7840
+            },
+            {
+                "id" : 12,
+                "name" : "ShortestPaths",
+                "size" : 5914
+            },
+            {
+                "id" : 13,
+                "name" : "SpanningTree",
+                "size" : 3416
+            }]
+        },
+        {
+            "id" : 14,
+            "name" : "optimization",
+            "children" : [{
+                "id" : 15,
+                "name" : "AspectRatioBanker",
+                "size" : 7074
+            }]
+        }]
+    },
+    {
+        "id" : 16,
+        "name" : "animate",
+        "children" : [{
+            "id" : 17,
+            "name" : "Easing",
+            "size" : 17010
+        },
+        {
+            "id" : 18,
+            "name" : "FunctionSequence",
+            "size" : 5842
+        },
+        {
+            "id" : 518,
+            "name" : "FunctionSequence",
+            "size" : 5842
+        },
+        {
+            "id" : 19,
+            "name" : "interpolate",
+            "children" : [{
+                "id" : 20,
+                "name" : "ArrayInterpolator",
+                "size" : 1983
+            },
+            {
+                "id" : 21,
+                "name" : "ColorInterpolator",
+                "size" : 2047
+            },
+            {
+                "id" : 22,
+                "name" : "DateInterpolator",
+                "size" : 1375
+            },
+            {
+                "id" : 23,
+                "name" : "Interpolator",
+                "size" : 8746
+            },
+            {
+                "id" : 24,
+                "name" : "MatrixInterpolator",
+                "size" : 2202
+            },
+            {
+                "id" : 25,
+                "name" : "NumberInterpolator",
+                "size" : 1382
+            },
+            {
+                "id" : 26,
+                "name" : "ObjectInterpolator",
+                "size" : 1629
+            },
+            {
+                "id" : 27,
+                "name" : "PointInterpolator",
+                "size" : 1675
+            },
+            {
+                "id" : 28,
+                "name" : "RectangleInterpolator",
+                "size" : 2042
+            }]
+        },
+        {
+            "id" : 29,
+            "name" : "ISchedulable",
+            "size" : 1041
+        },
+        {
+            "id" : 30,
+            "name" : "Parallel",
+            "size" : 5176
+        },
+        {
+            "id" : 31,
+            "name" : "Pause",
+            "size" : 449
+        },
+        {
+            "id" : 32,
+            "name" : "Scheduler",
+            "size" : 5593
+        },
+        {
+            "id" : 33,
+            "name" : "Sequence",
+            "size" : 5534
+        },
+        {
+            "id" : 34,
+            "name" : "Transition",
+            "size" : 9201
+        },
+        {
+            "id" : 35,
+            "name" : "Transitioner",
+            "size" : 19975
+        },
+        {
+            "id" : 36,
+            "name" : "TransitionEvent",
+            "size" : 1116
+        },
+        {
+            "id" : 37,
+            "name" : "Tween",
+            "size" : 6006
+        }]
+    },
+    {
+        "id" : 38,
+        "name" : "data",
+        "children" : [{
+            "id" : 39,
+            "name" : "converters",
+            "children" : [{
+                "id" : 40,
+                "name" : "Converters",
+                "size" : 721
+            },
+            {
+                "id" : 41,
+                "name" : "DelimitedTextConverter",
+                "size" : 4294
+            },
+            {
+                "id" : 42,
+                "name" : "GraphMLConverter",
+                "size" : 9800
+            },
+            {
+                "id" : 43,
+                "name" : "IDataConverter",
+                "size" : 1314
+            },
+            {
+                "id" : 44,
+                "name" : "JSONConverter",
+                "size" : 2220
+            }]
+        },
+        {
+            "id" : 45,
+            "name" : "DataField",
+            "size" : 1759
+        },
+        {
+            "id" : 46,
+            "name" : "DataSchema",
+            "size" : 2165
+        },
+        {
+            "id" : 47,
+            "name" : "DataSet",
+            "size" : 586
+        },
+        {
+            "id" : 48,
+            "name" : "DataSource",
+            "size" : 3331
+        },
+        {
+            "id" : 49,
+            "name" : "DataTable",
+            "size" : 772
+        },
+        {
+            "id" : 50,
+            "name" : "DataUtil",
+            "size" : 3322
+        }]
+    },
+    {
+        "id" : 51,
+        "name" : "display",
+        "children" : [{
+            "id" : 52,
+            "name" : "DirtySprite",
+            "size" : 8833
+        },
+        {
+            "id" : 53,
+            "name" : "LineSprite",
+            "size" : 1732
+        },
+        {
+            "id" : 54,
+            "name" : "RectSprite",
+            "size" : 3623
+        },
+        {
+            "id" : 55,
+            "name" : "TextSprite",
+            "size" : 10066
+        }]
+    },
+    {
+        "id" : 551,
+        "name" : "display",
+        "children" : [{
+            "id" : 552,
+            "name" : "DirtySprite",
+            "size" : 8833
+        },
+        {
+            "id" : 553,
+            "name" : "LineSprite",
+            "size" : 1732
+        },
+        {
+            "id" : 554,
+            "name" : "RectSprite",
+            "size" : 3623
+        },
+        {
+            "id" : 555,
+            "name" : "TextSprite",
+            "size" : 10066
+        }]
+    },
+    {
+        "id" : 56,
+        "name" : "flex",
+        "children" : [{
+            "id" : 57,
+            "name" : "FlareVis",
+            "size" : 4116
+        }]
+    },
+    {
+        "id" : 58,
+        "name" : "physics",
+        "children" : [{
+            "id" : 59,
+            "name" : "DragForce",
+            "size" : 1082
+        },
+        {
+            "id" : 60,
+            "name" : "GravityForce",
+            "size" : 1336
+        },
+        {
+            "id" : 61,
+            "name" : "IForce",
+            "size" : 319
+        },
+        {
+            "id" : 62,
+            "name" : "NBodyForce",
+            "size" : 10498
+        },
+        {
+            "id" : 63,
+            "name" : "Particle",
+            "size" : 2822
+        },
+        {
+            "id" : 64,
+            "name" : "Simulation",
+            "size" : 9983
+        },
+        {
+            "id" : 65,
+            "name" : "Spring",
+            "size" : 2213
+        },
+        {
+            "id" : 66,
+            "name" : "SpringForce",
+            "size" : 1681
+        }]
+    },
+    {
+        "id" : 67,
+        "name" : "query",
+        "children" : [{
+            "id" : 68,
+            "name" : "AggregateExpression",
+            "size" : 1616
+        },
+        {
+            "id" : 69,
+            "name" : "And",
+            "size" : 1027
+        },
+        {
+            "id" : 70,
+            "name" : "Arithmetic",
+            "size" : 3891
+        },
+        {
+            "id" : 71,
+            "name" : "Average",
+            "size" : 891
+        },
+        {
+            "id" : 72,
+            "name" : "BinaryExpression",
+            "size" : 2893
+        },
+        {
+            "id" : 73,
+            "name" : "Comparison",
+            "size" : 5103
+        },
+        {
+            "id" : 74,
+            "name" : "CompositeExpression Composite Expression ComposCompositeCompositeCompositeite xpression",
+            "size" : 3677
+        },
+        {
+            "id" : 75,
+            "name" : "Count",
+            "size" : 781
+        },
+        {
+            "id" : 76,
+            "name" : "DateUtil",
+            "size" : 4141
+        },
+        {
+            "id" : 77,
+            "name" : "Distinct",
+            "size" : 933
+        },
+        {
+            "id" : 78,
+            "name" : "Expression",
+            "size" : 5130
+        },
+        {
+            "id" : 79,
+            "name" : "ExpressionIterator",
+            "size" : 3617
+        },
+        {
+            "id" : 80,
+            "name" : "Fn",
+            "size" : 3240
+        },
+        {
+            "id" : 81,
+            "name" : "If",
+            "size" : 2732
+        },
+        {
+            "id" : 82,
+            "name" : "IsA",
+            "size" : 2039
+        },
+        {
+            "id" : 83,
+            "name" : "Literal",
+            "size" : 1214
+        },
+        {
+            "id" : 84,
+            "name" : "Match",
+            "size" : 3748
+        },
+        {
+            "id" : 85,
+            "name" : "MaximumMaximumMaximumMaximumMaximumMaximumMaximum",
+            "size" : 843
+        },
+        {
+            "id" : 86,
+            "name" : "methods",
+            "children" : [{
+                "id" : 87,
+                "name" : "add",
+                "size" : 593
+            },
+            {
+                "id" : 88,
+                "name" : "and",
+                "size" : 330
+            },
+            {
+                "id" : 89,
+                "name" : "average",
+                "size" : 287
+            },
+            {
+                "id" : 90,
+                "name" : "count",
+                "size" : 277
+            },
+            {
+                "id" : 91,
+                "name" : "distinct",
+                "size" : 292
+            },
+            {
+                "id" : 92,
+                "name" : "div",
+                "size" : 595
+            },
+            {
+                "id" : 93,
+                "name" : "eq",
+                "size" : 594
+            },
+            {
+                "id" : 94,
+                "name" : "fn",
+                "size" : 460
+            },
+            {
+                "id" : 95,
+                "name" : "gt",
+                "size" : 603
+            },
+            {
+                "id" : 96,
+                "name" : "gte",
+                "size" : 625
+            },
+            {
+                "id" : 97,
+                "name" : "iff",
+                "size" : 748
+            },
+            {
+                "id" : 98,
+                "name" : "isa",
+                "size" : 461
+            },
+            {
+                "id" : 99,
+                "name" : "lt",
+                "size" : 597
+            },
+            {
+                "id" : 100,
+                "name" : "lte",
+                "size" : 619
+            },
+            {
+                "id" : 101,
+                "name" : "max",
+                "size" : 283
+            },
+            {
+                "id" : 102,
+                "name" : "min",
+                "size" : 283
+            },
+            {
+                "id" : 103,
+                "name" : "mod",
+                "size" : 591
+            },
+            {
+                "id" : 104,
+                "name" : "mul",
+                "size" : 603
+            },
+            {
+                "id" : 105,
+                "name" : "neq",
+                "size" : 599
+            },
+            {
+                "id" : 106,
+                "name" : "not",
+                "size" : 386
+            },
+            {
+                "id" : 107,
+                "name" : "or",
+                "size" : 323
+            },
+            {
+                "id" : 108,
+                "name" : "orderby",
+                "size" : 307
+            },
+            {
+                "id" : 109,
+                "name" : "range",
+                "size" : 772
+            },
+            {
+                "id" : 110,
+                "name" : "select",
+                "size" : 296
+            },
+            {
+                "id" : 111,
+                "name" : "stddev",
+                "size" : 363
+            },
+            {
+                "id" : 112,
+                "name" : "sub",
+                "size" : 600
+            },
+            {
+                "id" : 113,
+                "name" : "sum",
+                "size" : 280
+            },
+            {
+                "id" : 114,
+                "name" : "update",
+                "size" : 307
+            },
+            {
+                "id" : 115,
+                "name" : "variance",
+                "size" : 335
+            },
+            {
+                "id" : 116,
+                "name" : "where",
+                "size" : 299
+            },
+            {
+                "id" : 117,
+                "name" : "xor",
+                "size" : 354
+            },
+            {
+                "id" : 118,
+                "name" : "_",
+                "size" : 264
+            }]
+        },
+        {
+            "id" : 119,
+            "name" : "Minimum",
+            "size" : 843
+        },
+        {
+            "id" : 120,
+            "name" : "Not",
+            "size" : 1554
+        },
+        {
+            "id" : 121,
+            "name" : "Or",
+            "size" : 970
+        },
+        {
+            "id" : 122,
+            "name" : "Query",
+            "size" : 13896
+        },
+        {
+            "id" : 123,
+            "name" : "Range",
+            "size" : 1594
+        },
+        {
+            "id" : 124,
+            "name" : "StringUtil",
+            "size" : 4130
+        },
+        {
+            "id" : 125,
+            "name" : "Sum",
+            "size" : 791
+        },
+        {
+            "id" : 126,
+            "name" : "Variable",
+            "size" : 1124
+        },
+        {
+            "id" : 127,
+            "name" : "Variance",
+            "size" : 1876
+        },
+        {
+            "id" : 128,
+            "name" : "Xor",
+            "size" : 1101
+        }]
+    },
+    {
+        "id" : 129,
+        "name" : "scale",
+        "children" : [{
+            "id" : 130,
+            "name" : "IScaleMap",
+            "size" : 2105
+        },
+        {
+            "id" : 131,
+            "name" : "LinearScale",
+            "size" : 1316
+        },
+        {
+            "id" : 132,
+            "name" : "LogScale",
+            "size" : 3151
+        },
+        {
+            "id" : 133,
+            "name" : "OrdinalScale",
+            "size" : 3770
+        },
+        {
+            "id" : 134,
+            "name" : "QuantileScale",
+            "size" : 2435
+        },
+        {
+            "id" : 135,
+            "name" : "QuantitativeScale",
+            "size" : 4839
+        },
+        {
+            "id" : 136,
+            "name" : "RootScale",
+            "size" : 1756
+        },
+        {
+            "id" : 137,
+            "name" : "Scale",
+            "size" : 4268
+        },
+        {
+            "id" : 138,
+            "name" : "ScaleType",
+            "size" : 1821
+        },
+        {
+            "id" : 139,
+            "name" : "TimeScale",
+            "size" : 5833
+        }]
+    },
+    {
+        "id" : 140,
+        "name" : "util",
+        "children" : [{
+            "id" : 141,
+            "name" : "Arrays",
+            "size" : 8258
+        },
+        {
+            "id" : 142,
+            "name" : "Colors",
+            "size" : 10001
+        },
+        {
+            "id" : 143,
+            "name" : "Dates",
+            "size" : 8217
+        },
+        {
+            "id" : 144,
+            "name" : "Displays",
+            "size" : 12555
+        },
+        {
+            "id" : 145,
+            "name" : "Filter",
+            "size" : 2324
+        },
+        {
+            "id" : 146,
+            "name" : "Geometry",
+            "size" : 10993
+        },
+        {
+            "id" : 147,
+            "name" : "heap",
+            "children" : [{
+                "id" : 148,
+                "name" : "FibonacciHeap",
+                "size" : 9354
+            },
+            {
+                "id" : 149,
+                "name" : "HeapNode",
+                "size" : 1233
+            }]
+        },
+        {
+            "id" : 150,
+            "name" : "IEvaluable",
+            "size" : 335
+        },
+        {
+            "id" : 151,
+            "name" : "IPredicate",
+            "size" : 383
+        },
+        {
+            "id" : 152,
+            "name" : "IValueProxy",
+            "size" : 874
+        },
+        {
+            "id" : 153,
+            "name" : "math",
+            "children" : [{
+                "id" : 154,
+                "name" : "DenseMatrix",
+                "size" : 3165
+            },
+            {
+                "id" : 155,
+                "name" : "IMatrix",
+                "size" : 2815
+            },
+            {
+                "id" : 156,
+                "name" : "SparseMatrix",
+                "size" : 3366
+            }]
+        },
+        {
+            "id" : 157,
+            "name" : "Maths",
+            "size" : 17705
+        },
+        {
+            "id" : 158,
+            "name" : "Orientation",
+            "size" : 1486
+        },
+        {
+            "id" : 159,
+            "name" : "palette",
+            "children" : [{
+                "id" : 160,
+                "name" : "ColorPalette",
+                "size" : 6367
+            },
+            {
+                "id" : 161,
+                "name" : "Palette",
+                "size" : 1229
+            },
+            {
+                "id" : 162,
+                "name" : "ShapePalette",
+                "size" : 2059
+            },
+            {
+                "id" : 163,
+                "name" : "SizePalette",
+                "size" : 2291
+            }]
+        },
+        {
+            "id" : 164,
+            "name" : "Property",
+            "size" : 5559
+        },
+        {
+            "id" : 165,
+            "name" : "Shapes",
+            "size" : 19118
+        },
+        {
+            "id" : 166,
+            "name" : "Sort",
+            "size" : 6887
+        },
+        {
+            "id" : 167,
+            "name" : "Stats",
+            "size" : 6557
+        },
+        {
+            "id" : 168,
+            "name" : "Strings",
+            "size" : 22026
+        }]
+    },
+    {
+        "id" : 169,
+        "name" : "vis",
+        "children" : [{
+            "id" : 170,
+            "name" : "axis",
+            "children" : [{
+                "id" : 171,
+                "name" : "Axes",
+                "size" : 1302
+            },
+            {
+                "id" : 172,
+                "name" : "Axis",
+                "size" : 24593
+            },
+            {
+                "id" : 173,
+                "name" : "AxisGridLine",
+                "size" : 652
+            },
+            {
+                "id" : 174,
+                "name" : "AxisLabel",
+                "size" : 636
+            },
+            {
+                "id" : 175,
+                "name" : "CartesianAxes",
+                "size" : 6703
+            }]
+        },
+        {
+            "id" : 176,
+            "name" : "controls",
+            "children" : [{
+                "id" : 177,
+                "name" : "AnchorControl",
+                "size" : 2138
+            },
+            {
+                "id" : 178,
+                "name" : "ClickControl",
+                "size" : 3824
+            },
+            {
+                "id" : 179,
+                "name" : "Control",
+                "size" : 1353
+            },
+            {
+                "id" : 180,
+                "name" : "ControlList",
+                "size" : 4665
+            },
+            {
+                "id" : 181,
+                "name" : "DragControl",
+                "size" : 2649
+            },
+            {
+                "id" : 182,
+                "name" : "ExpandControl",
+                "size" : 2832
+            },
+            {
+                "id" : 183,
+                "name" : "HoverControl",
+                "size" : 4896
+            },
+            {
+                "id" : 184,
+                "name" : "IControl",
+                "size" : 763
+            },
+            {
+                "id" : 185,
+                "name" : "PanZoomControl",
+                "size" : 5222
+            },
+            {
+                "id" : 186,
+                "name" : "SelectionControl",
+                "size" : 7862
+            },
+            {
+                "id" : 187,
+                "name" : "TooltipControl",
+                "size" : 8435
+            }]
+        },
+        {
+            "id" : 188,
+            "name" : "otherdata",
+            "children" : [{
+                "id" : 189,
+                "name" : "Data",
+                "size" : 20544
+            },
+            {
+                "id" : 190,
+                "name" : "DataList",
+                "size" : 19788
+            },
+            {
+                "id" : 191,
+                "name" : "DataSprite",
+                "size" : 10349
+            },
+            {
+                "id" : 192,
+                "name" : "EdgeSprite",
+                "size" : 3301
+            },
+            {
+                "id" : 193,
+                "name" : "NodeSprite",
+                "size" : 19382
+            },
+            {
+                "id" : 194,
+                "name" : "render",
+                "children" : [{
+                    "id" : 195,
+                    "name" : "ArrowType",
+                    "size" : 698
+                },
+                {
+                    "id" : 196,
+                    "name" : "EdgeRenderer",
+                    "size" : 5569
+                },
+                {
+                    "id" : 197,
+                    "name" : "IRenderer",
+                    "size" : 353
+                },
+                {
+                    "id" : 198,
+                    "name" : "ShapeRenderer",
+                    "size" : 2247
+                }]
+            },
+            {
+                "id" : 199,
+                "name" : "ScaleBinding",
+                "size" : 11275
+            },
+            {
+                "id" : 200,
+                "name" : "Tree",
+                "size" : 7147
+            },
+            {
+                "id" : 201,
+                "name" : "TreeBuilder",
+                "size" : 9930
+            }]
+        },
+        {
+            "id" : 202,
+            "name" : "events",
+            "children" : [{
+                "id" : 203,
+                "name" : "DataEvent",
+                "size" : 2313
+            },
+            {
+                "id" : 204,
+                "name" : "SelectionEvent",
+                "size" : 1880
+            },
+            {
+                "id" : 205,
+                "name" : "TooltipEvent",
+                "size" : 1701
+            },
+            {
+                "id" : 206,
+                "name" : "VisualizationEvent",
+                "size" : 1117
+            }]
+        },
+        {
+            "id" : 207,
+            "name" : "legend",
+            "children" : [{
+                "id" : 208,
+                "name" : "Legend",
+                "size" : 20859
+            },
+            {
+                "id" : 209,
+                "name" : "LegendItem",
+                "size" : 4614
+            },
+            {
+                "id" : 210,
+                "name" : "LegendRange",
+                "size" : 10530
+            }]
+        },
+        {
+            "id" : 211,
+            "name" : "operator",
+            "children" : [{
+                "id" : 212,
+                "name" : "distortion",
+                "children" : [{
+                    "id" : 213,
+                    "name" : "BifocalDistortion",
+                    "size" : 4461
+                },
+                {
+                    "id" : 214,
+                    "name" : "Distortion",
+                    "size" : 6314
+                },
+                {
+                    "id" : 215,
+                    "name" : "FisheyeDistortion",
+                    "size" : 3444
+                }]
+            },
+            {
+                "id" : 216,
+                "name" : "encoder",
+                "children" : [{
+                    "id" : 217,
+                    "name" : "ColorEncoder",
+                    "size" : 3179
+                },
+                {
+                    "id" : 218,
+                    "name" : "Encoder",
+                    "size" : 4060
+                },
+                {
+                    "id" : 219,
+                    "name" : "PropertyEncoder",
+                    "size" : 4138
+                },
+                {
+                    "id" : 220,
+                    "name" : "ShapeEncoder",
+                    "size" : 1690
+                },
+                {
+                    "id" : 221,
+                    "name" : "SizeEncoder",
+                    "size" : 1830
+                }]
+            },
+            {
+                "id" : 222,
+                "name" : "filter",
+                "children" : [{
+                    "id" : 223,
+                    "name" : "FisheyeTreeFilter",
+                    "size" : 5219
+                },
+                {
+                    "id" : 224,
+                    "name" : "GraphDistanceFilter",
+                    "size" : 3165
+                },
+                {
+                    "id" : 225,
+                    "name" : "VisibilityFilter",
+                    "size" : 3509
+                }]
+            },
+            {
+                "id" : 226,
+                "name" : "IOperator",
+                "size" : 1286
+            },
+            {
+                "id" : 227,
+                "name" : "label",
+                "children" : [{
+                    "id" : 228,
+                    "name" : "Labeler",
+                    "size" : 9956
+                },
+                {
+                    "id" : 229,
+                    "name" : "RadialLabeler",
+                    "size" : 3899
+                },
+                {
+                    "id" : 230,
+                    "name" : "StackedAreaLabeler",
+                    "size" : 3202
+                }]
+            },
+            {
+                "id" : 231,
+                "name" : "layout",
+                "children" : [{
+                    "id" : 232,
+                    "name" : "AxisLayout",
+                    "size" : 6725
+                },
+                {
+                    "id" : 233,
+                    "name" : "BundledEdgeRouter",
+                    "size" : 3727
+                },
+                {
+                    "id" : 234,
+                    "name" : "CircleLayout",
+                    "size" : 9317
+                },
+                {
+                    "id" : 235,
+                    "name" : "CirclePackingLayout",
+                    "size" : 12003
+                },
+                {
+                    "id" : 236,
+                    "name" : "DendrogramLayout",
+                    "size" : 4853
+                },
+                {
+                    "id" : 237,
+                    "name" : "ForceDirectedLayout",
+                    "size" : 8411
+                },
+                {
+                    "id" : 238,
+                    "name" : "IcicleTreeLayout",
+                    "size" : 4864
+                },
+                {
+                    "id" : 239,
+                    "name" : "IndentedTreeLayout",
+                    "size" : 3174
+                },
+                {
+                    "id" : 240,
+                    "name" : "Layout",
+                    "size" : 7881
+                },
+                {
+                    "id" : 241,
+                    "name" : "NodeLinkTreeLayout",
+                    "size" : 12870
+                },
+                {
+                    "id" : 242,
+                    "name" : "PieLayout",
+                    "size" : 2728
+                },
+                {
+                    "id" : 243,
+                    "name" : "RadialTreeLayout",
+                    "size" : 12348
+                },
+                {
+                    "id" : 244,
+                    "name" : "RandomLayout",
+                    "size" : 870
+                },
+                {
+                    "id" : 245,
+                    "name" : "StackedAreaLayout",
+                    "size" : 9121
+                },
+                {
+                    "id" : 246,
+                    "name" : "TreeMapLayout",
+                    "size" : 9191
+                }]
+            },
+            {
+                "id" : 247,
+                "name" : "Operator",
+                "size" : 2490
+            },
+            {
+                "id" : 248,
+                "name" : "OperatorList",
+                "size" : 5248
+            },
+            {
+                "id" : 249,
+                "name" : "OperatorSequence",
+                "size" : 4190
+            },
+            {
+                "id" : 250,
+                "name" : "OperatorSwitch",
+                "size" : 2581
+            },
+            {
+                "id" : 251,
+                "name" : "SortOperator",
+                "size" : 2023
+            }]
+        },
+        {
+            "id" : 252,
+            "name" : "Visualization",
+            "size" : 16540
+        }]
+    }]
+}
