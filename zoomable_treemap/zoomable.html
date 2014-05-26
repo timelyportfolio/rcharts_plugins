@@ -1,0 +1,54 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    <link rel='stylesheet' href='css/style.css'>
+    <script src='js/jquery-1.8.2.min.js' type='text/javascript'></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src='js/zoomable_treemap.js' type='text/javascript'></script>
+    <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
+    
+    <style>
+    </style>
+    
+  </head>
+  <body>
+    <div id="chart">
+    </div>
+<script>
+
+d3.csv('data/sf_probs.csv', function(error, dat){
+// this will be chained in rCharts 'getPayload'
+                root = {"key": "sf problems", "values": 
+                d3.nest()
+                  .key(function(d) { return d.neighborhood;})
+                  .key(function(d) { return d.dow;})
+                  .key(function(d) { return d.source;})
+                  .key(function(d) { return d.request_type;})
+                  .key(function(d) { return d.responsible_agency;})
+                  .key(function(d) { return d.request_details;})
+                  .entries(dat) };
+    function drawchart(){
+        var params = {id: "chart", root: root}
+        var zoomable = d3.zoomable_treemap()
+                        .id(params.id)
+                        .size('count')
+                        .color('count')
+                        .color_description("sum of number of events")
+
+        
+        d3.select("#" + params.id)
+            .datum(params.root)
+            .call(zoomable)
+
+        return zoomable;
+    };
+
+    $(document).ready(function(){
+        drawchart()
+    });
+});
+
+</script>
+</body>
+</html>

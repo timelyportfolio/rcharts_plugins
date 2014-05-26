@@ -12,7 +12,9 @@
 text {
   pointer-events: none;
 }
-
+.children>text {
+  fill: grey;
+}
 .grandparent text {
   font-weight: bold;
 }
@@ -28,7 +30,7 @@ rect.parent,
 }
 
 .grandparent rect {
-  fill: darkseagreen;
+  fill: white;
 }
 
 .grandparent:hover rect {
@@ -49,4 +51,27 @@ rect.parent,
   position: absolute;
   padding: 5px;
   opacity: 1;
+}
+
+
+/*
+legend stuff
+*/
+#legend {
+    padding: 1.5em 0 0 1.5em;
+}
+.legend-title {
+  font-size: 30px;
+  padding: 0.1em 0 0.1em 0em;
+
+}
+
+rect.key{
+  stroke-width: 0px;
+}
+.legend-title {
+  font-size: 20px;
+}
+.legend-text {
+  font-size: 12px;
 }

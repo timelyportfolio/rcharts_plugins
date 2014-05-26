@@ -160,33 +160,33 @@ library(rCharts)
         initialize = function(){
             callSuper()
             params$rootname <<- 'root'
+            params$file <<- 'file'
             LIB <<- get_lib("zoomable_treemap")
             lib <<- "zoomable_treemap"
             templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
             templates$script <<- '
             <script type="text/javascript">
-            function draw{{ chartId }}(){
-            var params = {{{ chartParams }}},
-                root = {"key": params.rootname, "values": d3.nest()
-                         {{{ nest }}}
-                         .entries({{{data}}})}
-
+function draw{{ chartId }}(){
+    var params = {{{ chartParams }}},
+            root = {"key": params.rootname, "values": d3.nest()
+                                                        {{{ nest }}}
+                                                        .entries({{{data}}})}
             var chart = {{{ zoommap }}}
-    
-            d3.select("#" + params.id)
-                    .datum(root)
-                    .call(chart)
-                    return chart;
-                    };
             
+            d3.select("#" + params.id)
+            .datum(root)
+            .call(chart)
+            return chart;
+}
             $(document).ready(function(){
-                draw{{chartId}}()
+            draw{{chartId}}()
             });
             
             </script>'
       },
       getPayload = function(chartId){
-        nest = paste(sprintf(".key(function(d) { return d.%s;})", params[['keys']]), collapse = '\n')
+        nest = paste(sprintf(".key(function(d) { return d.%s;}).sortKeys(d3.ascending)", 
+                             params[['keys']]), collapse = '\n')
         skip = c('dom','keys', "data", "rootname")
         zoommap = toChain(params[!(names(params) %in% skip)], "d3.zoomable_treemap()")
         chartParams = RJSONIO:::toJSON(params[c('dom', 'id', 'rootname')])

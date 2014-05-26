@@ -10,9 +10,8 @@
         size = "count",
         color = "count"
         id = "chart",
-        colors = {},
-        color_scale = d3.scale.category20b();
-    // tooltip formatting
+        color_description = "sum of " + color;
+        // tooltip formatting
     var percent = d3.format("%"),
         comma = d3.format(",f")
     // Scales linear, may want to add log option.
@@ -30,9 +29,9 @@
         // currently looks for variable "count" at deepest level. This should be set by initiating variable when function is declared.
         var treemap = d3.layout.treemap()
             .children(function(d, depth) { return depth ? null : d._children; }) 
-            .sort(function(a, b) { return parseFloat(a[size]) - parseFloat(b[size]); })
-            .value(function(d) { return parseFloat(d[size]) ;})
-            .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+//            .sort(function(a, b) { return parseFloat(a[size]) - parseFloat(b[size]); })
+            .value(function(d) { return parseFloat(d[size]); })
+              .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
             .round(false);
 
         // hangs svg on proper div
@@ -83,28 +82,39 @@
           hideTooltip();
         }
         function defaultTooltip(d) {
-          var count = d.count,
-              path = [];
-              prop = d.prop_parent
-              prop_total = d.prop_total
-              par_total = d.parent[size]
-              child = d.key
-              children = d._children ? true : false
-              parent = d.parent.key
+          var dsize = parseFloat(d[size]),
+              path = [],
+              prop = d.prop_parent,
+              prop_total = d.prop_total,
+              par_total = parseFloat(d.parent[size]),
+              child = d,
+              children = d._children ? true : false,
+              parent = d.parent.key;
           while (d.parent) {
             if (d.key) path.unshift(d.key);
             d = d.parent;
           }
           rpath = [root.key].concat(path)
           tip = rpath.join(" → ") + " " + 
-            parseInt(root[size]*prop_total) + " (" + percent(prop_total) + 
-              ")<br>"
-          if(children) tip += rpath.slice(0,-1).join(" → ") + " " + 
+            parseInt(root[size]*prop_total) + 
+            " (" + 
+            percent(prop_total) + 
+            ")<br>"
+          if(children){
+            tip += rpath.slice(0,-1).join(" → ") + " " + 
               comma(par_total) + " (" + 
-              percent(par_total/root.count) + ")<br>" + 
-              "(" + path.slice(0,-1).join(" → ") + ") → " + child + " " + 
-               comma(count) + " (" + percent(prop) + 
-            ")" ;
+              percent(par_total/root[size]) + ")<br>" + 
+              "(" + path.slice(0,-1).join(" → ") + ") → " + child.key + " " + 
+               comma(dsize) + " (" + percent(prop) + 
+              ")" ;
+          } else {
+            tip += rpath.slice(0,-1).join(" → ") + " " + 
+              comma(child.parent.parent[size]) + " (" + 
+              percent(par_total/root[size]) + ")<br>" + 
+              "(" + path.slice(0,-1).join(" → ") + ") → " + child.parent.key  + " " + 
+               comma(dsize) + " (" + percent(dsize/child.parent.parent[size]) + 
+              ")" ;
+          }
           return tip
         }
         var toolTip_ = defaultTooltip;
@@ -121,10 +131,10 @@
         // treemap layout, but not here because of our custom implementation.
         // We also take a snapshot of the original children (_children) to avoid
         // the children being overwritten when when layout is computed.
-        function accumulate(d) {
+        function accumulate(d, weight) {
           return (d._children = d.values)
-              ? d.count = d.values.reduce(function(p, v) { return p + accumulate(v); }, 0)
-              : parseInt(d.count);
+              ? d[weight] = d.values.reduce(function(p, v) { return p + accumulate(v, weight); }, 0)
+              : parseFloat(d[weight]);
         }
 
         // Compute the treemap layout recursively such that each group of siblings
@@ -134,9 +144,23 @@
         // the parent’s dimensions are not discarded as we recurse. Since each group
         // of sibling was laid out in 1×1, we must rescale to fit using absolute
         // coordinates. This lets us use a viewport to zoom.
+        colors = d3.keys(colorbrewer).slice(0, 19)
+        color_scale = {}
+        function set_colors(d) {
+          if (d._children) {
+            if(!color_scale[d.key]) {
+                col = colors[Math.floor((Math.random() * 9))];
+                color_scale[d.key] = colorbrewer[col][9]
+                d._children.forEach(function(c) {
+                  set_colors(c);
+                })
+            }
+          }
+        }
+
         function layout(d) {
           if (d._children) {
-            treemap.nodes({_children: d._children}); // wrapper object?
+            treemap.nodes({_children: d._children}); 
             d._children.forEach(function(c) {
               c.x = d.x + c.x * d.dx;
               c.y = d.y + c.y * d.dy;
@@ -144,11 +168,22 @@
               c.dy *= d.dy;
               c.parent = d;
               c.prop_parent = parseFloat(c[size]) / parseFloat(d[size]);
-              c.prop_total = parseFloat(c[size]) / root.count
-              c.color = d3.scale.linear()
-                          .range(['white', color_scale(d.key)])
-                          .domain([0, parseFloat(d[color])])
-                    layout(c);
+              c.prop_total = parseFloat(c[size]) / root[size]
+              if(c._children) {
+                c.parent_color = d3.scale.quantile()
+                  .range(color_scale[c.key])
+                  .domain(d3.extent(c._children.map(
+                    function(x) {
+                      return parseFloat(x[color]);
+                    })))
+              } 
+              c.child_color = d3.scale.quantile()
+                          .range(color_scale[d.key])
+                          .domain(d3.extent(d._children.map(
+                            function(x) {
+                              return parseFloat(x[color]);
+                            })))
+              layout(c);
             });
           }
         }
@@ -175,17 +210,20 @@
               .data(d._children)
             .enter().append("g");
 
-          // gets the children of the parent, sets the class and click function
+          // if selection has children, sets the class and click function
           // to the entire <g> element. This holds of the the child's children
           // which are the one's with the actual dimensions.
-          g.filter(function(d) { return d._children; })
+          g.filter(function(d) { return d._children[0]._children; })
               .classed("children", true)
               .on("click", transition);
 
           g.selectAll(".child")
               .data(function(d) { return d._children || [d]; })
             .enter().append("rect") // first rect is appended - visible
-              .style('fill', function(d) { return d.color(d[color]) ;}) 
+              .style('fill', function(d) { 
+                return d._children ? 
+                  d.child_color(parseFloat(d[color])) :
+                  d.parent.child_color(parseFloat(d[color])) ;}) 
               .on('mouseover', function(d) {
                 d3.select(this).style('fill-opacity', 0.8)
               })
@@ -196,31 +234,97 @@
               .on('mousemove', function(d) {
                 showTooltip(defaultTooltip.call(this, d));
               })
-              .attr("class", "child") 
+              .attr("class", "child")
               .call(rect); // calling 'rect' creates an area 0 rectangle, but positive x and height variables so the animation can make the look like they 'grow' from the top or bottom.
 
           // g is now an object of length number of children d. It has a data object the length of the number of its children. We're calling 'rect' on the larger, first child squares now. So each first child is the last declared rect within each g. Mousing over it shows the aggregated size.
-          g.append("rect")
+          g.append("rect").filter(function(d) { return d._children; })
               .attr("class", "parent")
-              .call(rect)
-            .append("title")
-              .text(function(d) { return formatNumber(d[size]); });
+              .call(rect);
 
 
-          // do same thing to add it's name in the upper left corner
+          // do same thing to add it's name in center of parent cell
           g.append("text")
               .attr("dy", ".75em")
-              .text(function(d) { return d.key; })
-              .call(text); // text function looks at where each main square is.
+              .call(text); 
 
-          // d3.selectAll('.child:last-of-type')
-          //     .on('mouseover', function(d) {
-          //       showTooltip(toolTip_.call(this, d))
-          //     // d3.event.stopPropogation();
-          //     })
-          //     .on('mouseout', function(d) {
-          //       unHighlight()
-          //     });
+          // my effort at making dynamic legends.
+          d3.selectAll('#legend').remove() 
+          var nrow = Math.ceil((d._children.length * 120)/width) || 1,
+              ncol = Math.floor(width / 120) || 1;
+          var legend = d3.select('#' + id).append('svg')
+                          .attr('width', width)
+                          .attr('height', d._children ? nrow * 60 + 30: null )
+                          .attr('id', 'legend')
+          legend.append('svg')
+                .attr('x', -40)
+                .attr('y', 0)
+                .attr('height', 30)
+                .attr('width', 800)
+                .append("text")
+                .classed("legend-title", true)
+                .attr('x', 20)
+                .attr('y', 20)
+                .text(d.key + ": " + color_description)
+
+          
+          var keys = legend.selectAll('svg.legends')
+                            .data(function() { return d._children[0]._children[0]._children ? d._children: [d]; })
+                          .enter().append('svg')
+                            .attr('class', 'legends')
+                            .attr('x', function(d, i) {
+                              return ((i % ncol * 120) + -40);
+                              })
+                            .attr('y', function(d, i ) {
+                              return Math.floor(i / ncol) * 60 + 30;
+                            })
+                            .attr("height", 60)
+                            .attr('width', 120)
+                            .call(make_keys);
+
+          function make_keys(keys){
+              function get_scale(d) {
+                return d._children ? d.parent_color : d.parent.child_color;
+              }
+              keys
+                .append('text')
+                .attr('class','legend-text')
+                .attr('x', 20)
+                .attr('y', 12)
+                .text(function(d) {return d.key})
+              keys
+                .append('text')
+                .attr('class','legend-text')
+                .text(function(d) {
+                  return Math.round(get_scale(d).domain()[0] *100)/100
+                })
+                .attr('x',20)
+                .attr('y', 47)
+                .attr('text-anchor' ,'start');
+              keys
+                .append('text')
+                .attr('class','legend-text')
+                .text(function(d) {
+                  return Math.round(get_scale(d).domain()[1]*100)/100 
+                })
+                .attr('x',110)
+                .attr('y', 47)
+                .attr('text-anchor' ,'end');
+              keys
+                  .selectAll('child-key')
+                  .data(function(d) { return get_scale(d).range(); })
+                .enter().append('rect')
+                  .attr('class', 'key')
+                  .style('fill', function(d) { return d; })
+                  .style('stroke', 0)
+                  .attr('width', 10)
+                  .attr('height', 18)
+                  .attr('y', 15)
+                  .attr('x', function(d, i) { 
+                    return 20 + i*10
+                  })
+
+          }
 
           function transition(d) {
             if (transitioning || !d) return;
@@ -258,26 +362,42 @@
           return g;
         }
         function text(text) {
-          text.attr("x", function(d) { return x(d.x) + 6; })
-              .attr("y", function(d) { return y(d.y) + 6; })
-              .attr("fill-opacity", 1);
+          text.filter(function(d) { return d._children; })
+              .text(function(d) { 
+                return d.key
+              })
+              .attr("x", function(d) { return x(d.x + d.dx * 0.5) ; })
+              .attr("y", function(d) { return y(d.y + d.dy * 0.5) ; })
+              .attr('font-size', function(d) {
+                var box_width = x(d.x + d.dx) - x(d.x),
+                    key_length = d.key.length,
+                    w = "20px"
+                    k = d.key
+                    if(key_length * 12 > box_width) {
+                      w = 'x-small';
+                    }
+                    return w;
+              })
+              .attr('width', function(d) { return d.key.length;})
+              .attr("fill-opacity", 1)
+              .attr('height', function(d) { return x(d.x + d.dx) - x(d.x)})
+              .attr('text-anchor', 'middle');
         }
         function rect(rect) {
           rect.attr("x", function(d) { return x(d.x); })
               .attr("y", function(d) { return y(d.y); })
               .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
-              .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+              .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
         }
         function name(d) {
           return d.parent
               ? name(d.parent) + " → " + d.key
               : d.key;
         }
-        function get_top_parent(d) { 
-          return d.parent ? d.key : get_top_parent(d.key);
-        }
         initialize(root);
-        accumulate(root);
+        accumulate(root, color);
+        accumulate(root, size)
+        set_colors(root)
         layout(root);
         display(root);
 
@@ -290,7 +410,12 @@
     }
     zoomable_treemap.color = function(_) {
       if(!arguments.length) return color;
-      color = _;
+      color = _ ;
+      return zoomable_treemap;
+    }
+    zoomable_treemap.color_description = function(_) {
+      if(!arguments.length) return color_description;
+      color_description = _ ;
       return zoomable_treemap;
     }
     zoomable_treemap.formatNumber = function(_) {
@@ -300,7 +425,7 @@
     }
     zoomable_treemap.size = function (_){
       if(!arguments.length) return size;
-      size = _;
+      size = _ ;
       return zoomable_treemap;
     }
     zoomable_treemap.width = function(_) {
