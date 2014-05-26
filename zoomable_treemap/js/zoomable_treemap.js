@@ -157,7 +157,6 @@
             }
           }
         }
-
         function layout(d) {
           if (d._children) {
             treemap.nodes({_children: d._children}); 

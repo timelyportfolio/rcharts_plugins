@@ -161,7 +161,8 @@ library(rCharts)
             callSuper()
             params$rootname <<- 'root'
             params$file <<- 'file'
-            LIB <<- get_lib("zoomable_treemap")
+            LIB <<- 
+              get_lib("http://mostlyconjecture.com/rcharts_plugins/zoomable_treemap/")
             lib <<- "zoomable_treemap"
             templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
             templates$script <<- '
