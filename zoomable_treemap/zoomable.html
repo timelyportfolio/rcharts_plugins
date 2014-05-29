@@ -18,7 +18,6 @@
 <script>
 
 d3.csv('data/sf_probs.csv', function(error, dat){
-// this will be chained in rCharts 'getPayload'
                 root = {"key": "sf problems", "values": 
                 d3.nest()
                   .key(function(d) { return d.neighborhood;})
@@ -48,6 +47,7 @@ d3.csv('data/sf_probs.csv', function(error, dat){
         drawchart()
     });
 });
+
 
 </script>
 </body>

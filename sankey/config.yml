@@ -1,0 +1,10 @@
+zoomable_treemap:
+  jshead: [js/jquery-1.8.2.min.js, js/d3.v3.min.js, js/zoomable_treemap.js,  js/colorbrewer.v1.min.js]
+  css: [css/style.css]
+  cdn:
+    jshead: 
+      - "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+      - "http://d3js.org/d3.v3.min.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/zoomable_treemap/js/zoomable_treemap.js"
+      - "http://d3js.org/colorbrewer.v1.min.js"
+    css: http://mostlyconjecture.com/rcharts_plugins/zoomable_treemap/css/style.css

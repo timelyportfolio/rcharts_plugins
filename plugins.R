@@ -160,7 +160,6 @@ library(rCharts)
         initialize = function(){
             callSuper()
             params$rootname <<- 'root'
-            params$file <<- 'file'
             LIB <<- 
               get_lib("http://mostlyconjecture.com/rcharts_plugins/zoomable_treemap/")
             lib <<- "zoomable_treemap"

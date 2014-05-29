@@ -26,11 +26,11 @@
             .domain([0, height])
             .range([0, height]);
 
-        // currently looks for variable "count" at deepest level. This should be set by initiating variable when function is declared.
+        // currently looks for variable "size" at deepest level. This should be set by initiating variable when function is declared.
         var treemap = d3.layout.treemap()
-            .children(function(d, depth) { return depth ? null : d._children; }) 
-//            .sort(function(a, b) { return parseFloat(a[size]) - parseFloat(b[size]); })
-            .value(function(d) { return parseFloat(d[size]); })
+            .children(function(d, depth) { return depth ? null : d._children; })  // why depth ?  null : d._children
+            .sort(function(a, b) { return parseFloat(a[size]) - parseFloat(b[size]); })
+            .value(function(d) { return parseFloat(d[size]) || 0; })
               .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
             .round(false);
 
@@ -157,6 +157,7 @@
             }
           }
         }
+
         function layout(d) {
           if (d._children) {
             treemap.nodes({_children: d._children}); 
@@ -169,13 +170,19 @@
               c.prop_parent = parseFloat(c[size]) / parseFloat(d[size]);
               c.prop_total = parseFloat(c[size]) / root[size]
               if(c._children) {
-                c.parent_color = d3.scale.quantile()
-                  .range(color_scale[c.key])
-                  .domain(d3.extent(c._children.map(
-                    function(x) {
-                      return parseFloat(x[color]);
-                    })))
-              } 
+                if(!color_scale[c.key]) { // for some reason colors aren't setting with set_colors. This is a backstop.
+                  color_scale[c.key] = colorbrewer[colors[Math.floor((Math.random() * 9))]][9];
+                }
+                  c.parent_color = d3.scale.quantile()
+                    .range(color_scale[c.key])
+                    .domain(d3.extent(c._children.map(
+                      function(x) {
+                        return parseFloat(x[color]);
+                      })))
+              }
+              if(!color_scale[d.key]){
+                color_scale[c.key] = colorbrewer[colors[Math.floor((Math.random() * 9))]][9];
+              }
               c.child_color = d3.scale.quantile()
                           .range(color_scale[d.key])
                           .domain(d3.extent(d._children.map(
@@ -217,7 +224,7 @@
               .on("click", transition);
 
           g.selectAll(".child")
-              .data(function(d) { return d._children || [d]; })
+              .data(function(d) { return d._children; })
             .enter().append("rect") // first rect is appended - visible
               .style('fill', function(d) { 
                 return d._children ? 
@@ -395,8 +402,8 @@
         }
         initialize(root);
         accumulate(root, color);
-        accumulate(root, size)
-        set_colors(root)
+        accumulate(root, size);
+        set_colors(root);
         layout(root);
         display(root);
 
