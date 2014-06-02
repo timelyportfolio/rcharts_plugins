@@ -195,5 +195,42 @@ function draw{{ chartId }}(){
         )
       }
     ))
+.plugins$Horizon = setRefClass('Horizon', contains = 'rCharts', methods = list(
+        initialize = function(){
+            callSuper()
+            params$width <<- NULL # dimensions will get figured out later.
+            params$height <<- NULL
+            LIB <<- get_lib("~/projects/rcharts_plugins/horizon_compare")
+            lib <<- "horizon_compare"
+            templates$script <<- "
+            <script type='text/javascript'>
+function draw{{chartId}}(){
+            var params = {{{ chartParams }}}
+            var chart = {{{ horizon }}}
+            data = {{{data}}}
+            
+            svg = d3.select('body')
+                    .append('div')
+                    .attr('id', '#' + params.id)
+            svg.datum(data)
+            .call(chart);
+            return chart;
+        };
+        
+        $(document).ready(function(){
+          draw{{chartId}}()
+        });
+        
+        </script>
+          "
+      },
+      getPayload = function(chartId){
+        skip = c('dom')
+        horizon = toChain(params[!(names(params) %in% c(skip, 'data'))], "d3.horizon()")
+        chartParams = RJSONIO:::toJSON(params[c(skip, 'id')])
+        list(horizon = horizon, chartParams = chartParams, chartId = chartId, lib = basename(lib), liburl = LIB$url, data=toJSONArray(params[['data']])
+        )
+      }
+    ))
 attach(.plugins)
 

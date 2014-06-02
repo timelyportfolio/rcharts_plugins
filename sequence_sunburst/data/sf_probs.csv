@@ -1,0 +1,1364 @@
+"neighborhood","dow","source","request_type","responsible_agency","request_details","count"
+"Bayview","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Bayview","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Bayview","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",14
+"Bayview","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Bayview","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Bayview","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Bayview","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Bayview","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Bayview","Sun","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Bayview","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Bayview","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Bayview","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",37
+"Bayview","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Bayview","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",19
+"Bayview","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"Bayview","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Bayview","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",21
+"Bayview","Mon","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",3
+"Bayview","Tues","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Bayview","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Bayview","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Bayview","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Bayview","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Bayview","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Bayview","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",22
+"Bayview","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Bayview","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",19
+"Bayview","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Bayview","Wed","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Bayview","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Bayview","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",22
+"Bayview","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Bayview","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Bayview","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Bayview","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Bayview","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Bayview","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Bayview","Wed","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Bayview","Thurs","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Bayview","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Bayview","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",28
+"Bayview","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Bayview","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Bayview","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Bayview","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",16
+"Bayview","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Bayview","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",19
+"Bayview","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Bayview","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Bayview","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Bayview","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Bayview","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Bayview","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Bayview","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",6
+"Bayview","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Bayview","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Bayview","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Bayview","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Bayview","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Bayview","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Bayview","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Bayview","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Bernal Heights","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Bernal Heights","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Bernal Heights","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Bernal Heights","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",7
+"Bernal Heights","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",18
+"Bernal Heights","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Bernal Heights","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Bernal Heights","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Bernal Heights","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Bernal Heights","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Bernal Heights","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Bernal Heights","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Bernal Heights","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Bernal Heights","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Bernal Heights","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Bernal Heights","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Bernal Heights","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Bernal Heights","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Bernal Heights","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Bernal Heights","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Bernal Heights","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Bernal Heights","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Bernal Heights","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Bernal Heights","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Bernal Heights","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",3
+"Bernal Heights","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Bernal Heights","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Bernal Heights","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Bernal Heights","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Bernal Heights","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Bernal Heights","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Bernal Heights","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Bernal Heights","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Bernal Heights","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Bernal Heights","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Bernal Heights","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Bernal Heights","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Bernal Heights","Thurs","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Bernal Heights","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Bernal Heights","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"Bernal Heights","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Bernal Heights","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Bernal Heights","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Bernal Heights","Fri","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Bernal Heights","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Bernal Heights","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Bernal Heights","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Bernal Heights","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Bernal Heights","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",18
+"Bernal Heights","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Bernal Heights","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Bernal Heights","Fri","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Bernal Heights","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Bernal Heights","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Bernal Heights","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",10
+"Bernal Heights","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Bernal Heights","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Bernal Heights","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Castro/Upper Market","Sun","Integrated Agency","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Castro/Upper Market","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Castro/Upper Market","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Castro/Upper Market","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Castro/Upper Market","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",8
+"Castro/Upper Market","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Castro/Upper Market","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Castro/Upper Market","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Castro/Upper Market","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Castro/Upper Market","Mon","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Castro/Upper Market","Mon","Integrated Agency","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Castro/Upper Market","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Castro/Upper Market","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",14
+"Castro/Upper Market","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Castro/Upper Market","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Castro/Upper Market","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Castro/Upper Market","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Castro/Upper Market","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Castro/Upper Market","Mon","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Castro/Upper Market","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",10
+"Castro/Upper Market","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",16
+"Castro/Upper Market","Tues","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Castro/Upper Market","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Castro/Upper Market","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Castro/Upper Market","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Castro/Upper Market","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Castro/Upper Market","Tues","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Castro/Upper Market","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Castro/Upper Market","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Castro/Upper Market","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Castro/Upper Market","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Castro/Upper Market","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",18
+"Castro/Upper Market","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Castro/Upper Market","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"Castro/Upper Market","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Castro/Upper Market","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Castro/Upper Market","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Castro/Upper Market","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Castro/Upper Market","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Castro/Upper Market","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Castro/Upper Market","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Castro/Upper Market","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Castro/Upper Market","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Castro/Upper Market","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Castro/Upper Market","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Castro/Upper Market","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",7
+"Castro/Upper Market","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Castro/Upper Market","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Castro/Upper Market","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Castro/Upper Market","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Castro/Upper Market","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Castro/Upper Market","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Castro/Upper Market","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Castro/Upper Market","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Castro/Upper Market","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",8
+"Castro/Upper Market","Fri","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Castro/Upper Market","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Castro/Upper Market","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Castro/Upper Market","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Castro/Upper Market","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",16
+"Castro/Upper Market","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Castro/Upper Market","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Castro/Upper Market","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Castro/Upper Market","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Castro/Upper Market","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",8
+"Castro/Upper Market","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Castro/Upper Market","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Castro/Upper Market","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Castro/Upper Market","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Downtown/Civic Center","Sun","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Downtown/Civic Center","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Downtown/Civic Center","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Downtown/Civic Center","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Downtown/Civic Center","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Downtown/Civic Center","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Downtown/Civic Center","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",137
+"Downtown/Civic Center","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Downtown/Civic Center","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",15
+"Downtown/Civic Center","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",19
+"Downtown/Civic Center","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",22
+"Downtown/Civic Center","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",22
+"Downtown/Civic Center","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",45
+"Downtown/Civic Center","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",23
+"Downtown/Civic Center","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Downtown/Civic Center","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",114
+"Downtown/Civic Center","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",27
+"Downtown/Civic Center","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",19
+"Downtown/Civic Center","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",375
+"Downtown/Civic Center","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",26
+"Downtown/Civic Center","Mon","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Downtown/Civic Center","Tues","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",9
+"Downtown/Civic Center","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Downtown/Civic Center","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",33
+"Downtown/Civic Center","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",7
+"Downtown/Civic Center","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",17
+"Downtown/Civic Center","Tues","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Downtown/Civic Center","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",126
+"Downtown/Civic Center","Tues","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Downtown/Civic Center","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Downtown/Civic Center","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",14
+"Downtown/Civic Center","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",314
+"Downtown/Civic Center","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",20
+"Downtown/Civic Center","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Downtown/Civic Center","Wed","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Downtown/Civic Center","Wed","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",7
+"Downtown/Civic Center","Wed","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Downtown/Civic Center","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Downtown/Civic Center","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",24
+"Downtown/Civic Center","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",12
+"Downtown/Civic Center","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Downtown/Civic Center","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",101
+"Downtown/Civic Center","Wed","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Downtown/Civic Center","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",18
+"Downtown/Civic Center","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"Downtown/Civic Center","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",272
+"Downtown/Civic Center","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",28
+"Downtown/Civic Center","Wed","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Downtown/Civic Center","Wed","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Downtown/Civic Center","Thurs","Integrated Agency","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Downtown/Civic Center","Thurs","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",20
+"Downtown/Civic Center","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Downtown/Civic Center","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",26
+"Downtown/Civic Center","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",12
+"Downtown/Civic Center","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"Downtown/Civic Center","Thurs","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Downtown/Civic Center","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",129
+"Downtown/Civic Center","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Downtown/Civic Center","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",14
+"Downtown/Civic Center","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",325
+"Downtown/Civic Center","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",24
+"Downtown/Civic Center","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Downtown/Civic Center","Fri","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Downtown/Civic Center","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Downtown/Civic Center","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Downtown/Civic Center","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Downtown/Civic Center","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Downtown/Civic Center","Fri","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Downtown/Civic Center","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",116
+"Downtown/Civic Center","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Downtown/Civic Center","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Downtown/Civic Center","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",315
+"Downtown/Civic Center","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",20
+"Downtown/Civic Center","Sat","Integrated Agency","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Downtown/Civic Center","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Downtown/Civic Center","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Downtown/Civic Center","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Downtown/Civic Center","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Downtown/Civic Center","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",155
+"Downtown/Civic Center","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Downtown/Civic Center","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Downtown/Civic Center","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",19
+"Downtown/Civic Center","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Downtown/Civic Center","Sat","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Excelsior","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Excelsior","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Excelsior","Sun","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Excelsior","Sun","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Excelsior","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Excelsior","Sun","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Excelsior","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Excelsior","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"Excelsior","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",42
+"Excelsior","Sun","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Excelsior","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Excelsior","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",14
+"Excelsior","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Excelsior","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",5
+"Excelsior","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",19
+"Excelsior","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Excelsior","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Excelsior","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",16
+"Excelsior","Tues","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Excelsior","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Excelsior","Tues","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Excelsior","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",5
+"Excelsior","Tues","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Excelsior","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Excelsior","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",26
+"Excelsior","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Excelsior","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"Excelsior","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Excelsior","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Excelsior","Wed","Twitter","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Excelsior","Wed","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Excelsior","Wed","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Excelsior","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Excelsior","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",22
+"Excelsior","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"Excelsior","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Excelsior","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"Excelsior","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Excelsior","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Excelsior","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Excelsior","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Excelsior","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",29
+"Excelsior","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Excelsior","Fri","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Excelsior","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Excelsior","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Excelsior","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Excelsior","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Excelsior","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Excelsior","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Excelsior","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Excelsior","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",19
+"Excelsior","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Excelsior","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Excelsior","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Excelsior","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Excelsior","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Excelsior","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Excelsior","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",11
+"Excelsior","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Excelsior","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",27
+"Excelsior","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Financial District","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Financial District","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Financial District","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",59
+"Financial District","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Financial District","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Financial District","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Financial District","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Financial District","Sun","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Financial District","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Financial District","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Financial District","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Financial District","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Financial District","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",33
+"Financial District","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Financial District","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Financial District","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Financial District","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"Financial District","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Financial District","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Financial District","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Financial District","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",42
+"Financial District","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Financial District","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Financial District","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Financial District","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",11
+"Financial District","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Financial District","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Financial District","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Financial District","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",38
+"Financial District","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Financial District","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Financial District","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",8
+"Financial District","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Financial District","Wed","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Financial District","Thurs","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Financial District","Thurs","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Financial District","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Financial District","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Financial District","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Financial District","Thurs","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Financial District","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",32
+"Financial District","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Financial District","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Financial District","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Financial District","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Financial District","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Financial District","Thurs","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Financial District","Fri","Integrated Agency","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Financial District","Fri","Open311","Illegal_Dumping","DPW Ops Queue","Furniture",1
+"Financial District","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Financial District","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Financial District","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",29
+"Financial District","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Financial District","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Financial District","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Financial District","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Financial District","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Financial District","Fri","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Financial District","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Financial District","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Financial District","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",43
+"Financial District","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Financial District","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Financial District","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Financial District","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Financial District","Sat","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Haight Ashbury","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Haight Ashbury","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Haight Ashbury","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Haight Ashbury","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",11
+"Haight Ashbury","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Haight Ashbury","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Haight Ashbury","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Haight Ashbury","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Haight Ashbury","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Haight Ashbury","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Haight Ashbury","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Haight Ashbury","Mon","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Haight Ashbury","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Haight Ashbury","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Haight Ashbury","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Haight Ashbury","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Haight Ashbury","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Haight Ashbury","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Haight Ashbury","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Haight Ashbury","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Haight Ashbury","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Haight Ashbury","Tues","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Haight Ashbury","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Haight Ashbury","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Haight Ashbury","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Haight Ashbury","Tues","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Haight Ashbury","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Haight Ashbury","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Haight Ashbury","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Haight Ashbury","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Haight Ashbury","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Haight Ashbury","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Haight Ashbury","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",9
+"Haight Ashbury","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Haight Ashbury","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Haight Ashbury","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",8
+"Haight Ashbury","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Haight Ashbury","Wed","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Haight Ashbury","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Haight Ashbury","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Haight Ashbury","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Haight Ashbury","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Haight Ashbury","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Haight Ashbury","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Haight Ashbury","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Haight Ashbury","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Haight Ashbury","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Haight Ashbury","Fri","Integrated Agency","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Haight Ashbury","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Haight Ashbury","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Haight Ashbury","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Haight Ashbury","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Haight Ashbury","Fri","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Haight Ashbury","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",7
+"Haight Ashbury","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Haight Ashbury","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Haight Ashbury","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Haight Ashbury","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Haight Ashbury","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Haight Ashbury","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Haight Ashbury","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Haight Ashbury","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Haight Ashbury","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Haight Ashbury","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",6
+"Haight Ashbury","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Haight Ashbury","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Haight Ashbury","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Haight Ashbury","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Haight Ashbury","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Richmond","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Inner Richmond","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Inner Richmond","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",23
+"Inner Richmond","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Inner Richmond","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Inner Richmond","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Inner Richmond","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Inner Richmond","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",19
+"Inner Richmond","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Inner Richmond","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Inner Richmond","Mon","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Richmond","Mon","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Richmond","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",13
+"Inner Richmond","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Inner Richmond","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"Inner Richmond","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Inner Richmond","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",20
+"Inner Richmond","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Inner Richmond","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Inner Richmond","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Richmond","Tues","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Inner Richmond","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",9
+"Inner Richmond","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Inner Richmond","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Inner Richmond","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Inner Richmond","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Inner Richmond","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Richmond","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",18
+"Inner Richmond","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Inner Richmond","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Inner Richmond","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",11
+"Inner Richmond","Wed","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Inner Richmond","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",19
+"Inner Richmond","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",15
+"Inner Richmond","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Inner Richmond","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Inner Richmond","Wed","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Richmond","Thurs","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Inner Richmond","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Inner Richmond","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Inner Richmond","Thurs","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Inner Richmond","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",14
+"Inner Richmond","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Inner Richmond","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"Inner Richmond","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Inner Richmond","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Inner Richmond","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Richmond","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",23
+"Inner Richmond","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Inner Richmond","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",18
+"Inner Richmond","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",20
+"Inner Richmond","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Inner Richmond","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",6
+"Inner Richmond","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",11
+"Inner Richmond","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Inner Richmond","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Inner Richmond","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Inner Richmond","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Inner Richmond","Sat","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Richmond","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",17
+"Inner Richmond","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Inner Richmond","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Inner Richmond","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Inner Sunset","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Inner Sunset","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Inner Sunset","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Sun","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Sunset","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",8
+"Inner Sunset","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Inner Sunset","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Inner Sunset","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Inner Sunset","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Inner Sunset","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Inner Sunset","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",8
+"Inner Sunset","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Inner Sunset","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Inner Sunset","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Inner Sunset","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Inner Sunset","Mon","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Inner Sunset","Mon","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Inner Sunset","Tues","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Inner Sunset","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Inner Sunset","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Inner Sunset","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",5
+"Inner Sunset","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Inner Sunset","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Inner Sunset","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Inner Sunset","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Inner Sunset","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Inner Sunset","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",9
+"Inner Sunset","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Inner Sunset","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Inner Sunset","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Inner Sunset","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Inner Sunset","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Inner Sunset","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Inner Sunset","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",9
+"Inner Sunset","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Inner Sunset","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Inner Sunset","Thurs","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Inner Sunset","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Inner Sunset","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Inner Sunset","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Inner Sunset","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Inner Sunset","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",5
+"Inner Sunset","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Inner Sunset","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Inner Sunset","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Inner Sunset","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Inner Sunset","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Inner Sunset","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Inner Sunset","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",12
+"Inner Sunset","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Inner Sunset","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Inner Sunset","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Inner Sunset","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Marina","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Marina","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Marina","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Marina","Sun","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Marina","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",24
+"Marina","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Marina","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Marina","Sun","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Marina","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Marina","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Marina","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Marina","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Marina","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Marina","Mon","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Marina","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",13
+"Marina","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Marina","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Marina","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Marina","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Marina","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Marina","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Marina","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Marina","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",12
+"Marina","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Marina","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Marina","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Marina","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Marina","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Marina","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Marina","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Marina","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",7
+"Marina","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Marina","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Marina","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Marina","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Marina","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Marina","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Marina","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",10
+"Marina","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Marina","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Marina","Thurs","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Marina","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Marina","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Marina","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Marina","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Marina","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Marina","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",11
+"Marina","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Marina","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Marina","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Marina","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Marina","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Marina","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Marina","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Marina","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Marina","Sat","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Marina","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",11
+"Marina","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Marina","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Marina","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Marina","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Mission","Sun","Integrated Agency","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Mission","Sun","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Mission","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Mission","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Mission","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",38
+"Mission","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",8
+"Mission","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Mission","Sun","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Mission","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",71
+"Mission","Sun","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Mission","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",33
+"Mission","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Mission","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",7
+"Mission","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",24
+"Mission","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Mission","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",30
+"Mission","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",57
+"Mission","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Mission","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Mission","Mon","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Mission","Mon","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Mission","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",44
+"Mission","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",55
+"Mission","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",42
+"Mission","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",26
+"Mission","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",52
+"Mission","Mon","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Mission","Tues","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Mission","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Mission","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",27
+"Mission","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Mission","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Mission","Tues","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Mission","Tues","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Mission","Tues","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Mission","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",28
+"Mission","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",57
+"Mission","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",40
+"Mission","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",28
+"Mission","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",48
+"Mission","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Mission","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Mission","Wed","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Mission","Wed","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Mission","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Mission","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",49
+"Mission","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Mission","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Mission","Wed","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Mission","Wed","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Mission","Wed","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Mission","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",17
+"Mission","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",48
+"Mission","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",49
+"Mission","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",19
+"Mission","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",56
+"Mission","Thurs","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Mission","Thurs","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Mission","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Mission","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",45
+"Mission","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",9
+"Mission","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Mission","Thurs","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Mission","Thurs","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Mission","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",23
+"Mission","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",41
+"Mission","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",52
+"Mission","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",22
+"Mission","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",51
+"Mission","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Mission","Fri","Integrated Agency","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Mission","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Mission","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",29
+"Mission","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Mission","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",16
+"Mission","Fri","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Mission","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",17
+"Mission","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",30
+"Mission","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",36
+"Mission","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",14
+"Mission","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",42
+"Mission","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",3
+"Mission","Sat","Integrated Agency","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Mission","Sat","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",5
+"Mission","Sat","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Mission","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Mission","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",24
+"Mission","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Mission","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Mission","Sat","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Mission","Sat","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Mission","Sat","Twitter","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Mission","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",107
+"Mission","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",37
+"Mission","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"Mission","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",14
+"Mission","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",32
+"Mission","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Nob Hill","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Nob Hill","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Nob Hill","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",22
+"Nob Hill","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Nob Hill","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Nob Hill","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",30
+"Nob Hill","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Nob Hill","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Nob Hill","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Nob Hill","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Nob Hill","Sun","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Nob Hill","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Nob Hill","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Nob Hill","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Nob Hill","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",21
+"Nob Hill","Mon","Voice In","Illegal_Dumping","DPW Ops Queue","Furniture",1
+"Nob Hill","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",27
+"Nob Hill","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Nob Hill","Mon","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Nob Hill","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Nob Hill","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Nob Hill","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Nob Hill","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",24
+"Nob Hill","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Nob Hill","Tues","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Nob Hill","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",16
+"Nob Hill","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Nob Hill","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"Nob Hill","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",6
+"Nob Hill","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",13
+"Nob Hill","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Nob Hill","Wed","Integrated Agency","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Nob Hill","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Nob Hill","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",15
+"Nob Hill","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Nob Hill","Wed","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Nob Hill","Wed","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Nob Hill","Wed","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Nob Hill","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",21
+"Nob Hill","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Nob Hill","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"Nob Hill","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Nob Hill","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Nob Hill","Wed","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Nob Hill","Thurs","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Nob Hill","Thurs","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Nob Hill","Thurs","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Nob Hill","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Nob Hill","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Nob Hill","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Nob Hill","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",20
+"Nob Hill","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Nob Hill","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Nob Hill","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Nob Hill","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Nob Hill","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Nob Hill","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Nob Hill","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Nob Hill","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Nob Hill","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",35
+"Nob Hill","Fri","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Nob Hill","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Nob Hill","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Nob Hill","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Nob Hill","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",13
+"Nob Hill","Sat","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Nob Hill","Sat","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Nob Hill","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Nob Hill","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Nob Hill","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",7
+"Nob Hill","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Nob Hill","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",42
+"Nob Hill","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Nob Hill","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Nob Hill","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Nob Hill","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Nob Hill","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"North Beach","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"North Beach","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",34
+"North Beach","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"North Beach","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",36
+"North Beach","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"North Beach","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"North Beach","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"North Beach","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"North Beach","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"North Beach","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"North Beach","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",28
+"North Beach","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"North Beach","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",32
+"North Beach","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"North Beach","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"North Beach","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"North Beach","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"North Beach","Tues","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"North Beach","Tues","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"North Beach","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"North Beach","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",21
+"North Beach","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"North Beach","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",31
+"North Beach","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"North Beach","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"North Beach","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"North Beach","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"North Beach","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"North Beach","Wed","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",15
+"North Beach","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"North Beach","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"North Beach","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"North Beach","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"North Beach","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",25
+"North Beach","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"North Beach","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"North Beach","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"North Beach","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"North Beach","Wed","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"North Beach","Thurs","Integrated Agency","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"North Beach","Thurs","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"North Beach","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"North Beach","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",23
+"North Beach","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"North Beach","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"North Beach","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",19
+"North Beach","Thurs","Voice In","Damaged Parking_Meter","DPW BSM Queue","Parking_Meter",1
+"North Beach","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"North Beach","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"North Beach","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"North Beach","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"North Beach","Fri","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"North Beach","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"North Beach","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"North Beach","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"North Beach","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",28
+"North Beach","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"North Beach","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"North Beach","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"North Beach","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"North Beach","Sat","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"North Beach","Sat","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",3
+"North Beach","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"North Beach","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",13
+"North Beach","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"North Beach","Sat","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"North Beach","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",39
+"North Beach","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"North Beach","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"North Beach","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Ocean View","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Ocean View","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Ocean View","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Ocean View","Sun","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Ocean View","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Ocean View","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Ocean View","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Ocean View","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Ocean View","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Ocean View","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Ocean View","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Ocean View","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Ocean View","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"Ocean View","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Ocean View","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Ocean View","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Ocean View","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Ocean View","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",16
+"Ocean View","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Ocean View","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Ocean View","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Ocean View","Tues","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Ocean View","Wed","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Ocean View","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Ocean View","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",11
+"Ocean View","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Ocean View","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Ocean View","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Ocean View","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Ocean View","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",14
+"Ocean View","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Ocean View","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Ocean View","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Ocean View","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Ocean View","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Ocean View","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Ocean View","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Ocean View","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Ocean View","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Ocean View","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Ocean View","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Ocean View","Fri","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Ocean View","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Ocean View","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Ocean View","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Ocean View","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Ocean View","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Ocean View","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Ocean View","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Ocean View","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Ocean View","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Outer Mission","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Mission","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Outer Mission","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Outer Mission","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Outer Mission","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Outer Mission","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Outer Mission","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Mission","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Mission","Sun","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Mission","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Outer Mission","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Outer Mission","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Outer Mission","Mon","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Outer Mission","Mon","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Outer Mission","Mon","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Outer Mission","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Outer Mission","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Outer Mission","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Outer Mission","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Outer Mission","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Outer Mission","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Outer Mission","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Mission","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Outer Mission","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Outer Mission","Tues","Voice In","Illegal_Dumping","DPW Ops Queue","Furniture",1
+"Outer Mission","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Outer Mission","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Outer Mission","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Outer Mission","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Outer Mission","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Mission","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Outer Mission","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",12
+"Outer Mission","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Mission","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Outer Mission","Wed","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Outer Mission","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Outer Mission","Wed","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Mission","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Mission","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Outer Mission","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Outer Mission","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Outer Mission","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",23
+"Outer Mission","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Outer Mission","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Outer Mission","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Outer Mission","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"Outer Mission","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Outer Mission","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Mission","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Outer Mission","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Outer Mission","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Mission","Fri","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Outer Mission","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Outer Mission","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Mission","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Outer Mission","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Mission","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Outer Mission","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Mission","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Outer Mission","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Outer Mission","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Outer Mission","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Outer Mission","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Outer Mission","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Mission","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Outer Richmond","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Richmond","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Richmond","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Outer Richmond","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Richmond","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",5
+"Outer Richmond","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Outer Richmond","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Outer Richmond","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Outer Richmond","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Richmond","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Outer Richmond","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Outer Richmond","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Richmond","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Outer Richmond","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"Outer Richmond","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Outer Richmond","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Outer Richmond","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Outer Richmond","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Outer Richmond","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Richmond","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Outer Richmond","Tues","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Richmond","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Outer Richmond","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",10
+"Outer Richmond","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Outer Richmond","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Outer Richmond","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Outer Richmond","Wed","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Richmond","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Outer Richmond","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Outer Richmond","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Outer Richmond","Wed","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Richmond","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"Outer Richmond","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"Outer Richmond","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Outer Richmond","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Outer Richmond","Thurs","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Richmond","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Outer Richmond","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Outer Richmond","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Outer Richmond","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Outer Richmond","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"Outer Richmond","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Outer Richmond","Thurs","Voice In","Sidewalk_Cleaning","DPW BSM Queue","Sidewalk_Cleaning",1
+"Outer Richmond","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Outer Richmond","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",11
+"Outer Richmond","Fri","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Outer Richmond","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Outer Richmond","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Outer Richmond","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Richmond","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Outer Richmond","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"Outer Richmond","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Outer Richmond","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Outer Richmond","Sat","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Richmond","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Outer Richmond","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Outer Richmond","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Outer Richmond","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",11
+"Outer Richmond","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",15
+"Outer Richmond","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Outer Richmond","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Richmond","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Sunset","Sun","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Outer Sunset","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Outer Sunset","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Outer Sunset","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Outer Sunset","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Outer Sunset","Sun","Twitter","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Outer Sunset","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",13
+"Outer Sunset","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Sunset","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Outer Sunset","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Outer Sunset","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Outer Sunset","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Outer Sunset","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Outer Sunset","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Outer Sunset","Mon","Twitter","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Sunset","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",13
+"Outer Sunset","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"Outer Sunset","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",7
+"Outer Sunset","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Outer Sunset","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",4
+"Outer Sunset","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Outer Sunset","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Outer Sunset","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Outer Sunset","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Outer Sunset","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Outer Sunset","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Outer Sunset","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Outer Sunset","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Wed","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Outer Sunset","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",6
+"Outer Sunset","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Outer Sunset","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Outer Sunset","Wed","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Outer Sunset","Thurs","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",4
+"Outer Sunset","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Outer Sunset","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Outer Sunset","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Outer Sunset","Thurs","Twitter","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Outer Sunset","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",12
+"Outer Sunset","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Outer Sunset","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Outer Sunset","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Outer Sunset","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Outer Sunset","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Outer Sunset","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Outer Sunset","Fri","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Outer Sunset","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",9
+"Outer Sunset","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Outer Sunset","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",1
+"Outer Sunset","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Outer Sunset","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Sunset","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Outer Sunset","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Outer Sunset","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",16
+"Outer Sunset","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Outer Sunset","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Outer Sunset","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Outer Sunset","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"South of Market","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",3
+"South of Market","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"South of Market","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",47
+"South of Market","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",11
+"South of Market","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"South of Market","Sun","Open311","Sidewalk_Cleaning","Recology_Abandoned","Human_waste_or_urine",1
+"South of Market","Sun","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"South of Market","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",34
+"South of Market","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"South of Market","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",11
+"South of Market","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",14
+"South of Market","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"South of Market","Sun","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"South of Market","Mon","Integrated Agency","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"South of Market","Mon","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"South of Market","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",3
+"South of Market","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"South of Market","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",58
+"South of Market","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",37
+"South of Market","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",22
+"South of Market","Mon","Open311","Sidewalk_Cleaning","Recology_Abandoned","Human_waste_or_urine",1
+"South of Market","Mon","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"South of Market","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",37
+"South of Market","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"South of Market","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"South of Market","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",32
+"South of Market","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",28
+"South of Market","Mon","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"South of Market","Mon","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"South of Market","Tues","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"South of Market","Tues","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",3
+"South of Market","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",19
+"South of Market","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",69
+"South of Market","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",35
+"South of Market","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",20
+"South of Market","Tues","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"South of Market","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",52
+"South of Market","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",14
+"South of Market","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",18
+"South of Market","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",28
+"South of Market","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",17
+"South of Market","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"South of Market","Wed","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"South of Market","Wed","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"South of Market","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",22
+"South of Market","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",78
+"South of Market","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",38
+"South of Market","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",33
+"South of Market","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",54
+"South of Market","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",13
+"South of Market","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",20
+"South of Market","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",21
+"South of Market","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",17
+"South of Market","Wed","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",3
+"South of Market","Thurs","Integrated Agency","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"South of Market","Thurs","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",4
+"South of Market","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"South of Market","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",71
+"South of Market","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",38
+"South of Market","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",33
+"South of Market","Thurs","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"South of Market","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",64
+"South of Market","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"South of Market","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",22
+"South of Market","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",36
+"South of Market","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",25
+"South of Market","Thurs","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"South of Market","Thurs","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"South of Market","Fri","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"South of Market","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",12
+"South of Market","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",45
+"South of Market","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",30
+"South of Market","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",35
+"South of Market","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",55
+"South of Market","Fri","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"South of Market","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"South of Market","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"South of Market","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",20
+"South of Market","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",20
+"South of Market","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Human_waste_or_urine",1
+"South of Market","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"South of Market","Fri","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"South of Market","Sat","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"South of Market","Sat","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",3
+"South of Market","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"South of Market","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",37
+"South of Market","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",15
+"South of Market","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",13
+"South of Market","Sat","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"South of Market","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",58
+"South of Market","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"South of Market","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"South of Market","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",17
+"South of Market","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Visitacion Valley","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Visitacion Valley","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Visitacion Valley","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Visitacion Valley","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Visitacion Valley","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",7
+"Visitacion Valley","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",4
+"Visitacion Valley","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Visitacion Valley","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Visitacion Valley","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Visitacion Valley","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Visitacion Valley","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Visitacion Valley","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",9
+"Visitacion Valley","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Visitacion Valley","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Visitacion Valley","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Visitacion Valley","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Visitacion Valley","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Visitacion Valley","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Visitacion Valley","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Visitacion Valley","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Visitacion Valley","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Visitacion Valley","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Visitacion Valley","Wed","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Visitacion Valley","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Visitacion Valley","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",11
+"Visitacion Valley","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",6
+"Visitacion Valley","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",4
+"Visitacion Valley","Thurs","Integrated Agency","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Visitacion Valley","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Visitacion Valley","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",9
+"Visitacion Valley","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",3
+"Visitacion Valley","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",5
+"Visitacion Valley","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",8
+"Visitacion Valley","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Visitacion Valley","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Visitacion Valley","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Visitacion Valley","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",5
+"Visitacion Valley","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",3
+"Visitacion Valley","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",5
+"Visitacion Valley","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",6
+"Visitacion Valley","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",2
+"Visitacion Valley","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",2
+"Visitacion Valley","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",2
+"Visitacion Valley","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",8
+"Visitacion Valley","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",3
+"Visitacion Valley","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",8
+"Western Addition","Sun","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Western Addition","Sun","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Western Addition","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",30
+"Western Addition","Sun","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",16
+"Western Addition","Sun","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",12
+"Western Addition","Sun","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Western Addition","Sun","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",33
+"Western Addition","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",23
+"Western Addition","Sun","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",21
+"Western Addition","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",5
+"Western Addition","Sun","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",33
+"Western Addition","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Furniture",1
+"Western Addition","Mon","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Western Addition","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",26
+"Western Addition","Mon","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",19
+"Western Addition","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Western Addition","Mon","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",14
+"Western Addition","Mon","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Western Addition","Mon","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",18
+"Western Addition","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",48
+"Western Addition","Mon","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",29
+"Western Addition","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",1
+"Western Addition","Mon","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",38
+"Western Addition","Mon","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Western Addition","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",23
+"Western Addition","Tues","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",26
+"Western Addition","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Western Addition","Tues","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",13
+"Western Addition","Tues","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Western Addition","Tues","Twitter","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",1
+"Western Addition","Tues","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",21
+"Western Addition","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",38
+"Western Addition","Tues","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",31
+"Western Addition","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",8
+"Western Addition","Tues","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",35
+"Western Addition","Tues","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Western Addition","Wed","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Western Addition","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",27
+"Western Addition","Wed","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",28
+"Western Addition","Wed","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",13
+"Western Addition","Wed","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1
+"Western Addition","Wed","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",20
+"Western Addition","Wed","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Western Addition","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",45
+"Western Addition","Wed","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",37
+"Western Addition","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",6
+"Western Addition","Wed","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",23
+"Western Addition","Thurs","Open311","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Western Addition","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",9
+"Western Addition","Thurs","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",21
+"Western Addition","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Western Addition","Thurs","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",10
+"Western Addition","Thurs","Open311","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Western Addition","Thurs","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",20
+"Western Addition","Thurs","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",1
+"Western Addition","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",45
+"Western Addition","Thurs","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",58
+"Western Addition","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",6
+"Western Addition","Thurs","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",27
+"Western Addition","Fri","Open311","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",2
+"Western Addition","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",17
+"Western Addition","Fri","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",10
+"Western Addition","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",3
+"Western Addition","Fri","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",15
+"Western Addition","Fri","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",14
+"Western Addition","Fri","Voice In","Illegal_Dumping","DPW Ops Queue","Garbage",2
+"Western Addition","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",30
+"Western Addition","Fri","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",33
+"Western Addition","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",11
+"Western Addition","Fri","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",35
+"Western Addition","Fri","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",2
+"Western Addition","Fri","Web Self Service","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",1
+"Western Addition","Sat","Integrated Agency","Illegal_Dumping","Recology_Abandoned","Furniture",1
+"Western Addition","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Furniture",16
+"Western Addition","Sat","Open311","Illegal_Dumping","Recology_Abandoned","Garbage",17
+"Western Addition","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",2
+"Western Addition","Sat","Open311","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",7
+"Western Addition","Sat","Voice In","Damaged Parking_Meter","DPT Meter_Bike Queue","Parking_Meter",19
+"Western Addition","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Furniture",31
+"Western Addition","Sat","Voice In","Illegal_Dumping","Recology_Abandoned","Garbage",15
+"Western Addition","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Human_waste_or_urine",4
+"Western Addition","Sat","Voice In","Sidewalk_Cleaning","DPW Ops Queue","Sidewalk_Cleaning",34
+"Western Addition","Sat","Voice In","Sidewalk_Cleaning","Recology_Abandoned","Sidewalk_Cleaning",1

@@ -1,0 +1,19 @@
+<script type='text/javascript'>
+function draw{{chartId}}(){
+    var params = {{{ chartParams }}}
+    var chart = {{{ horizon }}}
+    data = {{{data}}}
+
+    svg = d3.select('body')
+            .append('div')
+            .attr('id', '#' + params.id)
+    svg.datum(data)
+        .call(chart);
+    return chart;
+};
+
+$(document).ready(function(){
+    draw{{chartId}}()
+});
+
+</script>
