@@ -8,12 +8,17 @@
     <script src="js/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/cubism.v1.min.js' type='text/javascript'></script>
     <script src='js/horizon.js' type='text/javascript'></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script src='js/lodash.js' type='text/javascript'></script>
+    <script src='bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+-->
     <script src="js/missing-data.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
 </head>
 <body>
-  <div id="chart">
+  <div class="span8 offset4" id="chart">
   </div>
 <script>
 
@@ -22,14 +27,17 @@ var horizon = d3.horizon()
             .format('+,f')
             .id('chart')
             .nbands(5)
+            .step_size('fifteen')
             .height(60)
-            .lag(0),
+            .date_var('hour')
+            .lag(0)
+            .repeats(10),
 
 div = d3.select('body')
       // .insert('div', 'script')
       // .attr('id', 'chart')
 data = []
-d3.csv('data/stocks.csv', function(error, dat) {
+d3.csv('data/post_data.csv', function(error, dat) {
     // do not understand why this div needs to be here.
     data = dat;
     div.append('div').datum(dat).call(horizon);

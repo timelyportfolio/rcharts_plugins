@@ -8,14 +8,16 @@
         low = "#d73027",
         high = "#1a9850",
         nbands = 4,
-        format = "+,F",
+        format = "+,f",
         step_sizes = {'weekly': 604800000, 
                       'daily': 24*60*60*1000,
-                      'monthly': 24*61*60*1000*30 }, // about right
+                      'monthly': 24*61*60*1000*30,
+                      'fifteen': 60*15 }, // about right
         formatPrimary = '+,f',
         formatChange = '+.2%',
         window_width = 800,
-        lag = 1;
+        repeats = 1,
+        lag = 0;
 
     function horizon(selection) {
 
@@ -23,25 +25,27 @@
         context = cubism.context()
 
         context.step(step_sizes[step_size])
-                        .size(data.length) 
+                        .size(data.length * repeats) 
                         .stop()
         context.scale.domain(d3.extent(data.map(
                           function(d) { return d[date_var] * 1000; })))
         
-
+        d3.select(d3.select('#' + id)
+                    .node().parentNode)
+            .classed('rChart', false)
         d3.select('#' + id)
-            .attr('class', null)
+            .classed('rChart', false)
             .append('div')
             .attr('id', 'horizon_window')
             .style('width', window_width + 'px')
             .style('overflow-x', function() {
-              return window_width < data.length ? 'scroll': 'hidden';
+              return window_width < data.length * repeats ? 'scroll': 'hidden';
             });
         d3.select('#horizon_window')
             .append('div')
             .attr('class', 'rule')
+            .style('position', 'absolute')
             .call(context.rule());
-
 
         color_range = d3.range(nbands + 1).slice(1, nbands + 1)
 
@@ -69,7 +73,7 @@
           };
           return arr;
         }
-        function pct_change(v, lag) {
+        function nlags(v, lag) {
           var l = fillArray(0, lag)
           out = v.slice(lag, v.length).map(function(d, i) { 
             return (d - v[i])/v[i]; })
@@ -81,22 +85,28 @@
           out = v.slice(lag, v.length).map(function(d, i) {
             return d - v[i]
           })
-          return l.concat(out)
+          return l.concat(out);
         }
         fun = lag == 0 ? 1: 0; 
+
+        function stretch(v) {
+          return _.flatten(_.map(v, function(d) {
+            return fillArray(d, repeats);
+          }))
+        }
 
         function calc_metric(metric, lag, fun) {
 
           return context.metric(
               function(start, stop, step, callback) {
                 var p = fun(md.ffill(data.map(function(d, i) {
-                    return [i, parseFloat(d[metric])]
-                })).map(function(d) { return d[1] }), lag),
+                            return [i, parseFloat(d[metric])]
+                            })
+                            ).map(function(d) { return d[1] }), lag)
                 values = p.map(function(d, i) {
                   return d
                 })
-              // values = data.map(function(d) { return d[metric];});
-              callback( null, values ); 
+              callback( null, stretch(values) ); 
             });
         }
 
@@ -106,8 +116,9 @@
               function(start, stop, step, callback) {
                 var rows = md.ffill(data.map(function(d, i) {
                   return [ i, parseFloat(d[metric])]
-                })); 
-              callback(null, rows.map(function(d) { return d[1]}) ); 
+                }));
+                rows = rows.map(function(d) { return d[1]});
+              callback(null,  stretch(rows)); 
             }, metric);
         }
 
@@ -151,14 +162,10 @@
             hscroll.scrollLeft() +  'px' )
         })
 
-        // hack if we're in a shiny app with fluid containers.
-        var pad = d3.select('.container-fluid')
-        pad = pad.empty() ? 0 : parseInt(pad.style('padding-left'));
         context.on("focus", function(i) {
             d3.select('.rule .line').style("left", 
-              i == null ? null : - hscroll.scrollLeft() + pad + i + 'px')
+              i == null ? null : - hscroll.scrollLeft() + i + 'px')
         });
-
         function calculate_comparison(metric_list, primary, fun) {
           ch_data = metric_list.map(function(d) { 
             return calc_metric(d, lag, fun) }),
@@ -171,7 +178,7 @@
         function comp_chart(title) {
           return context.comparison()
                         .formatChange(d3.format(formatChange))
-                        .formatPrimary(null)
+                        .formatPrimary(d3.format(formatPrimary))
                         .height(height)
                         .title(title);
         }
@@ -199,11 +206,13 @@
                     .append('div')
                     .attr('class', 'horizon comparison')
                     .call(comparison)
+          d3.selectAll('.value.primary').style('bottom', 
+            '20px' )
           return comps
         }
 
         calc_data = [{'label':'ratio of percent change',
-                    'fun': pct_change,
+                    'fun': nlags,
                     'code': 'pct_ratio'}, 
                     {'label':'percent difference', 
                     'fun': pct_diff, 'code': 'pct_diff'}]
@@ -215,6 +224,11 @@
                         .selectAll('.comparison');
 
         comps = draw_comparison(primary);
+
+        // get the first canvas element and give it a top border
+        // because I can't figure out how to do it in style.css
+        d3.select('#horizon_window > .horizon canvas')
+          .style('border-top', 'solid 1px black')
 
         function update_comparison(primary, fun) {
           metric_list = col_names.filter(function(d) {
@@ -233,15 +247,18 @@
           comps.remove();
           ncomps.call(comparison)
           comps = ncomps
+          d3.selectAll('.value.primary').style('bottom', 
+            '20px' )
         }
 
         var var_button = d3.select('#horizon_window')
-                .append('select')
-                .attr('id', 'ch_variable')
-                .on('change', function(d) {
-                  primary = this.value;
-                  update_comparison(primary, fun);
-                });
+                            .append('select')
+                            .attr('id', 'ch_variable')
+                            .style('position', 'relative')
+                            .on('change', function(d) {
+                              primary = this.value;
+                              update_comparison(primary, fun);
+                            });
         
         var_button.selectAll('option')
           .data(col_names)
@@ -254,6 +271,7 @@
         var lags = d3.select('#horizon_window')
                         .append('select')
                         .attr('id', 'lags')
+                        .style('position', 'relative')
                         .on('change', function(d) {
                           lag = this.value;
                           update_comparison(primary, fun);
@@ -265,11 +283,12 @@
             .append('option')
             .attr('value', function(d) { return d})
             .attr('selected', function(d, i) { return d == lag ? 'selected': null })
-            .text(function(d) { return d})
+            .text(function(d) { return d == 0 ? "no lag": d + "-period lag"})
 
         var calc_choice = d3.select('#horizon_window')
                         .append('select')
                         .attr('id', 'calc_choice')
+                        .style('position', 'relative')
                         .on('change', function(d) {
                           fun = this.value;
                           update_comparison(primary, fun);
@@ -350,6 +369,11 @@
     horizon.window_width = function(_) {
       if(!arguments.length) return window_width;
       window_width = _ ;
+      return horizon;
+    };
+    horizon.repeats = function(_) {
+      if(!arguments.length) return repeats;
+      repeats = _ ;
       return horizon;
     };
     return d3.rebind(horizon);

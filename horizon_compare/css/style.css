@@ -1,14 +1,6 @@
 body {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  margin: 30px auto;
-  position: relative;
-  width: 800px;
+ 
 }
-
-header {
-  padding: 6px 0;
-}
-
 .group {
   margin-bottom: 1em;
 }
@@ -58,14 +50,6 @@ header {
 */  position: relative;
 }
 
-.horizon {
-  box-sizing: border-box; 
-  -moz-box-sizing: border-box;  
-  -webkit-box-sizing: border-box; 
-  
-  border-top: solid 1px #000;
-  border-bottom: solid 1px black;
-}
 
 .horizon + .horizon,
 .horizon.comparison{
@@ -74,7 +58,9 @@ header {
 
 .horizon canvas {
   display: block;
+  border-bottom: solid 1px black;
 }
+
 
 .horizon .title,
 .horizon .value {
@@ -100,8 +86,8 @@ header {
 }
 
 .horizon_window {
-  border-bottom: solid 1px black;
+  /*border-bottom: solid 1px black;*/
 }
-select{
+.horizon_window>select{
   position:relative;
 }
