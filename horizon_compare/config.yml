@@ -11,7 +11,7 @@ horizon:
       - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/js/horizon.js"
       - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/js/missing-data.js"
     css: 
-      - "http://mostlyconjecture.com/rcharts_plugins/horizon/css/style.css"
+      - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/css/style.css"
 
 
 

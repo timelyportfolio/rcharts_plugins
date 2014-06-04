@@ -200,8 +200,9 @@ function draw{{ chartId }}(){
             callSuper()
             params$width <<- NULL # dimensions will get figured out later.
             params$height <<- NULL
-            LIB <<- get_lib("~/projects/rcharts_plugins/horizon_compare")
-            lib <<- "horizon_compare"
+            LIB <<- get_lib("~/projects/rcharts_plugins/horizon")
+            lib <<- "horizon"
+            templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
             templates$script <<- "
             <script type='text/javascript'>
 function draw{{chartId}}(){
@@ -232,5 +233,42 @@ function draw{{chartId}}(){
         )
       }
     ))
+.plugins$SeqSunburst = setRefClass('SeqSunburst', contains = 'rCharts', methods = list(
+  initialize = function(){
+    callSuper()
+    params$width <<- 600
+    params$height <<- NULL
+    LIB <<- get_lib("~/projects/rcharts_plugins/sequence_sunburst")
+    lib <<- "sequence_sunburst"
+    templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
+    templates$script <<- "
+    <script type='text/javascript'>
+    function draw{{chartId}}(){
+    var params = {{{ chartParams }}}
+    var chart = {{{ seq_sunburst }}}
+    data = {{{data}}}
+    data = _.map(data, function(d) { return [d[params.id_var], d[params.count_var]]})
+
+    svg = d3.select( '#' + params.id);
+    svg.datum(data)
+    .call(chart);
+    return chart;
+    };
+    
+    $(document).ready(function(){
+    draw{{chartId}}()
+    });
+    
+    </script>
+    "
+  },
+  getPayload = function(chartId){
+    skip = c('dom', 'id_var', 'count_var')
+    seq_sunburst = toChain(params[!(names(params) %in% c(skip, 'data'))], "d3.seq_sunburst()")
+    chartParams = RJSONIO:::toJSON(params[c(skip, 'id')])
+    list(seq_sunburst = seq_sunburst, chartParams = chartParams, chartId = chartId, lib = basename(lib), liburl = LIB$url, data=toJSONArray(params[['data']])
+    )
+  }
+))
 attach(.plugins)
 
