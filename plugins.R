@@ -238,7 +238,7 @@ function draw{{chartId}}(){
     callSuper()
     params$width <<- 600
     params$height <<- NULL
-    LIB <<- get_lib("~/projects/rcharts_plugins/sequence_sunburst")
+    LIB <<- get_lib("http://mostlyconjecture.com/rcharts_plugins/sequence_sunburst")
     lib <<- "sequence_sunburst"
     templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
     templates$script <<- "
