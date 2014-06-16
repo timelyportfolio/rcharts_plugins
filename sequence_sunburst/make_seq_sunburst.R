@@ -1,0 +1,17 @@
+library(plyr)
+library(rCharts)
+library(stringr)
+library(doMC)
+library(iterators)
+library(foreach)
+registerDoMC(4)
+d <- read.csv('~/projects/rcharts_plugins/sequence_sunburst/data//visit-sequences.csv', header = FALSE)
+names(d) <- c('path' ,'count')
+d$path <- gsub('-', '~', d$path)
+head(d)
+# detach()
+source('~/projects/rcharts_plugins/plugins.R', echo=TRUE)
+sun <- SeqSunburst$new()
+sun$set(data = d, id_var = 'path', count_var='count',
+        percentageText = "users who had the highlighted path")
+sun

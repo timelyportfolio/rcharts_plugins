@@ -1,0 +1,135 @@
+@import url('http://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css');
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: #fff;
+  margin-top: 10px;
+}
+.group {
+  margin-bottom: 1em;
+}
+
+.axis {
+  font: 10px sans-serif;
+  position: relative;
+}
+
+.axis text {
+  -webkit-transition: fill-opacity 250ms linear;
+}
+
+.axis line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis.x {
+  background-image: linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -o-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -moz-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -webkit-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -ms-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+  top: 0px;
+  padding: 0 0 0px 0;
+}
+
+.axis.y {
+  background-image: linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -o-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -moz-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -webkit-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+  background-image: -ms-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+  bottom: 0px;
+  padding: 24px 0 0 0;
+}
+path,
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.tick line, g path {
+  stroke: #ccc;
+}
+
+.line {
+  /*background: #000;*/
+  z-index: 2;
+}
+
+.two_way .circle {
+  /*stroke: black;*/
+}
+
+.legend rect {
+  fill-opacity: 0.5;
+}
+
+clipPath {
+  overflow: hidden;
+}
+
+      .axis { font-size: .8em; }
+      circle, .line {
+        /*fill: none;*/
+        fill-opacity:0.4;
+      }
+      circle {
+/*        cursor: move;*/ }
+        circle.selected {
+          fill: #ff7f0e;
+          stroke: #ff7f0e; }
+        circle:hover {
+          fill-opacity: 0.9;}
+        circle.selected:hover {
+          fill: #ff7f0e;
+          stroke: #ff7f0e; }
+select {
+  width: 100px;
+}
+.btn {
+  width: 150px;
+  text-align: left;
+}
+
+.tooltip {  
+  position:absolute; 
+  text-align: left;
+  max-width: 300px;
+  min-width:100px;
+  padding: 3px;
+  font: 12px sans-serif;        
+  background: white;   
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 8px;
+  pointer-events: none;
+}
+.buttons {
+  padding-left: 10px;
+}
+
+#prediction-table .well {
+  width: 250px;
+}
+#chart, #histograms{
+  position:relative;
+}
+#controls {
+  padding-right: 70px;
+  padding-left: 0px;
+}
+#controls label {
+  display: inline;
+  margin-right:10px;
+}
+#controls .btn {
+  margin-bottom:  0px;
+}
+.well.pred .btn {
+  width: 80px;
+  float: right;
+}

@@ -1,0 +1,117 @@
+<html>
+<head>
+    <script src='js/jquery-1.8.2.min.js' type='text/javascript'></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src='js/cubism.v1.min.js' type='text/javascript'></script>
+    <script src='js/lodash.js' type='text/javascript'></script>
+    <script src='bootstrap/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
+    <script src="js/missing-data.js" charset="utf-8"></script>
+    <script src="js/scatter.js" charset="utf-8"></script>
+    <script src="js/crossfilter.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+  <div class="span10 offset1 chart" id="chart">
+  </div>
+<script>
+
+var v1 = 'age', v2 = 'btystdfu';
+// var plot_glmer = d3.plot_glmer()
+//                     .two_way_v1(v1)
+//                     .two_way_v2(v2);
+
+d3.select('#chart').style('width', '600px').style('height', '400px')
+
+
+data = []
+var graph;
+d3.csv('data/beauty.csv', function(error, dat) {
+
+// column_types for beauty.csv
+    var column_types = {
+    "tenured": "factor",
+    "profnumber": "numeric",
+    "minority": "factor",
+    "age": "integer",
+    "beautyf2upper": "integer",
+    "beautyflowerdiv": "integer",
+    "beautyfupperdiv": "integer",
+    "beautym2upper": "integer",
+    "beautymlowerdiv": "integer",
+    "beautymupperdiv": "integer",
+    "btystdave": "numeric",
+    "btystdf2u": "numeric",
+    "btystdfl": "numeric",
+    "btystdfu": "numeric",
+    "btystdm2u": "numeric",
+    "btystdml": "numeric",
+    "btystdmu": "numeric",
+    "class1": "factor",
+    "class2": "factor",
+    "class3": "factor",
+    "class4": "factor",
+    "class5": "factor",
+    "class6": "factor",
+    "class7": "factor",
+    "class8": "factor",
+    "class9": "factor",
+    "class10": "factor",
+    "class11": "factor",
+    "class12": "factor",
+    "class13": "factor",
+    "class14": "factor",
+    "class15": "factor",
+    "class16": "factor",
+    "class17": "factor",
+    "class18": "factor",
+    "class19": "factor",
+    "class20": "factor",
+    "class21": "factor",
+    "class22": "factor",
+    "class23": "factor",
+    "class24": "factor",
+    "class25": "factor",
+    "class26": "factor",
+    "class27": "factor",
+    "class28": "factor",
+    "class29": "factor",
+    "class30": "factor",
+    "courseevaluation": "numeric",
+    "didevaluation": "integer",
+    "female": "factor",
+    "formal": "factor",
+    "fulldept": "factor",
+    "lower": "factor",
+    "multipleclass": "factor",
+    "nonenglish": "factor",
+    "onecredit": "factor",
+    "percentevaluating": "numeric",
+    "profevaluation": "numeric",
+    "students": "integer",
+    "tenuretrack": "factor",
+    "blkandwhite": "factor",
+    "btystdvariance": "numeric",
+    "btystdavepos": "numeric",
+    "btystdaveneg": "numeric" 
+    }
+    data = dat;
+
+    graph = new Scatter("chart", {
+        xvar: 'btystdavepos',
+        yvar:'btystdaveneg',
+        dtypes: column_types,
+        dataset: data,
+        max_colors: 50,
+        jitter_num: 60
+
+    })
+
+
+})
+
+</script>
+</body>
+</html>

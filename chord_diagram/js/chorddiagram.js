@@ -3,11 +3,11 @@ d3.chordDiagram = function module() {
       height = 720,
       id = null,
       outerRadius = Math.min(width, height) / 2 - 10,
-      innerRadius = outerRadius - 24;
+      innerRadius = outerRadius - 24,
+      formatPercent = d3.format(".1%");
 
 
   function chord_diagram(_selection) {
-    var formatPercent = d3.format(".1%");
 
     var arc = d3.svg.arc()
         .innerRadius(innerRadius)

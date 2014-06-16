@@ -48,7 +48,7 @@
         d3.select("#seq_sunburst_chart").append('div')
            .attr('id', 'explanation')
            .style("top", height / 2 + 'px')
-           .style('left', width / 2 + 28  + 'px')
+           .style('left', width / 2 + 28   + 'px')
            .style('position', 'absolute')
            .append('span')
            .attr('id', 'percentage');

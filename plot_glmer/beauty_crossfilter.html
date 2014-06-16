@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <script src='js/jquery-1.8.2.min.js' type='text/javascript'></script>
+    <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js
+" charset="utf-8"></script>    
+<script>
+$.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js',function(){
+  
+  $('.single option').click(function() {
+    // only affects options contained within the same optgroup
+    // and doesn't include this
+    //$(this).siblings().prop('selected', false);
+  });
+  
+});
+</script>
+    <script src="js/d3.v3.min.js" charset="utf-8"></script>
+    <script src='js/lodash.js' type='text/javascript'></script>
+    <script src='bootstrap3/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
+    <script src="js/missing-data.js" charset="utf-8"></script>
+    <script src="js/crossfilter.js" charset="utf-8"></script>
+    <script src="js/box.js" charset="utf-8"></script>
+    <script src="js/scatter_crossfilter.js" charset="utf-8"></script>    
+    <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css
+">
+</head>
+<body>
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-3 well" id='controls'>
+    </div>
+    <div class="col-md-9 chart" id="chart">
+    </div>
+  </div>
+</div>
+<script>
+$.getScript('js/bootstrap-multiselect.js',function(){
+  
+  $('.single option').click(function() {
+    // only affects options contained within the same optgroup
+    // and doesn't include this
+    //$(this).siblings().prop('selected', false);
+  });
+  
+});
+
+
+d3.csv('data/beauty.csv', function(error, dat) {
+
+// column_types for beauty.csv
+  var dtypes = {
+  "tenured": "factor",
+  "profnumber": "factor",
+  "minority": "factor",
+  "age": "integer",
+  "beautyf2upper": "integer",
+  "beautyflowerdiv": "integer",
+  "beautyfupperdiv": "integer",
+  "beautym2upper": "integer",
+  "beautymlowerdiv": "integer",
+  "beautymupperdiv": "integer",
+  "btystdave": "numeric",
+  "btystdf2u": "numeric",
+  "btystdfl": "numeric",
+  "btystdfu": "numeric",
+  "btystdm2u": "numeric",
+  "btystdml": "numeric",
+  "btystdmu": "numeric",
+  "class1": "factor",
+  "class2": "factor",
+  "class3": "factor",
+  "class4": "factor",
+  "class5": "factor",
+  "class6": "factor",
+  "class7": "factor",
+  "class8": "factor",
+  "class9": "factor",
+  "class10": "factor",
+  "class11": "factor",
+  "class12": "factor",
+  "class13": "factor",
+  "class14": "factor",
+  "class15": "factor",
+  "class16": "factor",
+  "class17": "factor",
+  "class18": "factor",
+  "class19": "factor",
+  "class20": "factor",
+  "class21": "factor",
+  "class22": "factor",
+  "class23": "factor",
+  "class24": "factor",
+  "class25": "factor",
+  "class26": "factor",
+  "class27": "factor",
+  "class28": "factor",
+  "class29": "factor",
+  "class30": "factor",
+  "courseevaluation": "numeric",
+  "didevaluation": "integer",
+  "female": "factor",
+  "formal": "factor",
+  "fulldept": "factor",
+  "lower": "factor",
+  "multipleclass": "factor",
+  "nonenglish": "factor",
+  "onecredit": "factor",
+  "percentevaluating": "numeric",
+  "profevaluation": "numeric",
+  "students": "integer",
+  "tenuretrack": "factor",
+  "blkandwhite": "factor",
+  "btystdvariance": "numeric",
+  "btystdavepos": "numeric",
+  "btystdaveneg": "numeric" 
+  }
+// end dtypes
+
+// coefficients
+  var coefs = [
+   {
+   "Estimate": 0.69246,
+  "Std. Error": 0.086369,
+  "t value": 8.0174,
+  "Pr(>|t|)": 9.0432e-15,
+  "variable": "(Intercept)" 
+  },
+  {
+   "Estimate": -0.0033726,
+  "Std. Error": 0.00094879,
+  "t value": -3.5547,
+  "Pr(>|t|)": 0.00041772,
+  "variable": "age" 
+  },
+  {
+   "Estimate": -0.0072714,
+  "Std. Error": 0.019006,
+  "t value": -0.38259,
+  "Pr(>|t|)": 0.7022,
+  "variable": "female1" 
+  },
+  {
+   "Estimate": 0.91251,
+  "Std. Error": 0.016249,
+  "t value": 56.156,
+  "Pr(>|t|)": 9.316e-208,
+  "variable": "courseevaluation" 
+  } 
+  ],
+  sigma = 0.1900428;
+  coefs = _.zipObject(_.map(coefs, function(d) { return d.variable;}), 
+  coefs)
+// end coefficents
+
+  var numeric = _.filter(_.keys(dtypes), function(d) { 
+    return _.contains(['numeric', 'integer'], dtypes[d]) ;}),
+  dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes), 
+    function(d) { 
+      return _.contains(['integer', 'numeric'], 
+                        dtypes[d]) ? 'numeric': 'factor'}))
+  var factor = _.filter(_.keys(dtypes), function(d) { 
+    return dtypes[d] == 'factor'}),
+  data = crossfilter(dat),
+  yvar = 'profevaluation',
+  xvar = 'courseevaluation',
+  color_var = factor[0],
+  filter_var = factor[2],
+  size_var = numeric[3],
+  colors = d3.scale.category10();
+
+  dat.forEach(function(d, i) {
+    d._index = i;
+    _.map(_.keys(d), function(k) {
+      if('numeric' == dtypes[k]){
+        d[k] = +d[k]; 
+      }
+    })
+  })
+
+  // adding switches
+  var labels = ['choose_x', 'choose_y', 'choose_color',
+                        'choose_size', 'choose_filter'],
+  buttons = d3.select('#controls').append('div')
+              .attr('class', 'btn-group-vertical')
+
+  buttons = buttons.selectAll('select')
+        .data(labels)
+        .enter().append('select')
+        .each(function(d,i) {
+         d3.select(this)
+          .attr('class','btn selectpicker controls')
+          .attr('data-width', 'auto')
+          .attr('id', function(d) { return d;})
+          .each(function(button) {
+          d3.select(this).select("#" + button)
+            .append('span').attr('class', 'caret')
+          button = d3.select(this).selectAll('option')
+                .data(_.keys(dtypes).filter(function(d,k) { 
+                  if(i == 2) return true
+                  else if (i == 4) return _.contains(factor, d)
+                  else if (_.contains(numeric.concat(factor), d)) 
+                      return true;
+                }))
+              .enter().append('option')
+                .text(function(d) { return d;})
+                .attr('selected', function(d) {
+                  if(i == 0) { return d == xvar ? 'selected': null}
+                    else if(i == 1) { return d == yvar ? 'selected': null}
+                    else if(i == 2) { return d== color_var ? 'selected': null}
+                    else if(i == 3) { return d==size_var ? 'selected':null}
+                    else if(i == 4) { return d==filter_var ? 'selected':null}
+                })
+        })
+      })
+
+  d3.select('#choose_filter').on('change', function() {
+    filter_var = this.value;
+    fil.dispose();
+    fil = data.dimension(function(d) { return d[filter_var]})
+    update_filter();
+    update_all();
+  });
+  d3.select('#choose_x').on('change', function() {
+    xvar = this.value
+    update_all();
+  });
+  d3.select('#choose_y').on('change', function() {
+    yvar = this.value
+    update_all();
+  });
+  d3.select('#choose_size').on('change', function() {
+    size_var = this.value
+    update_all();
+  });
+  d3.select('#choose_color').on('change', function() {
+    color_var = this.value;
+    update_color();
+    update_all();
+  });
+
+  // should the filter be given discrete values or a range?
+  function fil_choices() {
+    if("numeric" == dtypes[filter_var]) {
+      return expand_extent(d3.extent(_.map($('#current_filter')[0].options,
+        function(d) { if(d.selected) return parseFloat(d.value) })))
+    } else {
+      return _.map($('#current_filter')[0].options, 
+          function(d) { if(d.selected) return d.value
+      })
+    }
+  }
+
+  // reset filter
+  function set_filter() {
+    fil.filterAll();
+    var items = fil_choices();
+    if(_.contains(['numeric', 'integer'], dtypes[filter_var])) {
+      fil.filterRange([d3.min(items), d3.max(items)])
+    } else {
+      fil.filterFunction(function(d) { 
+        return items.indexOf(d) > -1;
+      })
+    }
+  };
+
+  // setting up crossfilters
+  var data = crossfilter(dat),
+  inx = data.dimension(function(d) { return d._index; }),
+  fil = data.dimension(function(d) { return d[filter_var];});
+
+  // update filters
+  function update_filter() {
+    fil.dispose();
+    fil = data.dimension(function(d) { return d[filter_var];});
+    d3.select('#current_filter').remove()
+    d3.select('.btn-group').remove()
+    var cur_filter = d3.select('.btn-group-vertical')
+                    .append('select')
+                    .attr('id', 'current_filter')
+                    .attr('multiple', 'multiple')
+                    .attr('class', 'btn controls')
+        cur_filter.selectAll('option')
+            .data(_.unique(_.map(fil.top(Infinity), function(d) {
+              return d[filter_var];
+              })))
+           .enter().append('option')
+            .attr('value', function(d) { return d;})
+            .attr('selected', 'selected')
+            .text(function(d) { return d;})
+          $('#current_filter').multiselect({
+            buttonWidth:false,
+            includeSelectAllDivider: true,
+            includeSelectAllOption: true}).on('change', 
+              function() {set_filter(); update_all(); });
+  }
+
+  function update_color() {
+    // add continuous color scale for numeric color vars
+    colors.domain(_.unique(_.map(inx.top(Infinity),
+      function(d) { return d[color_var]})))
+    var color_legend = d3.select('#color-legend')
+    function make_color_legend(el) { 
+      el.append('text')
+          .attr("x", 0)
+          .attr('y', 35)
+          .attr('text-anchor', 'right')
+          .text(el[0][0].__data__)
+      el.append('rect')
+          .attr('width', 20)
+          .attr('height', 20)
+          .attr('x', 15)
+          .attr('y', 20)
+          .attr('fill', colors(el[0][0].__data__))
+          .attr('fill-opacity', 0.8)
+    }
+    color_legend.select('text')
+          .transition().duration(500)
+          .style('opacity', 0)
+          .transition().duration(500)
+          .style('opacity', 1)
+          .text(color_var + ":")
+          .attr('x', 0)
+          .attr('y', 10)
+    color_legend = color_legend.selectAll('g.c')
+          .data(colors.domain())
+    color_legend.each(function(d, i) {
+      var g = d3.select(this)
+      g.select('rect').remove()
+      g.select("text").remove()
+      g.attr('transform', 'translate(0,' + (i * 25) + ')')
+      g.call(make_color_legend)});
+    color_legend
+       .enter().append('g')
+        .attr('class', 'c')
+        .each(function(d, i) {
+          var g = d3.select(this)
+          g.attr('transform', 'translate(0,' + (i * 25) + ')')
+          g.call(make_color_legend)});
+    color_legend.exit()
+      .transition().duration(1000)
+      .style('opacity', 0).remove()
+
+  }
+
+  // getting factor and numeric terms for univariate charts.
+  var f = "profevaluation ~ age + female + courseevaluation",
+  formula = f.replace(/ /g, ''),
+  dep_var = formula.slice(0, formula.search(/~/)),
+  indeps = formula.slice(formula.search(/~/) + 1).split('+')
+  numeric_terms = _.filter(indeps, 
+                           function(d) { return dtypes[d] == 'numeric'})
+
+  var scatter_div = d3.select('#chart')
+        .append('div')
+        .attr('id', 'scatter')
+        .datum([0])
+  scatter_div.append('div')
+        .attr('id', 'legend-div')
+        .style('position', 'absolute')
+        .style('left', '700px')
+        .style('top', '50px')
+        .append('svg')
+        .attr('id', 'color-legend')
+        .attr('width', 200)
+        .append('text')
+  
+  var hist_div = d3.select('#chart')
+              .append('div')
+              .attr('id', 'histograms')
+              .datum([0])
+
+  // ,
+  // hist = d3.hist_cf()
+  //         .width(300)
+  //         .height(300)
+  //         .dimensions(hist_dims)
+
+
+
+  // hist_div.call(hist);
+
+  update_filter();
+  update_color();
+  scatter = d3.sccf()
+      .height(700)
+      .width(700)
+      .dimension(inx)
+      .xvar(xvar)
+      .yvar(yvar)
+      .color_var(color_var)
+      .color_scale(colors)
+      .size_var(size_var)
+      .filter_var(filter_var)
+      .coefs(coefs)
+      .dtypes(dtypes)
+      .formula(f)
+      .id('scatter');
+
+  scatter_div.call(scatter); // do I have to have data bound?
+
+  function update_all() {
+
+
+    scatter = d3.sccf()
+      .height(700)
+      .width(700)
+      .dimension(inx)
+      .xvar(xvar)
+      .yvar(yvar)
+      .color_var(color_var)
+      .color_scale(colors)
+      .size_var(size_var)
+      .filter_var(filter_var)
+      .coefs(coefs)
+      .dtypes(dtypes)
+      .formula(f)
+      .id('scatter');
+
+    scatter_div.datum([0])
+      .call(scatter)
+  }
+});
+function iqr(k) {
+  return function(d, i) {
+    var q1 = d.quartiles[0],
+        q3 = d.quartiles[2],
+        iqr = (q3 - q1) * k,
+        i = -1,
+        j = d.length;
+    while (d[++i] < q1 - iqr);
+    while (d[--j] > q3 + iqr);
+    return [i, j];
+  };
+}
+function boxQuartiles(d) {
+  return [
+    d3.quantile(d, .25),
+    d3.quantile(d, .5),
+    d3.quantile(d, .75)
+  ];
+}
+
+var coefs = [
+ {
+ "Estimate": 0.69246,
+"Std. Error": 0.086369,
+"t value": 8.0174,
+"Pr(>|t|)": 9.0432e-15,
+"variable": "(Intercept)" 
+},
+{
+ "Estimate": -0.0033726,
+"Std. Error": 0.00094879,
+"t value": -3.5547,
+"Pr(>|t|)": 0.00041772,
+"variable": "age" 
+},
+{
+ "Estimate": -0.0072714,
+"Std. Error": 0.019006,
+"t value": -0.38259,
+"Pr(>|t|)": 0.7022,
+"variable": "female1" 
+},
+{
+ "Estimate": 0.91251,
+"Std. Error": 0.016249,
+"t value": 56.156,
+"Pr(>|t|)": 9.316e-208,
+"variable": "courseevaluation" 
+} 
+],
+
+sigma = 0.1900428;
+coefs = _.zipObject(_.map(coefs, function(d) { return d.variable;}), 
+coefs)
+// column_types for beauty.csv
+  var dtypes = {
+  "tenured": "factor",
+  "profnumber": "factor",
+  "minority": "factor",
+  "age": "integer",
+  "beautyf2upper": "integer",
+  "beautyflowerdiv": "integer",
+  "beautyfupperdiv": "integer",
+  "beautym2upper": "integer",
+  "beautymlowerdiv": "integer",
+  "beautymupperdiv": "integer",
+  "btystdave": "numeric",
+  "btystdf2u": "numeric",
+  "btystdfl": "numeric",
+  "btystdfu": "numeric",
+  "btystdm2u": "numeric",
+  "btystdml": "numeric",
+  "btystdmu": "numeric",
+  "class1": "factor",
+  "class2": "factor",
+  "class3": "factor",
+  "class4": "factor",
+  "class5": "factor",
+  "class6": "factor",
+  "class7": "factor",
+  "class8": "factor",
+  "class9": "factor",
+  "class10": "factor",
+  "class11": "factor",
+  "class12": "factor",
+  "class13": "factor",
+  "class14": "factor",
+  "class15": "factor",
+  "class16": "factor",
+  "class17": "factor",
+  "class18": "factor",
+  "class19": "factor",
+  "class20": "factor",
+  "class21": "factor",
+  "class22": "factor",
+  "class23": "factor",
+  "class24": "factor",
+  "class25": "factor",
+  "class26": "factor",
+  "class27": "factor",
+  "class28": "factor",
+  "class29": "factor",
+  "class30": "factor",
+  "courseevaluation": "numeric",
+  "didevaluation": "integer",
+  "female": "factor",
+  "formal": "factor",
+  "fulldept": "factor",
+  "lower": "factor",
+  "multipleclass": "factor",
+  "nonenglish": "factor",
+  "onecredit": "factor",
+  "percentevaluating": "numeric",
+  "profevaluation": "numeric",
+  "students": "integer",
+  "tenuretrack": "factor",
+  "blkandwhite": "factor",
+  "btystdvariance": "numeric",
+  "btystdavepos": "numeric",
+  "btystdaveneg": "numeric" 
+  }
+
+ _.forOwn(dtypes, function(v,k) {
+        if (_.contains(['integer', 'numeric'], v)) return dtypes[k] = 'numeric';
+        if (_.contains(['character', 'factor'], v)) return dtypes[k] = 'factor';
+      })
+// end dtypes
+
+</script>
+</body>
+</html>
