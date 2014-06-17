@@ -489,7 +489,7 @@ d3.sccf = function () {
           if(dtypes[d] == 'numeric'){
             return $(pred[d][0]).slider('value') * coefs[d]['Estimate']
           } else if (dtypes[d] == 'factor'){
-            return coefs.hasOwnProperty(d + pred[d][0].value) ? coefs[d + pred[d][0].value]['Estimate']:0
+            return fetch_coef(d, pred[d][0].value);
           }
         })) + (coefs.hasOwnProperty('(Intercept)') ? coefs['(Intercept)']['Estimate']:0);
       }
@@ -512,7 +512,8 @@ d3.sccf = function () {
                         .domain([0,99])
             xes = _.map(d3.range(100), function(d) { 
               return tmp_scale(d);})
-
+          } else {
+            xes = x.domain()
           }
           preds = _.map(_.keys(preds), function(d) {
                                   return {'key': d, 'v':inner_prod(preds[d])};});
@@ -537,26 +538,79 @@ d3.sccf = function () {
                           return colorbrewer.Dark2[8][d%8];
                         }))
 
+      // factor variables come in the json as the variable name plus the 
+      // actual value with no space. If it is the base case, 
+      // it will not be found. catching that and returning 0
+      function fetch_coef(coef, x) {
+        return coefs.hasOwnProperty(coef + x) ? coefs[coef + x]['Estimate']:0
+      }
+
       function update_lines(preds, xes) {
         var nlines = lines.selectAll('path')
-                  .data(preds)
-        nlines.transition().duration(transition_time())
-            .attr('d', function(d) { return l(_.map(xes, function(x) {
-                return [x, x*coefs[xvar]['Estimate'] + d.v]}))})
-        nlines.enter().append('path')
-                .attr('d', function(d) { return l(_.map(xes, function(x) {
-          return [x, x*coefs[xvar]['Estimate'] + d.v]}))})
-                .style('opacity', 0)
-                .transition().duration(1500)
-                .style('opacity', 0.2)
-                .style('stroke-width', 5)
-                .style('stroke', function(d) { return path_colors[d.key]})
+                      .data([])
+        if(dtypes[xvar] == 'numeric') {
+          var nlines = lines.selectAll('path')
+                    .data(preds)
+          nlines.transition().duration(transition_time())
+              .attr('d', function(d) { return l(_.map(xes, function(x) {
+                  return [x, x*coefs[xvar]['Estimate'] + d.v]}))})
+          nlines.enter().append('path')
+                  .attr('d', function(d) { return l(_.map(xes, function(x) {
+            return [x, x*coefs[xvar]['Estimate'] + d.v]}))})
+                  .style('opacity', 0)
+                  .transition().duration(1500)
+                  .style('opacity', 0.2)
+                  .style('stroke-width', 5)
+                  .style('stroke', function(d) { return path_colors[d.key]})
+            nlines.on('mouseover', function() {
+                    d3.select(this).style('opacity', 0.8)
+                  })
+                  .on('mouseout', function() {
+                          d3.select(this).style('opacity', 0.2)
+                        })
+        } else {
+          l = d3.svg.line()
+                .x(function(d,i) { 
+                  return x(d[0])+ x.rangeBand()/2 + (x.rangeBand()*(i==0?-0.45:0.45))})
+                .y(function(d) { return y(d[1])})
+                .interpolate('basis')
+          preds = _.map(xes, function(x) {
+            return _.map(_.keys(preds), function(d) {
+              return {data: [[x, preds[d].v + fetch_coef(xvar,x)],
+                [x, preds[d].v + fetch_coef(xvar,x)]],
+                color: 'pred' + d}
+            })
+          })
+          console.log(_.flatten(preds))
+          
+          var nlines = lines.selectAll('path')
+                        .data(_.flatten(preds))
+          nlines.transition().duration(transition_time())
+                .each(function(d, i) {
+                  d3.select(this)
+                    .transition().duration(transition_time())
+                    .attr('d', l(d.data))
+                    .style('opacity', 0.4)
+                    .style('stroke-width', 5)
+                    .style('stroke', function(d) { return path_colors[d.color]})
+                })
+          nlines.enter().append('path')
+                .each(function(d, i) {
+                  d3.select(this)
+                    .attr('d', l(d.data))
+                    .style('opacity', 0)
+                    .transition().duration(transition_time())
+                    .style('opacity', 0.4)
+                    .style('stroke-width', 5)
+                    .style('stroke', function(d) { return path_colors[d.color]})
+                })
           nlines.on('mouseover', function() {
                   d3.select(this).style('opacity', 0.8)
                 })
                 .on('mouseout', function() {
                         d3.select(this).style('opacity', 0.2)
                       })
+        }
         nlines.exit()
          .transition().duration(1000)
           .style('opacity', 0)
@@ -578,10 +632,11 @@ d3.sccf = function () {
                         .attr('class', 'well pred')
                         .attr('id', function(d) { return 'pred' + d })
                         .each(function(d, i) { 
+                          d3.select(this).style('padding-top', '3px')
                           d3.select(this)
                             .append('div')
                             .style('width', "50px")
-                            .style('height', '20px')
+                            .style('height', '15px')
                             .style('float', 'right')
                             .style('background-color', path_colors['pred' + i])
                           d3.select(this).call(predictions, i)
