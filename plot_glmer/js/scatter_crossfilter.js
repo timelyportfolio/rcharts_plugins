@@ -544,14 +544,13 @@ d3.sccf = function () {
       function fetch_coef(coef, x) {
         return coefs.hasOwnProperty(coef + x) ? coefs[coef + x]['Estimate']:0
       }
+      var nlines = lines.selectAll('path')
 
       function update_lines(preds, xes) {
-        var nlines = lines.selectAll('path')
-                      .data([])
         if(dtypes[xvar] == 'numeric') {
-          var nlines = lines.selectAll('path')
-                    .data(preds)
-          nlines.transition().duration(transition_time())
+          nlines.selectAll('path').data(preds)
+          nlines
+            .transition().duration(transition_time())
               .attr('d', function(d) { return l(_.map(xes, function(x) {
                   return [x, x*coefs[xvar]['Estimate'] + d.v]}))})
           nlines.enter().append('path')
@@ -559,15 +558,20 @@ d3.sccf = function () {
             return [x, x*coefs[xvar]['Estimate'] + d.v]}))})
                   .style('opacity', 0)
                   .transition().duration(1500)
-                  .style('opacity', 0.2)
+                  .style('opacity', 0.4)
                   .style('stroke-width', 5)
                   .style('stroke', function(d) { return path_colors[d.key]})
             nlines.on('mouseover', function() {
                     d3.select(this).style('opacity', 0.8)
                   })
                   .on('mouseout', function() {
-                          d3.select(this).style('opacity', 0.2)
+                          d3.select(this).style('opacity', 0.4)
                         })
+          nlines.exit().transition().duration(1000)
+              .attr('d', l([[1,0],[0,0]]))
+              .style('opacity', 0)
+              .transition().duration(1000)
+              .remove()
         } else {
           l = d3.svg.line()
                 .x(function(d,i) { 
@@ -578,43 +582,37 @@ d3.sccf = function () {
             return _.map(_.keys(preds), function(d) {
               return {data: [[x, preds[d].v + fetch_coef(xvar,x)],
                 [x, preds[d].v + fetch_coef(xvar,x)]],
-                color: 'pred' + d}
+                key: 'pred' + d}
             })
           })
-          console.log(_.flatten(preds))
           
-          var nlines = lines.selectAll('path')
-                        .data(_.flatten(preds))
+          nlines.selectAll('path').data(_.flatten(preds))
           nlines.transition().duration(transition_time())
-                .each(function(d, i) {
-                  d3.select(this)
                     .transition().duration(transition_time())
                     .attr('d', l(d.data))
                     .style('opacity', 0.4)
                     .style('stroke-width', 5)
-                    .style('stroke', function(d) { return path_colors[d.color]})
-                })
+                    .style('stroke', function(d) { return path_colors[d.key]})
           nlines.enter().append('path')
-                .each(function(d, i) {
-                  d3.select(this)
-                    .attr('d', l(d.data))
+                    .attr('d', l([[1,0],[0,0]]))
                     .style('opacity', 0)
                     .transition().duration(transition_time())
                     .style('opacity', 0.4)
+                    .attr('d', l(d.data))
                     .style('stroke-width', 5)
-                    .style('stroke', function(d) { return path_colors[d.color]})
-                })
+                    .style('stroke', function(d) { return path_colors[d.key]})
           nlines.on('mouseover', function() {
                   d3.select(this).style('opacity', 0.8)
                 })
                 .on('mouseout', function() {
-                        d3.select(this).style('opacity', 0.2)
+                        d3.select(this).style('opacity', 0.4)
                       })
+        nlines.exit().transition().duration(1000)
+            d3.select(this)
+            .attr('d', l([[1,0],[0,0]]))
+            .style('opacity', 0)
+            .remove()
         }
-        nlines.exit()
-         .transition().duration(1000)
-          .style('opacity', 0)
-          .remove()
       }
       function update_ui() {
         // add modeling UI and setup scales / elements
