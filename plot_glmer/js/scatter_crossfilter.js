@@ -51,12 +51,12 @@ d3.sccf = function () {
                               filter:null, 
                               _index: null, 
                               size:null} };
-
+  
   // helper functions
   function round(x) {
     return Math.round(x*100)/100
   }
-  
+
   function expand_extent(extent, percent) {
     percent = typeof(percent) === 'undefined' ? 0.1: percent;
     pad = Math.abs(extent[1] - extent[0]) * percent
@@ -263,7 +263,7 @@ d3.sccf = function () {
                           .attr('id', 'prediction-table')}
         if(d3.select('.paths').empty()){
           lines = d3.select('#plot .circles')
-                  .append('g')
+                  .insert('g', 'circle')
                   .attr('class', 'paths')
         } else {
           lines = d3.select('#plot .circles .paths')
