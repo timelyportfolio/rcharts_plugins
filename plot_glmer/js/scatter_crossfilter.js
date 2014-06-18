@@ -365,13 +365,13 @@ d3.sccf = function () {
                        })
 
       if(chart_type() == 'numeric numeric'){
-          d3.select(this).select(".background").call(d3.behavior.zoom().x(x).y(y).on("zoom", refit));
+          _selection.select(".background").call(d3.behavior.zoom().x(x).y(y).on("zoom", refit));
         } else if (dtypes[xvar] == 'numeric'){
-          d3.select(this).select(".background").call(d3.behavior.zoom().x(x).on("zoom", refit));
+          _selection.select(".background").call(d3.behavior.zoom().x(x).on("zoom", refit));
         } else if (dtypes[yvar] == 'numeric'){
-          d3.select(this).select(".background").call(d3.behavior.zoom().y(y).on("zoom", refit));
+          _selection.select(".background").call(d3.behavior.zoom().y(y).on("zoom", refit));
         } else {
-          d3.select(this).select(".background").call(d3.behavior.zoom().on('zoom', null));
+          _selection.select(".background").call(d3.behavior.zoom().on('zoom', null));
         }
       }
 
