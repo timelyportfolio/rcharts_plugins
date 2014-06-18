@@ -1,17 +1,29 @@
-horizon:
-  jshead: [js/jquery-1.8.2.min.js, js/lodash.js, js/d3.v3.min.js, js/cubism.v1.min.js, js/horizon.js, js/missing-data.js]
-  css: [css/style.css]
+plot_glmer:
+  jshead: [js/jquery-1.8.2.min.js,
+  js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js,
+  js/lodash.js, 
+  js/bootstrap-multiselect.js,
+  bootstrap3/js/bootstrap.min.js,
+  js/colorbrewer.v1.min.js,
+  js/d3.v3.min.js,
+  js/crossfilter.js,
+  js/scatter_crossfilter.js]
+  css: [bootstrap3/css/bootstrap.min.css, 
+        js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css,
+        css/style.css]
   cdn:
     jshead: 
       - "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
-      - "http://d3js.org/d3.v3.min.js"
-      - "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
-      - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/js/cubism.v1.min.js"
+      - "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"
       - "http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"
-      - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/js/horizon.js"
-      - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/js/missing-data.js"
+      - "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/js/d3.v3.min.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/js/crossfilter.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/js/colorbrewer.v1.min.js"
+      - "http://mostlyconjecture.com/rcharts_plugins/plot_glmer/js/scatter_crossfilter.js"
     css: 
-      - "http://mostlyconjecture.com/rcharts_plugins/horizon_compare/css/style.css"
-
+      - "http://mostlyconjecture.com/rcharts_plugins/plot_glmer/css/style.css"
+      - "//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+      - "//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css"
 
 

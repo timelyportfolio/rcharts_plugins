@@ -1,19 +1,300 @@
 <script type='text/javascript'>
-function draw{{chartId}}(){
-    var params = {{{ chartParams }}}
-    var chart = {{{ horizon }}}
-    data = {{{data}}}
-
-    svg = d3.select('body')
-            .append('div')
-            .attr('id', '#' + params.id)
-    svg.datum(data)
-        .call(chart);
-    return chart;
-};
-
-$(document).ready(function(){
-    draw{{chartId}}()
+$.getScript('js/bootstrap-multiselect.js',function(){
+  $('.single option').click(function() {
+// only affects options contained within the same optgroup
+// and doesn't include this
+//$(this).siblings().prop('selected', false);
+  });
 });
+
+// passed in as their own objects: dtypes, coefs, data
+// included in chartParams: sigma, id
+// function draw{{chartId}}(){
+
+// dtypes, coefficients and data
+  var dtypes = {{{ dtypes }}},
+
+// dtypes
+
+//coefficents
+      coefs = {{{ coefs }}},
+
+//
+// data
+
+      raw_data = {{{ data }}};
+
+//
+// coefficients data frame must have column 'variable' with coefficient name
+  coefs = _.zipObject(_.map(coefs, 
+                    function(d) { return d.variable;}), coefs)
+
+  var numeric = _.filter(_.keys(dtypes), 
+                      function(d) { 
+                      return _.contains(['numeric', 'integer'], dtypes[d]) ;}),
+      dtypes =  _.zipObject(_.keys(dtypes), 
+                      _.map(_.keys(dtypes), 
+                      function(d) { 
+                        return _.contains(['integer', 'numeric'], 
+                                          dtypes[d]) ? 'numeric': 'factor'}))
+  var factor = _.filter(_.keys(dtypes), 
+                        function(d) { return dtypes[d] == 'factor'})
+
+      params = {{{ chartParams }}},
+      colors = d3.scale.category10(),
+      params.xvar = params.xvar ? params.xvar:numeric[0],
+      params.yvar = params.yvar ? params.yvar:numeric[1],
+      params.color_var = params.color_var ? params.color_var:factor[0],
+      params.filter_var = params.filter_var ? params.filter_var:factor[1];
+
+  console.log(params)  
+  // add index to data for crossfilter
+  raw_data.forEach(function(d, i) {
+    d._index = i;
+    _.map(_.keys(d), 
+          function(k) {
+            if('numeric' == dtypes[k]){
+              d[k] = +d[k]; 
+            }
+    })
+  })
+
+  var data = crossfilter(raw_data)
+
+  // adding switches
+  var labels = ['choose_x', 'choose_y', 'choose_color',
+                        'choose_size', 'choose_filter'],
+  buttons = d3.select('#' + params.id + '_controls').append('div')
+              .attr('class', 'btn-group-vertical')
+
+  buttons = buttons.selectAll('select')
+        .data(labels)
+        .enter().append('select')
+        .each(function(d,i) {
+         d3.select(this)
+          .attr('class','btn selectpicker controls')
+          .attr('data-width', 'auto')
+          .attr('id', function(d) { return d;})
+          .each(function(button) {
+          d3.select(this).select("#" + button)
+            .append('span').attr('class', 'caret')
+          button = d3.select(this).selectAll('option')
+                .data(_.keys(dtypes).filter(function(d,k) { 
+                  if(i == 2) return true
+                  else if (i == 4) return _.contains(factor, d)
+                  else if (_.contains(numeric.concat(factor), d)) 
+                      return true;
+                }))
+              .enter().append('option')
+                .text(function(d) { return d;})
+                .attr('selected', function(d) {
+                  if(i == 0) { return d == params.xvar ? 'selected': null}
+                    else if(i == 1) { return d == params.yvar ? 'selected': null}
+                    else if(i == 2) { return d == params.color_var ? 'selected': null}
+                    else if(i == 3) { return d == params.size_var ? 'selected':null}
+                    else if(i == 4) { return d == params.filter_var ? 'selected':null}
+                })
+        })
+      })
+
+  d3.select('#choose_filter').on('change', function() {
+    params.filter_var = this.value;
+    fil.dispose();
+    fil = data.dimension(function(d) { return d[params.filter_var]})
+    update_filter();
+    update_all();
+  });
+  d3.select('#choose_x').on('change', function() {
+    params.xvar = this.value
+    update_all();
+  });
+  d3.select('#choose_y').on('change', function() {
+    params.yvar = this.value
+    update_all();
+  });
+  d3.select('#choose_size').on('change', function() {
+    params.size_var = this.value
+    update_all();
+  });
+  d3.select('#choose_color').on('change', function() {
+    params.color_var = this.value;
+    update_color();
+    update_all();
+  });
+
+  // should the filter be given discrete values or a range?
+  function fil_choices() {
+    if("numeric" == dtypes[params.filter_var]) {
+      return expand_extent(d3.extent(_.map($('#current_filter')[0].options,
+        function(d) { if(d.selected) return parseFloat(d.value) })))
+    } else {
+      return _.map($('#current_filter')[0].options, 
+          function(d) { if(d.selected) return d.value
+      })
+    }
+  }
+
+  // reset filter
+  function set_filter() {
+    fil.filterAll();
+    var items = fil_choices();
+    if(_.contains(['numeric', 'integer'], dtypes[params.filter_var])) {
+      fil.filterRange([d3.min(items), d3.max(items)])
+    } else {
+      fil.filterFunction(function(d) { 
+        return items.indexOf(d) > -1;
+      })
+    }
+  };
+
+  // setting up crossfilters
+  var inx = data.dimension(function(d) { return d._index; }),
+  fil = data.dimension(function(d) { return d[params.filter_var];});
+
+  // update filters
+  function update_filter() {
+    fil.dispose();
+    fil = data.dimension(function(d) { return d[params.filter_var];});
+    d3.select('#current_filter').remove()
+    d3.select('.btn-group').remove()
+    var cur_filter = d3.select('.btn-group-vertical')
+                    .append('select')
+                    .attr('id', 'current_filter')
+                    .attr('multiple', 'multiple')
+                    .attr('class', 'btn controls')
+        cur_filter.selectAll('option')
+            .data(_.unique(_.map(fil.top(Infinity), function(d) {
+              return d[params.filter_var];
+              })))
+           .enter().append('option')
+            .attr('value', function(d) { return d;})
+            .attr('selected', 'selected')
+            .text(function(d) { return d;})
+          $('#current_filter').multiselect({
+            buttonWidth:false,
+            includeSelectAllDivider: true,
+            includeSelectAllOption: true}).on('change', 
+              function() {set_filter(); update_all(); });
+  }
+
+  function update_color() {
+    // add continuous color scale for numeric color vars
+    colors.domain(_.unique(_.map(inx.top(Infinity),
+      function(d) { return d[params.color_var]})))
+    var color_legend = d3.select('#color-legend')
+    function make_color_legend(el) { 
+      el.append('text')
+          .attr("x", 0)
+          .attr('y', 35)
+          .attr('text-anchor', 'right')
+          .text(el[0][0].__data__)
+      el.append('rect')
+          .attr('width', 20)
+          .attr('height', 20)
+          .attr('x', 15)
+          .attr('y', 20)
+          .attr('fill', colors(el[0][0].__data__))
+          .attr('fill-opacity', 0.8)
+    }
+    color_legend.select('text')
+          .transition().duration(500)
+          .style('opacity', 0)
+          .transition().duration(500)
+          .style('opacity', 1)
+          .text(params.color_var + ":")
+          .attr('x', 0)
+          .attr('y', 10)
+    color_legend = color_legend.selectAll('g.c')
+          .data(colors.domain())
+    color_legend.each(function(d, i) {
+      var g = d3.select(this)
+      g.select('rect').remove()
+      g.select("text").remove()
+      g.attr('transform', 'translate(0,' + (i * 25) + ')')
+      g.call(make_color_legend)});
+    color_legend
+       .enter().append('g')
+        .attr('class', 'c')
+        .each(function(d, i) {
+          var g = d3.select(this)
+          g.attr('transform', 'translate(0,' + (i * 25) + ')')
+          g.call(make_color_legend)});
+    color_legend.exit()
+      .transition().duration(1000)
+      .style('opacity', 0).remove()
+
+  }
+
+  // getting factor and numeric terms for univariate charts.
+  params.formula = params.formula.replace(/ /g, '')
+  var dep_var = params.formula.slice(0, params.formula.search(/~/)),
+  indeps = params.formula.slice(params.formula.search(/~/) + 1).split('+')
+
+  // to be used once I add histograms of numeric variables with brush filters 
+  // numeric_terms = _.filter(indeps, 
+  //                          function(d) { return dtypes[d] == 'numeric'})
+
+  var scatter_div = d3.select('#' + params.id + '_chart')
+        .append('div')
+        .attr('id', params.id + '_scatter')
+        .datum([0])
+  scatter_div.append('div')
+        .attr('id', 'legend-div')
+        .style('position', 'absolute')
+        .style('left', params.width + 'px')
+        .style('top', '50px')
+        .append('svg')
+        .attr('id', 'color-legend')
+        .attr('width', 200)
+        .append('text')
+  
+  update_filter();
+  update_color();
+    var plot_glmer = d3.sccf()
+      .height(params.height)
+      .width(params.width)
+      .dimension(inx)
+      .xvar(params.xvar)
+      .yvar(params.yvar)
+      .color_var(params.color_var)
+      .color_scale(colors)
+      .size_var(params.size_var)
+      .filter_var(params.filter_var)
+      .coefs(coefs)
+      .dtypes(dtypes)
+      .formula(params.formula)
+      .id(params.id);
+
+  scatter_div.call(plot_glmer); 
+
+  function update_all() {
+
+    var plot_glmer = d3.sccf()
+      .height(params.height)
+      .width(params.width)
+      .dimension(inx)
+      .xvar(params.xvar)
+      .yvar(params.yvar)
+      .color_var(params.color_var)
+      .color_scale(colors)
+      .size_var(params.size_var)
+      .filter_var(params.filter_var)
+      .coefs(coefs)
+      .dtypes(dtypes)
+      .formula(params.formula)
+      .id(params.id);
+
+
+    scatter_div.call(plot_glmer)
+  }
+
+
+
+//   return plot_glmer;
+// };
+
+// $(document).ready(function(){
+//   draw{{chartId}}()
+// });
 
 </script>

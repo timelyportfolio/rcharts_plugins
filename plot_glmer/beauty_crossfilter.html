@@ -14,6 +14,7 @@
     <script src="js/crossfilter.js" charset="utf-8"></script>
     <script src="js/box.js" charset="utf-8"></script>
     <script src="js/scatter_crossfilter.js" charset="utf-8"></script>    
+    <script src="js/coefficients.js" charset="utf-8"></script>    
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
@@ -33,11 +34,11 @@ $.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-mult
 </script>
 </head>
 <body>
-<div class='container'>
+<div class='container' style='width:1800px'>
   <div class='row'>
-    <div class="col-md-3 well" id='controls'>
+    <div class="col-md-3 well" id='scatter_controls' style='width:300px'>
     </div>
-    <div class="col-md-9 chart" id="chart">
+    <div class="col-md-9" id="chart">
     </div>
   </div>
 </div>
@@ -156,7 +157,7 @@ d3.csv('data/beauty.csv', function(error, dat) {
   } 
   ],
   sigma = 0.1900428;
-  coefs = _.zipObject(_.map(coefs, function(d) { return d.variable;}), 
+  var coefsObj = _.zipObject(_.map(coefs, function(d) { return d.variable;}), 
   coefs)
 // end coefficents
 
@@ -188,7 +189,7 @@ d3.csv('data/beauty.csv', function(error, dat) {
   // adding switches
   var labels = ['choose_x', 'choose_y', 'choose_color',
                         'choose_size', 'choose_filter'],
-  buttons = d3.select('#controls').append('div')
+  buttons = d3.select('#scatter_controls').append('div')
               .attr('class', 'btn-group-vertical')
 
   buttons = buttons.selectAll('select')
@@ -307,6 +308,8 @@ d3.csv('data/beauty.csv', function(error, dat) {
     colors.domain(_.unique(_.map(inx.top(Infinity),
       function(d) { return d[color_var]})))
     var color_legend = d3.select('#color-legend')
+                        .style('height', colors.domain().length*50)
+
     function make_color_legend(el) { 
       el.append('text')
           .attr("x", 0)
@@ -361,21 +364,31 @@ d3.csv('data/beauty.csv', function(error, dat) {
   var scatter_div = d3.select('#chart')
         .append('div')
         .attr('id', 'scatter')
+        .style('float','left')
+        .style('width', '700px')
+        .style('height', '700px')
         .datum([0])
   scatter_div.append('div')
         .attr('id', 'legend-div')
         .style('position', 'absolute')
-        .style('left', '700px')
+        .style('left', '100px')
         .style('top', '50px')
         .append('svg')
         .attr('id', 'color-legend')
-        .attr('width', 200)
+        .style('width', 200)
         .append('text')
   
-  var hist_div = d3.select('#chart')
+  var coef_div = d3.select('#chart')
               .append('div')
-              .attr('id', 'histograms')
-              .datum([0])
+              .attr('id', 'coefficients')
+              .style('float','left')
+              .datum(coefs),
+
+  coef_plot = d3.barchart_errors()
+                .width(600)
+                .height(300);
+
+  coef_div.call(coef_plot)
 
   // ,
   // hist = d3.hist_cf()
@@ -399,7 +412,7 @@ d3.csv('data/beauty.csv', function(error, dat) {
       .color_scale(colors)
       .size_var(size_var)
       .filter_var(filter_var)
-      .coefs(coefs)
+      .coefs(coefsObj)
       .dtypes(dtypes)
       .formula(f)
       .id('scatter');
@@ -419,13 +432,12 @@ d3.csv('data/beauty.csv', function(error, dat) {
       .color_scale(colors)
       .size_var(size_var)
       .filter_var(filter_var)
-      .coefs(coefs)
+      .coefs(coefsObj)
       .dtypes(dtypes)
       .formula(f)
       .id('scatter');
 
-    scatter_div.datum([0])
-      .call(scatter)
+    scatter_div.call(scatter)
   }
 });
 function iqr(k) {

@@ -129,13 +129,6 @@ d3.sccf = function () {
                                 reduceSub(xvar, yvar, color_var, size_var), 
                                 reduceInit); 
 
-      // keeping it simple with dtypes
-      _.forOwn(dtypes, function(v,k) {
-        if (_.contains(['integer', 'numeric'], v)) 
-          return dtypes[k] = 'numeric';
-        if (_.contains(['character', 'factor'], v)) 
-          return dtypes[k] = 'factor';
-      })
 
       if(typeof formula != 'undefined'){
         formula = formula.replace(/ /g, '')
@@ -230,11 +223,12 @@ d3.sccf = function () {
               .attr("class", "background")
               .attr("pointer-events", "all")
               .attr("fill","none")
-              .attr("width", width)
-              .attr("height", height),
+              .attr("width", size.x)
+              .attr("height", size.y),
 
-        tooltip = d3.select('#' + id).insert("text", ".frame")
+        tooltip = _selection.insert("text", ".frame")
                     .attr("class", "tooltip")
+                    .attr('id', 'scatter_tooltip')
                     .style("opacity", 0);
 
         plot.append('svg')
@@ -257,9 +251,11 @@ d3.sccf = function () {
             .attr('text-anchor', 'middle')
         }
       // prediction controls
+      console.log(d3.select('#prediction-table').empty())
       if(predicting()) {
         if(d3.select('#prediction-table').empty())
-          {d3.select('#controls').append('div')
+          {d3.select('#' + id + '_controls')
+                          .append('div')
                           .attr('id', 'prediction-table')}
         if(d3.select('.paths').empty()){
           lines = d3.select('#plot .circles')
@@ -280,12 +276,14 @@ d3.sccf = function () {
       }
 
       // fixed random numbers to apply to points when jittering about ordinal scale
-      var noise = _.map(_.range(inxgroup.all().length), 
-                        function() {return _.random(-0.5, 0.5)})
+      var noise = {x:_.map(_.range(inxgroup.all().length), 
+                        function() {return _.random(-0.5, 0.5)}),
+                  y: _.map(_.range(inxgroup.all().length), 
+                        function() {return _.random(-0.5, 0.5)})};
 
       function place(axis, scale, i) {
         return function(d) {
-            pos = scale(d[axis]) + (scale.rangeRoundBands ? (scale.rangeBand()/2 + noise[i] * scale.rangeBand()*0.5): 0)
+            pos = scale(d[axis]) + (scale.rangeRoundBands ? (scale.rangeBand()/2 + noise[axis][i] * scale.rangeBand()*0.5): 0)
             return pos
             }
       }
@@ -367,13 +365,13 @@ d3.sccf = function () {
                        })
 
       if(chart_type() == 'numeric numeric'){
-          d3.select(".background").call(d3.behavior.zoom().x(x).y(y).on("zoom", refit));
+          d3.select(this).select(".background").call(d3.behavior.zoom().x(x).y(y).on("zoom", refit));
         } else if (dtypes[xvar] == 'numeric'){
-          d3.select(".background").call(d3.behavior.zoom().x(x).on("zoom", refit));
+          d3.select(this).select(".background").call(d3.behavior.zoom().x(x).on("zoom", refit));
         } else if (dtypes[yvar] == 'numeric'){
-          d3.select(".background").call(d3.behavior.zoom().y(y).on("zoom", refit));
+          d3.select(this).select(".background").call(d3.behavior.zoom().y(y).on("zoom", refit));
         } else {
-          d3.select(".background").call(d3.behavior.zoom().on('zoom', null));
+          d3.select(this).select(".background").call(d3.behavior.zoom().on('zoom', null));
         }
       }
 
@@ -766,6 +764,11 @@ d3.sccf = function () {
   sccf.coefs = function(_x) {
     if(!arguments.length) return coefs;
     coefs = _x;
+    return sccf;
+  }
+  sccf.npredictlines = function(_x) {
+    if(!arguments.length) return npredictlines;
+    npredictlines = _x;
     return sccf;
   }
 

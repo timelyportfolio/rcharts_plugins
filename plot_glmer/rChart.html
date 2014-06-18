@@ -1,6 +1,6 @@
 <!doctype HTML>
-<meta charset = 'utf-8'>
 <html>
+<meta charset = 'utf-8'>
   <head>
     {{# assets.css }}
     <link rel='stylesheet' href='{{{ . }}}'>
@@ -20,11 +20,19 @@
     
   </head>
   <body>
-    {{# chartId }}
-    <{{container}} id='{{chartId}}' class='rChart {{ lib }}'></{{container}}>  
-    {{/ chartId }}
-    
-    {{{ script }}}
+{{# chartId }}
+<{{container}} class='container {{ lib }}' id='{{chartId}}'>
+  <div class='row'>
+    <div class="col-md-3 well" id='{{chartId}}_controls'>
+    </div>
+    <div class="col-md-9 chart" id="{{chartId}}_chart">
+    </div>
+  </div>
+</{{container}}>
+{{/ chartId }}
+
+{{{ script }}}
     
   </body>
 </html>
+

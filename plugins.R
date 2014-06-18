@@ -270,5 +270,46 @@ function draw{{chartId}}(){
     )
   }
 ))
+.plugins$PlotGlmer = setRefClass('PlotGlmer', contains = 'rCharts', methods = list(
+  initialize = function(){
+    callSuper()
+    LIB <<- get_lib("plot_glmer")
+    lib <<- "plot_glmer"
+    templates$page <<- "plot_glmer/rChart.html"
+    templates$chartDiv <<- "<{{container}} class='container' id='{{chartId}}' class='{{ lib }}'>
+  <div class='row'>
+    <div class='col-md-3 well' id='{{chartId}}_controls'>
+    </div>
+    <div class='col-md-9 chart' id='{{chartId}}_chart'>
+    </div>
+  </div>
+</{{container}}>
+"
+    templates$script <<- read_template('plot_glmer/layouts/chart.html',
+                                       package=NULL)
+  },
+  getPayload = function(chartId){
+    skip = c('data', 'coefs')
+    chartParams = RJSONIO:::toJSON(params[!(names(params) %in% c(skip))])
+    list(chartParams = chartParams, 
+         chartId = chartId, 
+         lib = basename(lib), liburl = LIB$url, 
+         data=toJSONArray(params[['data']]), 
+         coefs=toJSONArray(params[['coefs']]), 
+         dtypes=RJSONIO::toJSON(sapply(params[['data']], class))
+    )
+  },
+  render = function(chartId = NULL, cdn = F, static = T) {
+        params$dom <<- chartId %||% params$dom
+        template = read_template(templates$page, package=NULL)
+        assets = Map("c", get_assets(LIB, static = static, cdn = cdn), 
+            html_assets)
+        html = render_template(template, list(params = params, assets = assets, 
+            chartId = params$dom, script = .self$html(params$dom), 
+            CODE = srccode, lib = LIB$name, tObj = tObj, container = container))
+    }
+
+))
+
 attach(.plugins)
 
