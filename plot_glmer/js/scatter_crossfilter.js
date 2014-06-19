@@ -34,6 +34,7 @@ d3.sccf = function () {
       return p; 
     }
   }
+
   function reduceAdd(x, y, color, size) { 
     return function(p, v) { 
       p.x = v[x]; 
@@ -57,7 +58,9 @@ d3.sccf = function () {
     return Math.round(x*100)/100
   }
 
-  function expand_extent(extent, percent) {
+  function expand_extent(extent, percent, top, bottom) {
+    top = typeof(top) === 'undefined' ? true: top
+    bottom = typeof(bottom) === 'undefined' ? true: bottom
     percent = typeof(percent) === 'undefined' ? 0.1: percent;
     pad = Math.abs(extent[1] - extent[0]) * percent
     extent[0] = extent[0] - pad

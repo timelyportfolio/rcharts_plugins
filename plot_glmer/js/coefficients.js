@@ -30,7 +30,7 @@ d3.barchart_errors = function module() {
     _selection.each(function(data) {
       // functions and stuff requiring access to data.
       data = _.sortBy(data, function(d) { return -d[xvar]})
-      _selection.style('position', 'relative')
+      _selection.style('position', 'relative  ')
 
       var refitting = false,
       neg = colorbrewer.RdBu[3][0],
@@ -104,6 +104,7 @@ d3.barchart_errors = function module() {
     function transition_time() {return refitting ? 0:1000}
 
     function tooltip_content(d) {
+      console.log(d)
       return "<p>" + xvar + ": " + d[xvar] + "<br>" + 
             error + ": " + d[error] + '<br>'
     }
@@ -138,7 +139,7 @@ d3.barchart_errors = function module() {
            })
       bars.enter().append('g')
          .attr('class', 'bar')
-         .each(function(bar) {
+         .each(function(bar, i) {
           b = d3.select(this)
              .append('rect')
           b.attr('class', 'est')
@@ -156,21 +157,21 @@ d3.barchart_errors = function module() {
               return Math.abs(x(d[xvar]) - x(0))})
              .attr('y', function(d) { return y(d[yvar]); })
              .attr('height', y.rangeBand())
-          b.on('mouseover', function(d) {
+          b.on('mouseover', function(d,i) {
               d3.select(this).style('opacity', 0.9);
                 tooltip.transition()
                   .duration(200)
                   .style('opacity', 0.9)
-                tooltip.html(function() { return tooltip_content(d)})
+                tooltip.html(function() { return tooltip_content(bar)})
                     .style('left', (d3.mouse(this)[0] +390 + 'px'))
                     .style('top', (d3.mouse(this)[1] -20 + 'px'))
                  })
-              .on('mousemove', function(d) {
-                tooltip.html(function() { return tooltip_content(d)})
+              .on('mousemove', function() {
+                tooltip
                     .style('left', (d3.mouse(this)[0] + 30 + 'px'))
                     .style('top', (d3.mouse(this)[1] -20 + 'px'))
                   })
-              .on('mouseout', function(d) {
+              .on('mouseout', function() {
                 d3.select(this).style('opacity', 0.6);
                 tooltip.transition().duration(200).style('opacity', 0)
                 })

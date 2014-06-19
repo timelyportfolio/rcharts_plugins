@@ -14,6 +14,7 @@
     <script src="js/crossfilter.js" charset="utf-8"></script>
     <script src="js/box.js" charset="utf-8"></script>
     <script src="js/scatter_crossfilter.js" charset="utf-8"></script>    
+    <script src="js/hist_cf.js" charset="utf-8"></script>    
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
@@ -35,13 +36,12 @@ $.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-mult
 <body>
 <div class='container'>
   <div class='row'>
-    <div class="col-md-3 well" id='controls'>
-    </div>
-    <div class="col-md-9 chart" id="chart">
+    <div class="col-md-12 chart" id="chart">
     </div>
   </div>
 </div>
 <script>
+
 d3.csv('data/beauty.csv', function(error, dat) {
 
 // column_types for beauty.csv
@@ -114,190 +114,46 @@ d3.csv('data/beauty.csv', function(error, dat) {
 // end dtypes
 
 
-  var width = 600,
-      height = 600, 
-      xvar = 'Estimate',
-      yvar = 'variable',
-      error = 'Std. Error',
-      padding = {
-         "top":    40,
-         "right":  30,
-         "bottom": 60,
-         "left":   70
-      },
-      size = {
-        "x":  width - padding.left - padding.right,
-        "y": height - padding.top  - padding.bottom
-      }, 
-      refitting = false,
-      function transition_time() {return refitting ? 0:1000}
+  dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes), 
+    function(d) { 
+      return _.contains(['integer', 'numeric'], 
+                        dtypes[d]) ? 'numeric': 'factor'}))
 
-      function tooltip_content(d) {
-        return "<p>" + xvar + ": " + d[xvar] + "<br>" + 
-              error + ": " + d[error] + '<br>'
+  dat.forEach(function(d, i) {
+    d._index = i;
+    _.map(_.keys(d), function(k) {
+      if('numeric' == dtypes[k]){
+        d[k] = +d[k]; 
       }
+    })
+  })
+      cf = crossfilter(dat)
 
-      var tooltip = d3.select('#chart').append('text')
-                  .attr('class', 'tooltip')
-                  .attr('id', 'hist_tooltip')
-                  .style('opacity', 0),
+      dimension = cf.dimension(function(d) { return d._index})
+  var ch = d3.hist_cf()
+            .color(colorbrewer.Dark2[5][1])
+            .height(250)
+            .width(300)
+            .tickdiv(5)
+            .bins(30),
 
-      sel = d3.select("#chart").append('svg')
-                  .attr('class', 'hist_frame')
-                  .attr('width', width)
-                  .attr('height', height),
+    numbers = _.filter(_.keys(dtypes), function(d) { return dtypes[d] == 'numeric'})
 
-      g = sel.append('g')
-              .attr('id', 'hist_chart')
-              .attr('transform', 'translate(' + padding.left + ',' +
-                    padding.top + ")"),
+    all_hist = _.map(_.range(0, numbers.length), function(d) {
+      return {vname: numbers[d], dim: dimension};})
 
-
-      x = d3.scale.linear()
-                  .range([0, size.x])
-                  .domain(d3.extent(_.map(data, 
-                          function(d) { 
-                            return d[xvar] > 0 ? 
-                            d[xvar] + d[error] * 2:
-                            d[xvar] - d[error] * 2;}))),
-
-      y = d3.scale.linear()
-                  .range([0, size.y])
-                  .domain(d3.extent(group.all())),
-
-      xax = d3.svg.axis()
-              .scale(x)
-              .orient('bottom')
-              .ticks(10)
-              .tickSize(-size.y),
-
-      yax = d3.svg.axis()
-              .scale(y)
-              .orient('left')
-              .tickSize(-size.x);
-
-      g.append('g')
-        .attr('class', 'hist_xaxis')
-        .attr('transform', 'translate(0, ' + size.y + ')')
-
-      g.append('g').attr('class', ' hist_yaxis')
-
-      g.append('rect')
-        .attr("class", 'background')
-        .attr('pointer-events', 'all')
-        .attr('fill', 'none')
-        .attr('height', size.y)
-        .attr("width", size.x)
-
-      g.append('svg')
-        .attr('class', 'bars')
-        .attr('top', 0)
-        .attr('left', 0)
-        .attr('width', size.x + 'px')
-        .attr('height', size.y + 'px')
-        .attr('viewBox', "0 0 " + size.x + " " + size.y)
-
-        function draw_bars() {
-
-          g.select('.coef_xaxis')
-              .call(xax)
-              .selectAll('text')
-              .attr('dy', '1.5em')
-              .attr('text-anchor', 'middle')
-
-          g.select('.coef_yaxis')
-              .call(yax)
-              .selectAll('text')
-              .attr('x', x(0))
-              .attr('dy', '1em')
-              .attr('text-anchor', 'middle');
-
-          var bars = g.select('.bars').selectAll('.bar')
-                   .data(data)
-          bars.transition().duration(transition_time())
-              .each(function(bar) {
-               d3.select(this).select('rect.est')
-               .style('opacity', 0.6)
-               .attr('x', function(d) {
-                return x(Math.min(0, d[xvar]));})
-               .attr('width', function(d) { 
-                return Math.abs(x(d[xvar]) - x(0))})
-               d3.select(this).select('path.error')
-                 .attr('d', function(d) { return errorBarArea([d]) })
-               })
-          bars.enter().append('g')
-             .attr('class', 'bar')
-             .each(function(bar) {
-              b = d3.select(this)
-                 .append('rect')
-              b.attr('class', 'est')
-                 .style('opacity', 0.1)
-                 .attr('x', function(d) {
-                  return x(0);})
-                 .attr('width', 0)
-                 .attr('height', y.rangeBand())
-                 .transition().duration(transition_time())
-                 .style('fill', function(d) { return d[xvar] > 0 ? pos:neg})
-                 .style('opacity', 0.6)
-                 .attr('x', function(d) {
-                  return x(Math.min(0, d[xvar]));})
-                 .attr('width', function(d) { 
-                  return Math.abs(x(d[xvar]) - x(0))})
-                 .attr('y', function(d) { return y(d[yvar]); })
-                 .attr('height', y.rangeBand())
-              b.on('mouseover', function(d) {
-                  d3.select(this).style('opacity', 0.9);
-                    tooltip.transition()
-                      .duration(200)
-                      .style('opacity', 0.9)
-                    tooltip.html(function() { return tooltip_content(d)})
-                        .style('left', (d3.mouse(this)[0] +390 + 'px'))
-                        .style('top', (d3.mouse(this)[1] -20 + 'px'))
-                     })
-                  .on('mousemove', function(d) {
-                    tooltip.html(function() { return tooltip_content(d)})
-                        .style('left', (d3.mouse(this)[0] + 30 + 'px'))
-                        .style('top', (d3.mouse(this)[1] -20 + 'px'))
-                      })
-                  .on('mouseout', function(d) {
-                    d3.select(this).style('opacity', 0.6);
-                    tooltip.transition().duration(200).style('opacity', 0)
-                    })
-
-              errors = d3.select(this)
-                        .append('path')
-                        .attr('class', 'error')
-                        .style('opacity', 0.1)
-                        .style('stroke-width', 5)
-                        .attr('d', function(d) {
-                          var tmp = {};
-                          tmp[error] = 0;
-                          tmp[xvar] = 0;
-                          tmp[yvar] = d[yvar];
-                          return errorBarArea([tmp])})
-                       .transition().duration(transition_time())
-                       .attr('d', function(d) { return errorBarArea([d]) })
-                       .style('stroke', 'black')
-                       .style('stroke-width', 5)
-                       .style('opacity', 0.8)
-
-             });
-
-          bars.exit().transition().duration(transition_time()).remove() 
-          g.select(".background").call(d3.behavior.zoom().x(x).on("zoom", refit));
-        }
-        // draw_bars()
-
-        function refit() {
-          refitting = true;
-          draw_bars();
-          refitting = false;
-        }
-
+    d3.select('#chart').style('float', 'left').selectAll('div')
+        .data(all_hist)
+        .enter().append('div')
+        .style('position', 'relative')
+        .each(function() {
+          d3.select(this)
+            .style('float','left')
+            .call(ch);
+        });
+        
 });
-// var coeficient = d3.barchart_errors()
-//                   .width(300)
-//                   .height(600)
+
 
 
 </script>
