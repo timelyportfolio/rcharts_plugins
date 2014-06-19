@@ -48,8 +48,10 @@ d3.hist_cf = function module() {
         return extent
       }
       var dimension = data.dim,
-      hist_variable = data.vname;
-      var tooltip = d3.select(this).append('text')
+      
+      hist_variable = data.vname,
+      
+      tooltip = d3.select(this).append('text')
                   .attr('class', 'tooltip')
                   .attr('id', 'hist_tooltip')
                   .style('opacity', 0),
@@ -67,8 +69,10 @@ d3.hist_cf = function module() {
 
       var uniq = _.unique(_.map(dimension.top(Infinity), 
                           function(d) { return d[hist_variable]})),
-      oldbin
-      if(bins > uniq.length) { 
+      oldbin = 0;
+      console.log(bins, uniq.length)
+      oldbin = bins 
+      if(bins > uniq.length) {
         bins = uniq.length
       }
       bindiv.append('input')
@@ -84,11 +88,11 @@ d3.hist_cf = function module() {
             .attr('value', bins)
             .on('change', function() {
               bins = $(this)[0].value;
-              if(bins > uniq.length) { bins = uniq.length
+              if(bins > uniq.length) { 
+              bins = uniq.length;
               $(this)[0].value = bins;}
               draw_bars(bins);
             })
-      bins = oldbin ? oldbin: bins;
 
       var sel = _selection.append('svg')
                   .attr('class', 'hist_frame')
@@ -164,8 +168,8 @@ d3.hist_cf = function module() {
       }
       var x,y, hist_data, tickArray, tmp;
 
-      function draw_bars(bins) {
-
+      function draw_bars(bins) { 
+        console.log("inside draw_bars " + bins)
         hist_data = _.map(dimension.top(Infinity), function(d) {
           return d[hist_variable]
         }),
@@ -272,6 +276,7 @@ d3.hist_cf = function module() {
           .remove() 
       }
       draw_bars(bins)
+      bins = oldbin;
     });
   };
   // getters and setters here.
