@@ -23,7 +23,7 @@ d3.hist_cf = function module() {
     };
     refitting = false;
 
-    _selection.each(function(data, i) {
+    _selection.each(function(data, it) {
       // functions and stuff requiring access to data.
       function transition_time() {return refitting ? 0:1000}
 
@@ -79,7 +79,7 @@ d3.hist_cf = function module() {
         bindiv.append('input')
               .attr('type', 'number')
               .attr('class', 'form-control')
-              .attr('id', 'bins_' + i)
+              .attr('id', 'bins_' + it)
               .style('width', '60px')
               .style('height', '25px')
               .style('float', 'left')
@@ -226,11 +226,13 @@ d3.hist_cf = function module() {
                   .on('brush', brushed)
         gbrush.call(brush);
 
-        xaxdiv.transition().duration(transition_time())
+        xaxdiv.transition().delay(1500*it)
+          .duration(transition_time())
           .attr('transform', 'translate(0,' + size.y + ')')
           .style('opacity', 1).call(xax)
 
-        yaxdiv.transition().duration(transition_time())
+        yaxdiv.transition().delay(1500*it)
+          .duration(transition_time())
           .attr('transform', 'translate(0,0)')
           .style('opacity', 1).call(yax)
 
@@ -239,7 +241,7 @@ d3.hist_cf = function module() {
         var bars = g.select('.bars').selectAll('rect.bar')
                  .data(hist_data)
 
-        bars.transition().duration(transition_time())
+        bars.transition().delay(1500*it).duration(transition_time())
             .attr('x', function(d) {
               return x(d.x) + 1})
             .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
@@ -254,7 +256,8 @@ d3.hist_cf = function module() {
            .attr('x', function(d) {
             return x(d.x) + 1})
            .attr('width', 0)
-           .transition().duration(transition_time())
+           .transition().delay(1500*it)
+           .duration(transition_time())
            .attr('y', function(d) { return y(d.y)})
            .style('opacity', 0.4)
            .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
@@ -266,7 +269,7 @@ d3.hist_cf = function module() {
             d3.select(this).style('opacity', 0.9)
             tooltip.transition().duration(200)
               .style('opacity', 0.9)
-            tooltip.html(function() { return tooltip_content(d, i)})
+            tooltip.html(function() { return tooltip_content(d)})
               .style('left', (d3.mouse(this)[0] + 30) + 'px')
               .style('top', (d3.mouse(this)[1] - 20)+ 'px')
            })
@@ -282,6 +285,7 @@ d3.hist_cf = function module() {
            })
 
         bars.exit().transition().duration(transition_time())
+           .delay(500*it)
            .attr('y', function(d) { return y(0)})
            .attr('x', function(d) {
             return x(d.x)})
