@@ -216,16 +216,16 @@ d3.sccf = function () {
                     .attr('transform', 'translate(' + padding.left + 
                       "," + padding.top + ')')
 
-      // setting up x-axis hover
-        var focus = plot.append("g")
-            .attr("class", "focus")
-            .style("display", "none");
-  
         plot.append('g')
             .attr('id', 'yaxis')
         plot.append('g')
             .attr('id', 'xaxis')
             .attr('transform', 'translate(0,' + size.y + ')')
+
+      // setting up x-axis hover
+        var focus = plot.append("g")
+            .attr("class", "focus")
+            .style("display", "none");
 
         plot.append("rect")
               .attr("class", "background")
@@ -235,6 +235,7 @@ d3.sccf = function () {
               .attr("height", size.y)
               .on("mouseover", function() { focus.style("display", null); })
               .on("mouseout", function() { focus.style("display", "none"); }),
+
 
         tooltip = _selection.insert("text", ".frame")
                     .attr("class", "tooltip")
@@ -362,6 +363,7 @@ d3.sccf = function () {
         circles.on("mouseover", function(d) {
             tooltip.transition()
                  .duration(200)
+                 .style('opacity', 0.8)
             tooltip.html(function() { return tooltip_content(d)})
                      .style("left", (d3.mouse(this)[0] + 90) + "px")
                      .style("top", (d3.mouse(this)[1] - 50) + "px");
