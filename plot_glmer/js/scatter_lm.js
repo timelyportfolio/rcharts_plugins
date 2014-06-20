@@ -418,12 +418,9 @@ d3.sccf = function () {
                   .attr('stroke', stroke)
                   .attr(xy + '1', 0)
                   .attr(xy + '2', size[xy])
-            
           } else {
             g = plot.selectAll('g.' + axis)
             g.style('opacity', 0)
-
-
           }
         }
 
@@ -706,21 +703,28 @@ d3.sccf = function () {
               })
       }
       function update_chart() {
-          jitter_points();
-          x = update_scale('x', xvar);
-          y = update_scale('y', yvar);
-          y.domain(y.domain().reverse());
-          draw_chart();
-          update_ui();
-          make_predictions_lm();
-          d3.select('.background').on('mousemove', mousemove)
+        var bg = d3.select('.background')
+        jitter_points();
+        x = update_scale('x', xvar);
+        y = update_scale('y', yvar);
+        y.domain(y.domain().reverse());
+        draw_chart();
+        update_ui();
+        make_predictions_lm();
+        if(predicting()){
+          console.log('predicting:', predicting());
+          bg.on('mousemove', mousemove)
+        } else {
+          d3.selectAll('.focus g').remove()
+          console.log('predicting:', predicting());
+          bg.on('mousemove', null)
+        }
       }
 
       function refit() {
         refitting = true;
         draw_chart();
         make_predictions_lm();
-        mousem = mousemove();
         grid('x');
         grid('y');
         refitting = false;
@@ -729,7 +733,6 @@ d3.sccf = function () {
       update_chart();
     });
   };
-
   sccf.id = function(_x) {
     if(!arguments.length) return id;
     id = _x;
