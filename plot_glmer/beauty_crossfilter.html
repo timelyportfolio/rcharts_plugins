@@ -436,7 +436,7 @@ d3.csv('data/beauty.csv', function(error, dat) {
       return {vname: numeric[d], dim: inx};})
 
   d3.select('#histograms').style('float', 'left').selectAll('div')
-    .data(all_hist)
+    .data(all_hist, function(d) { return d.vname})
     .enter().append('div')
     .style('position', 'relative')
     .each(function() {
@@ -483,6 +483,15 @@ d3.csv('data/beauty.csv', function(error, dat) {
       .id('scatter');
 
     scatter_div.call(scatter)
+    all_hist = _.map(_.range(0, numeric.length), function(d) {
+        return {vname: numeric[d], dim: inx};})
+
+    d3.select('#histograms').selectAll('div')
+      .data(all_hist, function(d) { return d.vname})
+      .each(function() {
+        d3.select(this)
+          .call(ch);
+      });
   }
 });
 function iqr(k) {

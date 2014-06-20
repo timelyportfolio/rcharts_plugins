@@ -49,24 +49,8 @@ d3.hist_cf = function module() {
       }
       var dimension = data.dim,
       
-      hist_variable = data.vname,
+      hist_variable = data.vname;
       
-      tooltip = d3.select(this).append('text')
-                  .attr('class', 'tooltip')
-                  .attr('id', 'hist_tooltip')
-                  .style('opacity', 0),
-
-      bindiv = _selection.append('div')
-                          .attr('class', 'form-group')
-                          .style('width', size.x + 'px')
-                          .style('margin', '0px')
-                          .style('padding', '2px')
-
-      bindiv.append('label')
-            .attr('for', 'bins')
-            .style('margin', '10px')
-            .text('no. bins: ' + hist_variable)
-
       var uniq = _.unique(_.map(dimension.top(Infinity), 
                           function(d) { return d[hist_variable]})),
       oldbin = 0;
@@ -74,18 +58,69 @@ d3.hist_cf = function module() {
       if(bins > uniq.length) {
         bins = uniq.length
       }
-      bindiv.append('input')
-            .attr('type', 'number')
-            .attr('class', 'form-control')
-            .attr('id', 'bins_' + i)
-            .style('width', '60px')
-            .style('height', '25px')
-            .style('float', 'left')
-            .style('display', 'inline')
-            .style('font-size', '10px')
-            .style('margin', '5px')
-            .attr('value', bins)
-            .on('change', function() {
+
+      if(_selection.select('#hist_chart').empty()){
+        tooltip = d3.select(this).append('text')
+                    .attr('class', 'tooltip')
+                    .attr('id', 'hist_tooltip')
+                    .style('opacity', 0),
+
+        bindiv = _selection.append('div')
+                            .attr('class', 'form-group')
+                            .style('width', size.x + 'px')
+                            .style('margin', '0px')
+                            .style('padding', '2px')
+
+        bindiv.append('label')
+              .attr('for', 'bins')
+              .style('margin', '10px')
+              .text('no. bins: ' + hist_variable)
+
+        bindiv.append('input')
+              .attr('type', 'number')
+              .attr('class', 'form-control')
+              .attr('id', 'bins_' + i)
+              .style('width', '60px')
+              .style('height', '25px')
+              .style('float', 'left')
+              .style('display', 'inline')
+              .style('font-size', '10px')
+              .style('margin', '5px')
+              .attr('value', bins)
+
+        var sel = _selection.append('svg')
+                    .attr('id', 'hist_frame')
+                    .attr('width', width)
+                    .attr('height', height),
+
+        g = sel.append('g')
+                .attr('id', 'hist_chart')
+                .attr('transform', 'translate(' + padding.left + ',' +
+                      padding.top + ")");
+
+        g.append('g')
+          .attr('class', 'hist_xaxis')
+
+        g.append('g').attr('class', 'hist_yaxis')
+
+        g.append('rect')
+          .attr("class", 'background')
+          .attr('pointer-events', 'all')
+          .attr('fill', 'none')
+          .attr('height', size.y)
+          .attr("width", size.x)
+
+        g.append('svg')
+          .attr('class', 'bars')
+          .attr('top', 0)
+          .attr('left', 0)
+          .attr('width', size.x + 'px')
+          .attr('height', size.y + 'px')
+          .attr('viewBox', "0 0 " + size.x + " " + size.y)
+      }
+
+      _selection.select('.form-group .form-control')
+          .on('change', function() {
               bins = $(this)[0].value;
               if(bins > uniq.length) { 
               bins = uniq.length;
@@ -93,37 +128,12 @@ d3.hist_cf = function module() {
               draw_bars(bins);
             })
 
-      var sel = _selection.append('svg')
-                  .attr('class', 'hist_frame')
-                  .attr('width', width)
-                  .attr('height', height),
+      var g = _selection.select('#hist_chart'),
 
-      g = sel.append('g')
-              .attr('id', 'hist_chart')
-              .attr('transform', 'translate(' + padding.left + ',' +
-                    padding.top + ")");
+      tooltip = _selection.select('.tooltip')
 
-      g.append('g')
-        .attr('class', 'hist_xaxis')
+      xaxdiv = g.select('.hist_xaxis');
 
-      g.append('g').attr('class', 'hist_yaxis')
-
-      g.append('rect')
-        .attr("class", 'background')
-        .attr('pointer-events', 'all')
-        .attr('fill', 'none')
-        .attr('height', size.y)
-        .attr("width", size.x)
-
-      g.append('svg')
-        .attr('class', 'bars')
-        .attr('top', 0)
-        .attr('left', 0)
-        .attr('width', size.x + 'px')
-        .attr('height', size.y + 'px')
-        .attr('viewBox', "0 0 " + size.x + " " + size.y)
-
-      var xaxdiv = g.select('.hist_xaxis')
       xaxdiv.call(d3.svg.axis()
                   .scale(d3.scale.linear()).orient('bottom'))
                 .selectAll('text')
@@ -132,10 +142,13 @@ d3.hist_cf = function module() {
                 .attr('transform', 'translate(-10,0)rotate(-30)')
                 .style('opacity',0)
       var yaxdiv = g.select('.hist_yaxis')
+
       yaxdiv.call(d3.svg.axis().scale(d3.scale.linear()).orient('left'))
           .selectAll('text')
           .attr('text-anchor', 'middle')
           .style('opacity',0),
+
+      sel = _selection.select('#hist_frame')
 
       gbrush = sel.append('g').attr('class', 'brush')
                   .attr('id', 'hist_brush')
