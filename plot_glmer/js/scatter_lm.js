@@ -196,7 +196,6 @@ d3.sccf = function () {
         return (typeof formula !== 'undefined' && _.contains(indeps, xvar)
                    && yvar == dep_var)
       } 
-      console.log(predicting())
       // skeleton for scatter plot if it doesn't exist.
       if(_selection.select('.frame').empty()){
 
@@ -217,17 +216,25 @@ d3.sccf = function () {
                     .attr('transform', 'translate(' + padding.left + 
                       "," + padding.top + ')')
 
+      // setting up x-axis hover
+        var focus = plot.append("g")
+            .attr("class", "focus")
+            .style("display", "none");
+  
         plot.append('g')
-            .attr('id', 'yaxis'),
+            .attr('id', 'yaxis')
         plot.append('g')
             .attr('id', 'xaxis')
-            .attr('transform', 'translate(0,' + size.y + ')'),
+            .attr('transform', 'translate(0,' + size.y + ')')
+
         plot.append("rect")
               .attr("class", "background")
               .attr("pointer-events", "all")
               .attr("fill","none")
               .attr("width", size.x)
-              .attr("height", size.y),
+              .attr("height", size.y)
+              .on("mouseover", function() { focus.style("display", null); })
+              .on("mouseout", function() { focus.style("display", "none"); }),
 
         tooltip = _selection.insert("text", ".frame")
                     .attr("class", "tooltip")
@@ -254,7 +261,6 @@ d3.sccf = function () {
             .attr('text-anchor', 'middle')
         }
       // prediction controls
-      console.log(d3.select('#prediction-table').empty())
       if(predicting()) {
         if(d3.select('#prediction-table').empty())
           {d3.select('#' + id + '_controls')
@@ -356,7 +362,6 @@ d3.sccf = function () {
         circles.on("mouseover", function(d) {
             tooltip.transition()
                  .duration(200)
-                 .style("opacity", .9);
             tooltip.html(function() { return tooltip_content(d)})
                      .style("left", (d3.mouse(this)[0] + 90) + "px")
                      .style("top", (d3.mouse(this)[1] - 50) + "px");
@@ -519,6 +524,7 @@ d3.sccf = function () {
           preds = _.map(_.keys(preds), function(d) {
                                   return {'key': d, 'v':inner_prod(preds[d])};});
           update_lines(preds, xes);
+          return preds;
           } else {
           // clean up modeling ui and elements if not needed.
             _selection.selectAll('.paths')
@@ -588,6 +594,7 @@ d3.sccf = function () {
                 [x, preds[d].v + fetch_coef(xvar,x)]],
                 key: 'pred' + d}
             })
+          console.log('update_lines - factor: ' + preds)
           })
           
           var nlines = lines.selectAll('path')
@@ -618,14 +625,14 @@ d3.sccf = function () {
                 .on('mouseout', function() {
                         d3.select(this).style('opacity', 0.4)
                       })
-        nlines.exit().transition().duration(1000)
-          .each(function(d, i) {
-            d3.select(this)
-            .attr('d', l([[1,0],[0,0]]))
-            .style('opacity', 0)
-            .transition().duration(1000)
-            .remove()
-          })
+          nlines.exit().transition().duration(1000)
+            .each(function(d, i) {
+              d3.select(this)
+              .attr('d', l([[1,0],[0,0]]))
+              .style('opacity', 0)
+              .transition().duration(1000)
+              .remove()
+            })
         }
       }
       function update_ui() {
@@ -637,14 +644,15 @@ d3.sccf = function () {
                 .interpolate('basis')
           d3.selectAll('#prediction-table div')
               .remove()
-          var preds = d3.select('#prediction-table').selectAll('div')
+          var predui = d3.select('#prediction-table').selectAll('div')
                         .data(d3.range(npredictlines))
                         .enter()
                         .append('div')
                         .attr('class', 'well pred')
                         .attr('id', function(d) { return 'pred' + d })
                         .each(function(d, i) { 
-                          d3.select(this).style('padding-top', '3px')
+                          d3.select(this).style('padding-top', '8px')
+                            .style('margin', '10px')
                           d3.select(this)
                             .append('div')
                             .style('width', "50px")
@@ -668,6 +676,33 @@ d3.sccf = function () {
         }
       }
 
+      function mousemove() {
+          var x0 = x.invert(d3.mouse(this)[0])
+          var c = d3.select('.focus').selectAll('g')
+              .data(preds, function(d) { return d.key})
+
+          c.attr('transform', function(d) { 
+                return 'translate(' + 
+                    x(x0) + "," + y(d.v + x0*coefs[xvar]['Estimate']) + ")"})
+              .each(function(d, i) {
+                d3.select(this).select('text')
+                  .attr("dy", ".35em")
+                  .style('font-size', 12)
+                  .text(d3.format('0.2f')(d.v + x0*coefs[xvar]['Estimate']));
+              })
+
+            c.enter().append('g')
+              .attr('transform', function(d) { 
+                return 'translate(' + 
+                    x(x0) + "," + y(d.v + x0*coefs[xvar]['Estimate']) + ")"})
+              .each(function(d, i) {
+                d3.select(this).append('circle')
+                  .attr('r', 4.5)
+                  .attr('fill', function() { return path_colors[d.key]; })
+                d3.select(this).append('text')
+                  .attr("x", function() { return (i %2) ? 9:-30})
+              })
+      }
       function update_chart() {
           jitter_points();
           x = update_scale('x', xvar);
@@ -676,26 +711,20 @@ d3.sccf = function () {
           draw_chart();
           update_ui();
           make_predictions_lm();
+          d3.select('.background').on('mousemove', mousemove)
       }
 
       function refit() {
         refitting = true;
         draw_chart();
         make_predictions_lm();
+        mousem = mousemove();
         grid('x');
         grid('y');
         refitting = false;
       }
       // handle empty data // doesn't work.
-      if(jitter.length) {
-        update_chart();
-      } else {
-        plot = _selection.select('#plot')
-        plot.select('.circles').selectAll('circle path')
-            .transition().duration(1000)
-            .style('opacity', 0)
-            .remove()
-      }
+      update_chart();
     });
   };
 

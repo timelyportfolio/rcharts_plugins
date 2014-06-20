@@ -77,7 +77,7 @@ clipPath {
         fill-opacity:0.4;
       }
       circle {
-/*        cursor: move;*/ }
+          }
         circle.selected {
           fill: #ff7f0e;
           stroke: #ff7f0e; }
@@ -135,4 +135,15 @@ select {
 }
 #dash {
   width:1800px;
+}
+
+.focus g circle {
+  fill-opacity: 0.5;
+  stroke: black;
+  stroke-opacity: 1;
+  stroke-width: 0.75;
+}
+
+.focus text {
+  z-index: 1;
 }

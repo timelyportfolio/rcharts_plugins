@@ -13,7 +13,7 @@
     <script src="js/missing-data.js" charset="utf-8"></script>
     <script src="js/crossfilter.js" charset="utf-8"></script>
     <script src="js/box.js" charset="utf-8"></script>
-    <script src="js/scatter_crossfilter.js" charset="utf-8"></script>    
+    <script src="js/scatter_lm.js" charset="utf-8"></script>    
     <script src="js/coefficients.js" charset="utf-8"></script>    
     <script src="js/hist_cf.js" charset="utf-8"></script>    
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
@@ -203,7 +203,9 @@ d3.csv('data/beauty.csv', function(error, dat) {
           d3.select(this).append('label')
                 .attr('for', d)
                 .text(d.replace(/choose_/, '') + ':')
-                .style('width', '50px')
+                .style('width', '100px')
+                .style('text-align', 'right')
+                .style('padding-right', '10px')
          var select = d3.select(this).append('select')
           select.attr('class','btn selectpicker controls')
           .attr('data-width', 'auto')
@@ -292,10 +294,12 @@ d3.csv('data/beauty.csv', function(error, dat) {
     d3.select('#current_filter').remove()
     d3.select('.btn-group').remove()
     var cur_filter = d3.select('.btn-group-vertical')
+                    .append('div')
+                    .attr('class', 'filter_group')
                     .append('select')
                     .attr('id', 'current_filter')
                     .attr('multiple', 'multiple')
-                    .attr('class', 'btn controls')
+                    .attr('class', 'controls')
         cur_filter.selectAll('option')
             .data(_.unique(_.map(fil.top(Infinity), function(d) {
               return d[filter_var];
@@ -309,6 +313,19 @@ d3.csv('data/beauty.csv', function(error, dat) {
             includeSelectAllDivider: true,
             includeSelectAllOption: true}).on('change', 
               function() {set_filter(); update_all(); });
+          d3.select("#current_filter~.btn-group")
+            .insert('label', '.btn')
+            .text(filter_var + ":")
+            .style('width', '100px')
+            .style('text-align', 'right')
+            .style('padding-right', '10px')
+            .style('float', 'left')
+            .style('display', 'inline')
+          d3.select('#current_filter~.btn-group .btn')
+            .style('width', '150px')
+            .style('height', '30px')
+            .style('outline', '0px')
+            .style('border-radius', '4px')
   }
 
   function update_color() {

@@ -70,7 +70,6 @@ d3.hist_cf = function module() {
       var uniq = _.unique(_.map(dimension.top(Infinity), 
                           function(d) { return d[hist_variable]})),
       oldbin = 0;
-      console.log(bins, uniq.length)
       oldbin = bins 
       if(bins > uniq.length) {
         bins = uniq.length
@@ -169,14 +168,13 @@ d3.hist_cf = function module() {
       var x,y, hist_data, tickArray, tmp;
 
       function draw_bars(bins) { 
-        console.log("inside draw_bars " + bins)
-        hist_data = _.map(dimension.top(Infinity), function(d) {
+        var values = _.map(dimension.top(Infinity), function(d) {
           return d[hist_variable]
         }),
 
         x = d3.scale.linear()
                     .range([0, size.x])
-                    .domain(expand_extent(d3.extent(hist_data))),
+                    .domain(expand_extent(d3.extent(values))),
 
         tmp = d3.scale.linear()
                 .domain([0, parseInt(bins)])
@@ -185,14 +183,17 @@ d3.hist_cf = function module() {
         tickArray = d3.range(bins + 1).map(tmp),
 
         hist_data = d3.layout.histogram()
-                      .bins(parseInt(bins))(hist_data);
+                      .bins(parseInt(bins))(values),
+
+
 
 
         y = d3.scale.linear()
                     .range([size.y, 0])
-                    .domain(expand_extent(d3.extent(_.map(hist_data, function(d) {
+                    .domain(expand_extent([0, 
+                            d3.max(_.map(hist_data, function(d) {
                       return d.y
-                    })), 0.1, true, false)),
+                    }))], 0.05, true, false)),
         xax = d3.svg.axis()
                 .orient('bottom')
                 .tickSize(4)
@@ -252,7 +253,7 @@ d3.hist_cf = function module() {
             d3.select(this).style('opacity', 0.9)
             tooltip.transition().duration(200)
               .style('opacity', 0.9)
-            tooltip.html(function() { return tooltip_content(d)})
+            tooltip.html(function() { return tooltip_content(d, i)})
               .style('left', (d3.mouse(this)[0] + 30) + 'px')
               .style('top', (d3.mouse(this)[1] - 20)+ 'px')
            })
