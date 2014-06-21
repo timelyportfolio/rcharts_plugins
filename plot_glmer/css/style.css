@@ -160,9 +160,9 @@ select {
   padding-right: 10px;
   display: inline;
 }
-#scatter_controls .btn-group-vertical .models label,
-#scatter_controls .btn-group-vertical .variables label,
-#scatter_controls .btn-group-vertical .filter_group .btn-group label
+#scatter_controls .btn-group-vertical .models>label,
+#scatter_controls .btn-group-vertical .variables>label,
+#scatter_controls .btn-group-vertical .filter_group .btn-group>label
 {
   text-align: right;
   padding-right: 20px;
@@ -179,4 +179,7 @@ select.pred {
   font-size: 10px;
   padding: 1px;
   margin-left: 0px;
+}
+.filter_group .dropdown-menu {
+  left:60px;
 }
