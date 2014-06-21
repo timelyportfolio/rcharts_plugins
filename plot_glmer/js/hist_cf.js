@@ -130,7 +130,7 @@ d3.hist_cf = function module() {
 
       var g = _selection.select('#hist_chart'),
 
-      tooltip = _selection.select('.tooltip')
+      tooltip = _selection.select('.tooltip'),
 
       xaxdiv = g.select('.hist_xaxis');
 

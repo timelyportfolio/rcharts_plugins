@@ -19,20 +19,6 @@
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-<!--     <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css
-">
- -->
-<script>
-$.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js',function(){
-  
-  $('.single option').click(function() {
-    // only affects options contained within the same optgroup
-    // and doesn't include this
-    //$(this).siblings().prop('selected', false);
-  });
-  
-});
-</script>
 </head>
 <body>
 <div class='container' style='width:1800px'>
@@ -49,9 +35,6 @@ $.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-mult
 $.getScript('js/bootstrap-multiselect.js',function(){
   
   $('.single option').click(function() {
-    // only affects options contained within the same optgroup
-    // and doesn't include this
-    //$(this).siblings().prop('selected', false);
   });
   
 });
@@ -129,54 +112,62 @@ d3.csv('data/beauty.csv', function(error, dat) {
 // end dtypes
 
 // coefficients
-  var coefs = [
-   {
-   "Estimate": 0.69246,
-  "Std. Error": 0.086369,
-  "t value": 8.0174,
-  "Pr(>|t|)": 9.0432e-15,
-  "variable": "(Intercept)" 
-  },
-  {
-   "Estimate": -0.0033726,
-  "Std. Error": 0.00094879,
-  "t value": -3.5547,
-  "Pr(>|t|)": 0.00041772,
-  "variable": "age" 
-  },
-  {
-   "Estimate": -0.0072714,
-  "Std. Error": 0.019006,
-  "t value": -0.38259,
-  "Pr(>|t|)": 0.7022,
-  "variable": "female1" 
-  },
-  {
-   "Estimate": 0.91251,
-  "Std. Error": 0.016249,
-  "t value": 56.156,
-  "Pr(>|t|)": 9.316e-208,
-  "variable": "courseevaluation" 
-  } 
-  ],
-  sigma = 0.1900428;
-  var coefsObj = _.zipObject(_.map(coefs, function(d) { return d.variable;}), 
-  coefs)
+var coefs = {  "m1": {
+ "Estimate": [ 0.69381, -0.0034277, -0.0068392, 0.91211, -0.016647, 0.0027241 ],
+"Std. Error": [ 0.088407, 0.00095362, 0.019132, 0.016332, 0.026061, 0.0070851 ],
+"t value": [ 7.8479, -3.5945, -0.35748, 55.849, -0.63878, 0.38448 ],
+"Pr(>|t|)": [ 3.0288e-14, 0.00036043, 0.7209, 2.7366e-206, 0.52329, 0.7008 ],
+"variable": [ "(Intercept)", "age", "female1", "courseevaluation", "minority1", "btystdvariance" ] 
+}, "m2": {
+ "Estimate": [ 0.6923, -0.0034646, -0.0062957, 0.91283, 0.0053262 ],
+"Std. Error": [ 0.086458, 0.0010092, 0.019366, 0.01631, 0.019758 ],
+"t value": [ 8.0073, -3.433, -0.32509, 55.969, 0.26957 ],
+"Pr(>|t|)": [ 9.7611e-15, 0.00065119, 0.74526, 6.4408e-207, 0.78761 ],
+"variable": [ "(Intercept)", "age", "female1", "courseevaluation", "tenured1" ] 
+}, "m3": {
+ "Estimate": [ -2.281, 0.084247, -0.86637, -0.51675, 0.20908 ],
+"Std. Error": [ 1.0812, 0.012187, 0.21552, 0.53456, 0.54673 ],
+"z value": [ -2.1097, 6.9126,  -4.02, -0.96668, 0.38241 ],
+"Pr(>|z|)": [ 0.034882, 4.7596e-12, 5.8206e-05, 0.33371, 0.70216 ],
+"variable": [ "(Intercept)", "age", "female1", "courseevaluation", "profevaluation" ] 
+}  }
+// function to zip model output into row format with variable names
+// as keys
+function coefsObj(coefs, model) {
+  m = coefs[model]
+  return _.zipObject(_.map(m, 
+                  function(d) { return d.variable;}), m)
+}
+// changes above json output from R into row-based object for each
+// model
+coefs = _.forOwn(coefs, function(v, k, o) {
+  var keys = _.keys(v)
+  o[k] = _.map(_.range(v['Estimate'].length), function(x) {
+    return _.zipObject(keys, _.map(keys, function(t) {
+        return v[t][x];
+      }))
+  })
+})
 // end coefficents
 
+  // get numeric variables in array
   var numeric = _.filter(_.keys(dtypes), function(d) { 
     return _.contains(['numeric', 'integer'], dtypes[d]) ;}),
+  // reset to only look for two data types, numeric and factor
   dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes), 
     function(d) { 
       return _.contains(['integer', 'numeric'], 
                         dtypes[d]) ? 'numeric': 'factor'}))
+  // get factor variables in array
   var factor = _.filter(_.keys(dtypes), function(d) { 
     return dtypes[d] == 'factor'}),
+  // prepare crossfilter and set up some parameters
   data = crossfilter(dat),
   yvar = 'profevaluation',
   xvar = 'courseevaluation',
   color_var = factor[0],
   filter_var = factor[2],
+  model = _.keys(coefs)[1],
   size_var = numeric[3],
   colors = d3.scale.category10();
 
@@ -195,17 +186,38 @@ d3.csv('data/beauty.csv', function(error, dat) {
   buttons = d3.select('#scatter_controls').append('div')
               .attr('class', 'btn-group-vertical')
 
-  buttons = buttons.selectAll('div')
+  buttons.selectAll('div')
+          .data(['choose_model'])
+          .enter().append('div')
+          .attr('class', 'models')
+          .each(function(d, i) {
+            d3.select(this).append('label')
+                .attr('for', d)
+                .text(d.replace(/choose_/, '') + ':')
+            d3.select(this).append('select')
+              .attr('class', 'btn selectpicker controls')
+              .attr("id", d)
+              .each(function(button) {
+                d3.select(this).select('#' + button)
+                  .append('span').attr('class', 'caret')
+                d3.select(this).selectAll('option')
+                  .data(_.keys(coefs))
+                  .enter().append('option')
+                  .text(function(t) { return t;})
+                  .attr('selected', function(d,i) { 
+                    return _.keys(coefs)[i] == model ? "selected":null})
+              })
+
+          })
+
+  buttons = buttons.selectAll('div.variables')
         .data(labels)
         .enter().append('div')
-        .style('padding-bottom', '5px')
+        .attr('class', 'variables')
         .each(function(d,i) {
           d3.select(this).append('label')
                 .attr('for', d)
                 .text(d.replace(/choose_/, '') + ':')
-                .style('width', '100px')
-                .style('text-align', 'right')
-                .style('padding-right', '10px')
          var select = d3.select(this).append('select')
           select.attr('class','btn selectpicker controls')
           .attr('data-width', 'auto')
@@ -245,6 +257,15 @@ d3.csv('data/beauty.csv', function(error, dat) {
   });
   d3.select('#choose_y').on('change', function() {
     yvar = this.value
+    update_all();
+  });
+  d3.select('#choose_model').on('change', function() {
+    model = this.value
+    var coef_plot = d3.barchart_errors()
+                  .width(600)
+                  .height(300);
+    d3.select('#coefficients')
+      .datum(coefs[model]).call(coef_plot)
     update_all();
   });
   d3.select('#choose_size').on('change', function() {
@@ -325,15 +346,8 @@ d3.csv('data/beauty.csv', function(error, dat) {
           d3.select("#current_filter~.btn-group")
             .insert('label', '.btn')
             .text(filter_var + ":")
-            .style('width', '100px')
-            .style('text-align', 'right')
-            .style('padding-right', '10px')
             .style('float', 'left')
-            .style('display', 'inline')
           d3.select('#current_filter~.btn-group .btn')
-            .style('width', '150px')
-            .style('height', '30px')
-            .style('outline', '0px')
             .style('border-radius', '4px')
   }
 
@@ -387,13 +401,20 @@ d3.csv('data/beauty.csv', function(error, dat) {
 
   }
 
+  formulas = {
+ "m1": "profevaluation ~ age + female + courseevaluation + minority + btystdvariance",
+"m2": "profevaluation ~ age + female + courseevaluation + tenured",
+"m3": "tenured ~ age + female + courseevaluation + profevaluation" 
+}
   // getting factor and numeric terms for univariate charts.
-  var f = "profevaluation ~ age + female + courseevaluation",
-  formula = f.replace(/ /g, ''),
-  dep_var = formula.slice(0, formula.search(/~/)),
-  indeps = formula.slice(formula.search(/~/) + 1).split('+')
-  numeric_terms = _.filter(indeps, 
-                           function(d) { return dtypes[d] == 'numeric'})
+  function prep_formula(f) {
+    var formula = f.replace(/ /g, ''),
+    dep_var = formula.slice(0, formula.search(/~/)),
+    indeps = formula.slice(formula.search(/~/) + 1).split('+')
+    numeric_terms = _.filter(indeps, 
+                             function(d) { return dtypes[d] == 'numeric'})
+    return formula;
+  }
 
   var scatter_div = d3.select('#chart')
         .append('div')
@@ -412,11 +433,13 @@ d3.csv('data/beauty.csv', function(error, dat) {
         .style('width', 200)
         .append('text')
   
-  var coef_div = d3.select('#chart')
-              .append('div')
-              .attr('id', 'coefficients')
-              .style('float','left')
-              .datum(coefs),
+  var coef_div = d3.select('#chart').append('div');
+  console.log(coefs[model])
+  coef_div
+      .style('position', 'relative')
+      .attr('id', 'coefficients')
+      .style('float','left')
+      .datum(coefs[model])
 
   coef_plot = d3.barchart_errors()
                 .width(600)
@@ -441,7 +464,7 @@ d3.csv('data/beauty.csv', function(error, dat) {
             .tickdiv(5)
             .bins(30),
 
-  all_hist = _.map(_.range(0, numeric.length), function(d) {
+  all_hist = _.map(_.range(0, 4), function(d) {
       return {vname: numeric[d], dim: inx};})
 
   var hist_div = d3.select('#histograms').style('float', 'left')
@@ -469,9 +492,9 @@ d3.csv('data/beauty.csv', function(error, dat) {
       .size_var(size_var)
       .npredictlines(3)
       .filter_var(filter_var)
-      .coefs(coefsObj)
+      .coefs(coefsObj(coefs, model))
       .dtypes(dtypes)
-      .formula(f)
+      .formula(prep_formula(formulas[model]))
       .id('scatter');
 
   scatter_div.call(scatter); // do I have to have data bound?
@@ -489,13 +512,14 @@ d3.csv('data/beauty.csv', function(error, dat) {
       .color_scale(colors)
       .size_var(size_var)
       .filter_var(filter_var)
-      .coefs(coefsObj)
+      .coefs(coefsObj(coefs, model))
       .dtypes(dtypes)
-      .formula(f)
+      .formula(prep_formula(formulas[model]))
       .npredictlines(3)
       .id('scatter');
 
     scatter_div.call(scatter)
+
   }
 });
 function iqr(k) {
@@ -518,40 +542,6 @@ function boxQuartiles(d) {
   ];
 }
 
-var coefs = [
- {
- "Estimate": 0.69246,
-"Std. Error": 0.086369,
-"t value": 8.0174,
-"Pr(>|t|)": 9.0432e-15,
-"variable": "(Intercept)" 
-},
-{
- "Estimate": -0.0033726,
-"Std. Error": 0.00094879,
-"t value": -3.5547,
-"Pr(>|t|)": 0.00041772,
-"variable": "age" 
-},
-{
- "Estimate": -0.0072714,
-"Std. Error": 0.019006,
-"t value": -0.38259,
-"Pr(>|t|)": 0.7022,
-"variable": "female1" 
-},
-{
- "Estimate": 0.91251,
-"Std. Error": 0.016249,
-"t value": 56.156,
-"Pr(>|t|)": 9.316e-208,
-"variable": "courseevaluation" 
-} 
-],
-
-sigma = 0.1900428;
-coefs = _.zipObject(_.map(coefs, function(d) { return d.variable;}), 
-coefs)
 // column_types for beauty.csv
   var dtypes = {
   "tenured": "factor",

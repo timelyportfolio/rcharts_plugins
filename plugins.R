@@ -270,6 +270,7 @@ function draw{{chartId}}(){
     )
   }
 ))
+
 .plugins$PlotGlmer = setRefClass('PlotGlmer', contains = 'rCharts', methods = list(
   initialize = function(){
     callSuper()
@@ -290,12 +291,14 @@ function draw{{chartId}}(){
   },
   getPayload = function(chartId){
     skip = c('data', 'coefs')
+    coefs = toJSONArray(params[['coefs']])
     chartParams = RJSONIO:::toJSON(params[!(names(params) %in% c(skip))])
     list(chartParams = chartParams, 
          chartId = chartId, 
+         formulas = '', # json object corresponding to coefs
          lib = basename(lib), liburl = LIB$url, 
          data=toJSONArray(params[['data']]), 
-         coefs=toJSONArray(params[['coefs']]), 
+         coefs=coefs,  # json object of all models
          dtypes=RJSONIO::toJSON(sapply(params[['data']], class))
     )
   },

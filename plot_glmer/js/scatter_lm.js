@@ -448,15 +448,15 @@ d3.sccf = function () {
       function predictions(sel, step) {
         var predictors = _.filter(indeps, function(d) { return d != xvar;})
         sel.append('div')
-           .attr('class', 'factor')
+           .attr('class', 'factor btn-group-vertical')
            .selectAll('div')
             .data(_.filter(predictors, function(d) { return dtypes[d] == 
               'factor';}))
           .enter().append('div')
           .each(function(d,i) {
-            d3.select(this).append('label').text(d)
+            d3.select(this).append('label').text(d + ": ")
             d3.select(this).append('select')
-            .attr('class', function(d) { return 'pred ' + d;})
+            .attr('class', function(d) { return 'pred btn ' + d;})
             .each(function(d, i) {
               d3.select(this).attr('id', d)
               var options = _.unique(_.map(dimension.top(Infinity), 
@@ -467,11 +467,11 @@ d3.sccf = function () {
                 .attr('selected', function(d,i) { 
                   return step % options.length == i  ? 'selected': null})
                 .attr('value', function(d, i) { return d; })
-                .text(function(d) { return d;})
+                .text(function(d) { return d ;})
             })
             .on('change', make_predictions_lm)
           })
-        sel = sel.append('div').attr('class', 'numeric')
+        sel = sel.append('div').attr('class', 'numeric btn-group-vertical')
                 .selectAll('div')
                 .data(_.filter(predictors, function(d) 
                      { return dtypes[d] != 'factor'; }))
@@ -712,7 +712,6 @@ d3.sccf = function () {
         update_ui();
         make_predictions_lm();
         if(predicting()){
-          console.log('predicting:', predicting());
           bg.on('mousemove', mousemove)
         } else {
           d3.selectAll('.focus g').remove()

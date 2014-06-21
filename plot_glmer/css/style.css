@@ -147,3 +147,36 @@ select {
 .focus text {
   z-index: 1;
 }
+#scatter_controls .btn-group-vertical div {
+  padding-bottom: 5px;
+}
+#scatter_controls .btn-group-vertical .models  select,
+#scatter_controls .btn-group-vertical .variables select,
+#scatter_controls .btn-group-vertical .filter_group button
+#scatter_controls .btn-group-vertical .filter_group select
+{
+  padding-bottom: 5px;
+  width: 160px;
+  padding-right: 10px;
+  display: inline;
+}
+#scatter_controls .btn-group-vertical .models label,
+#scatter_controls .btn-group-vertical .variables label,
+#scatter_controls .btn-group-vertical .filter_group .btn-group label
+{
+  text-align: right;
+  padding-right: 20px;
+  width: 60px;
+  display: inline-block;
+  float:left;
+}
+.factor label {
+  margin-right:10px;
+}
+select.pred {
+  width: 80px;
+  height: 18px;
+  font-size: 10px;
+  padding: 1px;
+  margin-left: 0px;
+}
