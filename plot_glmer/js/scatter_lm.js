@@ -204,13 +204,6 @@ d3.sccf = function () {
                   .attr('width', width)
                   .attr('height', height)
 
-        frame.append('text')
-            .attr('id', 'formula_title')
-            .attr('x', (size.x/2 + padding.left) + 'px')
-            .attr('y', 20 + 'px')
-            .style('font-size', '20px')
-            .attr('text-anchor', 'middle')
-
         var plot = frame.append('g')
                     .attr('id', 'plot')
                     .attr('transform', 'translate(' + padding.left + 
@@ -363,7 +356,7 @@ d3.sccf = function () {
         circles.on("mouseover", function(d) {
             tooltip.transition()
                  .duration(200)
-                 .style('opacity', 0.8)
+                 .style('opacity', 0.9)
             tooltip.html(function() { return tooltip_content(d)})
                      .style("left", (d3.mouse(this)[0] + 90) + "px")
                      .style("top", (d3.mouse(this)[1] - 50) + "px");
@@ -501,10 +494,6 @@ d3.sccf = function () {
 
       function make_predictions_lm() {
         if(predicting()){
-          var formula_title = d3.select('#formula_title')
-                                .text(formula)
-                                .transition().duration(1000)
-                                .style('opacity', 1);
           preds = d3.selectAll('#prediction-table .well.pred')[0],
           ids = _.map(preds, function(d) { return d.id; })
           preds = _.zipObject(ids, 
@@ -532,9 +521,6 @@ d3.sccf = function () {
             d3.select('#prediction-table')
               .transition().duration(1000)
               .style('opacity', 0).remove()
-            d3.select('#formula_title')
-                .transition().duration(1000)
-                .style('opacity', 0);
           }
         }
       // different colors for fit lines.

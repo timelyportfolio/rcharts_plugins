@@ -262,6 +262,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
     model = this.value
     var coef_plot = d3.barchart_errors()
                   .width(600)
+                  .formula(formulas[model])
                   .height(300);
     d3.select('#coefficients')
       .datum(coefs[model]).call(coef_plot)
@@ -442,6 +443,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
 
   coef_plot = d3.barchart_errors()
                 .width(600)
+                .formula(formulas[model])
                 .height(300);
 
   coef_div.call(coef_plot)

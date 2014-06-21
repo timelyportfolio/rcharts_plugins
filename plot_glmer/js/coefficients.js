@@ -8,6 +8,7 @@ d3.barchart_errors = function module() {
       tval = 't value',
       prob = 'Pr(>|t|)',
       variable = 'variable',
+      formula = null,
       id = 'coef_plot',
       padding = {
          "top":    40,
@@ -38,8 +39,15 @@ d3.barchart_errors = function module() {
         sel = _selection.append('svg')
                     .attr('class', 'coef_frame')
                     .attr('width', width)
-                    .attr('height', height),
-        tooltip = _selection.append('text')
+                    .attr('height', height);
+        sel.append("text")
+            .attr('id', 'formula_title')
+            .style('opacity', 0)
+            .attr('transform', 'translate(5' + "," +
+                  padding.top/2 + ")")
+            .attr('font-size', '14pt');
+
+        var tooltip = _selection.append('text')
             .attr('class', 'tooltip')
             .attr('id', 'coef_tooltip')
             .style('opacity', 0),
@@ -73,6 +81,12 @@ d3.barchart_errors = function module() {
       var refitting = false,
           neg = colorbrewer.RdBu[3][0],
           pos = colorbrewer.RdBu[3][2];
+      d3.select('#formula_title')
+              .transition().duration(500)
+              .style('opacity', 0)
+              .text(formula)
+              .transition().duration(500)
+              .style('opacity', 1);
       var g = _selection.select('#coef_chart')
       var x = d3.scale.linear()
                   .range([0, size.x])
@@ -292,6 +306,11 @@ d3.barchart_errors = function module() {
   barchart_errors.variable = function(_x) {
     if(!arguments.length) return variable;
     variable = _x;
+    return barchart_errors;
+  }
+  barchart_errors.formula = function(_x) {
+    if(!arguments.length) return formula;
+    formula = _x;
     return barchart_errors;
   }
   barchart_errors.prob = function(_x) {
