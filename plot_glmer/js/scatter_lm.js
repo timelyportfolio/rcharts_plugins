@@ -473,11 +473,22 @@ d3.sccf = function () {
               d3.select(this).attr('id', d)
                   .attr('class', function(e) { return "pred numeric " + e; })
               var vrange = expand_extent(d3.extent(_.map(dimension.top(Infinity), function(r) { return parseFloat(r[d]);})))
-              d3.select(this.parentNode).insert('label', '#' + d).text(d)
-              $("#pred" + step + " .pred.numeric." + d).slider({min:vrange[0], 
-                max:vrange[1], step:stepper(vrange), value: quintiles[d][step],
-                change: make_predictions_lm})
+              d3.select(this.parentNode).insert('label', '#' + d).text(d + ":")
+                .attr('for', d + "_label_" + step)
+              d3.select(this.parentNode).insert('input', '#' + d)
+                .attr('type', 'text')
+                .attr('id', d + '_label_' + step)
+              $("#pred" + step + " .pred.numeric." + d)
+                .slider({min:vrange[0], 
+                  max:vrange[1], 
+                  step:stepper(vrange), 
+                  value: quintiles[d][step],
+                  slide: function(event, ui) {
+                    $("#" + d + "_label_" + step).val(ui.value)
+                  },
+                  change: make_predictions_lm})
               $('.pred.numeric.' + d).width(200)
+              $("#" + d + "_label_" + step).val($("#pred" + step + " .pred.numeric." + d).slider('value'))
             })
       }
 

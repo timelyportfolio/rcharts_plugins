@@ -188,3 +188,9 @@ select.pred {
   left: 80px;
 }
 
+.btn-group-vertical input{
+  border:0; 
+  padding-left: 10px;
+  font-weight:bold;
+  background: none;
+}

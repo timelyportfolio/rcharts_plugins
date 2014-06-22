@@ -127,7 +127,12 @@ var coefs = {  "m1": {
 "z value": [ -2.1097, 6.9126,  -4.02, -0.96668, 0.38241 ],
 "Pr(>|z|)": [ 0.034882, 4.7596e-12, 5.8206e-05, 0.33371, 0.70216 ],
 "variable": [ "(Intercept)", "age", "female1", "courseevaluation", "profevaluation" ] 
-}  }
+}  },
+  formulas = {
+ "m1": "profevaluation ~ age + female + courseevaluation + minority + btystdvariance",
+"m2": "profevaluation ~ age + female + courseevaluation + tenured",
+"m3": "tenured ~ age + female + courseevaluation + profevaluation" 
+}
 // function to zip model output into row format with variable names
 // as keys
 function coefsObj(coefs, model) {
@@ -396,14 +401,8 @@ coefs = _.forOwn(coefs, function(v, k, o) {
     color_legend.exit()
       .transition().duration(1000)
       .style('opacity', 0).remove()
-
   }
 
-  formulas = {
- "m1": "profevaluation ~ age + female + courseevaluation + minority + btystdvariance",
-"m2": "profevaluation ~ age + female + courseevaluation + tenured",
-"m3": "tenured ~ age + female + courseevaluation + profevaluation" 
-}
   // getting factor and numeric terms for univariate charts.
   function prep_formula(f) {
     var formula = f.replace(/ /g, ''),
@@ -439,7 +438,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
       .datum(coefs[model])
 
   coef_plot = d3.barchart_errors()
-                .width(600)
+                .width(625)
                 .formula(formulas[model])
                 .height(300);
 
