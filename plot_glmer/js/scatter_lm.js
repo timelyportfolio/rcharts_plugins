@@ -4,27 +4,26 @@ d3.sccf = function () {
       height = 600, 
       id = null,
       size_var = null,
+      initial_size = 4,
       color_var =  null,
       filter_var =  null,
       xvar =  null,
       yvar = null,
       dtypes = null,
       dimension = null,
-      color_scale = null,
+      color_scale = function(d) { return 'blue';},
       formula = null,
       max_factor = 20,
       coefs = null,
-      preds = null, 
-      xes = null,
-      npredictlines = 5,
+      npredictlines = 5, // number of prediction lines to draw.
       padding = {
          "top":    40,
          "right":  30,
          "bottom": 60,
          "left":   70
       },
-      l = null,
-      lines = null;
+      lines = null,
+      link = 'id'; // ?
   // functions to establish group from filtered dimension
   function reduceSub(x, y, color, size) { 
     return function(p, v) { 
@@ -124,6 +123,9 @@ d3.sccf = function () {
       var jittered,
       x,
       y,
+      l, // holds the d3 line generator.
+      preds = null, // object length npredictlines with chosen values from UI
+      xes = null, // contains 100 evenly spaced numbers from current x axis
       refitting = false,
       xax = d3.svg.axis().orient('bottom'),
       yax = d3.svg.axis().orient('left'),
@@ -158,7 +160,7 @@ d3.sccf = function () {
 
         jittered = _.filter(jittered, function(d) { return d.color != null;})
       };
-      var size_scale = function(d) { return 3;} // default size of 3
+      var size_scale = function(d) { return initial_size;} // default size of 3
 
       // mapping size to absolute value of size var
       if(size_var != null && dtypes[size_var] == 'numeric') {
@@ -186,9 +188,9 @@ d3.sccf = function () {
         } else {
           scale = d3.scale.ordinal()
                 .rangeRoundBands([0, size[axis]])
-                .domain(_.unique(_.map(jittered, function(d) {
+                .domain(_.sortBy(_.unique(_.map(jittered, function(d) {
                     return d[axis]
-                })))
+                }))))
         }
         return scale;
       }
@@ -256,16 +258,17 @@ d3.sccf = function () {
         }
       // prediction controls
       if(predicting()) {
-        if(d3.select('#prediction-table').empty())
+        // accessing stuff outside of _selection
+        if(d3.select('#prediction-table').empty()) 
           {d3.select('#' + id + '_controls')
                           .append('div')
                           .attr('id', 'prediction-table')}
         if(d3.select('.paths').empty()){
-          lines = d3.select('#plot .circles')
+          lines = _selection.select('#plot .circles')
                   .insert('g', 'circle')
                   .attr('class', 'paths')
         } else {
-          lines = d3.select('#plot .circles .paths')
+          lines = _selection.select('#plot .circles .paths')
         }
       }
       function tooltip_content(d) {
@@ -278,7 +281,8 @@ d3.sccf = function () {
         filter_var , ": " , d.filter, "</p>")
       }
 
-      // fixed random numbers to apply to points when jittering about ordinal scale
+      // fixed random numbers to apply to points 
+      // when jittering about an ordinal scale
       var noise = {x:_.map(_.range(inxgroup.all().length), 
                         function() {return _.random(-0.5, 0.5)}),
                   y: _.map(_.range(inxgroup.all().length), 
@@ -338,7 +342,7 @@ d3.sccf = function () {
           .attr('index', function(d) { return d._index; })
           .attr('cx', 0)
           .attr('cy', size.y)
-          .attr('r', 1)
+          .attr('r', 3)
           .attr('fill', function(d) { return color_scale(d.color)})
           .transition().duration(transition_time())
           .attr('cx', function(d,i) { return place('x', x, i)(d)})
@@ -348,9 +352,10 @@ d3.sccf = function () {
 
         circles.exit()
               .transition().duration(transition_time())
-              .attr('cx', x(0))
-              .attr('cy', y(0))
-              .style('fill-opacity', 0)
+              .attr('r', 3)
+              // .attr('cx', x(x.domain()[0]))
+              .attr('cy', y(y.domain()[1]))
+              // .style('fill-opacity', 0)
               .remove()
 
         circles.on("mouseover", function(d) {
@@ -492,8 +497,10 @@ d3.sccf = function () {
             })
       }
 
-
       function inner_prod(pred) {
+        // what does pred look like?
+        // pred is object of DOM elements from each of the needed
+        // independent variables for a particular line
         return d3.sum(_.map(_.keys(pred), function(d) {
           if(dtypes[d] == 'numeric'){
             return $(pred[d][0]).slider('value') * coefs[d]['Estimate']
@@ -506,8 +513,7 @@ d3.sccf = function () {
       function make_predictions_lm() {
         if(predicting()){
           preds = d3.selectAll('#prediction-table .well.pred')[0],
-          ids = _.map(preds, function(d) { return d.id; })
-          preds = _.zipObject(ids, 
+          preds = _.zipObject(_.map(preds, function(d) { return d.id; }), 
                       _.map(preds, function(d) { 
                         return _.groupBy(d3.select(d).selectAll('.pred')[0],
                                          function(x) { return x.id;})}))
@@ -523,7 +529,7 @@ d3.sccf = function () {
           preds = _.map(_.keys(preds), function(d) {
                                   return {'key': d, 'v':inner_prod(preds[d])};});
           update_lines(preds, xes);
-          return preds;
+          // return preds;
           } else {
           // clean up modeling ui and elements if not needed.
             _selection.selectAll('.paths')
@@ -631,13 +637,28 @@ d3.sccf = function () {
             })
         }
       }
+      function sigmoid(x) {
+        return 1 / (1 + Math.exp(-x))
+      }
+      var linear_y = y;
       function update_ui() {
         // add modeling UI and setup scales / elements
         if(predicting()){
-          l = d3.svg.line()
-                .x(function(d) { return x(d[0])})
-                .y(function(d) { return y(d[1])})
-                .interpolate('basis')
+          if(dtypes[yvar] == 'numeric'){
+            linear_y = y;
+            l = d3.svg.line()
+                  .x(function(d) { return x(d[0])})
+                  .y(function(d) { return y(d[1])})
+                  .interpolate('basis')
+          } else {
+            linear_y = d3.scale.linear()
+                              .range([y(y.domain()[0]), y(y.domain()[1])])
+                              .domain([1, 0])
+            console.log([y(y.domain()[0]), y(y.domain()[1])])
+            l = d3.svg.line()
+                  .x(function(d) { return x(d[0])})
+                  .y(function(d) { return linear_y(sigmoid(d[1])) + y.rangeBand()/2;})
+          }
           d3.selectAll('#prediction-table div')
               .remove()
           var predui = d3.select('#prediction-table').selectAll('div')
@@ -671,7 +692,13 @@ d3.sccf = function () {
             .style('opacity', 0).remove()
         }
       }
-
+      function link(x) {
+        if(dtypes[yvar]=='numeric'){
+          return x
+        } else {
+          return sigmoid(x)
+        }
+      }
       function mousemove() {
           var x0 = x.invert(d3.mouse(this)[0])
           var c = d3.select('.focus').selectAll('g')
@@ -679,18 +706,24 @@ d3.sccf = function () {
 
           c.attr('transform', function(d) { 
                 return 'translate(' + 
-                    x(x0) + "," + y(d.v + x0*coefs[xvar]['Estimate']) + ")"})
+                    x(x0) + "," + 
+                    (linear_y(link(d.v + x0*coefs[xvar]['Estimate'])) 
+                     + y.rangeBand()/2) + 
+                    ")"})
               .each(function(d, i) {
                 d3.select(this).select('text')
                   .attr("dy", ".35em")
                   .style('font-size', 12)
-                  .text(d3.format('0.2f')(d.v + x0*coefs[xvar]['Estimate']));
+                  .text(d3.format('0.2f')(link(d.v + x0*coefs[xvar]['Estimate'])));
               })
 
             c.enter().append('g')
               .attr('transform', function(d) { 
                 return 'translate(' + 
-                    x(x0) + "," + y(d.v + x0*coefs[xvar]['Estimate']) + ")"})
+                    x(x0) + "," + 
+                    (linear_y(link(d.v + x0*coefs[xvar]['Estimate'])) 
+                     + y.rangeBand()/2) + 
+                    ")"})
               .each(function(d, i) {
                 d3.select(this).append('circle')
                   .attr('r', 4.5)
@@ -802,6 +835,16 @@ d3.sccf = function () {
   sccf.npredictlines = function(_x) {
     if(!arguments.length) return npredictlines;
     npredictlines = _x;
+    return sccf;
+  }
+  sccf.initial_size = function(_x) {
+    if(!arguments.length) return initial_size;
+    initial_size = _x;
+    return sccf;
+  }
+  sccf.link = function(_x) {
+    if(!arguments.length) return link;
+    link = _x;
     return sccf;
   }
 

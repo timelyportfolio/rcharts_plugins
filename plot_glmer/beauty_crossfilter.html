@@ -165,11 +165,11 @@ coefs = _.forOwn(coefs, function(v, k, o) {
     return dtypes[d] == 'factor'}),
   // prepare crossfilter and set up some parameters
   data = crossfilter(dat),
-  yvar = 'profevaluation',
-  xvar = 'courseevaluation',
+  yvar = 'tenured',
+  xvar = 'age',
   color_var = factor[0],
   filter_var = factor[2],
-  model = _.keys(coefs)[1],
+  model = _.keys(coefs)[2],
   size_var = numeric[3],
   colors = d3.scale.category10();
 
@@ -375,6 +375,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
           .attr('fill', colors(el[0][0].__data__))
           .attr('fill-opacity', 0.8)
     }
+
     color_legend.select('text')
           .transition().duration(500)
           .style('opacity', 0)
@@ -383,14 +384,17 @@ coefs = _.forOwn(coefs, function(v, k, o) {
           .text(color_var + ":")
           .attr('x', 0)
           .attr('y', 10)
+
     color_legend = color_legend.selectAll('g.c')
           .data(colors.domain())
+
     color_legend.each(function(d, i) {
       var g = d3.select(this)
       g.select('rect').remove()
       g.select("text").remove()
       g.attr('transform', 'translate(0,' + (i * 25) + ')')
       g.call(make_color_legend)});
+
     color_legend
        .enter().append('g')
         .attr('class', 'c')
@@ -398,6 +402,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
           var g = d3.select(this)
           g.attr('transform', 'translate(0,' + (i * 25) + ')')
           g.call(make_color_legend)});
+
     color_legend.exit()
       .transition().duration(1000)
       .style('opacity', 0).remove()
@@ -427,7 +432,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
         .style('top', '50px')
         .append('svg')
         .attr('id', 'color-legend')
-        .style('width', 200)
+        .style('width', 100)
         .append('text')
   
   var coef_div = d3.select('#chart').append('div');
