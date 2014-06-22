@@ -81,12 +81,15 @@ d3.barchart_errors = function module() {
       var refitting = false,
           neg = colorbrewer.RdBu[3][0],
           pos = colorbrewer.RdBu[3][2];
-      d3.select('#formula_title')
-              .transition().duration(500)
-              .style('opacity', 0)
-              .text(formula)
-              .transition().duration(500)
-              .style('opacity', 1);
+      var ftitle = d3.select('#formula_title')
+      
+      ftitle.transition().duration(400)
+          .style('opacity', 0)
+      
+      ftitle.transition().duration(1000).delay(400)
+          .text(formula)
+          .style('opacity', 1)
+
       var g = _selection.select('#coef_chart')
       var x = d3.scale.linear()
                   .range([0, size.x])
@@ -256,8 +259,7 @@ d3.barchart_errors = function module() {
              .attr('d', function(d) { return errorBarArea([d]) })
              .style('stroke', 'black')
              .style('stroke-width', 5)
-             .style('opacity', 0.8)
-
+             .style('opacity', 0.6)
       }
       draw_bars();
       function refit() {

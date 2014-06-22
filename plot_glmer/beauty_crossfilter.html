@@ -6,19 +6,24 @@
 -->
     <script src='js/jquery-1.8.2.min.js' type='text/javascript'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script src="js/d3.v3.min.js" charset="utf-8"></script>
+
     <script src='js/lodash.js' type='text/javascript'></script>
     <script src='bootstrap3/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src="js/bootstrap-multiselect.js" charset="utf-8"></script>    
+
+    <script src="js/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
     <script src="js/crossfilter.js" charset="utf-8"></script>
     <script src="js/box.js" charset="utf-8"></script>
     <script src="js/scatter_lm.js" charset="utf-8"></script>    
     <script src="js/coefficients.js" charset="utf-8"></script>    
     <script src="js/hist_cf.js" charset="utf-8"></script>    
+
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-</head>
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+  </head>
 <body>
 <div class='container' style='width:1800px'>
   <div class='row'>
@@ -31,13 +36,6 @@
   </div>
 </div>
 <script>
-$.getScript('js/bootstrap-multiselect.js',function(){
-  
-  $('.single option').click(function() {
-  });
-  
-});
-
 
 d3.csv('data/beauty.csv', function(error, dat) {
 
@@ -183,7 +181,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
   var labels = ['choose_x', 'choose_y', 'choose_color',
                         'choose_size', 'choose_filter'],
   buttons = d3.select('#scatter_controls').append('div')
-              .attr('class', 'btn-group-vertical')
+              .attr('class', 'btn-group-vertical sc')
 
   buttons.selectAll('div')
           .data(['choose_model'])
@@ -304,7 +302,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
     all_hist = _.map(_.range(0, numeric.length), function(d) {
         return {vname: numeric[d], dim: inx};})
 
-    hist_div.selectAll('div')
+    hist_div.selectAll('div.hist')
       .data(all_hist, function(d) { return d.vname})
       .each(function() {
         d3.select(this)
@@ -323,7 +321,8 @@ coefs = _.forOwn(coefs, function(v, k, o) {
     fil = data.dimension(function(d) { return d[filter_var];});
     d3.select('#current_filter').remove()
     d3.select('.btn-group').remove()
-    var cur_filter = d3.select('.btn-group-vertical')
+    d3.select('.btn-group-vertical .filter_group').remove()
+    var cur_filter = d3.select('.btn-group-vertical.sc')
                     .append('div')
                     .attr('class', 'filter_group')
                     .append('select')
@@ -346,7 +345,6 @@ coefs = _.forOwn(coefs, function(v, k, o) {
           d3.select("#current_filter~.btn-group")
             .insert('label', '.btn')
             .text(filter_var + ":")
-            .style('float', 'left')
           d3.select('#current_filter~.btn-group .btn')
             .style('border-radius', '4px')
   }
@@ -434,7 +432,6 @@ coefs = _.forOwn(coefs, function(v, k, o) {
         .append('text')
   
   var coef_div = d3.select('#chart').append('div');
-  console.log(coefs[model])
   coef_div
       .style('position', 'relative')
       .attr('id', 'coefficients')
@@ -448,40 +445,137 @@ coefs = _.forOwn(coefs, function(v, k, o) {
 
   coef_div.call(coef_plot)
 
+// histograms
+  function update_hist() {
+
+    if(d3.select("#hist_select").empty()){
+      var hist_select = d3.select('.btn-group-vertical.sc')
+                      .append('div')
+                      .attr('class', 'hist')
+                      .append('select')
+                      .attr('id', 'hist_select')
+                      .attr('multiple', 'multiple')
+                      .attr('class', 'controls')
+      hist_select.selectAll('option')
+        .data(numeric)
+        .enter().append('option')
+        .attr('value', function(d) { return d; })
+        .attr('selected', function(d, i) {
+          return i < 4 ? 'selected':null;
+        })
+        .text(function(d) { return d;})
+
+      $('#hist_select').multiselect({
+        onChange: function(option, checked) {
+          // Get selected options.
+          var selectedOptions = $('#hist_select option:selected');
+   
+          if (selectedOptions.length >= 4) {
+            // Disable all other checkboxes.
+            var nonSelectedOptions = $('#hist_select option').filter(function() {
+              return !$(this).is(':selected');
+            });
+   
+            var dropdown = $('#hist_select').siblings('.multiselect-container');
+            nonSelectedOptions.each(function() {
+              var input = $('input[value="' + $(this).val() + '"]');
+              input.prop('disabled', true);
+              input.parent('li').addClass('disabled');
+            });
+          }
+          else {
+            // Enable all checkboxes.
+            var dropdown = $('#hist_select').siblings('.multiselect-container');
+            $('#hist_select option').each(function() {
+              var input = $('input[value="' + $(this).val() + '"]');
+              input.prop('disabled', false);
+              input.parent('li').addClass('disabled');
+            });
+          }
+          add_hist();
+        },
+        buttonWidth:false})
+      d3.select("#hist_select~.btn-group")
+        .insert('label', '.btn')
+        .text("histograms:")
+      d3.select('#hist_select~.btn-group .btn')
+        .style('border-radius', '4px')
+    } else {
+      var hist_select = d3.select('#hist_select')
+    }
+  }
+
 
   var hist_div = d3.select('#chart').append('div')
                   .attr('class', 'row')
                   .append('div')
                   .attr('class', 'col-md-12')
                   .style('float', 'left')
+                  .append('div')
                   .attr('id', 'histograms')
-
+                  .attr('class', 'row'),
+  hist_width = 300;
 
 
   var ch = d3.hist_cf()
             .color(colorbrewer.Dark2[5][1])
             .height(250)
-            .width(300)
+            .width(hist_width)
             .tickdiv(5)
-            .bins(30),
+            .bins(30)
 
-  all_hist = _.map(_.range(0, 4), function(d) {
-      return {vname: numeric[d], dim: inx};})
+  var order = numeric.slice(0,4)
+  function add_hist() {
+    var choices = _.map($('#hist_select option:selected'), 
+                        function(o) { return o.value;})
 
-  var hist_div = d3.select('#histograms').style('float', 'left')
+    if(choices.length != 4) {return null}else{
+      var new_vars = _.difference(choices, order),
+      remove = _.difference(order, choices),
+      index = 0;
 
-  hist_div.selectAll('div')
-    .data(all_hist, function(d) { return d.vname})
-    .enter().append('div')
-    .style('position', 'relative')
-    .each(function() {
-      d3.select(this)
-        .style('float','left')
-        .call(ch);
-    });
+      for(var i = 0; i < remove.length; i++){
+        order[order.indexOf(remove[i])] = new_vars[i];
+      }
+
+
+
+
+
+      console.log("choices: " , choices)
+      console.log("order: ", order)
+
+
+      var all_hist = _.map(order, function(d, i) {
+            return {vname: d, dim: inx, index:i};})
+
+      var hists = hist_div.selectAll('div.hist')
+              .data(all_hist)
+
+      hists.each(function(d, i) {
+        var sel = d3.select(this)
+        if(_.contains(new_vars, d.vname)){
+          sel.call(ch)
+        }
+      })
+
+      if(hists.empty()){
+        hists.enter().insert('div')
+          .attr('id', function(d) { return d.vname})
+          .attr('class', function(d) { return 'hist'})
+          .style('float', 'left')
+          .style('position', 'relative')
+          .each(function(d, i) {
+            d3.select(this).call(ch)
+          })
+      }
+    }
+  }
 
   update_filter();
   update_color();
+  update_hist();
+  add_hist();
   scatter = d3.sccf()
       .height(700)
       .width(700)
@@ -522,6 +616,7 @@ coefs = _.forOwn(coefs, function(v, k, o) {
     scatter_div.call(scatter)
 
   }
+
 });
 function iqr(k) {
   return function(d, i) {
@@ -616,7 +711,6 @@ function boxQuartiles(d) {
         if (_.contains(['character', 'factor'], v)) return dtypes[k] = 'factor';
       })
 // end dtypes
-
 </script>
 </body>
 </html>

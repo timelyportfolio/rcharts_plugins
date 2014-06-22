@@ -150,23 +150,26 @@ select {
 #scatter_controls .btn-group-vertical div {
   padding-bottom: 5px;
 }
-#scatter_controls .btn-group-vertical .models  select,
-#scatter_controls .btn-group-vertical .variables select,
-#scatter_controls .btn-group-vertical .filter_group button
-#scatter_controls .btn-group-vertical .filter_group select
+#scatter_controls .btn-group-vertical.sc .models  select,
+#scatter_controls .btn-group-vertical.sc .variables select,
+#scatter_controls .btn-group-vertical.sc .filter_group button,
+#scatter_controls .btn-group-vertical.sc .hist button,
+#scatter_controls .btn-group-vertical.sc .filter_group select
 {
   padding-bottom: 5px;
   width: 160px;
-  padding-right: 10px;
+  padding-right: 5px;
   display: inline;
 }
-#scatter_controls .btn-group-vertical .models>label,
-#scatter_controls .btn-group-vertical .variables>label,
-#scatter_controls .btn-group-vertical .filter_group .btn-group>label
+#scatter_controls .btn-group-vertical.sc .models>label,
+#scatter_controls .btn-group-vertical.sc .variables>label,
+#scatter_controls .btn-group-vertical.sc .filter_group .btn-group>label,
+#scatter_controls .btn-group-vertical.sc .hist .btn-group>label
 {
   text-align: right;
-  padding-right: 20px;
-  width: 60px;
+  padding-right: 10px;
+  padding-top: 10px;
+  width: 80px;
   display: inline-block;
   float:left;
 }
@@ -180,6 +183,8 @@ select.pred {
   padding: 1px;
   margin-left: 0px;
 }
-.filter_group .dropdown-menu {
-  left:60px;
+.filter_group .dropdown-menu,
+.hist .dropdown-menu {
+  left: 80px;
 }
+

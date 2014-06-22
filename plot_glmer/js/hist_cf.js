@@ -118,6 +118,12 @@ d3.hist_cf = function module() {
           .attr('height', size.y + 'px')
           .attr('viewBox', "0 0 " + size.x + " " + size.y)
       }
+      _selection.select('label')
+            .style('margin', '10px')
+            .text('no. bins: ' + hist_variable)
+
+      _selection.select('input')
+            .attr('value', bins)
 
       _selection.select('.form-group .form-control')
           .on('change', function() {
