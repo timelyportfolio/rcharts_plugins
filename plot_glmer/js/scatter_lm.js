@@ -703,26 +703,30 @@ d3.sccf = function () {
           var x0 = x.invert(d3.mouse(this)[0])
           var c = d3.select('.focus').selectAll('g')
               .data(preds, function(d) { return d.key})
-
+          function estimate(x) {
+             var e = linear_y(link(x.v + x0*coefs[xvar]['Estimate']))
+             var p = dtypes[yvar] == 'numeric' ? 0 : y.rangeBand()/2
+             return e + p;
+           }
           c.attr('transform', function(d) { 
+                var est = estimate(d);
                 return 'translate(' + 
                     x(x0) + "," + 
-                    (linear_y(link(d.v + x0*coefs[xvar]['Estimate'])) 
-                     + y.rangeBand()/2) + 
+                    parseFloat(est) + 
                     ")"})
               .each(function(d, i) {
                 d3.select(this).select('text')
                   .attr("dy", ".35em")
                   .style('font-size', 12)
-                  .text(d3.format('0.2f')(link(d.v + x0*coefs[xvar]['Estimate'])));
+                  .text(d3.format('0.2f')(link(d.v + 
+                        x0*coefs[xvar]['Estimate'])));
               })
-
             c.enter().append('g')
               .attr('transform', function(d) { 
+                var est = estimate(d);
                 return 'translate(' + 
-                    x(x0) + "," + 
-                    (linear_y(link(d.v + x0*coefs[xvar]['Estimate'])) 
-                     + y.rangeBand()/2) + 
+                    x(x0) + "," +
+                    parseFloat(est) + 
                     ")"})
               .each(function(d, i) {
                 d3.select(this).append('circle')
