@@ -39,7 +39,7 @@ d3.barchart_errors = function module() {
           "x":  width - padding.left - padding.right,
           "y": barheight*data.length + 20
         };
-        heigh = barheight*data.length + 20 + padding.top + padding.bottom
+        height = barheight*data.length + 20 + padding.top + padding.bottom
       }
       if(_selection.select('.coef_frame').empty()){
         var refitting = false,

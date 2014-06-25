@@ -235,7 +235,7 @@ d3.select('#choose_model').on('change', function() {
   model = this.value
   var coef_plot = d3.barchart_errors()
                 .width(600)
-                .formula(formulas[model]);
+                .formula(formulas[model])
   d3.select('#coefficients')
     .datum(coefs[model]).call(coef_plot)
   update_all();
@@ -409,12 +409,12 @@ coef_div
     .style('position', 'relative')
     .attr('id', 'coefficients')
     .style('float','left')
+    .style('height', 700)
     .datum(coefs[model])
 
 coef_plot = d3.barchart_errors()
               .width(600)
               .formula(formulas[model])
-              .barheight(20)
 
 coef_div.call(coef_plot)
 
