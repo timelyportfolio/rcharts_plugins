@@ -1,13 +1,13 @@
 d3.barchart_errors = function module() {
   // initialize variables that will be exposed
   var width = 600,
-      height = 600, 
+      height, 
+      barheight = 20;
       xvar = 'Estimate',
       yvar = 'variable',
       error = 'Std. Error',
       tval = 't value',
       prob = 'Pr(>|t|)',
-      variable = 'variable',
       formula = null,
       id = 'coef_plot',
       padding = {
@@ -23,15 +23,24 @@ d3.barchart_errors = function module() {
   // beginning of function to return under namespace
   function barchart_errors(_selection) {
     // begin declartions requiring declaration of exposed variables
-    var size = {
-      "x":  width - padding.left - padding.right,
-      "y": height - padding.top  - padding.bottom
-    };
 
     _selection.each(function(data) {
       // functions and stuff requiring access to data.
       data = _.sortBy(data, function(d) { return -d[xvar]})
+      console.log(data)
 
+      if(typeof height !== 'undefined') {
+        var size = {
+          "x":  width - padding.left - padding.right,
+          "y":  height - padding.top - padding.bottom
+        };
+      } else {
+        var size = {
+          "x":  width - padding.left - padding.right,
+          "y": barheight*data.length + 20
+        };
+        heigh = barheight*data.length + 20 + padding.top + padding.bottom
+      }
       if(_selection.select('.coef_frame').empty()){
         var refitting = false,
         neg = colorbrewer.RdBu[3][0],
@@ -75,7 +84,23 @@ d3.barchart_errors = function module() {
           .attr('viewBox', "0 0 " + size.x + " " + size.y)
 
 
-      } 
+      } else {
+        sel = _selection.select('.coef_frame')
+          .transition().duration(500)
+            .attr('width', width)
+            .attr('height', height);
+        var g = _selection.select('#coef_chart')
+        g.select('.coef_xaxis')
+          .transition().duration(1000)
+          .attr('transform', 'translate(0, ' + size.y + ')')
+        g.select('.background')
+          .attr('height', size.y)
+          .attr("width", size.x)
+        g.select('.bars')
+          .attr('width', size.x)
+          .attr('height', size.y)
+          .attr('viewBox', "0 0 " + size.x + " " + size.y)
+      }
 
       var tooltip = _selection.select('.tooltip')
       var refitting = false,
@@ -90,7 +115,6 @@ d3.barchart_errors = function module() {
           .text(formula)
           .style('opacity', 1)
 
-      var g = _selection.select('#coef_chart')
       var x = d3.scale.linear()
                   .range([0, size.x])
                   .domain(d3.extent(_.map(data, 
@@ -124,13 +148,15 @@ d3.barchart_errors = function module() {
       xaxis.call(xax).selectAll('text')
               .attr('dy', '1.5em')
               .attr('text-anchor', 'middle')
+
       var yaxis = g.select('.coef_yaxis')
 
       function transition_time() {return refitting ? 0:1000}
 
       function tooltip_content(d) {
-        return "<p><strong>" + d[variable] + "</strong><br>" + xvar + ": " + d[xvar] + "<br>" + 
-              error + ": " + d[error] + '<br>'
+        return "<p><strong>" + d[yvar] + "</strong><br>" + 
+        xvar + ": " + d[xvar] + "<br>" + 
+        error + ": " + d[error] + '<br>'
       }
       yaxis.transition().duration(transition_time()).call(yax)
             .selectAll('text')
@@ -141,8 +167,9 @@ d3.barchart_errors = function module() {
       function draw_bars() {
 
         xaxis
+            .transition().delay(transition_time())
+            .duration(transition_time())
             .call(xax)
-            .transition().duration(transition_time())
         if(!refitting){
           yaxis
               .transition().duration(transition_time())
@@ -168,7 +195,6 @@ d3.barchart_errors = function module() {
                    .style('fill', function(d) { return d[xvar] > 0 ? pos:neg})
                    .attr('height', y.rangeBand())
                    .attr('y', function(d) { return y(d[yvar]); })
-            console.log(y.rangeBand());
             bupdate.selectAll('rect.est').on('mouseover', function(d,i) {
                       d3.select(this).style('opacity', 0.9);
                         tooltip.transition()
@@ -305,11 +331,6 @@ d3.barchart_errors = function module() {
     tval = _x;
     return barchart_errors;
   }
-  barchart_errors.variable = function(_x) {
-    if(!arguments.length) return variable;
-    variable = _x;
-    return barchart_errors;
-  }
   barchart_errors.formula = function(_x) {
     if(!arguments.length) return formula;
     formula = _x;
@@ -318,6 +339,11 @@ d3.barchart_errors = function module() {
   barchart_errors.prob = function(_x) {
     if(!arguments.length) return prob;
     prob = _x;
+    return barchart_errors;
+  }
+  barchart_errors.barheight = function(_x) {
+    if(!arguments.length) return barheight;
+    barheight = _x;
     return barchart_errors;
   }
   return d3.rebind(barchart_errors);

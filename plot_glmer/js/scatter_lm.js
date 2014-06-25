@@ -1,4 +1,4 @@
-d3.sccf = function () {
+d3.scatter_lm = function () {
   // initialize variables that will be exposed
   var width = 600,
       height = 600, 
@@ -69,7 +69,7 @@ d3.sccf = function () {
 
   // simple function to determine slider steps.
   function stepper(range) {
-    var spread = range[1] - range[0]
+    var spread = Math.abs(range[1] - range[0])
     if(spread < 5) return 0.25
     else if(spread < 100) return 1
     else if(spread < 500) return 5
@@ -111,7 +111,7 @@ d3.sccf = function () {
   };
 
   // beginning of function to return under d3 namespace
-  function sccf(_selection) {
+  function scatter_lm(_selection) {
     // begin declartions requiring declaration of exposed variables
     var size = {
       "x":  width - padding.left - padding.right,
@@ -133,7 +133,6 @@ d3.sccf = function () {
                         .reduce(reduceAdd(xvar, yvar, color_var, size_var), 
                                 reduceSub(xvar, yvar, color_var, size_var), 
                                 reduceInit); 
-
 
       if(typeof formula != 'undefined'){
         formula = formula.replace(/ /g, '')
@@ -484,8 +483,8 @@ d3.sccf = function () {
                 .attr('type', 'text')
                 .attr('id', d + '_label_' + step)
               $("#pred" + step + " .pred.numeric." + d)
-                .slider({min:vrange[0], 
-                  max:vrange[1], 
+                .slider({min:Math.floor(vrange[0]), 
+                  max:Math.ceil(vrange[1]), 
                   step:stepper(vrange), 
                   value: quintiles[d][step],
                   slide: function(event, ui) {
@@ -585,10 +584,9 @@ d3.sccf = function () {
               .remove()
             })
         } else {
-          l = d3.svg.line()
-                .x(function(d,i) { 
+          l.x(function(d,i) { 
                   return x(d[0])+ x.rangeBand()/2 + (x.rangeBand()*(i==0?-0.45:0.45))})
-                .y(function(d) { return y(d[1])})
+                // .y(function(d) { return y(d[1]) })
                 .interpolate('basis')
           preds = _.map(xes, function(x) {
             return _.map(_.keys(preds), function(d) {
@@ -621,11 +619,24 @@ d3.sccf = function () {
                     .style('stroke-width', 5)
                     .style('stroke', function(d) { return path_colors[d.key]})
                 })
-          nlines.on('mouseover', function() {
+          nlines.on('mouseover', function(d) {
                   d3.select(this).style('opacity', 0.8)
+                  tooltip.transition()
+                       .duration(200)
+                       .style('opacity', 0.9)
+                       .style('width', '80px')
+                  tooltip.html(function() { return "<p>p = " + 
+                               round(sigmoid(d.data[0][1])) + 
+                               "</p>";})
+                           .style("left", (d3.mouse(this)[0] + 90) + "px")
+                           .style("top", (d3.mouse(this)[1] - 0) + "px");
+
                 })
                 .on('mouseout', function() {
                         d3.select(this).style('opacity', 0.4)
+                      tooltip.transition()
+                           .duration(200)
+                           .style('opacity', 0.0)
                       })
           nlines.exit().transition().duration(1000)
             .each(function(d, i) {
@@ -654,7 +665,6 @@ d3.sccf = function () {
             linear_y = d3.scale.linear()
                               .range([y(y.domain()[0]), y(y.domain()[1])])
                               .domain([1, 0])
-            console.log([y(y.domain()[0]), y(y.domain()[1])])
             l = d3.svg.line()
                   .x(function(d) { return x(d[0])})
                   .y(function(d) { return linear_y(sigmoid(d[1])) + y.rangeBand()/2;})
@@ -745,11 +755,10 @@ d3.sccf = function () {
         draw_chart();
         update_ui();
         make_predictions_lm();
-        if(predicting()){
+        if(predicting() && dtypes[xvar] == 'numeric'){
           bg.on('mousemove', mousemove)
         } else {
           d3.selectAll('.focus g').remove()
-          console.log('predicting:', predicting());
           bg.on('mousemove', null)
         }
       }
@@ -766,91 +775,91 @@ d3.sccf = function () {
       update_chart();
     });
   };
-  sccf.id = function(_x) {
+  scatter_lm.id = function(_x) {
     if(!arguments.length) return id;
     id = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.width = function(_x) {
+  scatter_lm.width = function(_x) {
     if(!arguments.length) return width;
     width = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.height = function(_x) {
+  scatter_lm.height = function(_x) {
     if(!arguments.length) return height;
     height = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.xvar = function(_x) {
+  scatter_lm.xvar = function(_x) {
     if(!arguments.length) return xvar;
     xvar = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.yvar = function(_x) {
+  scatter_lm.yvar = function(_x) {
     if(!arguments.length) return yvar;
     yvar = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.color_var = function(_x) {
+  scatter_lm.color_var = function(_x) {
     if(!arguments.length) return color_var;
     color_var = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.size_var = function(_x) {
+  scatter_lm.size_var = function(_x) {
     if(!arguments.length) return size_var;
     size_var = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.filter_var = function(_x) {
+  scatter_lm.filter_var = function(_x) {
     if(!arguments.length) return filter_var;
     filter_var = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.dtypes = function(_x) {
+  scatter_lm.dtypes = function(_x) {
     if(!arguments.length) return dtypes;
     dtypes = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.padding = function(_x) {
+  scatter_lm.padding = function(_x) {
     if(!arguments.length) return padding;
     padding = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.color_scale = function(_x) {
+  scatter_lm.color_scale = function(_x) {
     if(!arguments.length) return color_scale;
     color_scale = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.dimension = function(_x) {
+  scatter_lm.dimension = function(_x) {
     if(!arguments.length) return dimension;
     dimension = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.formula = function(_x) {
+  scatter_lm.formula = function(_x) {
     if(!arguments.length) return formula;
     formula = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.coefs = function(_x) {
+  scatter_lm.coefs = function(_x) {
     if(!arguments.length) return coefs;
     coefs = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.npredictlines = function(_x) {
+  scatter_lm.npredictlines = function(_x) {
     if(!arguments.length) return npredictlines;
     npredictlines = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.initial_size = function(_x) {
+  scatter_lm.initial_size = function(_x) {
     if(!arguments.length) return initial_size;
     initial_size = _x;
-    return sccf;
+    return scatter_lm;
   }
-  sccf.link = function(_x) {
+  scatter_lm.link = function(_x) {
     if(!arguments.length) return link;
     link = _x;
-    return sccf;
+    return scatter_lm;
   }
 
-  return  d3.rebind(sccf);
+  return  d3.rebind(scatter_lm);
 };

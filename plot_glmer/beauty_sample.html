@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<!--    <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js
+" charset="utf-8"></script>    
+-->
+    <script src='js/jquery-1.8.2.min.js' type='text/javascript'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="js/d3.v3.min.js" charset="utf-8"></script>
+    <script src='js/lodash.js' type='text/javascript'></script>
+    <script src='bootstrap3/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
+    <script src="js/missing-data.js" charset="utf-8"></script>
+    <script src="js/crossfilter.js" charset="utf-8"></script>
+    <script src="js/box.js" charset="utf-8"></script>
+    <script src="js/scatter_lm.js" charset="utf-8"></script>    
+    <script src="js/hist_cf.js" charset="utf-8"></script>    
+    <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<!--     <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css
+">
+ -->
+<script>
+$.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js',function(){
+  
+  $('.single option').click(function() {
+    // only affects options contained within the same optgroup
+    // and doesn't include this
+    //$(this).siblings().prop('selected', false);
+  });
+  
+});
+</script>
+</head>
+<body>
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-12 chart" id="chart">
+    </div>
+  </div>
+</div>
+<script>
+
+var div;
+d3.csv('data/beauty.csv', function(error, dat) {
+
+
+});
+</script>
+</body>
+</html>

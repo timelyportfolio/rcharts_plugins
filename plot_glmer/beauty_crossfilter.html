@@ -20,9 +20,9 @@
     <script src="js/hist_cf.js" charset="utf-8"></script>    
 
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 <body>
 <div class='container' style='width:1800px'>
@@ -40,77 +40,83 @@
 d3.csv('data/beauty.csv', function(error, dat) {
 
 // column_types for beauty.csv
-  var dtypes = {
-  "tenured": "factor",
-  "profnumber": "factor",
-  "minority": "factor",
-  "age": "integer",
-  "beautyf2upper": "integer",
-  "beautyflowerdiv": "integer",
-  "beautyfupperdiv": "integer",
-  "beautym2upper": "integer",
-  "beautymlowerdiv": "integer",
-  "beautymupperdiv": "integer",
-  "btystdave": "numeric",
-  "btystdf2u": "numeric",
-  "btystdfl": "numeric",
-  "btystdfu": "numeric",
-  "btystdm2u": "numeric",
-  "btystdml": "numeric",
-  "btystdmu": "numeric",
-  "class1": "factor",
-  "class2": "factor",
-  "class3": "factor",
-  "class4": "factor",
-  "class5": "factor",
-  "class6": "factor",
-  "class7": "factor",
-  "class8": "factor",
-  "class9": "factor",
-  "class10": "factor",
-  "class11": "factor",
-  "class12": "factor",
-  "class13": "factor",
-  "class14": "factor",
-  "class15": "factor",
-  "class16": "factor",
-  "class17": "factor",
-  "class18": "factor",
-  "class19": "factor",
-  "class20": "factor",
-  "class21": "factor",
-  "class22": "factor",
-  "class23": "factor",
-  "class24": "factor",
-  "class25": "factor",
-  "class26": "factor",
-  "class27": "factor",
-  "class28": "factor",
-  "class29": "factor",
-  "class30": "factor",
-  "courseevaluation": "numeric",
-  "didevaluation": "integer",
-  "female": "factor",
-  "formal": "factor",
-  "fulldept": "factor",
-  "lower": "factor",
-  "multipleclass": "factor",
-  "nonenglish": "factor",
-  "onecredit": "factor",
-  "percentevaluating": "numeric",
-  "profevaluation": "numeric",
-  "students": "integer",
-  "tenuretrack": "factor",
-  "blkandwhite": "factor",
-  "btystdvariance": "numeric",
-  "btystdavepos": "numeric",
-  "btystdaveneg": "numeric" 
-  }
+var dtypes = {
+"tenured": "factor",
+"profnumber": "factor",
+"minority": "factor",
+"age": "integer",
+"beautyf2upper": "integer",
+"beautyflowerdiv": "integer",
+"beautyfupperdiv": "integer",
+"beautym2upper": "integer",
+"beautymlowerdiv": "integer",
+"beautymupperdiv": "integer",
+"btystdave": "numeric",
+"btystdf2u": "numeric",
+"btystdfl": "numeric",
+"btystdfu": "numeric",
+"btystdm2u": "numeric",
+"btystdml": "numeric",
+"btystdmu": "numeric",
+"class1": "factor",
+"class2": "factor",
+"class3": "factor",
+"class4": "factor",
+"class5": "factor",
+"class6": "factor",
+"class7": "factor",
+"class8": "factor",
+"class9": "factor",
+"class10": "factor",
+"class11": "factor",
+"class12": "factor",
+"class13": "factor",
+"class14": "factor",
+"class15": "factor",
+"class16": "factor",
+"class17": "factor",
+"class18": "factor",
+"class19": "factor",
+"class20": "factor",
+"class21": "factor",
+"class22": "factor",
+"class23": "factor",
+"class24": "factor",
+"class25": "factor",
+"class26": "factor",
+"class27": "factor",
+"class28": "factor",
+"class29": "factor",
+"class30": "factor",
+"courseevaluation": "numeric",
+"didevaluation": "integer",
+"female": "factor",
+"formal": "factor",
+"fulldept": "factor",
+"lower": "factor",
+"multipleclass": "factor",
+"nonenglish": "factor",
+"onecredit": "factor",
+"percentevaluating": "numeric",
+"profevaluation": "numeric",
+"students": "integer",
+"tenuretrack": "factor",
+"blkandwhite": "factor",
+"btystdvariance": "numeric",
+"btystdavepos": "numeric",
+"btystdaveneg": "numeric",
+"fit_m1": "numeric",
+"fit_m2": "numeric",
+"fit_m3": "numeric",
+"resid_m1": "numeric",
+"resid_m2": "numeric",
+"resid_m3": "numeric" 
+}
 // end dtypes
 
 // coefficients
 var coefs = {  "m1": {
- "Estimate": [ 0.69381, -0.0034277, -0.0068392, 0.91211, -0.016647, 0.0027241 ],
+"Estimate": [ 0.69381, -0.0034277, -0.0068392, 0.91211, -0.016647, 0.0027241 ],
 "Std. Error": [ 0.088407, 0.00095362, 0.019132, 0.016332, 0.026061, 0.0070851 ],
 "t value": [ 7.8479, -3.5945, -0.35748, 55.849, -0.63878, 0.38448 ],
 "Pr(>|t|)": [ 3.0288e-14, 0.00036043, 0.7209, 2.7366e-206, 0.52329, 0.7008 ],
@@ -128,13 +134,15 @@ var coefs = {  "m1": {
 "Pr(>|z|)": [ 0.034882, 4.7596e-12, 5.8206e-05, 0.33371, 0.70216 ],
 "variable": [ "(Intercept)", "age", "female1", "courseevaluation", "profevaluation" ] 
 }  },
-  formulas = {
- "m1": "profevaluation ~ age + female + courseevaluation + minority + btystdvariance",
+formulas = {
+"m1": "profevaluation ~ age + female + courseevaluation + minority + btystdvariance",
 "m2": "profevaluation ~ age + female + courseevaluation + tenured",
 "m3": "tenured ~ age + female + courseevaluation + profevaluation" 
 }
 // function to zip model output into row format with variable names
 // as keys
+
+
 function coefsObj(coefs, model) {
   m = coefs[model]
   return _.zipObject(_.map(m, 
@@ -152,494 +160,492 @@ coefs = _.forOwn(coefs, function(v, k, o) {
 })
 // end coefficents
 
-  // get numeric variables in array
-  var numeric = _.filter(_.keys(dtypes), function(d) { 
-    return _.contains(['numeric', 'integer'], dtypes[d]) ;}),
-  // reset to only look for two data types, numeric and factor
-  dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes), 
-    function(d) { 
-      return _.contains(['integer', 'numeric'], 
-                        dtypes[d]) ? 'numeric': 'factor'}))
-  // get factor variables in array
-  var factor = _.filter(_.keys(dtypes), function(d) { 
-    return dtypes[d] == 'factor'}),
-  // prepare crossfilter and set up some parameters
-  data = crossfilter(dat),
-  yvar = 'tenured',
-  xvar = 'age',
-  color_var = factor[0],
-  filter_var = factor[2],
-  model = _.keys(coefs)[2],
-  size_var = numeric[3],
-  colors = d3.scale.category10();
+// get numeric variables in array
+var numeric = _.filter(_.keys(dtypes), function(d) { 
+  return _.contains(['numeric', 'integer'], dtypes[d]) ;}),
+// reset to only look for two data types, numeric and factor
+dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes), 
+  function(d) { 
+    return _.contains(['integer', 'numeric'], 
+                      dtypes[d]) ? 'numeric': 'factor'}))
+// get factor variables in array
+var factor = _.filter(_.keys(dtypes), function(d) { 
+  return dtypes[d] == 'factor'}),
+// prepare crossfilter and set up some parameters
+data = crossfilter(dat),
+yvar = 'tenured',
+xvar = 'age',
+color_var = factor[0],
+filter_var = factor[2],
+model = _.keys(coefs)[2],
+size_var = numeric[3],
+colors = d3.scale.category10();
 
-  dat.forEach(function(d, i) {
-    d._index = i;
-    _.map(_.keys(d), function(k) {
-      if('numeric' == dtypes[k]){
-        d[k] = +d[k]; 
-      }
-    })
+dat.forEach(function(d, i) {
+  d._index = i;
+  _.map(_.keys(d), function(k) {
+    if('numeric' == dtypes[k]){
+      d[k] = +d[k]; 
+    }
   })
+})
 
-  // adding switches
-  var labels = ['choose_x', 'choose_y', 'choose_color',
-                        'choose_size', 'choose_filter'],
-  buttons = d3.select('#scatter_controls').append('div')
-              .attr('class', 'btn-group-vertical sc')
+// adding switches
+var labels = ['choose_x', 'choose_y', 'choose_color',
+                      'choose_size', 'choose_filter'],
+buttons = d3.select('#scatter_controls').append('div')
+            .attr('class', 'btn-group-vertical sc')
 
-  buttons.selectAll('div')
-          .data(['choose_model'])
-          .enter().append('div')
-          .attr('class', 'models')
-          .each(function(d, i) {
-            d3.select(this).append('label')
-                .attr('for', d)
-                .text(d.replace(/choose_/, '') + ':')
-            d3.select(this).append('select')
-              .attr('class', 'btn selectpicker controls')
-              .attr("id", d)
-              .each(function(button) {
-                d3.select(this).select('#' + button)
-                  .append('span').attr('class', 'caret')
-                d3.select(this).selectAll('option')
-                  .data(_.keys(coefs))
-                  .enter().append('option')
-                  .text(function(t) { return t;})
-                  .attr('selected', function(d,i) { 
-                    return _.keys(coefs)[i] == model ? "selected":null})
-              })
-
-          })
-
-  buttons = buttons.selectAll('div.variables')
-        .data(labels)
+buttons.selectAll('div')
+        .data(['choose_model'])
         .enter().append('div')
-        .attr('class', 'variables')
-        .each(function(d,i) {
-          d3.select(this).append('label')
-                .attr('for', d)
-                .text(d.replace(/choose_/, '') + ':')
-         var select = d3.select(this).append('select')
-          select.attr('class','btn selectpicker controls')
-          .attr('data-width', 'auto')
-          .attr('id', function(d) { return d;})
-          .each(function(button) {
-          d3.select(this).select("#" + button)
-            .append('span').attr('class', 'caret')
-          button = d3.select(this).selectAll('option')
-                .data(_.keys(dtypes).filter(function(d,k) { 
-                  if(i == 2) return true
-                  else if (i == 4) return _.contains(factor, d)
-                  else if (_.contains(numeric.concat(factor), d)) 
-                      return true;
-                }))
-              .enter().append('option')
-                .text(function(d) { return d;})
-                .attr('selected', function(d) {
-                  if(i == 0) { return d == xvar ? 'selected': null}
-                    else if(i == 1) { return d == yvar ? 'selected': null}
-                    else if(i == 2) { return d== color_var ? 'selected': null}
-                    else if(i == 3) { return d==size_var ? 'selected':null}
-                    else if(i == 4) { return d==filter_var ? 'selected':null}
-                })
-        })
-      })
-
-  d3.select('#choose_filter').on('change', function() {
-    filter_var = this.value;
-    fil.dispose();
-    fil = data.dimension(function(d) { return d[filter_var]})
-    update_filter();
-    update_all();
-  });
-  d3.select('#choose_x').on('change', function() {
-    xvar = this.value
-    update_all();
-  });
-  d3.select('#choose_y').on('change', function() {
-    yvar = this.value
-    update_all();
-  });
-  d3.select('#choose_model').on('change', function() {
-    model = this.value
-    var coef_plot = d3.barchart_errors()
-                  .width(600)
-                  .formula(formulas[model])
-                  .height(300);
-    d3.select('#coefficients')
-      .datum(coefs[model]).call(coef_plot)
-    update_all();
-  });
-  d3.select('#choose_size').on('change', function() {
-    size_var = this.value
-    update_all();
-  });
-  d3.select('#choose_color').on('change', function() {
-    color_var = this.value;
-    update_color();
-    update_all();
-  });
-
-  // should the filter be given discrete values or a range?
-  function fil_choices() {
-    if("numeric" == dtypes[filter_var]) {
-      return expand_extent(d3.extent(_.map($('#current_filter')[0].options,
-        function(d) { if(d.selected) return parseFloat(d.value) })))
-    } else {
-      return _.map($('#current_filter')[0].options, 
-          function(d) { if(d.selected) return d.value
-      })
-    }
-  }
-
-  // reset filter
-  function set_filter() {
-    fil.filterAll();
-    var items = fil_choices();
-    if(_.contains(['numeric', 'integer'], dtypes[filter_var])) {
-      fil.filterRange([d3.min(items), d3.max(items)])
-    } else {
-      fil.filterFunction(function(d) { 
-        return items.indexOf(d) > -1;
-      })
-    }
-    all_hist = _.map(_.range(0, numeric.length), function(d) {
-        return {vname: numeric[d], dim: inx};})
-
-    hist_div.selectAll('div.hist')
-      .data(all_hist, function(d) { return d.vname})
-      .each(function() {
-        d3.select(this)
-          .call(ch);
-      });
-  };
-
-  // setting up crossfilters
-  var data = crossfilter(dat),
-  inx = data.dimension(function(d) { return d._index; }),
-  fil = data.dimension(function(d) { return d[filter_var];});
-
-  // update filters
-  function update_filter() {
-    fil.dispose();
-    fil = data.dimension(function(d) { return d[filter_var];});
-    d3.select('#current_filter').remove()
-    d3.select('.btn-group').remove()
-    d3.select('.btn-group-vertical .filter_group').remove()
-    var cur_filter = d3.select('.btn-group-vertical.sc')
-                    .append('div')
-                    .attr('class', 'filter_group')
-                    .append('select')
-                    .attr('id', 'current_filter')
-                    .attr('multiple', 'multiple')
-                    .attr('class', 'controls')
-        cur_filter.selectAll('option')
-            .data(_.unique(_.map(fil.top(Infinity), function(d) {
-              return d[filter_var];
-              })))
-           .enter().append('option')
-            .attr('value', function(d) { return d;})
-            .attr('selected', 'selected')
-            .text(function(d) { return d;})
-          $('#current_filter').multiselect({
-            buttonWidth:false,
-            includeSelectAllDivider: true,
-            includeSelectAllOption: true}).on('change', 
-              function() {set_filter(); update_all(); });
-          d3.select("#current_filter~.btn-group")
-            .insert('label', '.btn')
-            .text(filter_var + ":")
-          d3.select('#current_filter~.btn-group .btn')
-            .style('border-radius', '4px')
-  }
-
-  function update_color() {
-    // add continuous color scale for numeric color vars
-    colors.domain(_.unique(_.map(inx.top(Infinity),
-      function(d) { return d[color_var]})))
-    var color_legend = d3.select('#color-legend')
-                        .style('height', colors.domain().length*50)
-
-    function make_color_legend(el) { 
-      el.append('text')
-          .attr("x", 0)
-          .attr('y', 35)
-          .attr('text-anchor', 'right')
-          .text(el[0][0].__data__)
-      el.append('rect')
-          .attr('width', 20)
-          .attr('height', 20)
-          .attr('x', 15)
-          .attr('y', 20)
-          .attr('fill', colors(el[0][0].__data__))
-          .attr('fill-opacity', 0.8)
-    }
-
-    color_legend.select('text')
-          .transition().duration(500)
-          .style('opacity', 0)
-          .transition().duration(500)
-          .style('opacity', 1)
-          .text(color_var + ":")
-          .attr('x', 0)
-          .attr('y', 10)
-
-    color_legend = color_legend.selectAll('g.c')
-          .data(colors.domain())
-
-    color_legend.each(function(d, i) {
-      var g = d3.select(this)
-      g.select('rect').remove()
-      g.select("text").remove()
-      g.attr('transform', 'translate(0,' + (i * 25) + ')')
-      g.call(make_color_legend)});
-
-    color_legend
-       .enter().append('g')
-        .attr('class', 'c')
+        .attr('class', 'models')
         .each(function(d, i) {
-          var g = d3.select(this)
-          g.attr('transform', 'translate(0,' + (i * 25) + ')')
-          g.call(make_color_legend)});
+          d3.select(this).append('label')
+              .attr('for', d)
+              .text(d.replace(/choose_/, '') + ':')
+          d3.select(this).append('select')
+            .attr('class', 'btn selectpicker controls')
+            .attr("id", d)
+            .each(function(button) {
+              d3.select(this).select('#' + button)
+                .append('span').attr('class', 'caret')
+              d3.select(this).selectAll('option')
+                .data(_.keys(coefs))
+                .enter().append('option')
+                .text(function(t) { return t;})
+                .attr('selected', function(d,i) { 
+                  return _.keys(coefs)[i] == model ? "selected":null})
+            })
 
-    color_legend.exit()
-      .transition().duration(1000)
-      .style('opacity', 0).remove()
-  }
+        })
 
-  // getting factor and numeric terms for univariate charts.
-  function prep_formula(f) {
-    var formula = f.replace(/ /g, ''),
-    dep_var = formula.slice(0, formula.search(/~/)),
-    indeps = formula.slice(formula.search(/~/) + 1).split('+')
-    numeric_terms = _.filter(indeps, 
-                             function(d) { return dtypes[d] == 'numeric'})
-    return formula;
-  }
+buttons = buttons.selectAll('div.variables')
+      .data(labels)
+      .enter().append('div')
+      .attr('class', 'variables')
+      .each(function(d,i) {
+        d3.select(this).append('label')
+              .attr('for', d)
+              .text(d.replace(/choose_/, '') + ':')
+       var select = d3.select(this).append('select')
+        select.attr('class','btn selectpicker controls')
+        .attr('data-width', 'auto')
+        .attr('id', function(d) { return d;})
+        .each(function(button) {
+        d3.select(this).select("#" + button)
+          .append('span').attr('class', 'caret')
+        button = d3.select(this).selectAll('option')
+              .data(_.keys(dtypes).filter(function(d,k) { 
+                if(i == 2) return true
+                else if (i == 4) return _.contains(factor, d)
+                else if (_.contains(numeric.concat(factor), d)) 
+                    return true;
+              }))
+            .enter().append('option')
+              .text(function(d) { return d;})
+              .attr('selected', function(d) {
+                if(i == 0) { return d == xvar ? 'selected': null}
+                  else if(i == 1) { return d == yvar ? 'selected': null}
+                  else if(i == 2) { return d== color_var ? 'selected': null}
+                  else if(i == 3) { return d==size_var ? 'selected':null}
+                  else if(i == 4) { return d==filter_var ? 'selected':null}
+              })
+      })
+    })
 
-  var scatter_div = d3.select('#chart')
-        .append('div')
-        .attr('id', 'scatter')
-        .style('float','left')
-        .style('width', '700px')
-        .style('height', '700px')
-        .datum([0])
-  scatter_div.append('div')
-        .attr('id', 'legend-div')
-        .style('position', 'absolute')
-        .style('left', '100px')
-        .style('top', '50px')
-        .append('svg')
-        .attr('id', 'color-legend')
-        .style('width', 100)
-        .append('text')
-  
-  var coef_div = d3.select('#chart').append('div');
-  coef_div
-      .style('position', 'relative')
-      .attr('id', 'coefficients')
-      .style('float','left')
-      .datum(coefs[model])
-
-  coef_plot = d3.barchart_errors()
-                .width(625)
+d3.select('#choose_filter').on('change', function() {
+  filter_var = this.value;
+  fil.dispose();
+  fil = data.dimension(function(d) { return d[filter_var]})
+  update_filter();
+  update_all();
+});
+d3.select('#choose_x').on('change', function() {
+  xvar = this.value
+  update_all();
+});
+d3.select('#choose_y').on('change', function() {
+  yvar = this.value
+  update_all();
+});
+d3.select('#choose_model').on('change', function() {
+  model = this.value
+  var coef_plot = d3.barchart_errors()
+                .width(600)
                 .formula(formulas[model])
-                .height(300);
+  d3.select('#coefficients')
+    .datum(coefs[model]).call(coef_plot)
+  update_all();
+});
+d3.select('#choose_size').on('change', function() {
+  size_var = this.value
+  update_all();
+});
+d3.select('#choose_color').on('change', function() {
+  color_var = this.value;
+  update_color();
+  update_all();
+});
 
-  coef_div.call(coef_plot)
+// should the filter be given discrete values or a range?
+function fil_choices() {
+  if("numeric" == dtypes[filter_var]) {
+    return expand_extent(d3.extent(_.map($('#current_filter')[0].options,
+      function(d) { if(d.selected) return parseFloat(d.value) })))
+  } else {
+    return _.map($('#current_filter')[0].options, 
+        function(d) { if(d.selected) return d.value
+    })
+  }
+}
+
+// reset filter
+function set_filter() {
+  fil.filterAll();
+  var items = fil_choices();
+  if(_.contains(['numeric', 'integer'], dtypes[filter_var])) {
+    fil.filterRange([d3.min(items), d3.max(items)])
+  } else {
+    fil.filterFunction(function(d) { 
+      return items.indexOf(d) > -1;
+    })
+  }
+  all_hist = _.map(_.range(0, numeric.length), function(d) {
+      return {vname: numeric[d], dim: inx};})
+
+  hist_div.selectAll('div.hist')
+    .data(all_hist, function(d) { return d.vname})
+    .each(function() {
+      d3.select(this)
+        .call(ch);
+    });
+};
+
+// setting up crossfilters
+var data = crossfilter(dat),
+inx = data.dimension(function(d) { return d._index; }),
+fil = data.dimension(function(d) { return d[filter_var];});
+
+// update filters
+function update_filter() {
+  fil.dispose();
+  fil = data.dimension(function(d) { return d[filter_var];});
+  d3.select('#current_filter').remove()
+  d3.select('.btn-group').remove()
+  d3.select('.btn-group-vertical .filter_group').remove()
+  var cur_filter = d3.select('.btn-group-vertical.sc')
+                  .append('div')
+                  .attr('class', 'filter_group')
+                  .append('select')
+                  .attr('id', 'current_filter')
+                  .attr('multiple', 'multiple')
+                  .attr('class', 'controls')
+      cur_filter.selectAll('option')
+          .data(_.unique(_.map(fil.top(Infinity), function(d) {
+            return d[filter_var];
+            })))
+         .enter().append('option')
+          .attr('value', function(d) { return d;})
+          .attr('selected', 'selected')
+          .text(function(d) { return d;})
+        $('#current_filter').multiselect({
+          buttonWidth:false,
+          includeSelectAllDivider: true,
+          includeSelectAllOption: true}).on('change', 
+            function() {set_filter(); update_all(); });
+        d3.select("#current_filter~.btn-group")
+          .insert('label', '.btn')
+          .text(filter_var + ":")
+        d3.select('#current_filter~.btn-group .btn')
+          .style('border-radius', '4px')
+}
+
+function update_color() {
+  // add continuous color scale for numeric color vars
+  colors.domain(_.unique(_.map(inx.top(Infinity),
+    function(d) { return d[color_var]})))
+  var color_legend = d3.select('#color-legend')
+                      .style('height', colors.domain().length*50)
+
+  function make_color_legend(el) { 
+    el.append('text')
+        .attr("x", 0)
+        .attr('y', 35)
+        .attr('text-anchor', 'right')
+        .text(el[0][0].__data__)
+    el.append('rect')
+        .attr('width', 20)
+        .attr('height', 20)
+        .attr('x', 15)
+        .attr('y', 20)
+        .attr('fill', colors(el[0][0].__data__))
+        .attr('fill-opacity', 0.8)
+  }
+
+  color_legend.select('text')
+        .transition().duration(500)
+        .style('opacity', 0)
+        .transition().duration(500)
+        .style('opacity', 1)
+        .text(color_var + ":")
+        .attr('x', 0)
+        .attr('y', 10)
+
+  color_legend = color_legend.selectAll('g.c')
+        .data(colors.domain())
+
+  color_legend.each(function(d, i) {
+    var g = d3.select(this)
+    g.select('rect').remove()
+    g.select("text").remove()
+    g.attr('transform', 'translate(0,' + (i * 25) + ')')
+    g.call(make_color_legend)});
+
+  color_legend
+     .enter().append('g')
+      .attr('class', 'c')
+      .each(function(d, i) {
+        var g = d3.select(this)
+        g.attr('transform', 'translate(0,' + (i * 25) + ')')
+        g.call(make_color_legend)});
+
+  color_legend.exit()
+    .transition().duration(1000)
+    .style('opacity', 0).remove()
+}
+
+// getting factor and numeric terms for univariate charts.
+function prep_formula(f) {
+  var formula = f.replace(/ /g, ''),
+  dep_var = formula.slice(0, formula.search(/~/)),
+  indeps = formula.slice(formula.search(/~/) + 1).split('+')
+  numeric_terms = _.filter(indeps, 
+                           function(d) { return dtypes[d] == 'numeric'})
+  return formula;
+}
+
+var scatter_div = d3.select('#chart')
+      .append('div')
+      .attr('id', 'scatter')
+      .style('float','left')
+      .style('width', '700px')
+      .style('height', '700px')
+      .datum([0])
+scatter_div.append('div')
+      .attr('id', 'legend-div')
+      .style('position', 'absolute')
+      .style('left', '100px')
+      .style('top', '50px')
+      .append('svg')
+      .attr('id', 'color-legend')
+      .style('width', 100)
+      .append('text')
+
+var coef_div = d3.select('#chart').append('div');
+coef_div
+    .style('position', 'relative')
+    .attr('id', 'coefficients')
+    .style('float','left')
+    .datum(coefs[model])
+
+coef_plot = d3.barchart_errors()
+              .width(625)
+              .formula(formulas[model])
+
+coef_div.call(coef_plot)
 
 // histograms
-  function update_hist() {
+function update_hist() {
 
-    if(d3.select("#hist_select").empty()){
-      var hist_select = d3.select('.btn-group-vertical.sc')
-                      .append('div')
-                      .attr('class', 'hist')
-                      .append('select')
-                      .attr('id', 'hist_select')
-                      .attr('multiple', 'multiple')
-                      .attr('class', 'controls')
-      hist_select.selectAll('option')
-        .data(numeric)
-        .enter().append('option')
-        .attr('value', function(d) { return d; })
-        .attr('selected', function(d, i) {
-          return i < 4 ? 'selected':null;
-        })
-        .text(function(d) { return d;})
-
-      $('#hist_select').multiselect({
-        onChange: function(option, checked) {
-          // Get selected options.
-          var selectedOptions = $('#hist_select option:selected');
-   
-          if (selectedOptions.length >= 4) {
-            // Disable all other checkboxes.
-            var nonSelectedOptions = $('#hist_select option').filter(function() {
-              return !$(this).is(':selected');
-            });
-   
-            var dropdown = $('#hist_select').siblings('.multiselect-container');
-            nonSelectedOptions.each(function() {
-              var input = $('input[value="' + $(this).val() + '"]');
-              input.prop('disabled', true);
-              input.parent('li').addClass('disabled');
-            });
-          }
-          else {
-            // Enable all checkboxes.
-            var dropdown = $('#hist_select').siblings('.multiselect-container');
-            $('#hist_select option').each(function() {
-              var input = $('input[value="' + $(this).val() + '"]');
-              input.prop('disabled', false);
-              input.parent('li').addClass('disabled');
-            });
-          }
-          add_hist();
-        },
-        buttonWidth:false})
-      d3.select("#hist_select~.btn-group")
-        .insert('label', '.btn')
-        .text("histograms:")
-      d3.select('#hist_select~.btn-group .btn')
-        .style('border-radius', '4px')
-    } else {
-      var hist_select = d3.select('#hist_select')
-    }
-  }
-
-
-  var hist_div = d3.select('#chart').append('div')
-                  .attr('class', 'row')
-                  .append('div')
-                  .attr('class', 'col-md-12')
-                  .style('float', 'left')
-                  .append('div')
-                  .attr('id', 'histograms')
-                  .attr('class', 'row'),
-  hist_width = 300;
-
-
-  var ch = d3.hist_cf()
-            .color(colorbrewer.Dark2[5][1])
-            .height(250)
-            .width(hist_width)
-            .tickdiv(5)
-            .bins(30)
-
-  var order = numeric.slice(0,4)
-  function add_hist() {
-    var choices = _.map($('#hist_select option:selected'), 
-                        function(o) { return o.value;})
-
-    if(choices.length != 4) {return null}else{
-      var new_vars = _.difference(choices, order),
-      remove = _.difference(order, choices),
-      index = 0;
-
-      for(var i = 0; i < remove.length; i++){
-        order[order.indexOf(remove[i])] = new_vars[i];
-      }
-
-
-
-
-
-      console.log("choices: " , choices)
-      console.log("order: ", order)
-
-
-      var all_hist = _.map(order, function(d, i) {
-            return {vname: d, dim: inx, index:i};})
-
-      var hists = hist_div.selectAll('div.hist')
-              .data(all_hist)
-
-      hists.each(function(d, i) {
-        var sel = d3.select(this)
-        if(_.contains(new_vars, d.vname)){
-          sel.call(ch)
-        }
+  if(d3.select("#hist_select").empty()){
+    var hist_select = d3.select('.btn-group-vertical.sc')
+                    .append('div')
+                    .attr('class', 'hist')
+                    .append('select')
+                    .attr('id', 'hist_select')
+                    .attr('multiple', 'multiple')
+                    .attr('class', 'controls')
+    hist_select.selectAll('option')
+      .data(numeric)
+      .enter().append('option')
+      .attr('value', function(d) { return d; })
+      .attr('selected', function(d, i) {
+        return i < 4 ? 'selected':null;
       })
+      .text(function(d) { return d;})
 
-      if(hists.empty()){
-        hists.enter().insert('div')
-          .attr('id', function(d) { return d.vname})
-          .attr('class', function(d) { return 'hist'})
-          .style('float', 'left')
-          .style('position', 'relative')
-          .each(function(d, i) {
-            d3.select(this).call(ch)
-          })
+    $('#hist_select').multiselect({
+      onChange: function(option, checked) {
+        // Get selected options.
+        var selectedOptions = $('#hist_select option:selected');
+ 
+        if (selectedOptions.length >= 4) {
+          // Disable all other checkboxes.
+          var nonSelectedOptions = $('#hist_select option').filter(function() {
+            return !$(this).is(':selected');
+          });
+ 
+          var dropdown = $('#hist_select').siblings('.multiselect-container');
+          nonSelectedOptions.each(function() {
+            var input = $('input[value="' + $(this).val() + '"]');
+            input.prop('disabled', true);
+            input.parent('li').addClass('disabled');
+          });
+        }
+        else {
+          // Enable all checkboxes.
+          var dropdown = $('#hist_select').siblings('.multiselect-container');
+          $('#hist_select option').each(function() {
+            var input = $('input[value="' + $(this).val() + '"]');
+            input.prop('disabled', false);
+            input.parent('li').addClass('disabled');
+          });
+        }
+        add_hist();
+      },
+      buttonWidth:false})
+    d3.select("#hist_select~.btn-group")
+      .insert('label', '.btn')
+      .text("histograms:")
+    d3.select('#hist_select~.btn-group .btn')
+      .style('border-radius', '4px')
+  } else {
+    var hist_select = d3.select('#hist_select')
+  }
+}
+
+
+var hist_div = d3.select('#chart').append('div')
+                .attr('class', 'row')
+                .append('div')
+                .attr('class', 'col-md-12')
+                .style('float', 'left')
+                .append('div')
+                .attr('id', 'histograms')
+                .attr('class', 'row'),
+hist_width = 300;
+
+
+var ch = d3.hist_cf()
+          .color(colorbrewer.Dark2[5][1])
+          .height(250)
+          .width(hist_width)
+          .tickdiv(5)
+          .bins(30)
+
+var order = numeric.slice(0,4)
+function add_hist() {
+  var choices = _.map($('#hist_select option:selected'), 
+                      function(o) { return o.value;})
+
+  if(choices.length != 4) {return null}else{
+    var new_vars = _.difference(choices, order),
+    remove = _.difference(order, choices),
+    index = 0;
+
+    for(var i = 0; i < remove.length; i++){
+      order[order.indexOf(remove[i])] = new_vars[i];
+    }
+
+
+
+
+
+    console.log("choices: " , choices)
+    console.log("order: ", order)
+
+
+    var all_hist = _.map(order, function(d, i) {
+          return {vname: d, dim: inx, index:i};})
+
+    var hists = hist_div.selectAll('div.hist')
+            .data(all_hist)
+
+    hists.each(function(d, i) {
+      var sel = d3.select(this)
+      if(_.contains(new_vars, d.vname)){
+        sel.call(ch)
       }
+    })
+
+    if(hists.empty()){
+      hists.enter().insert('div')
+        .attr('id', function(d) { return d.vname})
+        .attr('class', function(d) { return 'hist'})
+        .style('float', 'left')
+        .style('position', 'relative')
+        .each(function(d, i) {
+          d3.select(this).call(ch)
+        })
     }
   }
+}
 
-  update_filter();
-  update_color();
-  update_hist();
-  add_hist();
-  scatter = d3.sccf()
-      .height(700)
-      .width(700)
-      .dimension(inx)
-      .xvar(xvar)
-      .yvar(yvar)
-      .color_var(color_var)
-      .color_scale(colors)
-      .size_var(size_var)
-      .npredictlines(3)
-      .filter_var(filter_var)
-      .coefs(coefsObj(coefs, model))
-      .dtypes(dtypes)
-      .formula(prep_formula(formulas[model]))
-      .id('scatter');
+update_filter();
+update_color();
+update_hist();
+add_hist();
+scatter = d3.scatter_lm()
+    .height(700)
+    .width(700)
+    .dimension(inx)
+    .xvar(xvar)
+    .yvar(yvar)
+    .color_var(color_var)
+    .color_scale(colors)
+    .size_var(size_var)
+    .npredictlines(3)
+    .filter_var(filter_var)
+    .coefs(coefsObj(coefs, model))
+    .dtypes(dtypes)
+    .formula(prep_formula(formulas[model]))
+    .id('scatter');
 
-  scatter_div.call(scatter); // do I have to have data bound?
+scatter_div.call(scatter); // do I have to have data bound?
 
-  function update_all() {
+function update_all() {
 
 
-    scatter = d3.sccf()
-      .height(700)
-      .width(700)
-      .dimension(inx)
-      .xvar(xvar)
-      .yvar(yvar)
-      .color_var(color_var)
-      .color_scale(colors)
-      .size_var(size_var)
-      .filter_var(filter_var)
-      .coefs(coefsObj(coefs, model))
-      .dtypes(dtypes)
-      .formula(prep_formula(formulas[model]))
-      .npredictlines(3)
-      .id('scatter');
+  scatter = d3.scatter_lm()
+    .height(700)
+    .width(700)
+    .dimension(inx)
+    .xvar(xvar)
+    .yvar(yvar)
+    .color_var(color_var)
+    .color_scale(colors)
+    .size_var(size_var)
+    .filter_var(filter_var)
+    .coefs(coefsObj(coefs, model))
+    .dtypes(dtypes)
+    .formula(prep_formula(formulas[model]))
+    .npredictlines(3)
+    .id('scatter');
 
-    scatter_div.call(scatter)
+  scatter_div.call(scatter)
 
-  }
+}
 
 });
 function iqr(k) {
-  return function(d, i) {
-    var q1 = d.quartiles[0],
-        q3 = d.quartiles[2],
-        iqr = (q3 - q1) * k,
-        i = -1,
-        j = d.length;
-    while (d[++i] < q1 - iqr);
-    while (d[--j] > q3 + iqr);
-    return [i, j];
-  };
+return function(d, i) {
+  var q1 = d.quartiles[0],
+      q3 = d.quartiles[2],
+      iqr = (q3 - q1) * k,
+      i = -1,
+      j = d.length;
+  while (d[++i] < q1 - iqr);
+  while (d[--j] > q3 + iqr);
+  return [i, j];
+};
 }
 function boxQuartiles(d) {
-  return [
-    d3.quantile(d, .25),
-    d3.quantile(d, .5),
-    d3.quantile(d, .75)
-  ];
+return [
+  d3.quantile(d, .25),
+  d3.quantile(d, .5),
+  d3.quantile(d, .75)
+];
 }
 
 // column_types for beauty.csv

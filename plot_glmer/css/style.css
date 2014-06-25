@@ -161,6 +161,9 @@ select {
   padding-right: 5px;
   display: inline;
 }
+div.hist, div.filter_group {
+  padding-bottom: 0px;
+}
 #scatter_controls .btn-group-vertical.sc .models>label,
 #scatter_controls .btn-group-vertical.sc .variables>label,
 #scatter_controls .btn-group-vertical.sc .filter_group .btn-group>label,
@@ -194,3 +197,7 @@ select.pred {
   font-weight:bold;
   background: none;
 }
+#scatter_controls .btn-group-vertical.sc div.hist, 
+#scatter_controls  .btn-group-vertical.sc div.filter_group {
+    padding-bottom: 0px;
+  }

@@ -21,11 +21,13 @@
   </head>
   <body>
 {{# chartId }}
-<{{container}} class='container {{ lib }}' id='{{chartId}}'>
+<{{container}} class='container {{ lib }}' id='{{chartId}}' style="width:1800px">
   <div class='row'>
-    <div class="col-md-3 well" id='{{chartId}}_controls'>
+    <div class="col-md-3 well" id='scatter_controls' style='width:300px'>
     </div>
-    <div class="col-md-9 chart" id="{{chartId}}_chart">
+    <div class="row">
+      <div class="col-md-9" id="chart">
+      </div>
     </div>
   </div>
 </{{container}}>

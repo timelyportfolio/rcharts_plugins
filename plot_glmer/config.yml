@@ -7,7 +7,9 @@ plot_glmer:
   js/colorbrewer.v1.min.js,
   js/d3.v3.min.js,
   js/crossfilter.js,
-  js/scatter_crossfilter.js]
+  js/scatter_lm.js,
+  js/coefficients.js,
+  js/hist_cf.js]
   css: [bootstrap3/css/bootstrap.min.css, 
         js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css,
         css/style.css]
