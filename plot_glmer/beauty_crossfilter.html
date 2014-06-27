@@ -27,7 +27,7 @@
 <body>
 <div class='container' style='width:1800px'>
   <div class='row'>
-    <div class="col-md-3 well" id='scatter_controls' style='width:300px'>
+    <div class="col-md-3 well" id='controls' style='width:300px'>
     </div>
     <div class="row">
       <div class="col-md-9" id="chart">
@@ -40,79 +40,79 @@
 d3.csv('data/beauty.csv', function(error, dat) {
 
 // column_types for beauty.csv
-var dtypes = {
-"tenured": "factor",
-"profnumber": "factor",
-"minority": "factor",
-"age": "integer",
-"beautyf2upper": "integer",
-"beautyflowerdiv": "integer",
-"beautyfupperdiv": "integer",
-"beautym2upper": "integer",
-"beautymlowerdiv": "integer",
-"beautymupperdiv": "integer",
-"btystdave": "numeric",
-"btystdf2u": "numeric",
-"btystdfl": "numeric",
-"btystdfu": "numeric",
-"btystdm2u": "numeric",
-"btystdml": "numeric",
-"btystdmu": "numeric",
-"class1": "factor",
-"class2": "factor",
-"class3": "factor",
-"class4": "factor",
-"class5": "factor",
-"class6": "factor",
-"class7": "factor",
-"class8": "factor",
-"class9": "factor",
-"class10": "factor",
-"class11": "factor",
-"class12": "factor",
-"class13": "factor",
-"class14": "factor",
-"class15": "factor",
-"class16": "factor",
-"class17": "factor",
-"class18": "factor",
-"class19": "factor",
-"class20": "factor",
-"class21": "factor",
-"class22": "factor",
-"class23": "factor",
-"class24": "factor",
-"class25": "factor",
-"class26": "factor",
-"class27": "factor",
-"class28": "factor",
-"class29": "factor",
-"class30": "factor",
-"courseevaluation": "numeric",
-"didevaluation": "integer",
-"female": "factor",
-"formal": "factor",
-"fulldept": "factor",
-"lower": "factor",
-"multipleclass": "factor",
-"nonenglish": "factor",
-"onecredit": "factor",
-"percentevaluating": "numeric",
-"profevaluation": "numeric",
-"students": "integer",
-"tenuretrack": "factor",
-"blkandwhite": "factor",
-"btystdvariance": "numeric",
-"btystdavepos": "numeric",
-"btystdaveneg": "numeric",
-"fit_m1": "numeric",
-"fit_m2": "numeric",
-"fit_m3": "numeric",
-"resid_m1": "numeric",
-"resid_m2": "numeric",
-"resid_m3": "numeric" 
-}
-// end dtypes
+  var dtypes = {
+  "tenured": "factor",
+  "profnumber": "factor",
+  "minority": "factor",
+  "age": "integer",
+  "beautyf2upper": "integer",
+  "beautyflowerdiv": "integer",
+  "beautyfupperdiv": "integer",
+  "beautym2upper": "integer",
+  "beautymlowerdiv": "integer",
+  "beautymupperdiv": "integer",
+  "btystdave": "numeric",
+  "btystdf2u": "numeric",
+  "btystdfl": "numeric",
+  "btystdfu": "numeric",
+  "btystdm2u": "numeric",
+  "btystdml": "numeric",
+  "btystdmu": "numeric",
+  "class1": "factor",
+  "class2": "factor",
+  "class3": "factor",
+  "class4": "factor",
+  "class5": "factor",
+  "class6": "factor",
+  "class7": "factor",
+  "class8": "factor",
+  "class9": "factor",
+  "class10": "factor",
+  "class11": "factor",
+  "class12": "factor",
+  "class13": "factor",
+  "class14": "factor",
+  "class15": "factor",
+  "class16": "factor",
+  "class17": "factor",
+  "class18": "factor",
+  "class19": "factor",
+  "class20": "factor",
+  "class21": "factor",
+  "class22": "factor",
+  "class23": "factor",
+  "class24": "factor",
+  "class25": "factor",
+  "class26": "factor",
+  "class27": "factor",
+  "class28": "factor",
+  "class29": "factor",
+  "class30": "factor",
+  "courseevaluation": "numeric",
+  "didevaluation": "integer",
+  "female": "factor",
+  "formal": "factor",
+  "fulldept": "factor",
+  "lower": "factor",
+  "multipleclass": "factor",
+  "nonenglish": "factor",
+  "onecredit": "factor",
+  "percentevaluating": "numeric",
+  "profevaluation": "numeric",
+  "students": "integer",
+  "tenuretrack": "factor",
+  "blkandwhite": "factor",
+  "btystdvariance": "numeric",
+  "btystdavepos": "numeric",
+  "btystdaveneg": "numeric",
+  "fit_m1": "numeric",
+  "fit_m2": "numeric",
+  "fit_m3": "numeric",
+  "resid_m1": "numeric",
+  "resid_m2": "numeric",
+  "resid_m3": "numeric" 
+  }
+  // end dtypes
 
 // coefficients
 var coefs = {  "m1": {
@@ -172,7 +172,6 @@ dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes),
 var factor = _.filter(_.keys(dtypes), function(d) { 
   return dtypes[d] == 'factor'}),
 // prepare crossfilter and set up some parameters
-data = crossfilter(dat),
 yvar = 'tenured',
 xvar = 'age',
 color_var = factor[0],
@@ -190,10 +189,12 @@ dat.forEach(function(d, i) {
   })
 })
 
+var data = crossfilter(dat)
+
 // adding switches
 var labels = ['choose_x', 'choose_y', 'choose_color',
                       'choose_size', 'choose_filter'],
-buttons = d3.select('#scatter_controls').append('div')
+buttons = d3.select('#controls').append('div')
             .attr('class', 'btn-group-vertical sc')
 
 buttons.selectAll('div')
@@ -600,7 +601,7 @@ scatter = d3.scatter_lm()
     .coefs(coefsObj(coefs, model))
     .dtypes(dtypes)
     .formula(prep_formula(formulas[model]))
-    .id('scatter');
+    .id('sc');
 
 scatter_div.call(scatter); // do I have to have data bound?
 
@@ -621,7 +622,7 @@ function update_all() {
     .dtypes(dtypes)
     .formula(prep_formula(formulas[model]))
     .npredictlines(3)
-    .id('scatter');
+    .id('sc');
 
   scatter_div.call(scatter)
 

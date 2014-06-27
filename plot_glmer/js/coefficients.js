@@ -19,6 +19,33 @@ d3.barchart_errors = function module() {
 
   // functions and variables that don't need to be wrapped in closure
   // jitter, for example.
+  // functions to establish group from filtered dimension
+  function reduceSub(x, y, color, size) { 
+    return function(p, v) { 
+      p.x -= null; p.y -= null; p.color = null; p.filter = null; 
+      p.size = null;
+      p._index = null;
+      return p; 
+    }
+  }
+
+  function reduceAdd(x, y, color, size) { 
+    return function(p, v) { 
+      p.x = v[x]; 
+      p.y = v[y]; 
+      p.color = v[color]; 
+      p.size = v[size];
+      p.filter = v[filter_var];
+      p._index = v._index;
+      return p; 
+    }
+  }
+
+  function reduceInit() { return {x:null, y:null, 
+                              color:null, 
+                              filter:null, 
+                              _index: null, 
+                              size:null} };
 
   // beginning of function to return under namespace
   function barchart_errors(_selection) {

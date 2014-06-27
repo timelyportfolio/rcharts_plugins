@@ -58,12 +58,17 @@ d3.scatter_lm = function () {
   }
 
   function expand_extent(extent, percent, top, bottom) {
-    top = typeof(top) === 'undefined' ? true: top
-    bottom = typeof(bottom) === 'undefined' ? true: bottom
-    percent = typeof(percent) === 'undefined' ? 0.1: percent;
+    var top = typeof(top) === 'undefined' ? true: top,
+    bottom = typeof(bottom) === 'undefined' ? true: bottom,
+    percent = typeof(percent) === 'undefined' ? 0.1: percent,
     pad = Math.abs(extent[1] - extent[0]) * percent
-    extent[0] = extent[0] - pad
-    extent[1] = extent[1] + pad
+    extent = extent
+    if(bottom) {
+      extent[0] = extent[0] - pad
+    }
+    if(top) {
+      extent[1] = extent[1] + pad
+    }
     return extent
   }
 
@@ -259,7 +264,7 @@ d3.scatter_lm = function () {
       if(predicting()) {
         // accessing stuff outside of _selection
         if(d3.select('#prediction-table').empty()) 
-          {d3.select('#' + id + '_controls')
+          {d3.select('#controls')
                           .append('div')
                           .attr('id', 'prediction-table')}
         if(d3.select('.paths').empty()){

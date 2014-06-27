@@ -8,6 +8,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="js/d3.v3.min.js" charset="utf-8"></script>
     <script src='js/lodash.js' type='text/javascript'></script>
+    <script src="js/bootstrap-multiselect.js" charset="utf-8"></script>    
     <script src='bootstrap3/js/bootstrap.min.js' type='text/javascript'></script>
     <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
     <script src="js/missing-data.js" charset="utf-8"></script>
@@ -15,38 +16,240 @@
     <script src="js/box.js" charset="utf-8"></script>
     <script src="js/scatter_lm.js" charset="utf-8"></script>    
     <script src="js/hist_cf.js" charset="utf-8"></script>    
+    <script src="js/stackbar.js" charset="utf-8"></script>    
     <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 <!--     <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css
 ">
  -->
-<script>
-$.getScript('http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js',function(){
-  
-  $('.single option').click(function() {
-    // only affects options contained within the same optgroup
-    // and doesn't include this
-    //$(this).siblings().prop('selected', false);
-  });
-  
-});
-</script>
 </head>
 <body>
-<div class='container'>
+<div class='container' style='width:1800px'>
   <div class='row'>
-    <div class="col-md-12 chart" id="chart">
+    <div class="col-md-3 well" id='controls' style='width:300px'>
+      <div class="btn-group-vertical sc">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9" id="chart">
+      </div>
     </div>
   </div>
 </div>
 <script>
 
-var div;
+var data, layers
 d3.csv('data/beauty.csv', function(error, dat) {
+
+//dtypes
+    var dtypes = {
+    "tenured": "factor",
+    "profnumber": "factor",
+    "minority": "factor",
+    "age": "integer",
+    "beautyf2upper": "integer",
+    "beautyflowerdiv": "integer",
+    "beautyfupperdiv": "integer",
+    "beautym2upper": "integer",
+    "beautymlowerdiv": "integer",
+    "beautymupperdiv": "integer",
+    "btystdave": "numeric",
+    "btystdf2u": "numeric",
+    "btystdfl": "numeric",
+    "btystdfu": "numeric",
+    "btystdm2u": "numeric",
+    "btystdml": "numeric",
+    "btystdmu": "numeric",
+    "class1": "factor",
+    "class2": "factor",
+    "class3": "factor",
+    "class4": "factor",
+    "class5": "factor",
+    "class6": "factor",
+    "class7": "factor",
+    "class8": "factor",
+    "class9": "factor",
+    "class10": "factor",
+    "class11": "factor",
+    "class12": "factor",
+    "class13": "factor",
+    "class14": "factor",
+    "class15": "factor",
+    "class16": "factor",
+    "class17": "factor",
+    "class18": "factor",
+    "class19": "factor",
+    "class20": "factor",
+    "class21": "factor",
+    "class22": "factor",
+    "class23": "factor",
+    "class24": "factor",
+    "class25": "factor",
+    "class26": "factor",
+    "class27": "factor",
+    "class28": "factor",
+    "class29": "factor",
+    "class30": "factor",
+    "courseevaluation": "numeric",
+    "didevaluation": "integer",
+    "female": "factor",
+    "formal": "factor",
+    "fulldept": "factor",
+    "lower": "factor",
+    "multipleclass": "factor",
+    "nonenglish": "factor",
+    "onecredit": "factor",
+    "percentevaluating": "numeric",
+    "profevaluation": "numeric",
+    "students": "integer",
+    "tenuretrack": "factor",
+    "blkandwhite": "factor",
+    "btystdvariance": "numeric",
+    "btystdavepos": "numeric",
+    "btystdaveneg": "numeric",
+    "fit_m1": "numeric",
+    "fit_m2": "numeric",
+    "fit_m3": "numeric",
+    "resid_m1": "numeric",
+    "resid_m2": "numeric",
+    "resid_m3": "numeric" 
+    }// end dtypes
+
+// get numeric variables in array
+var numeric = _.filter(_.keys(dtypes), function(d) { 
+  return _.contains(['numeric', 'integer'], dtypes[d]) ;}),
+// reset to only look for two data types, numeric and factor
+// get factor variables in array
+factor = _.filter(_.keys(dtypes), function(d) { 
+  return dtypes[d] == 'factor' || dtypes[d] == 'integer'}),
+dtypes =  _.zipObject(_.keys(dtypes), _.map(_.keys(dtypes), 
+  function(d) { 
+    return _.contains(['integer', 'numeric'], 
+                      dtypes[d]) ? 'numeric': 'factor'}))
+// prepare crossfilter and set up some parameters
+color_var = factor[0],
+filter_var = factor[2],
+size_var = null,
+colors = d3.scale.category10();
+
+dat.forEach(function(d, i) {
+  d._index = i;
+  _.map(_.keys(d), function(k) {
+    if('numeric' == dtypes[k]){
+      d[k] = +d[k]; 
+    }
+  })
+})
+
+data = crossfilter(dat);
+// data = data.dimension(function(d) { return d._index;})
+
+d3.select('#controls')
+    .append('div')
+    .attr('class', 'btn-group-vertical sc')
+// histograms
+function update_bars() {
+
+  if(d3.select("#barselect").empty()){
+    var barselect = d3.select('.btn-group-vertical.sc')
+                    .append('div')
+                    .attr('class', 'barcharts')
+                    .append('select')
+                    .attr('id', 'barselect')
+                    .attr('multiple', 'multiple')
+                    .attr('class', 'controls')
+    barselect.selectAll('option')
+      .data(factor)
+      .enter().append('option')
+      .attr('value', function(d) { return d; })
+      .attr('selected', function(d, i) {
+        return _.contains([3,6,7,8], i) ? 'selected':null;
+      })
+      .text(function(d) { return d;})
+
+    $('#barselect').multiselect({
+      onChange: function(option, checked) {
+        // Get selected options.
+        var selectedOptions = $('#barselect option:selected');
+ 
+        if (selectedOptions.length >= 4) {
+          // Disable all other checkboxes.
+          var nonSelectedOptions = $('#barselect option').filter(function() {
+            return !$(this).is(':selected');
+          });
+ 
+          var dropdown = $('#barselect').siblings('.multiselect-container');
+          nonSelectedOptions.each(function() {
+            var input = $('input[value="' + $(this).val() + '"]');
+            input.prop('disabled', true);
+            input.parent('li').addClass('disabled');
+          });
+        }
+        else {
+          // Enable all checkboxes.
+          var dropdown = $('#barselect').siblings('.multiselect-container');
+          $('#barselect option').each(function() {
+            var input = $('input[value="' + $(this).val() + '"]');
+            input.prop('disabled', false);
+            input.parent('li').addClass('disabled');
+          });
+        }
+        add_bars();
+      },
+      buttonWidth:false})
+    d3.select("#barselect~.btn-group")
+      .insert('label', '.btn')
+      .text("bar charts:")
+    d3.select('#barselect~.btn-group .btn')
+      .style('border-radius', '4px')
+  } else {
+    var bar_select = d3.select('#barselect')
+  }
+}
+update_bars();
+function add_bars() {
+
+}
+
+var bar_div = d3.select('#chart').append('div')
+                .attr('class', 'row')
+                .append('div')
+                .attr('class', 'col-md-12')
+                .style('float', 'left')
+                .append('div')
+                .attr('id', 'barcharts')
+                .attr('class', 'row'),
+bar_width = 300;
+
+var bar_vals = _.map($("#barselect option:selected"),
+                     function(d) { return d.value; })
+data  = data.dimension(function(d) { return d._index;})
+bar_div.selectAll('div')
+  .data(bar_vals)
+  .enter().append('div')
+  .style('float', 'left')
+  .style('position', 'relative')
+  .attr('id', function(d) { return d[0];})
+  .each(function(d, i) {
+    var t = d
+    var bar = d3.stackbar()
+                .v1(d)
+                .height(300)
+                .barwidth(20)
+                .factors(factor)
+                .data(data)
+                .id(d)
+    d3.select(this).call(bar);
+  });
+
+// update_bars()
+
 
 
 });
+
+
 </script>
 </body>
 </html>

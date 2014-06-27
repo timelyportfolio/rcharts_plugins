@@ -311,7 +311,7 @@ function draw{{chartId}}(){
             CODE = srccode, lib = LIB$name, tObj = tObj, container = container))
     }
 
-))
+    ))
 
 attach(.plugins)
 
