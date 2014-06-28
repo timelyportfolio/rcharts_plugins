@@ -123,7 +123,7 @@ d3.scatter_lm = function () {
       "y": height - padding.top  - padding.bottom
     };
 
-    _selection.each(function(data) {
+    _selection.each(function(dat) {
 
       var jittered,
       x,
@@ -134,10 +134,9 @@ d3.scatter_lm = function () {
       refitting = false,
       xax = d3.svg.axis().orient('bottom'),
       yax = d3.svg.axis().orient('left'),
-      inxgroup = dimension.group()
-                        .reduce(reduceAdd(xvar, yvar, color_var, size_var), 
-                                reduceSub(xvar, yvar, color_var, size_var), 
-                                reduceInit); 
+      data_length = dimension.top(Infinity).length,
+      inxgroup,
+      sample_data = [];
 
       if(typeof formula != 'undefined'){
         formula = formula.replace(/ /g, '')
@@ -146,7 +145,10 @@ d3.scatter_lm = function () {
       }
 
       function jitter_points() {
-        points = _.map(inxgroup.all(), function(d) { 
+        if(!sample_data.length){
+          resample();
+        }
+        points = _.map(sample_data, function(d) { 
           return [d.value.x, d.value.y, 
                   d.value.color, d.value.filter, d.value.size, d.value._index]; });
         xjit = dtypes[xvar] == 'numeric' ? jitter(_.map(points, function(d) { return d[0]}), 1): function(d) { return d; }
@@ -164,24 +166,24 @@ d3.scatter_lm = function () {
 
         jittered = _.filter(jittered, function(d) { return d.color != null;})
       };
-      var size_scale = function(d) { return initial_size;} // default size of 3
 
-      // mapping size to absolute value of size var
-      if(size_var != null && dtypes[size_var] == 'numeric') {
-        size_scale = d3.scale.linear()
-              .domain(d3.extent(_.map(inxgroup.all(), 
-                function(d) { return Math.abs(d.value.size);})))
-              .range([2, 15])
-      } 
-      // for a later date. mapping qualitative var to size scale based
-      // on aggregation of a numeric variable.
-      // else {
-      //   var qrange = d3.scale.quantile().domain([0, 100]).range([0,1,2,3,4])
-      //   size_scale = d3.scale.ordinal()
-      //         .domain(_.sortBy(_.unique(_.map(inxgroup.all(), 
-      //           function(d) { return Math.abs(d[size_var])}))))
-      //         .range([0, 15])
-      // }
+      // automatically sample data according to color var
+      // if more than 1000 obs
+      function resample() {
+        var prop = $("#sample_" + id).slider('value')
+        inxgroup = dimension.group()
+                    .reduce(reduceAdd(xvar, yvar, color_var, size_var), 
+                            reduceSub(xvar, yvar, color_var, size_var), 
+                            reduceInit)
+        var n = d3.nest()
+                  .key(function(d) { return d.value.color})
+                  .entries(inxgroup.all())
+        sample_data = _.flatten(_.map(n, function(d) {
+          return _.filter(d.values, function(v) {
+            return _.random(floating = true) > 1 - prop;
+          })
+        }))
+      }
 
       function update_scale(axis, variable) {
         if("numeric" == dtypes[variable]) {
@@ -204,6 +206,23 @@ d3.scatter_lm = function () {
       } 
       // skeleton for scatter plot if it doesn't exist.
       if(_selection.select('.frame').empty()){
+
+        // if more than 1000, trim data
+        var sample = _selection.append('div')
+                        .attr('class', 'sample_div')
+                        .style('float','left')
+                        .selectAll('div').data(['sample'])
+                        .enter().append('div')
+                        .each(function(d, i) {
+                          d3.select(this).attr('id', d + "_" + id)
+                          d3.select(this.parentNode)
+                            .insert('label', '#' + d + "_" + id).text(d + ":")
+                            .attr('for', d + "_" + id)
+                          d3.select(this.parentNode)
+                            .insert('input', '#' + d + "_" + id)
+                            .attr('type', 'text')
+                            .attr('id', d + '_label')
+                        })
 
         var frame = _selection.append('svg')
                   .attr('class', 'frame')
@@ -260,6 +279,24 @@ d3.scatter_lm = function () {
             .attr('y', -padding.left/2)
             .attr('text-anchor', 'middle')
         }
+      // slider must be created each time to capture proper x and y vars
+      var p = data_length < 500 ? 1 : 500 / data_length
+      $("#sample" + "_" + id)
+        .slider({min:0, 
+          max:1, 
+          step:0.01, 
+          value: p,
+          slide: function(event, ui) {
+            $("#sample" + "_label").val(ui.value)
+          },
+          change: function() {
+            console.log(xvar, yvar)
+            sample_data = [];
+            update_chart();
+          }})
+      $('.sample_div').width(200)
+      $("#sample_label").val($("#sample" + "_" + id)
+                          .slider('value'))
       // prediction controls
       if(predicting()) {
         // accessing stuff outside of _selection
@@ -284,13 +321,6 @@ d3.scatter_lm = function () {
         size_var , ": ", d.size, "<br>",
         filter_var , ": " , d.filter, "</p>")
       }
-
-      // fixed random numbers to apply to points 
-      // when jittering about an ordinal scale
-      var noise = {x:_.map(_.range(inxgroup.all().length), 
-                        function() {return _.random(-0.5, 0.5)}),
-                  y: _.map(_.range(inxgroup.all().length), 
-                        function() {return _.random(-0.5, 0.5)})};
 
       function place(axis, scale, i) {
         return function(d) {
@@ -357,9 +387,9 @@ d3.scatter_lm = function () {
         circles.exit()
               .transition().duration(transition_time())
               .attr('r', 3)
-              // .attr('cx', x(x.domain()[0]))
-              .attr('cy', y(y.domain()[1]))
-              // .style('fill-opacity', 0)
+              .attr('cx', x(x.domain()[0]))
+              .attr('cy', size.y)
+              .style('fill-opacity', 0)
               .remove()
 
         circles.on("mouseover", function(d) {
@@ -502,7 +532,6 @@ d3.scatter_lm = function () {
       }
 
       function inner_prod(pred) {
-        // what does pred look like?
         // pred is object of DOM elements from each of the needed
         // independent variables for a particular line
         return d3.sum(_.map(_.keys(pred), function(d) {
@@ -544,13 +573,6 @@ d3.scatter_lm = function () {
               .style('opacity', 0).remove()
           }
         }
-      // different colors for fit lines.
-      var path_colors = _.zipObject(_.map(d3.range(npredictlines),
-                                    function(d) { return 'pred' + d;}),
-                        _.map(d3.range(npredictlines), function(d) {
-                          return colorbrewer.Dark2[8][d%8];
-                        }))
-
       // factor variables come in the json as the variable name plus the 
       // actual value with no space. If it is the base case, 
       // it will not be found. catching that and returning 0
@@ -656,7 +678,7 @@ d3.scatter_lm = function () {
       function sigmoid(x) {
         return 1 / (1 + Math.exp(-x))
       }
-      var linear_y = y;
+
       function update_ui() {
         // add modeling UI and setup scales / elements
         if(predicting()){
@@ -752,8 +774,20 @@ d3.scatter_lm = function () {
               })
       }
       function update_chart() {
-        var bg = d3.select('.background')
+        var bg = _selection.select('.background')
+        sdata = []
         jitter_points();
+        // // mapping size to absolute value of size var
+        if(size_var != null && dtypes[size_var] == 'numeric') {
+          size_scale = d3.scale.linear()
+                .domain(d3.extent(_.map(inxgroup.all(), 
+                  function(d) { return Math.abs(d.value.size);})))
+                .range([2, 15])
+        } 
+        // for a later date. mapping qualitative var to size scale based
+        // on aggregation of a numeric variable.
+        // else {
+        // }
         x = update_scale('x', xvar);
         y = update_scale('y', yvar);
         y.domain(y.domain().reverse());
@@ -776,7 +810,22 @@ d3.scatter_lm = function () {
         grid('y');
         refitting = false;
       }
-      // handle empty data // doesn't work.
+      var linear_y = y;
+      var size_scale = function(d) { return initial_size;} // default size of 3
+
+      // fixed random numbers to apply to points 
+      // when jittering about an ordinal scale
+      var noise = {x:_.map(_.range(dimension.top(Infinity).length), 
+                        function() {return _.random(-0.5, 0.5)}),
+                  y: _.map(_.range(dimension.top(Infinity).length), 
+                        function() {return _.random(-0.5, 0.5)})};
+      // different colors for fit lines.
+      var path_colors = _.zipObject(_.map(d3.range(npredictlines),
+                                    function(d) { return 'pred' + d;}),
+                        _.map(d3.range(npredictlines), function(d) {
+                          return colorbrewer.Dark2[8][d%8];
+                        }))
+      // do something to handle empty data 
       update_chart();
     });
   };

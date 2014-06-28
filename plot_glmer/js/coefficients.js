@@ -54,7 +54,6 @@ d3.barchart_errors = function module() {
     _selection.each(function(data) {
       // functions and stuff requiring access to data.
       data = _.sortBy(data, function(d) { return -d[xvar]})
-      console.log(data)
 
       if(typeof height !== 'undefined') {
         var size = {
@@ -188,7 +187,7 @@ d3.barchart_errors = function module() {
       yaxis.transition().duration(transition_time()).call(yax)
             .selectAll('text')
             .attr('x', x(0))
-            .attr('dy', '1em')
+            .attr('y', -5)
             .style('font-weight', 'bold')
 
       function draw_bars() {

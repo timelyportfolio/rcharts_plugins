@@ -27,7 +27,7 @@
 <body>
 <div class='container' style='width:1800px'>
   <div class='row'>
-    <div class="col-md-3 well" id='scatter_controls' style='width:300px'>
+    <div class="col-md-3 well" id='controls' style='width:300px'>
     </div>
     <div class="row">
       <div class="col-md-9" id="chart">
@@ -41,35 +41,35 @@ d3.csv('data/polls.csv', function(error, dat) {
 
 // column_types for beauty.csv
   var dtypes = {
- "org": "factor",
-"year": "factor",
-"survey": "factor",
-"bush": "factor",
-"state": "factor",
-"edu": "factor",
-"age": "factor",
-"female": "factor",
-"black": "factor",
-"weight": "numeric",
-"fit_m1": "numeric",
-"fit_m2": "numeric",
-"fit_m3": "numeric",
-"resid_m1": "numeric",
-"resid_m2": "numeric",
-"resid_m3": "numeric",
-"fit_m1": "numeric",
-"fit_m2": "numeric",
-"fit_m3": "numeric",
-"resid_m1": "numeric",
-"resid_m2": "numeric",
-"resid_m3": "numeric",
-"fit_m1": "numeric",
-"fit_m2": "numeric",
-"fit_m3": "numeric",
-"resid_m1": "numeric",
-"resid_m2": "numeric",
-"resid_m3": "numeric" 
-}
+  "org": "factor",
+  "year": "factor",
+  "survey": "factor",
+  "bush": "factor",
+  "state": "factor",
+  "edu": "factor",
+  "age": "factor",
+  "female": "factor",
+  "black": "factor",
+  "weight": "numeric",
+  "fit_m1": "numeric",
+  "fit_m2": "numeric",
+  "fit_m3": "numeric",
+  "resid_m1": "numeric",
+  "resid_m2": "numeric",
+  "resid_m3": "numeric",
+  "fit_m1": "numeric",
+  "fit_m2": "numeric",
+  "fit_m3": "numeric",
+  "resid_m1": "numeric",
+  "resid_m2": "numeric",
+  "resid_m3": "numeric",
+  "fit_m1": "numeric",
+  "fit_m2": "numeric",
+  "fit_m3": "numeric",
+  "resid_m1": "numeric",
+  "resid_m2": "numeric",
+  "resid_m3": "numeric" 
+ }
 // end dtypes
 
 // coefficients
@@ -137,6 +137,8 @@ var factor = _.filter(_.keys(dtypes), function(d) {
 data = crossfilter(dat),
 yvar = 'bush',
 xvar = 'age',
+sc_width = 700,
+sc_height = 700,
 color_var = factor[0],
 filter_var = factor[2],
 model = _.keys(coefs)[2],
@@ -155,7 +157,7 @@ dat.forEach(function(d, i) {
 // adding switches
 var labels = ['choose_x', 'choose_y', 'choose_color',
                       'choose_size', 'choose_filter'],
-buttons = d3.select('#scatter_controls').append('div')
+buttons = d3.select('#controls').append('div')
             .attr('class', 'btn-group-vertical sc')
 
 buttons.selectAll('div')
@@ -327,13 +329,12 @@ function update_color() {
   // add continuous color scale for numeric color vars
   colors.domain(_.unique(_.map(inx.top(Infinity),
     function(d) { return d[color_var]})))
+  var w = sc_width - 220
   var color_legend = d3.select('#color-legend')
-                      .style('height', colors.domain().length*50)
+                      .style('width', w)
 
   function make_color_legend(el) { 
     el.append('text')
-        .attr("x", 0)
-        .attr('y', 35)
         .attr('text-anchor', 'right')
         .text(el[0][0].__data__)
     el.append('rect')
@@ -345,7 +346,7 @@ function update_color() {
         .attr('fill-opacity', 0.8)
   }
 
-  color_legend.select('text')
+  color_legend.select('#legend-name')
         .transition().duration(500)
         .style('opacity', 0)
         .transition().duration(500)
@@ -354,7 +355,7 @@ function update_color() {
         .attr('x', 0)
         .attr('y', 10)
 
-  color_legend = color_legend.selectAll('g.c')
+  color_legend = color_legend.selectAll('div')
         .data(colors.domain())
 
   color_legend.each(function(d, i) {
@@ -395,14 +396,10 @@ var scatter_div = d3.select('#chart')
       .style('height', '700px')
       .datum([0])
 scatter_div.append('div')
-      .attr('id', 'legend-div')
-      .style('position', 'absolute')
-      .style('left', '100px')
-      .style('top', '50px')
-      .append('svg')
       .attr('id', 'color-legend')
-      .style('width', 100)
-      .append('text')
+      .style('float', 'right')
+      .append('div')
+      .attr('id', 'legend-name')
 
 var coef_div = d3.select('#chart').append('div');
 coef_div
@@ -542,8 +539,8 @@ update_color();
 update_hist();
 add_hist();
 scatter = d3.scatter_lm()
-    .height(700)
-    .width(700)
+    .height(sc_height)
+    .width(sc_width)
     .dimension(inx)
     .xvar(xvar)
     .yvar(yvar)
@@ -563,8 +560,8 @@ function update_all() {
 
 
   scatter = d3.scatter_lm()
-    .height(700)
-    .width(700)
+    .height(sc_height)
+    .width(sc_width)
     .dimension(inx)
     .xvar(xvar)
     .yvar(yvar)

@@ -121,7 +121,8 @@ select {
 #controls {
   padding-right: 10px;
 }
-#controls label {
+#controls label,
+.sample_div label {
   /*display: inline;*/
   margin-right:10px;
 }
@@ -131,9 +132,6 @@ select {
 .well.pred .btn {
   width: 80px;
   float: right;
-}
-#dash {
-  width:1800px;
 }
 
 .focus g circle {
@@ -198,9 +196,13 @@ select.pred {
   left: 80px;
 }
 
-.btn-group-vertical input{
+.btn-group-vertical input,
+.sample_div input {
   border:0; 
-  padding-left: 10px;
+  width: 50px;
+  display: inline;
+  padding-bottom: 10px;
+  padding-top: 10px;
   font-weight:bold;
   background: none;
 }
@@ -208,4 +210,12 @@ select.pred {
 #controls .btn-group-vertical.sc div.hist, 
 #controls .btn-group-vertical.sc div.filter_group {
     padding-bottom: 0px;
+}
+
+/* custom slider stuff */
+.ui-slider-horizontal {
+  height: 0.3em;
+}
+.ui-slider .ui-slider-handle{
+  height: 0.8em;
 }

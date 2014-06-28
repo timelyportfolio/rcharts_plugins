@@ -361,7 +361,7 @@ d3.stackbar = function module() {
             .attr("y", size.y)
             .attr("width", x.rangeBand())
             .attr("height", 0)
-            .style('opacity', 0.4)
+            .style('opacity', 0.6)
           .transition().duration(transition_duration())
             .delay(function(d, i) { return i * 10; })
             .attr("y", function(d) { return y(d.y0 + d.y); })
@@ -382,7 +382,7 @@ d3.stackbar = function module() {
                 .style('top', (d3.mouse(this)[1] - 50) + 'px')
               })
           .on('mouseout', function() {
-            d3.select(this).style('opacity', 0.4);
+            d3.select(this).style('opacity', 0.6);
             tooltip.transition().duration(200).style('opacity', 0)
             })
 
