@@ -8,11 +8,12 @@ d3.barchart_errors = function module() {
       error = 'Std. Error',
       tval = 't value',
       prob = 'Pr(>|t|)',
+      tickFormat = ",.2s",
       formula = null,
       id = 'coef_plot',
       padding = {
          "top":    40,
-         "right":  30,
+         "right":  1,
          "bottom": 60,
          "left":   70
       }
@@ -54,6 +55,7 @@ d3.barchart_errors = function module() {
     _selection.each(function(data) {
       // functions and stuff requiring access to data.
       data = _.sortBy(data, function(d) { return -d[xvar]})
+      var tf = d3.format(tickFormat)
 
       if(typeof height !== 'undefined') {
         var size = {
@@ -163,6 +165,7 @@ d3.barchart_errors = function module() {
       var xax = d3.svg.axis()
               .scale(x)
               .orient('bottom')
+              .tickFormat(tf)
               .ticks(10)
               .tickSize(-size.y)
 
@@ -181,8 +184,8 @@ d3.barchart_errors = function module() {
 
       function tooltip_content(d) {
         return "<p><strong>" + d[yvar] + "</strong><br>" + 
-        xvar + ": " + d[xvar] + "<br>" + 
-        error + ": " + d[error] + '<br>'
+        xvar + ": " + tf(d[xvar]) + "<br>" + 
+        error + ": " + tf(d[error]) + '<br>'
       }
       yaxis.transition().duration(transition_time()).call(yax)
             .selectAll('text')
@@ -370,6 +373,11 @@ d3.barchart_errors = function module() {
   barchart_errors.barheight = function(_x) {
     if(!arguments.length) return barheight;
     barheight = _x;
+    return barchart_errors;
+  }
+  barchart_errors.tickFormat = function(_x) {
+    if(!arguments.length) return tickFormat;
+    tickFormat = _x;
     return barchart_errors;
   }
   return d3.rebind(barchart_errors);

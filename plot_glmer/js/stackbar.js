@@ -1,7 +1,7 @@
 d3.stackbar = function module() {
   // initialize variables that will be exposed
   var height = 600, 
-      width,
+      width = 300,
       barwidth = 30,
       data,
       id,
@@ -105,15 +105,15 @@ d3.stackbar = function module() {
 
       width;
 
-      if(typeof width === 'undefined'){
+      if(barwidth * layers[0].values.length > width){
         var size = {
-          "x":  barwidth*layers[0].values.length,
+          "x": barwidth * layers[0].values.length,
           "y": height - padding.top  - padding.bottom
         }
-        width = barwidth*layers[0].values.length + padding.left + padding.right
+        width = barwidth * layers[0].values.length + padding.left + padding.right
       } else {
         var size = {
-          "x":  width - padding.left - padding.right,
+          "x": width - padding.left - padding.right,
           "y": height - padding.top  - padding.bottom
         }
       }
@@ -122,11 +122,11 @@ d3.stackbar = function module() {
       // scales
       var x = d3.scale.ordinal()
               .domain(_.sortBy(xes))
-              .rangeRoundBands([0, size.x], .08);
+              .rangeRoundBands([0, size.x], .08)
 
       var y = d3.scale.linear()
           .domain(expand_extent([0, StackMax], 0.1, true, false))
-          .range([size.y, 0]);
+          .range([size.y, 0])
 
       var xAxis = d3.svg.axis()
           .scale(x)
@@ -137,6 +137,7 @@ d3.stackbar = function module() {
       var yAxis = d3.svg.axis()
           .scale(y)
           .tickSize(-size.x)
+          .tickFormat(d3.format(",.2s"))
           .tickPadding(6)
           .orient("left");
 
@@ -197,7 +198,8 @@ d3.stackbar = function module() {
             .attr('value', _.identity)
         stack_button.on('change', function() {
           stack_group = this.value;
-          draw_chart()
+          update_scales();
+          draw_chart();
         })
         var expand_button = buttons.append('div')
                           .style('padding-bottom', '5px')
@@ -213,6 +215,7 @@ d3.stackbar = function module() {
         expand_button.on('change', function() {
           expand = this.value == 'expand' ? true: false;
           update_layers()
+          update_scales()
           draw_chart()
         })
         var svg = _selection.append('div')
@@ -223,23 +226,47 @@ d3.stackbar = function module() {
             .attr("width", width)
             .attr("height", height)
             .attr('class', 'frame')
-          .append("g")
+
+
+        _selection.select('.frame').append("g")
+            .attr("class", "y axis")
+            .attr('transform', 'translate(' + padding.left + ',' + 
+                  padding.top + ")")
+
+        svg = svg.append("g")
             .attr("transform", "translate(" + padding.left + "," + padding.top + ")")
+        svg.append('rect')
+            .attr('class', 'background')
+            .attr('pointer-events', 'all')
+            .attr('fill', 'none')
+            .attr('height', size.y + 'px')
+            .attr('width', size.x + 'px')
+
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + size.y + ")")
-        svg.append("g")
-            .attr("class", "y axis")
+
+        var vb = svg.append('svg')
+            .attr('id', 'vb')
+            .attr('class', 'vb')
+            .attr('top', 0)
+            .attr('left', 0)
+            .attr('width', size.x + 'px')
+            .attr('height', size.y + 'px')
+            .attr('viewBox', "0 0 " + size.x + " " + size.y)
+
         var tooltip = _selection.select('#' + id).append('text')
             .attr('class', 'tooltip')
             .style('position', 'absolute')
             .attr('id', 'stack_tooltip_' + id)
             .style('opacity', 0)
+
       } else {
         var svg = _selection.select('.frame g'),
         buttons = _selection.select('#buttons'),
         sort_button = _selection.select('#sort_button_' + id),
-        tooltip = _selection.select("#stack_tooltip_" + id)
+        tooltip = _selection.select("#stack_tooltip_" + id),
+        vb = _selection.select('#vb')
       }
       _selection.select("#choose_sort_" + id)
           .on('change', function() {
@@ -307,17 +334,15 @@ d3.stackbar = function module() {
         draw_chart('resort');
       }
 
-      var transition = true;
-      function transition_duration() {return transition ? 1000: 0};
+      var refitting = false;
+      function transition_duration() {return refitting ? 0: 1000};
 
       function draw_chart(resort) {
 
         if(typeof resort === 'undefined'){
           update_layers()
         }
-        console.log(typeof resort)
-        update_axes();
-        layer = svg.selectAll(".layer")
+        layer = vb.selectAll(".layer")
             .data(layers)
           
         layer
@@ -345,15 +370,15 @@ d3.stackbar = function module() {
               .attr("width", x.rangeBand())
           break;
           case "grouped":
-            rect.transition()
-                .duration(500)
-                .delay(function(d, i) { return i * 10; })
+            rect.transition().duration(transition_duration())
+                .delay(function(d, i) { 
+                  return transition_duration() ? i * 10: 0; })
                 .attr("x", function(d, i, j) { return x(d.x) + 
                   x.rangeBand() / layers.length  * j; })
                 .attr("width", x.rangeBand() / layers.length)
-              .transition()
+              .transition().duration(transition_duration())
                 .attr("y", function(d) { return y(d.y); })
-                .attr("height", function(d) { return size.y - y(d.y); });
+                .attr("height", function(d) { return y(0) - y(d.y); });
         }
 
         rect.enter().append("rect")
@@ -391,10 +416,37 @@ d3.stackbar = function module() {
           .attr("y", size.y)
           .attr("height", 0);
 
+        svg.select(".background")
+          .call(zoom);
+
+        _selection.select('.x.axis')
+          .transition().duration(transition_duration())
+          .call(xAxis)
+          .selectAll("text")  
+          .style("text-anchor", "end")
+          .attr("dx", "-.8em")
+          .attr("dy", ".1em")
+          .attr("transform", "rotate(-35)");
+        _selection.select('.y.axis')
+          .transition().duration(transition_duration())
+          .call(yAxis)
       }
+
+      var zoom = d3.behavior.zoom()
+                  .on("zoom", zoomed)
+      function zoomed() {
+        console.log(stack_group)
+        ymax = stack_group == 'stacked' ? StackMax:GroupMax;
+        y.domain(expand_extent([0, ymax*1/d3.event.scale], 0.1, true, false))
+        refitting = true;
+        draw_chart();
+        refitting = false;
+
+      }
+
       draw_chart();
 
-      function update_axes(){
+      function update_scales(){
 
         var stack_group = $('#stack_group_' + id)[0].value;
 
@@ -408,16 +460,8 @@ d3.stackbar = function module() {
               .domain(expand_extent([0, ymax], 0.1, true, false))
               .range([size.y, 0]);
             }
-
         yAxis.scale(y)
         xAxis.scale(x)
-
-        _selection.select('.x.axis')
-          .transition().duration(transition_duration())
-          .call(xAxis)
-        _selection.select('.y.axis')
-          .transition().duration(transition_duration())
-          .call(yAxis)
       }
 
     });

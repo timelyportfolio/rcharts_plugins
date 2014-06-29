@@ -135,6 +135,7 @@ d3.scatter_lm = function () {
       xax = d3.svg.axis().orient('bottom'),
       yax = d3.svg.axis().orient('left'),
       data_length = dimension.top(Infinity).length,
+      resampling = false,
       inxgroup,
       sample_data = [];
 
@@ -295,6 +296,7 @@ d3.scatter_lm = function () {
           },
           change: function() {
             console.log(xvar, yvar)
+            resampling = true;
             sample_data = [];
             update_chart();
           }})
@@ -807,7 +809,11 @@ d3.scatter_lm = function () {
         y = update_scale('y', yvar);
         y.domain(y.domain().reverse());
         draw_chart();
-        update_ui();
+        // are we coming from a sample adjustment
+        if(!resampling){
+          update_ui();
+          resampling = false;
+        }
         make_predictions_lm();
         if(predicting() && dtypes[xvar] == 'numeric'){
           bg.on('mousemove', mousemove)
