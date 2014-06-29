@@ -4,7 +4,7 @@ d3.hist_cf = function module() {
   height = 600, 
   dimension,
   bins = 20, 
-  tickFormat = "0.2f",
+  tickFormat = ",.2s",
   tickdiv = 3,
   hist_variable,
   padding = {
@@ -25,11 +25,14 @@ d3.hist_cf = function module() {
 
     _selection.each(function(data, it) {
       // functions and stuff requiring access to data.
+      var tt_format = d3.format(',.2s')
       function transition_time() {return refitting ? 0:1000}
 
       function tooltip_content(d, i) {
-        return "<p>" + hist_variable + ": " + d.length + "<br>" + 
-              "range: " + d3.min(d) + ' - ' + d3.max(d) + 
+        return "<p>" + hist_variable + ": " + d3.format(',')(d.length) + 
+        "<br>" + 
+              "range: " + tt_format(d3.min(d)) + ' - ' + 
+              tt_format(d3.max(d)) + 
               '<br></p>'
       }
       
@@ -63,6 +66,7 @@ d3.hist_cf = function module() {
         tooltip = d3.select(this).append('text')
                     .attr('class', 'tooltip')
                     .attr('id', 'hist_tooltip')
+                    // .style('width', '300px')
                     .style('opacity', 0),
 
         bindiv = _selection.append('div')
@@ -152,9 +156,9 @@ d3.hist_cf = function module() {
       yaxdiv.call(d3.svg.axis().scale(d3.scale.linear()).orient('left'))
           .selectAll('text')
           .attr('text-anchor', 'middle')
-          .style('opacity',0),
+          .style('opacity',0);
 
-      sel = _selection.select('#hist_frame')
+      var sel = _selection.select('#hist_frame')
 
       gbrush = sel.append('g').attr('class', 'brush')
                   .attr('id', 'hist_brush')
@@ -223,6 +227,7 @@ d3.hist_cf = function module() {
         yax = d3.svg.axis()
                 .scale(y)
                 .orient('left')
+                .tickFormat(d3.format(tickFormat))
                 .tickSize(-size.x)
                 .orient('left'),
 

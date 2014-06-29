@@ -329,53 +329,53 @@ function update_color() {
   // add continuous color scale for numeric color vars
   colors.domain(_.unique(_.map(inx.top(Infinity),
     function(d) { return d[color_var]})))
-  var w = sc_width - 220
-  var color_legend = d3.select('#color-legend')
-                      .style('width', w)
+  // var w = sc_width - 220
+  // var color_legend = d3.select('#color-legend')
+  //                     .style('width', w)
 
-  function make_color_legend(el) { 
-    el.append('text')
-        .attr('text-anchor', 'right')
-        .text(el[0][0].__data__)
-    el.append('rect')
-        .attr('width', 20)
-        .attr('height', 20)
-        .attr('x', 15)
-        .attr('y', 20)
-        .attr('fill', colors(el[0][0].__data__))
-        .attr('fill-opacity', 0.8)
-  }
+  // function make_color_legend(el) { 
+  //   el.append('text')
+  //       .attr('text-anchor', 'right')
+  //       .text(el[0][0].__data__)
+  //   el.append('rect')
+  //       .attr('width', 20)
+  //       .attr('height', 20)
+  //       .attr('x', 15)
+  //       .attr('y', 20)
+  //       .attr('fill', colors(el[0][0].__data__))
+  //       .attr('fill-opacity', 0.8)
+  // }
 
-  color_legend.select('#legend-name')
-        .transition().duration(500)
-        .style('opacity', 0)
-        .transition().duration(500)
-        .style('opacity', 1)
-        .text(color_var + ":")
-        .attr('x', 0)
-        .attr('y', 10)
+  // color_legend.select('#legend-name')
+  //       .transition().duration(500)
+  //       .style('opacity', 0)
+  //       .transition().duration(500)
+  //       .style('opacity', 1)
+  //       .text(color_var + ":")
+  //       .attr('x', 0)
+  //       .attr('y', 10)
 
-  color_legend = color_legend.selectAll('div')
-        .data(colors.domain())
+  // color_legend = color_legend.selectAll('div')
+  //       .data(colors.domain())
 
-  color_legend.each(function(d, i) {
-    var g = d3.select(this)
-    g.select('rect').remove()
-    g.select("text").remove()
-    g.attr('transform', 'translate(0,' + (i * 25) + ')')
-    g.call(make_color_legend)});
+  // color_legend.each(function(d, i) {
+  //   var g = d3.select(this)
+  //   g.select('rect').remove()
+  //   g.select("text").remove()
+  //   g.attr('transform', 'translate(0,' + (i * 25) + ')')
+  //   g.call(make_color_legend)});
 
-  color_legend
-     .enter().append('g')
-      .attr('class', 'c')
-      .each(function(d, i) {
-        var g = d3.select(this)
-        g.attr('transform', 'translate(0,' + (i * 25) + ')')
-        g.call(make_color_legend)});
+  // color_legend
+  //    .enter().append('g')
+  //     .attr('class', 'c')
+  //     .each(function(d, i) {
+  //       var g = d3.select(this)
+  //       g.attr('transform', 'translate(0,' + (i * 25) + ')')
+  //       g.call(make_color_legend)});
 
-  color_legend.exit()
-    .transition().duration(1000)
-    .style('opacity', 0).remove()
+  // color_legend.exit()
+  //   .transition().duration(1000)
+  //   .style('opacity', 0).remove()
 }
 
 // getting factor and numeric terms for univariate charts.
@@ -395,11 +395,11 @@ var scatter_div = d3.select('#chart')
       .style('width', '700px')
       .style('height', '700px')
       .datum([0])
-scatter_div.append('div')
-      .attr('id', 'color-legend')
-      .style('float', 'right')
-      .append('div')
-      .attr('id', 'legend-name')
+// scatter_div.append('div')
+//       .attr('id', 'color-legend')
+//       .style('float', 'right')
+//       .append('div')
+//       .attr('id', 'legend-name')
 
 var coef_div = d3.select('#chart').append('div');
 coef_div
@@ -538,23 +538,6 @@ update_filter();
 update_color();
 update_hist();
 add_hist();
-scatter = d3.scatter_lm()
-    .height(sc_height)
-    .width(sc_width)
-    .dimension(inx)
-    .xvar(xvar)
-    .yvar(yvar)
-    .color_var(color_var)
-    .color_scale(colors)
-    .size_var(size_var)
-    .npredictlines(3)
-    .filter_var(filter_var)
-    .coefs(coefsObj(coefs, model))
-    .dtypes(dtypes)
-    .formula(prep_formula(formulas[model]))
-    .id('scatter');
-
-scatter_div.call(scatter); // do I have to have data bound?
 
 function update_all() {
 
@@ -565,9 +548,9 @@ function update_all() {
     .dimension(inx)
     .xvar(xvar)
     .yvar(yvar)
+    .size_var(size_var)
     .color_var(color_var)
     .color_scale(colors)
-    .size_var(size_var)
     .filter_var(filter_var)
     .coefs(coefsObj(coefs, model))
     .dtypes(dtypes)
@@ -578,6 +561,7 @@ function update_all() {
   scatter_div.call(scatter)
 
 }
+update_all();
 
 });
 function iqr(k) {

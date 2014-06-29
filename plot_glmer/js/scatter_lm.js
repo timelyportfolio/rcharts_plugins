@@ -12,7 +12,7 @@ d3.scatter_lm = function () {
       dtypes = null,
       dimension = null,
       color_scale = function(d) { return 'blue';},
-      formula = null,
+      formula,
       max_factor = 20,
       coefs = null,
       npredictlines = 5, // number of prediction lines to draw.
@@ -211,6 +211,8 @@ d3.scatter_lm = function () {
         var sample = _selection.append('div')
                         .attr('class', 'sample_div')
                         .style('float','left')
+                        .style('height', '10px')
+                        .style('padding-left', padding.left + 'px')
                         .selectAll('div').data(['sample'])
                         .enter().append('div')
                         .each(function(d, i) {
@@ -281,13 +283,15 @@ d3.scatter_lm = function () {
         }
       // slider must be created each time to capture proper x and y vars
       var p = data_length < 500 ? 1 : 500 / data_length
-      $("#sample" + "_" + id)
+      $("#sample_" + id)
         .slider({min:0, 
           max:1, 
           step:0.01, 
           value: p,
           slide: function(event, ui) {
-            $("#sample" + "_label").val(ui.value)
+            $("#sample_label").val(d3.format('2%')(ui.value) + "  ~" +
+                          d3.format(',')(d3.round(ui.value*data_length)) + " of " + 
+                          d3.format(',.2s')(data_length))
           },
           change: function() {
             console.log(xvar, yvar)
@@ -295,8 +299,12 @@ d3.scatter_lm = function () {
             update_chart();
           }})
       $('.sample_div').width(200)
-      $("#sample_label").val($("#sample" + "_" + id)
-                          .slider('value'))
+      $('#sample_label').width(120)
+      $("#sample_label").val(
+              d3.format('2%')($("#sample_"+ id).slider('value')) + "  ~" +
+              d3.format(',')(d3.round($("#sample_" + id).slider('value')*data_length)) + 
+              " of " + 
+              d3.format(',.2s')(data_length))
       // prediction controls
       if(predicting()) {
         // accessing stuff outside of _selection
@@ -313,13 +321,20 @@ d3.scatter_lm = function () {
         }
       }
       function tooltip_content(d) {
-        var xcontent = _.isString(d.x_actual) ? d.x_actual: round(d.x_actual),
-        ycontent = _.isString(d.y_actual) ? d.y_actual: round(d.y_actual)
-        return "<p>".concat(xvar, ": ", xcontent,"<br>",
-        yvar ,": " , ycontent , "<br>" ,
-        color_var , ": " , d.color , "<br>" ,
-        size_var , ": ", d.size, "<br>",
-        filter_var , ": " , d.filter, "</p>")
+        console.log(d)
+        function fix(x) { return _.isString(x) ? x:round(x);}
+        var xcontent = fix(d.x_actual),
+        ycontent = fix(d.y_actual),
+        out = "<p>" + xvar + ": " + xcontent + "<br>" + 
+        yvar + ": " + ycontent,
+        // this was dumb...
+        hover_details = _.zipObject([color_var, size_var, filter_var],
+                                    ['color', 'size', 'filter'])
+        console.log(hover_details)
+        _.mapValues(hover_details, function(v,k) {
+          out += k !='null' ? "<br>" + k + ": " + fix(d[v]):""
+        })        
+        return out  + "</p>"
       }
 
       function place(axis, scale, i) {
