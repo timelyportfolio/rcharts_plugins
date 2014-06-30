@@ -296,7 +296,6 @@ d3.scatter_lm = function () {
                           d3.format(',.2s')(data_length))
           },
           change: function() {
-            console.log(xvar, yvar)
             resampling = true;
             sample_data = [];
             update_chart();

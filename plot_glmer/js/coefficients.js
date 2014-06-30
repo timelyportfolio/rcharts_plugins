@@ -56,6 +56,7 @@ d3.barchart_errors = function module() {
       // functions and stuff requiring access to data.
       data = _.sortBy(data, function(d) { return -d[xvar]})
       var tf = d3.format(tickFormat)
+      height
 
       if(typeof height !== 'undefined') {
         var size = {
@@ -69,6 +70,7 @@ d3.barchart_errors = function module() {
         };
         height = barheight*data.length + 20 + padding.top + padding.bottom
       }
+      console.log("the height is: " + height)
       if(_selection.select('.coef_frame').empty()){
         var refitting = false,
         neg = colorbrewer.RdBu[3][0],
@@ -114,7 +116,7 @@ d3.barchart_errors = function module() {
 
       } else {
         sel = _selection.select('.coef_frame')
-          .transition().duration(500)
+          // .transition().duration(500)
             .attr('width', width)
             .attr('height', height);
         var g = _selection.select('#coef_chart')
