@@ -50,6 +50,11 @@ var factor = _.filter(_.keys(dtypes), function(d) {
     params.yvar = params.yvar ? params.yvar:numeric[1]
     params.color_var = params.color_var ? params.color_var:factor[0]
     params.filter_var = params.filter_var ? params.filter_var:factor[1]
+    params.sc_width = params.sc_width ? params.sc_width:700
+    params.sc_height = params.sc_height ? params.sc_height:700
+    params.coef_width = params.coef_width ? params.coef_width:625
+    params.hist_width = params.hist_width ? params.hist_width:300
+    params.coef_barheight = params.coef_barheight ? params.coef_barheight:undefined
 
 raw_data.forEach(function(d, i) {
   d._index = i;
@@ -63,7 +68,7 @@ raw_data.forEach(function(d, i) {
 // adding switches
 var labels = ['choose_x', 'choose_y', 'choose_color',
                       'choose_size', 'choose_filter'],
-buttons = d3.select('#scatter_controls').append('div')
+buttons = d3.select('#controls').append('div')
             .attr('class', 'btn-group-vertical sc')
 
 buttons.selectAll('div')
@@ -141,10 +146,7 @@ d3.select('#choose_y').on('change', function() {
 });
 d3.select('#choose_model').on('change', function() {
   model = this.value
-  var coef_plot = d3.barchart_errors()
-                .width(600)
-                .formula(params.formulas[model])
-                .height(300);
+  coef_plot = coef_plot.formula(params.formulas[model])
   d3.select('#coefficients')
     .datum(coefs[model]).call(coef_plot)
   update_all();
@@ -236,54 +238,54 @@ function update_color() {
   // add continuous color scale for numeric color vars
   colors.domain(_.unique(_.map(inx.top(Infinity),
     function(d) { return d[params.color_var]})))
-  var color_legend = d3.select('#color-legend')
-                      .style('height', colors.domain().length*50)
+  // var color_legend = d3.select('#color-legend')
+  //                     .style('height', colors.domain().length*50)
 
-  function make_color_legend(el) { 
-    el.append('text')
-        .attr("x", 0)
-        .attr('y', 35)
-        .attr('text-anchor', 'right')
-        .text(el[0][0].__data__)
-    el.append('rect')
-        .attr('width', 20)
-        .attr('height', 20)
-        .attr('x', 15)
-        .attr('y', 20)
-        .attr('fill', colors(el[0][0].__data__))
-        .attr('fill-opacity', 0.8)
-  }
+  // function make_color_legend(el) { 
+  //   el.append('text')
+  //       .attr("x", 0)
+  //       .attr('y', 35)
+  //       .attr('text-anchor', 'right')
+  //       .text(el[0][0].__data__)
+  //   el.append('rect')
+  //       .attr('width', 20)
+  //       .attr('height', 20)
+  //       .attr('x', 15)
+  //       .attr('y', 20)
+  //       .attr('fill', colors(el[0][0].__data__))
+  //       .attr('fill-opacity', 0.8)
+  // }
 
-  color_legend.select('text')
-        .transition().duration(500)
-        .style('opacity', 0)
-        .transition().duration(500)
-        .style('opacity', 1)
-        .text(params.color_var + ":")
-        .attr('x', 0)
-        .attr('y', 10)
+  // color_legend.select('text')
+  //       .transition().duration(500)
+  //       .style('opacity', 0)
+  //       .transition().duration(500)
+  //       .style('opacity', 1)
+  //       .text(params.color_var + ":")
+  //       .attr('x', 0)
+  //       .attr('y', 10)
 
-  color_legend = color_legend.selectAll('g.c')
-        .data(colors.domain())
+  // color_legend = color_legend.selectAll('g.c')
+  //       .data(colors.domain())
 
-  color_legend.each(function(d, i) {
-    var g = d3.select(this)
-    g.select('rect').remove()
-    g.select("text").remove()
-    g.attr('transform', 'translate(0,' + (i * 25) + ')')
-    g.call(make_color_legend)});
+  // color_legend.each(function(d, i) {
+  //   var g = d3.select(this)
+  //   g.select('rect').remove()
+  //   g.select("text").remove()
+  //   g.attr('transform', 'translate(0,' + (i * 25) + ')')
+  //   g.call(make_color_legend)});
 
-  color_legend
-     .enter().append('g')
-      .attr('class', 'c')
-      .each(function(d, i) {
-        var g = d3.select(this)
-        g.attr('transform', 'translate(0,' + (i * 25) + ')')
-        g.call(make_color_legend)});
+  // color_legend
+  //    .enter().append('g')
+  //     .attr('class', 'c')
+  //     .each(function(d, i) {
+  //       var g = d3.select(this)
+  //       g.attr('transform', 'translate(0,' + (i * 25) + ')')
+  //       g.call(make_color_legend)});
 
-  color_legend.exit()
-    .transition().duration(1000)
-    .style('opacity', 0).remove()
+  // color_legend.exit()
+  //   .transition().duration(1000)
+  //   .style('opacity', 0).remove()
 }
 
 // getting factor and numeric terms for univariate charts.
@@ -300,18 +302,18 @@ var scatter_div = d3.select('#chart')
       .append('div')
       .attr('id', 'scatter')
       .style('float','left')
-      .style('width', '700px')
-      .style('height', '700px')
+      .style('width', params.sc_width + "px")
+      .style('height', params.sc_height + "px")
       .datum([0])
-scatter_div.append('div')
-      .attr('id', 'legend-div')
-      .style('position', 'absolute')
-      .style('left', '100px')
-      .style('top', '50px')
-      .append('svg')
-      .attr('id', 'color-legend')
-      .style('width', 100)
-      .append('text')
+// scatter_div.append('div')
+//       .attr('id', 'legend-div')
+//       .style('position', 'absolute')
+//       .style('left', '100px')
+//       .style('top', '50px')
+//       .append('svg')
+//       .attr('id', 'color-legend')
+//       .style('width', 100)
+//       .append('text')
 
 var coef_div = d3.select('#chart').append('div');
 coef_div
@@ -321,9 +323,12 @@ coef_div
     .datum(coefs[model])
 
 coef_plot = d3.barchart_errors()
-              .width(625)
+              .width(params.coef_width)
               .formula(params.formulas[model])
-              .height(300);
+
+if(params.coef_barheight){
+  coef_plot = coef_plot.barheight(params.coef_barheight)
+}
 
 coef_div.call(coef_plot)
 
@@ -395,14 +400,13 @@ var hist_div = d3.select('#chart').append('div')
                 .style('float', 'left')
                 .append('div')
                 .attr('id', 'histograms')
-                .attr('class', 'row'),
-hist_width = 300;
+                .attr('class', 'row')
 
 
 var ch = d3.hist_cf()
           .color(colorbrewer.Dark2[5][1])
-          .height(250)
-          .width(hist_width)
+          .height(params.hist_width)
+          .width(params.hist_width)
           .tickdiv(5)
           .bins(30)
 
@@ -450,30 +454,13 @@ update_filter();
 update_color();
 update_hist();
 add_hist();
-scatter = d3.scatter_lm()
-    .height(params.width)
-    .width(params.height)
-    .dimension(inx)
-    .xvar(params.xvar)
-    .yvar(params.yvar)
-    .color_var(params.color_var)
-    .color_scale(colors)
-    .size_var(params.size_var)
-    .npredictlines(params.prediction_lines)
-    .filter_var(params.filter_var)
-    .coefs(coefsObj(coefs, model))
-    .dtypes(dtypes)
-    .formula(prep_formula(params.formulas[model]))
-    .id('scatter');
 
-scatter_div.call(scatter); // do I have to have data bound?
 
 function update_all() {
 
-
 scatter = d3.scatter_lm()
-    .height(params.width)
-    .width(params.height)
+    .height(params.sc_width)
+    .width(params.sc_height)
     .dimension(inx)
     .xvar(params.xvar)
     .yvar(params.yvar)
@@ -490,7 +477,7 @@ scatter = d3.scatter_lm()
   scatter_div.call(scatter)
 
 }
-
+update_all()
 
 //   return plot_glmer;
 // };

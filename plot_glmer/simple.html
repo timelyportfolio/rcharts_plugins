@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<!--    <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js
+" charset="utf-8"></script>    
+-->
+    <script src='js/jquery-1.8.2.min.js' type='text/javascript'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src='js/lodash.js' type='text/javascript'></script>
+    <script src='bootstrap3/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src="js/bootstrap-multiselect.js" charset="utf-8"></script>    
+
+    <script src="js/d3.v3.min.js" charset="utf-8"></script>
+    <script src='js/colorbrewer.v1.min.js' type='text/javascript'></script>
+    <script src="js/crossfilter.js" charset="utf-8"></script>
+    <script src="js/box.js" charset="utf-8"></script>
+    <script src="js/scatter_lm.js" charset="utf-8"></script>    
+    <script src="js/coefficients.js" charset="utf-8"></script>    
+    <script src="js/hist_cf.js" charset="utf-8"></script>    
+
+    <link rel="stylesheet" type="text/css" href="bootstrap3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+<style>
+ 
+svg {
+  font: 10px sans-serif;
+}
+ 
+rect {
+  fill: #ddd;
+}
+ 
+circle {
+  fill-opacity: .5;
+  fill: #f00;
+}
+ 
+.axis path, .axis line {
+  fill: none;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+ 
+</style>
+<body>
+<div class='container' style='width:1200px'>
+</div>
+<div class='container' id='num2'>
+</div>
+<script>
+
+
+
+width = 600
+height = 600
+padding = {left:40, top:20, right:20, bottom:30}
+size = {
+    x: width - padding.left - padding.right,
+    y: height - padding.top - padding.bottom
+}
+var svg = d3.select('.container').append('div')
+    .append("svg")
+    .attr("width", 600)
+    .attr("height", height)
+    .attr('class', 'frame')
+    .append("g")
+    .attr("transform", "translate(" + padding.left + "," + 
+          padding.top + ")")
+
+
+
+svg.append('clipPath').attr('id', 'clip')
+    .append('rect')
+    .attr('class', 'background')
+    .attr('pointer-events', 'all')
+    .attr('fill', 'none')
+    .attr('height', size.y + 'px')
+    .attr('width', size.x + 'px')
+
+var d = [5,6,7,8,9,10,11,12]
+
+var x = d3.scale.ordinal()
+      .domain(d3.range(d.length))
+      .rangeRoundBands([0, size.x], .15)
+
+var y = d3.scale.linear()
+            .domain([0,d3.max(d)])
+            .range([size.y, 0])
+
+var xax = d3.svg.axis().scale(x)
+            .tickSize(-size.y).orient('bottom')
+
+var yax = d3.svg.axis().scale(y)
+            .tickSize(-size.x).orient('left')
+
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yax)
+
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + size.y+ ")")
+    .call(xax)
+
+svg.append('g').attr('class', 'rects')
+
+function update(){
+
+    var rects = d3.select('.rects').selectAll('rect')
+                    .data(d)
+
+    rects.attr('x', function(d,i) { return x(i)})
+        .attr('width', x.rangeBand())
+        .attr('y',  function(d) { return y(d)})
+        .attr('height', function(d) { return size.y - y(d)})
+
+    rects.enter().append('rect')
+        .attr('x', function(d,i) { return x(i) })
+        .attr('width', x.rangeBand())
+        .attr('y',  function(d) { return y(d)})
+        .attr('height', function(d) { return size.y - y(d)})
+        .style('fill', 'orange')
+    svg.select('.y.axis')
+        .call(yax)
+    svg.select('.x.axis')
+        .call(xax)
+    svg.select('.background')
+        .call(zoom)
+}
+
+
+var zoom = d3.behavior.zoom()
+          .on("zoom", zoomed)
+
+function zoomed() {
+    y.domain([0, d3.max(d)*1/d3.event.scale])
+    update();
+}
+update()
+
+ 
+// var margin = {top: 0, right: 0, bottom: 12, left: 36},
+//     width = 960 - margin.left - margin.right,
+//     height = 500 - margin.top - margin.bottom;
+ 
+// var x = d3.scale.log()
+//     .domain([1, 100])
+//     .range([0, width]);
+ 
+// var y = d3.scale.log()
+//     .domain([1, 100])
+//     .range([height, 0]);
+ 
+// var xAxis = d3.svg.axis()
+//     .scale(x)
+//     .orient("bottom")
+//     .tickSize(-height);
+ 
+// var yAxis = d3.svg.axis()
+//     .scale(y)
+//     .orient("left")
+//     .ticks(5)
+//     .tickSize(-width);
+ 
+// var svg = d3.select("#num2").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//   .append("g")
+//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+//     .style("pointer-events", "all")
+//     .call(d3.behavior.zoom().x(x).y(y).scaleExtent([1, 8]).on("zoom", zoom));
+ 
+// svg.append("clipPath")
+//     .attr("id", "clip")
+//   .append("rect")
+//     .attr("width", width)
+//     .attr("height", height);
+ 
+// svg.append("rect")
+//   .attr("width", width)
+//   .attr("height", height);
+ 
+// svg.append("g")
+//     .attr("class", "x axis")
+//     .attr("transform", "translate(0," + height + ")")
+//     .call(xAxis);
+ 
+// svg.append("g")
+//     .attr("class", "y axis")
+//     .call(yAxis);
+ 
+// svg.append("g").attr("clip-path", "url(#clip)")
+//   .selectAll("circle")
+//     .data(d3.range(1000).map(function() { return [1 + Math.random() * 99, 1 + Math.random() * 99]; }))
+//   .enter().append("circle")
+//     .attr("r", 4.5)
+//     .attr("cx", function(d) { return x(d[0]); })
+//     .attr("cy", function(d) { return y(d[1]); });
+ 
+// function zoom() {
+//   svg.select(".x.axis").call(xAxis);
+//   svg.select(".y.axis").call(yAxis);
+//   svg.selectAll("circle")
+//       .attr("cx", function(d) { return x(d[0]); })
+//       .attr("cy", function(d) { return y(d[1]); });
+// }
+ 
+</script>
+</html>

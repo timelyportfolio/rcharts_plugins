@@ -441,7 +441,6 @@ d3.stackbar = function module() {
         refitting = true;
         draw_chart();
         refitting = false;
-
       }
 
       draw_chart();

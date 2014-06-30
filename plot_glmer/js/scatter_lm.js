@@ -213,6 +213,7 @@ d3.scatter_lm = function () {
                         .attr('class', 'sample_div')
                         .style('float','left')
                         .style('height', '10px')
+                        .style('width', '300px')
                         .style('padding-left', padding.left + 'px')
                         .selectAll('div').data(['sample'])
                         .enter().append('div')
@@ -300,7 +301,6 @@ d3.scatter_lm = function () {
             sample_data = [];
             update_chart();
           }})
-      $('.sample_div').width(200)
       $('#sample_label').width(120)
       $("#sample_label").val(
               d3.format('2%')($("#sample_"+ id).slider('value')) + "  ~" +

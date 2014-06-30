@@ -279,18 +279,18 @@ function draw{{chartId}}(){
     templates$page <<- "plot_glmer/rChart.html"
     templates$chartDiv <<- "<{{container}} class='container' id='{{chartId}}' class='{{ lib }}'>
   <div class='row'>
-    <div class='col-md-3 well' id='{{chartId}}_controls'>
+    <div class='col-md-3 well' id='controls'>
     </div>
-    <div class='col-md-9 chart' id='{{chartId}}_chart'>
+    <div class='col-md-9 chart' id='chart'>
     </div>
   </div>
 </{{container}}>
 "
-    templates$script <<- read_template('plot_glmer/layouts/chart.html',
-                                       package=NULL)
+    # templates$script <<- read_template('plot_glmer/layouts/chart.html',
+    #                                    package=NULL)
   },
   getPayload = function(chartId){
-    skip = c('data', 'coefs', formulas)
+    skip = c('data', 'coefs', 'formulas')
     chartParams = RJSONIO:::toJSON(params[!(names(params) %in% c(skip))])
     list(chartParams = chartParams, 
          chartId = chartId, 
