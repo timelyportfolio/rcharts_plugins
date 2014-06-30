@@ -274,9 +274,9 @@ function draw{{chartId}}(){
 .plugins$PlotLM = setRefClass('PlotLM', contains = 'rCharts', methods = list(
   initialize = function(){
     callSuper()
-    LIB <<- get_lib("plot_glmer")
-    lib <<- "plot_glmer"
-    templates$page <<- "plot_glmer/rChart.html"
+    lib <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer"
+    LIB <<- get_lib(lib)
+    templates$page <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer/rChart.html"
     templates$chartDiv <<- "<{{container}} class='container' id='{{chartId}}' class='{{ lib }}'>
   <div class='row'>
     <div class='col-md-3 well' id='controls'>
@@ -286,8 +286,7 @@ function draw{{chartId}}(){
   </div>
 </{{container}}>
 "
-    # templates$script <<- read_template('plot_glmer/layouts/chart.html',
-    #                                    package=NULL)
+    templates$script <<- 'http://mostlyconjecture.com/rcharts_plugins/plot_glmer/layouts/chart.html'
   },
   getPayload = function(chartId){
     skip = c('data', 'coefs', 'formulas')
