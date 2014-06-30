@@ -275,7 +275,7 @@ function draw{{chartId}}(){
   initialize = function(){
     callSuper()
 #    lib <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer"
-    lib <<- "plot_glmer"
+    lib <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer"
     LIB <<- get_lib(lib)
     templates$page <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer/rChart.html"
     templates$chartDiv <<- "<{{container}} class='container' id='{{chartId}}' class='{{ lib }}'>
@@ -301,7 +301,7 @@ function draw{{chartId}}(){
          dtypes = RJSONIO::toJSON(sapply(params[['data']], class))
     )
   },
-  render = function(chartId = NULL, cdn = T, static = T) {
+  render = function(chartId = NULL, cdn = TRUE, static = TRUE) {
         params$dom <<- chartId %||% params$dom
         template = read_template(templates$page, package=NULL)
         assets = Map("c", get_assets(LIB, static = static, cdn = cdn), 

@@ -10,7 +10,7 @@ plot_glmer:
   js/scatter_lm.js,
   js/coefficients.js,
   js/hist_cf.js]
-  css: [bootstrap3/css/bootstrap.min.css, css/style.css]
+  css: [bootstrap3/css/bootstrap.min.css, js/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.css,css/style.css]
   cdn:
     jshead: 
       - "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"

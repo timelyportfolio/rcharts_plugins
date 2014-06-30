@@ -322,7 +322,6 @@ d3.scatter_lm = function () {
         }
       }
       function tooltip_content(d) {
-        console.log(d)
         function fix(x) { return _.isString(x) ? x:round(x);}
         var xcontent = fix(d.x_actual),
         ycontent = fix(d.y_actual),
@@ -331,7 +330,6 @@ d3.scatter_lm = function () {
         // this was dumb...
         hover_details = _.zipObject([color_var, size_var, filter_var],
                                     ['color', 'size', 'filter'])
-        console.log(hover_details)
         _.mapValues(hover_details, function(v,k) {
           out += k !='null' ? "<br>" + k + ": " + fix(d[v]):""
         })        

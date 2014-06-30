@@ -103,8 +103,6 @@ formulas = {
 }
 // function to zip model output into row format with variable names
 // as keys
-
-
 function coefsObj(coefs, model) {
   m = coefs[model]
   return _.zipObject(_.map(m, 
@@ -235,7 +233,7 @@ d3.select('#choose_y').on('change', function() {
 });
 d3.select('#choose_model').on('change', function() {
   model = this.value
-  var coef_plot = d3.barchart_errors()
+  coef_plot = d3.barchart_errors()
                 .width(600)
                 .formula(formulas[model])
   d3.select('#coefficients')
