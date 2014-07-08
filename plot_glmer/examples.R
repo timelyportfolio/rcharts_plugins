@@ -118,3 +118,83 @@ ch %T>%
     , formulas = list( model1 = formula )
     , prediction_lines = 5
   ) %>% show
+
+# try to make a function to make this a little easier
+plotGLM <- function( data, formulas ){
+  require(magrittr)
+  
+  1:(length(formulas)) %>%
+    lapply(
+      FUN=function(n){
+        glm(
+          formula = formulas[[n]]$formula
+          ,family = formulas[[n]]$family
+          ,data = data
+        )
+      }
+    ) %>%
+    set_names(names(formulas)) -> models
+  
+  
+  1:length(models) %>%
+    lapply(
+      FUN = function(n){
+        models[[n]] %>% 
+          fitted %>%
+          as.data.frame %>%
+          return
+      }
+    ) %>%
+    do.call(cbind,.) %>%
+    set_colnames (paste0("fits_",names(models))) %>% 
+    cbind(data,.) -> data  
+    
+  1:length(models) %>%
+    lapply(
+      FUN = function(n){
+        models[[n]] %>% 
+          resid %>%
+          as.data.frame %>%
+          return
+      }
+    ) %>%
+    do.call(cbind,.) %>%
+    set_colnames (paste0("resid_",names(models))) %>% 
+    cbind(data,.) -> data
+  
+  models %>%
+    lapply(
+      FUN = function(model){
+        model %>% summary %>% .$coef %>% as.data.frame %>% cbind(.,variable=rownames(.)) %>% as.list
+      }
+    ) -> coefs
+    
+  ch <- PlotLM$new()
+  
+  ch %T>%
+    .$set(
+      data = data
+      , coefs = coefs
+      , coef_barheight = 15
+      , formulas = formulas %>% lapply(function(f)return(f$formula))
+      , prediction_lines = 5
+    ) %>% show
+  
+  return(invisible(ch))
+}
+
+
+formulas <- list(
+  m1 = 'profevaluation ~ age + female + courseevaluation + minority + btystdvariance',
+  m2 = 'profevaluation ~ age + female + courseevaluation + tenured',
+  m3 = 'tenured ~ age + female + courseevaluation + profevaluation')
+
+formulas %<>%
+  lapply(
+    FUN=function(f){
+      return(list(formula = f, family="gaussian"))
+    }
+  )
+formulas[[3]]$family = "binomial"
+
+plotGLM(data=d,formulas=formulas)
