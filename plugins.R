@@ -296,7 +296,7 @@ function draw{{chartId}}(){
          chartId = chartId, 
          formulas = rjson::toJSON(params[['formulas']]),
          lib = basename(lib), liburl = LIB$url, 
-         data = toJSONArray(params[['data']]), 
+         data = to_json(params[['data']],orient="records"), 
          coefs = rjson::toJSON(params[['coefs']]), 
          dtypes = rjson::toJSON(sapply(params[['data']], class))
     )

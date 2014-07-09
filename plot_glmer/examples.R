@@ -229,4 +229,4 @@ formulas %<>%
     }
   )
 
-polls[sample(nrow(polls), 800), ] %>% plotGLM( formulas = formulas )
+polls[sample(nrow(polls), 2000), ] %>% plotGLM( formulas = formulas )
