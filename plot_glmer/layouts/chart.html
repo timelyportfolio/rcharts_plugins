@@ -112,8 +112,9 @@ buttons = buttons.selectAll('div.variables')
           .append('span').attr('class', 'caret')
         button = d3.select(this).selectAll('option')
               .data(_.keys(dtypes).filter(function(d,k) { 
-                if(i == 2) return true
-                else if (i == 4) return _.contains(factor, d)
+                //if(i == 2) return true
+                //2 (color) and 4(filter)
+                if (i == 4 || i ==2) return _.contains(factor, d)
                 else if (_.contains(numeric.concat(factor), d)) 
                     return true;
               }))
