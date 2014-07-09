@@ -291,14 +291,14 @@ function draw{{chartId}}(){
   },
   getPayload = function(chartId){
     skip = c('data', 'coefs')
-    chartParams = RJSONIO:::toJSON(params[!(names(params) %in% c(skip))])
+    chartParams = rjson:::toJSON(params[!(names(params) %in% c(skip))])
     list(chartParams = chartParams, 
          chartId = chartId, 
-         formulas = RJSONIO::toJSON(params[['formulas']]),
+         formulas = rjson::toJSON(params[['formulas']]),
          lib = basename(lib), liburl = LIB$url, 
          data = toJSONArray(params[['data']]), 
-         coefs = RJSONIO::toJSON(params[['coefs']]), 
-         dtypes = RJSONIO::toJSON(sapply(params[['data']], class))
+         coefs = rjson::toJSON(params[['coefs']]), 
+         dtypes = rjson::toJSON(sapply(params[['data']], class))
     )
   },
   render = function(chartId = NULL, cdn = TRUE, static = TRUE) {

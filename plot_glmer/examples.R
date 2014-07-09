@@ -4,8 +4,11 @@ source("plugins.R")
 #example 1 from http://mostlyconjecture.com/2014/06/30/linear-models-with-rcharts-and-d3/
 
 library(foreign)
-library(RJSONIO)
-rm(list = ls())
+#library(RJSONIO) think rjson will be faster and work with no change
+library(rjson)
+library(magrittr)
+
+#rm(list = ls())
 
 polls <- read.dta('http://www.stat.columbia.edu/~gelman/arm/examples/election88/polls.dta')
 
@@ -80,7 +83,6 @@ ch
 
 #examples not from http://mostlyconjecture.com/2014/06/30/linear-models-with-rcharts-and-d3/
 #using glm documentation
-require(magrittr)
 
 utils::data(anorexia, package = "MASS")
 
@@ -183,6 +185,12 @@ plotGLM <- function( data, formulas ){
   return(invisible(ch))
 }
 
+# redo example 2 with our new function
+d <- read.csv('http://www.stat.columbia.edu/~gelman/arm/examples/beauty/ProfEvaltnsBeautyPublic.csv')
+d$female <- factor(d$female)
+factors <- c(1:3, 18:47, 50:56, 60,61)
+d[,factors] <- lapply(d[,factors], factor)
+d <- d[,-grep('class', names(d))]
 
 formulas <- list(
   m1 = 'profevaluation ~ age + female + courseevaluation + minority + btystdvariance',
@@ -198,3 +206,27 @@ formulas %<>%
 formulas[[3]]$family = "binomial"
 
 plotGLM(data=d,formulas=formulas)
+
+
+# redo example 1 with our new function
+polls <- read.dta('http://www.stat.columbia.edu/~gelman/arm/examples/election88/polls.dta')
+
+make_factors <- function(d, min = 20) {
+  facs <- which(sapply(d, function(x) length(unique(x)) < min))
+  d[facs] <- lapply(d[facs], factor)
+  d
+}
+polls <- make_factors(polls)
+polls <- polls[complete.cases(polls),]
+polls$state <- factor(polls$state)
+formulas <- list(m1='bush ~ black + female',
+                 m2 = "bush ~ black + female + edu + age",
+                 m3 = "bush ~ black + female + edu + age + year")
+formulas %<>% 
+  lapply(
+    FUN=function(f){
+      return(list(formula = f, family="binomial"))
+    }
+  )
+
+polls[sample(nrow(polls), 800), ] %>% plotGLM( formulas = formulas )
