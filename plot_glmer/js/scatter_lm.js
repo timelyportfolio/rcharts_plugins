@@ -164,8 +164,8 @@ d3.scatter_lm = function () {
                   filter: d[3],
                   _index: d[5]}
         }), function(d) { return -d.size;})
-
-        jittered = _.filter(jittered, function(d) { return d.color != null;})
+        //turn this off and try to better handle in color logic
+        // = _.filter(jittered, function(d) { return d.color != null;})
       };
 
       // automatically sample data according to color var
@@ -177,7 +177,7 @@ d3.scatter_lm = function () {
                             reduceSub(xvar, yvar, color_var, size_var), 
                             reduceInit)
         var n = d3.nest()
-                  .key(function(d) { return d.value.color})
+                  .key(function(d) { return (d.value.color)?d.value.color:"all"})
                   .entries(inxgroup.all())
         sample_data = _.flatten(_.map(n, function(d) {
           return _.filter(d.values, function(v) {
