@@ -165,7 +165,7 @@ d3.scatter_lm = function () {
                   _index: d[5]}
         }), function(d) { return -d.size;})
 
-        jittered = _.filter(jittered, function(d) { return d.color != null;})
+        //jittered = _.filter(jittered, function(d) { return d.color != null;})
       };
 
       // automatically sample data according to color var

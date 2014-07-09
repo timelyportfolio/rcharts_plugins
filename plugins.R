@@ -4,7 +4,7 @@ library(rCharts)
 .plugins$ScatterMatrix = setRefClass('ScatterMatrix', contains = 'rCharts', methods = list(
         initialize = function(){
             callSuper()
-            LIB <<- get_lib("http://mostlyconjecture.com/rcharts_plugins/scatter_matrix")
+            LIB <<- get_lib("http://timelyportfolio.github.io/rcharts_plugins/scatter_matrix")
             lib <<- "scatter_matrix"
       templates$chartDiv <<-''
             templates$script <<- '
@@ -49,7 +49,7 @@ library(rCharts)
 .plugins$ParallelSets = setRefClass('ParallelSets', contains = 'rCharts', methods = list(
         initialize = function(){
             callSuper()
-            LIB <<- get_lib("http://mostlyconjecture.com/rcharts_plugins/parallelsets")
+            LIB <<- get_lib("http://timelyportfolio.github.io/rcharts_plugins/parallelsets")
             lib <<- "parallelsets"
             templates$script <<- '
             <script type="text/javascript">
@@ -81,7 +81,7 @@ library(rCharts)
 .plugins$ChordDiagram = setRefClass('ChordDiagram', contains = 'rCharts', methods = list(
   initialize = function(){
     callSuper()
-    LIB <<- get_lib("http://mostlyconjecture.com/rcharts_plugins/chord_diagram")
+    LIB <<- get_lib("http://timelyportfolio.github.io/rcharts_plugins/chord_diagram")
     lib <<- "chord_diagram"
     templates$script <<- '
     <script type="text/javascript">
@@ -117,7 +117,7 @@ library(rCharts)
     params$innerRadius <<- 40
     params$height <<- 0
     params$width <<- "100%"
-    LIB <<- get_lib("http://mostlyconjecture.com/rcharts_plugins/hive_plot")
+    LIB <<- get_lib("http://timelyportfolio.github.io/rcharts_plugins/hive_plot")
     lib <<- "hive_plot"
     templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
     templates$script <<- '
@@ -161,7 +161,7 @@ library(rCharts)
             callSuper()
             params$rootname <<- 'root'
             LIB <<- 
-              get_lib("http://mostlyconjecture.com/rcharts_plugins/zoomable_treemap/")
+              get_lib("http://timelyportfolio.github.io/rcharts_plugins/zoomable_treemap/")
             lib <<- "zoomable_treemap"
             templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
             templates$script <<- '
@@ -238,7 +238,7 @@ function draw{{chartId}}(){
     callSuper()
     params$width <<- 600
     params$height <<- NULL
-    LIB <<- get_lib("http://mostlyconjecture.com/rcharts_plugins/sequence_sunburst")
+    LIB <<- get_lib("http://timelyportfolio.github.io/rcharts_plugins/sequence_sunburst")
     lib <<- "sequence_sunburst"
     templates$chartDiv <<- "<{{container}} id = '{{ chartId }}' class = '{{ lib }}'></{{ container}}>"
     templates$script <<- "
@@ -274,10 +274,10 @@ function draw{{chartId}}(){
 .plugins$PlotLM = setRefClass('PlotLM', contains = 'rCharts', methods = list(
   initialize = function(){
     callSuper()
-#    lib <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer"
-    lib <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer"
+#    lib <<- "http://timelyportfolio.github.io/rcharts_plugins/plot_glmer"
+    lib <<- "http://timelyportfolio.github.io/rcharts_plugins/plot_glmer"
     LIB <<- get_lib(lib)
-    templates$page <<- "http://mostlyconjecture.com/rcharts_plugins/plot_glmer/rChart.html"
+    templates$page <<- "http://timelyportfolio.github.io/rcharts_plugins/plot_glmer/rChart.html"
     templates$chartDiv <<- "<{{container}} class='container' id='{{chartId}}' class='{{ lib }}'>
   <div class='row'>
     <div class='col-md-3 well' id='controls'>
@@ -287,7 +287,7 @@ function draw{{chartId}}(){
   </div>
 </{{container}}>
 "
-    templates$script <<- 'http://mostlyconjecture.com/rcharts_plugins/plot_glmer/layouts/chart.html'
+    templates$script <<- 'http://timelyportfolio.github.io/rcharts_plugins/plot_glmer/layouts/chart.html'
   },
   getPayload = function(chartId){
     skip = c('data', 'coefs')

@@ -264,3 +264,14 @@ attitude %>%
     ))
     , lmtype = "lm"
   ) -> lmChart2
+attitude %>%
+  data.frame(
+    country = rownames(.)
+  ) %>%
+  plotLM (
+    formulas = list(m1 = list(
+      formula = "rating ~ complaints"
+      ,family = NULL
+    ))
+    , lmtype = "lm"
+  ) -> lmChart3
