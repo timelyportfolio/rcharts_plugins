@@ -243,12 +243,15 @@ fm1 <- lm(sr ~ pop15 + pop75 + dpi + ddpi, data = LifeCycleSavings)
 summary(fm1)
 
 LifeCycleSavings %>%
+  data.frame(
+    country = rownames(.)
+  ) %>%
   plotLM (
     formulas = list(m1 = list(
       formula = "sr ~ pop15 + pop75 + dpi + ddpi"
       ,family = NULL
     ))
-    , lmtype = "glm"
+    , lmtype = "lm"
   ) -> lmChart1
 
 # another lm example
@@ -264,6 +267,7 @@ attitude %>%
     ))
     , lmtype = "lm"
   ) -> lmChart2
+
 attitude %>%
   data.frame(
     country = rownames(.)
