@@ -122,13 +122,16 @@ ch %T>%
   ) %>% show
 
 # try to make a function to make this a little easier
-plotGLM <- function( data, formulas ){
+plotLM <- function( data, formulas, lmtype = "lm" ){
+  
   require(magrittr)
+  
+  modelFUN = match.fun(lmtype)
   
   1:(length(formulas)) %>%
     lapply(
       FUN=function(n){
-        glm(
+        modelFUN(
           formula = formulas[[n]]$formula
           ,family = formulas[[n]]$family
           ,data = data
@@ -205,7 +208,7 @@ formulas %<>%
   )
 formulas[[3]]$family = "binomial"
 
-plotGLM(data=d,formulas=formulas)
+plotLM(data=d,formulas=formulas,lmtype="glm")
 
 
 # redo example 1 with our new function
@@ -229,4 +232,35 @@ formulas %<>%
     }
   )
 
-polls[sample(nrow(polls), 2000), ] %>% plotGLM( formulas = formulas )
+polls[sample(nrow(polls), 2000), ] %>% plotLM( formulas = formulas, lmtype = "glm" )
+
+
+# try with just standard lm
+# use example from LifeCycleSavings
+pairs(LifeCycleSavings, panel = panel.smooth,
+      main = "LifeCycleSavings data")
+fm1 <- lm(sr ~ pop15 + pop75 + dpi + ddpi, data = LifeCycleSavings)
+summary(fm1)
+
+LifeCycleSavings %>%
+  plotLM (
+    formulas = list(m1 = list(
+      formula = "sr ~ pop15 + pop75 + dpi + ddpi"
+      ,family = NULL
+    ))
+    , lmtype = "glm"
+  ) -> lmChart1
+
+# another lm example
+# use example from attitude
+pairs(attitude, main = "attitude data")
+summary(attitude)
+summary(fm1 <- lm(rating ~ ., data = attitude))
+attitude %>%
+  plotLM (
+    formulas = list(m1 = list(
+      formula = "rating ~ ."
+      ,family = NULL
+    ))
+    , lmtype = "lm"
+  ) -> lmChart2
