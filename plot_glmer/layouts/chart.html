@@ -416,13 +416,13 @@ function add_hist() {
         .attr('id', function(d) { return d.vname})
         .attr('class', 'hist')
         .style('display','inline-block')
-        .call(ch)
+        .call(ch);
       
       hists.exit()
         .transition().style("opacity","0.001")
-        .remove()
+        .remove();
         
-      //hists.call(ch);        
+      hists.call(ch);        
 }
 
 update_filter();
