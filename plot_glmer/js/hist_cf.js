@@ -29,7 +29,7 @@ d3.hist_cf = function module() {
       
       // functions and stuff requiring access to data.
       var tt_format = d3.format(',.2s')
-      function transition_time() {return refitting ? 0:1000}
+      function transition_time() {return refitting ? 0:100}
 
       function tooltip_content(d, i) {
         return "<p>" + hist_variable + ": " + d3.format(',')(d.length) + 
