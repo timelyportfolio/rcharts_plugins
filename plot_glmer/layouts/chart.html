@@ -299,28 +299,11 @@ function prep_formula(f) {
   return formula;
 }
 
-var scatter_div = d3.select('#chart')
-      .append('div')
-      .attr('id', 'scatter')
-      .style('float','left')
-      .style('width', params.sc_width + "px")
-      .style('height', params.sc_height + "px")
-      .datum([0])
-// scatter_div.append('div')
-//       .attr('id', 'legend-div')
-//       .style('position', 'absolute')
-//       .style('left', '100px')
-//       .style('top', '50px')
-//       .append('svg')
-//       .attr('id', 'color-legend')
-//       .style('width', 100)
-//       .append('text')
 
 var coef_div = d3.select('#chart').append('div');
 coef_div
-    .style('position', 'relative')
+    .attr("class", "col-md-5")
     .attr('id', 'coefficients')
-    .style('float','left')
     .datum(coefs[model])
 
 coef_plot = d3.barchart_errors()
@@ -332,6 +315,22 @@ if(params.coef_barheight){
 }
 
 coef_div.call(coef_plot)
+
+var scatter_div = d3.select('#chart')
+      .append('div')
+      .attr('id', 'scatter')
+      .attr("class","col-md-8")
+      .datum([0])
+// scatter_div.append('div')
+//       .attr('id', 'legend-div')
+//       .style('position', 'absolute')
+//       .style('left', '100px')
+//       .style('top', '50px')
+//       .append('svg')
+//       .attr('id', 'color-legend')
+//       .style('width', 100)
+//       .append('text')
+
 
 // histograms
 function update_hist() {
