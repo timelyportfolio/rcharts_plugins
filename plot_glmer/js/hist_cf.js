@@ -276,22 +276,24 @@ d3.hist_cf = function module() {
            .attr('height', function(d) { return size.y - y(d.y)})
 
         bars.on('mouseover', function(d) {
-            var tooltip = d3.select(this).select(".hist_tooltip")
-            d3.select(this).style('opacity', 0.9)
-            tooltip.transition().duration(200)
-              .style('opacity', 0.9)
-            tooltip.html(function() { return tooltip_content(d)})
-              .style('left', (d3.mouse(this)[0] + 30) + 'px')
-              .style('top', (d3.mouse(this)[1] - 20)+ 'px')
+              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode).select(".hist_tooltip")
+              d3.select(this).style('opacity', 0.9)
+              tooltip.transition().duration(200)
+                .style('opacity', 0.9)
+              tooltip.html(function() { return tooltip_content(d)})
+                .style('left', (d3.mouse(this)[0] + 30) + 'px')
+                .style('top', (d3.mouse(this)[1] - 20)+ 'px')
            })
            .on('mouseout', function(d) {
-            d3.select(this).style('opacity', 0.4)
-            tooltip.transition().duration(200)
-                .style('opacity', 0)
+              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode).select(".hist_tooltip")
+              d3.select(this).style('opacity', 0.4)
+              tooltip.transition().duration(200)
+                  .style('opacity', 0)
            })
            .on('mousemove', function(d) {
-            tooltip.style('left', d3.mouse(this)[0] + 30 + 'px')
-              .style('top', (d3.mouse(this)[1] + padding.top)+ 'px')
+              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode).select(".hist_tooltip")
+              tooltip.style('left', d3.mouse(this)[0] + 30 + 'px')
+                .style('top', (d3.mouse(this)[1] + padding.top)+ 'px')
 
            })
 
