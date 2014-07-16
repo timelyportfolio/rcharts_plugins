@@ -281,8 +281,8 @@ d3.hist_cf = function module() {
             tooltip.transition().duration(200)
               .style('opacity', 0.9)
             tooltip.html(function() { return tooltip_content(d)})
-              .style('left', (d3.event.x + 30) + 'px')
-              .style('top', (d3.event.y - 20)+ 'px')
+              .style('left', (d3.mouse(this)[0] + 30) + 'px')
+              .style('top', (d3.mouse(this)[1] - 20)+ 'px')
            })
            .on('mouseout', function(d) {
             d3.select(this).style('opacity', 0.4)
@@ -290,8 +290,8 @@ d3.hist_cf = function module() {
                 .style('opacity', 0)
            })
            .on('mousemove', function(d) {
-            tooltip.style('left', d3.event.x + 30 + 'px')
-              .style('top', (d3.event.y + padding.top)+ 'px')
+            tooltip.style('left', d3.mouse(this)[0] + 30 + 'px')
+              .style('top', (d3.mouse(this)[1] + padding.top)+ 'px')
 
            })
 
