@@ -63,9 +63,8 @@ d3.hist_cf = function module() {
       }
 
       if(_selection.select('.hist_chart').empty()){
-        tooltip = d3.select(this).append('text')
-                    .attr('class', 'tooltip')
-                    .attr('id', 'hist_tooltip')
+        tooltips = _selection.append('text')
+                    .attr('class', 'hist_tooltip')
                     // .style('width', '300px')
                     .style('opacity', 0),
 
@@ -138,9 +137,9 @@ d3.hist_cf = function module() {
               draw_bars(bins);
             })
 
-      var g = _selection.select('#hist_chart'),
+      var g = _selection.select('.hist_chart'),
 
-      tooltip = _selection.select('.tooltip'),
+      tooltip = _selection.select('.hist_tooltip'),
 
       xaxdiv = g.select('.hist_xaxis');
 
@@ -158,7 +157,7 @@ d3.hist_cf = function module() {
           .attr('text-anchor', 'middle')
           .style('opacity',0);
 
-      var sel = _selection.select('#hist_frame')
+      var sel = _selection.select('.hist_frame')
 
       gbrush = sel.append('g').attr('class', 'brush')
                   .attr('id', 'hist_brush')
