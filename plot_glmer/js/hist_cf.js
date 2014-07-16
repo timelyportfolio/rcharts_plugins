@@ -64,7 +64,7 @@ d3.hist_cf = function module() {
 
       if(_selection.select('.hist_chart').empty()){
         tooltips = _selection.append('text')
-                    .attr('class', 'hist_tooltip')
+                    .attr('class', 'tooltip')
                     // .style('width', '300px')
                     .style('opacity', 0),
 
@@ -139,7 +139,7 @@ d3.hist_cf = function module() {
 
       var g = _selection.select('.hist_chart'),
 
-      tooltip = _selection.select('.hist_tooltip'),
+      tooltip = _selection.select('.tooltip'),
 
       xaxdiv = g.select('.hist_xaxis');
 
@@ -276,7 +276,7 @@ d3.hist_cf = function module() {
            .attr('height', function(d) { return size.y - y(d.y)})
 
         bars.on('mouseover', function(d) {
-              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".hist_tooltip")
+              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
               d3.select(this).style('opacity', 0.9)
               tooltip.transition().duration(200)
                 .style('opacity', 0.9)
@@ -285,13 +285,13 @@ d3.hist_cf = function module() {
                 .style('top', (d3.mouse(this)[1] - 20)+ 'px')
            })
            .on('mouseout', function(d) {
-              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".hist_tooltip")
+              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
               d3.select(this).style('opacity', 0.4)
               tooltip.transition().duration(200)
                   .style('opacity', 0)
            })
            .on('mousemove', function(d) {
-              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".hist_tooltip")
+              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
               tooltip.style('left', d3.mouse(this)[0] + 30 + 'px')
                 .style('top', (d3.mouse(this)[1] + padding.top)+ 'px')
 
