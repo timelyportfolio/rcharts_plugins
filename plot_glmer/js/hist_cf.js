@@ -292,8 +292,8 @@ d3.hist_cf = function module() {
            })
            .on('mousemove', function(d) {
               var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
-              tooltip.style('left', d3.event.x + 30 + 'px')
-                .style('top', (d3.event.y + padding.top)+ 'px')
+              tooltip.style('left', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[0] + 30) + 'px')
+                .style('top', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[1] + padding.top)+ 'px')
 
            })
 
