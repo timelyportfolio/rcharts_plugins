@@ -281,8 +281,8 @@ d3.hist_cf = function module() {
               tooltip.transition().duration(200)
                 .style('opacity', 0.9)
               tooltip.html(function() { return tooltip_content(d)})
-                .style('left', (d3.mouse(this)[0] + 30) + 'px')
-                .style('top', (d3.mouse(this)[1] - 20)+ 'px')
+                .style('left', (d3.event.x + 30) + 'px')
+                .style('top', (d3.event.y - 20)+ 'px')
            })
            .on('mouseout', function(d) {
               var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
@@ -292,8 +292,8 @@ d3.hist_cf = function module() {
            })
            .on('mousemove', function(d) {
               var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
-              tooltip.style('left', d3.mouse(this)[0] + 30 + 'px')
-                .style('top', (d3.mouse(this)[1] + padding.top)+ 'px')
+              tooltip.style('left', d3.event.x + 30 + 'px')
+                .style('top', (d3.event.y + padding.top)+ 'px')
 
            })
 
