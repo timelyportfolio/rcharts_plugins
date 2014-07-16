@@ -302,7 +302,7 @@ function prep_formula(f) {
 
 var coef_div = d3.select('#coef_scatter_charts').append('div');
 coef_div
-    .attr("class", "row")
+    .attr("class", "col-md-5")
     .attr('id', 'coefficients')
     .datum(coefs[model])
 
@@ -319,7 +319,7 @@ coef_div.call(coef_plot)
 var scatter_div = d3.select('#coef_scatter_charts')
       .append('div')
       .attr('id', 'scatter')
-      .attr("class","row")
+      .attr("class","col-md-7")
       .datum([0])
 
 
