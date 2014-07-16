@@ -134,7 +134,7 @@ d3.hist_cf = function module() {
   
         this_el.select('.form-group .form-control')
             .on('change', function() {
-                bins = $(this)[0].value;
+                var bins = $(this)[0].value;
                 if(bins > uniq.length) { 
                 bins = uniq.length;
                 $(this)[0].value = bins;}
