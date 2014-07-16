@@ -384,13 +384,9 @@ function update_hist() {
 }
 
 
-var hist_div = d3.select('#chart').append('div')
-                .append('div')
-                .attr('class', 'col-md-6')
-                .style('float', 'left')
+var hist_div = d3.select('#hist_charts')
                 .append('div')
                 .attr('id', 'histograms')
-                .attr('class', 'row')
 
 
 var ch = d3.hist_cf()
