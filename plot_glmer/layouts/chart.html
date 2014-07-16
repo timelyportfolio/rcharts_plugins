@@ -51,8 +51,8 @@ var factor = _.filter(_.keys(dtypes), function(d) {
     params.color_var = params.color_var ? params.color_var : factor[0]
     params.filter_var = params.filter_var ? params.filter_var : factor[1]
     params.sc_width = params.sc_width ? params.sc_width:700
-    params.sc_height = params.sc_height ? params.sc_height:700
-    params.coef_width = params.coef_width ? params.coef_width:625
+    params.sc_height = params.sc_height ? params.sc_height:400
+    params.coef_width = params.coef_width ? params.coef_width:700
     params.hist_width = params.hist_width ? params.hist_width:300
     params.coef_barheight = params.coef_barheight ? params.coef_barheight:undefined
 
@@ -321,15 +321,6 @@ var scatter_div = d3.select('#coef_scatter_charts')
       .attr('id', 'scatter')
       .attr("class","row")
       .datum([0])
-// scatter_div.append('div')
-//       .attr('id', 'legend-div')
-//       .style('position', 'absolute')
-//       .style('left', '100px')
-//       .style('top', '50px')
-//       .append('svg')
-//       .attr('id', 'color-legend')
-//       .style('width', 100)
-//       .append('text')
 
 
 // histograms
