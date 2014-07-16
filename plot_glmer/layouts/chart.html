@@ -407,7 +407,7 @@ function add_hist() {
     var all_hist = _.map(choices, function(d, i) {
           return {vname: d, dim: inx, index:i};})
 
-    var hists = hist_div
+    var hists = hist_div.selectAll('div.hist')
             .data(all_hist)
 
     //if(hists.empty()){
