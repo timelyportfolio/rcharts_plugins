@@ -239,12 +239,12 @@ d3.hist_cf = function module() {
                   .on('brush', brushed)
         gbrush.call(brush);
 
-        xaxdiv
+        xaxdiv.transition()
           .duration(transition_time())
           .attr('transform', 'translate(0,' + size.y + ')')
           .style('opacity', 1).call(xax)
 
-        yaxdiv
+        yaxdiv.transition()
           .duration(transition_time())
           .attr('transform', 'translate(0,0)')
           .style('opacity', 1).call(yax)
@@ -254,7 +254,7 @@ d3.hist_cf = function module() {
         var bars = g.select('.bars').selectAll('rect.bar')
                  .data(hist_data)
 
-        bars.duration(transition_time())
+        bars.transition().duration(transition_time())
             .attr('x', function(d) {
               return x(d.x) + 1})
             .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
@@ -269,7 +269,7 @@ d3.hist_cf = function module() {
            .attr('x', function(d) {
             return x(d.x) + 1})
            .attr('width', 0)
-           
+           .transition()
            .duration(transition_time())
            .attr('y', function(d) { return y(d.y)})
            .style('opacity', 0.4)
