@@ -62,7 +62,7 @@ d3.hist_cf = function module() {
         bins = uniq.length
       }
 
-      if(_selection.select('#hist_chart').empty()){
+      if(_selection.select('.hist_chart').empty()){
         tooltip = d3.select(this).append('text')
                     .attr('class', 'tooltip')
                     .attr('id', 'hist_tooltip')
@@ -93,12 +93,12 @@ d3.hist_cf = function module() {
               .attr('value', bins)
 
         var sel = _selection.append('svg')
-                    .attr('id', 'hist_frame')
+                    .attr('class', 'hist_frame')
                     .attr('width', width)
                     .attr('height', height),
 
         g = sel.append('g')
-                .attr('id', 'hist_chart')
+                .attr('class', 'hist_chart')
                 .attr('transform', 'translate(' + padding.left + ',' +
                       padding.top + ")");
 
