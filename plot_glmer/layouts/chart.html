@@ -407,18 +407,18 @@ function add_hist() {
     var all_hist = _.map(choices, function(d, i) {
           return {vname: d, dim: inx, index:i};})
 
-    var hists = hist_div
+    var hists = hist_div.selectAll('.hist')
             .data(all_hist)
 
     //if(hists.empty()){
-      hists.enter().append('div')
+     /* hist_draw = hists.enter().append('div')
         .attr('id', function(d) { return d.vname})
-        .attr('class', function(d) { return 'hist'})
+        .attr('class', 'hist')
         .style('display','inline-block')
-        
+     */ 
       hists.call(ch)
       
-      hists.exit()
+      hists.exit().select('div.hist')
         .transition().style("opacity","0.001")
         .remove()
 }
