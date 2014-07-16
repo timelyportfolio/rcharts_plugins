@@ -397,40 +397,45 @@ var ch = d3.hist_cf()
           .bins(30)
 
 var order = numeric.slice(0,4)
+
 function add_hist() {
+  // get histograms that are selected
   var choices = _.map($('#hist_select option:selected'), 
                       function(o) { return o.value;})
 
-  if(choices.length != 4) {return null}else{
+  /*if(choices.length != 4) {return null}else{
     var new_vars = _.difference(choices, order),
     remove = _.difference(order, choices),
     index = 0;
 
     for(var i = 0; i < remove.length; i++){
       order[order.indexOf(remove[i])] = new_vars[i];
-    }
+    }*/
 
-    var all_hist = _.map(order, function(d, i) {
+    var all_hist = _.map(choices, function(d, i) {
           return {vname: d, dim: inx, index:i};})
 
     var hists = hist_div.selectAll('div.hist')
             .data(all_hist)
 
-    hists.each(function(d, i) {
+    /*hists.each(function(d, i) {
       var sel = d3.select(this)
       if(_.contains(new_vars, d.vname)){
         sel.call(ch)
       }
-    })
+    })*/
 
-    if(hists.empty()){
-      hists.enter().insert('div')
+    //if(hists.empty()){
+      hists.enter().append('div')
         .attr('id', function(d) { return d.vname})
         .attr('class', function(d) { return 'hist'})
         .style('display','inline-block')
-        .each(function(d, i) {
-          d3.select(this).call(ch)
-        })
+        .call(ch)
+      
+      hists.exit()
+        .transition().style("opacity","0.001")
+        .remove()
+      
     }
   }
 }
