@@ -348,7 +348,7 @@ function update_hist() {
         // Get selected options.
         var selectedOptions = $('#hist_select option:selected');
  
-        if (selectedOptions.length >= 4) {
+       /* if (selectedOptions.length >= 4) {
           // Disable all other checkboxes.
           var nonSelectedOptions = $('#hist_select option').filter(function() {
             return !$(this).is(':selected');
@@ -370,6 +370,7 @@ function update_hist() {
             input.parent('li').addClass('disabled');
           });
         }
+        */
         add_hist();
       },
       buttonWidth:false})
