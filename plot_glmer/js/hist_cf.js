@@ -276,6 +276,7 @@ d3.hist_cf = function module() {
            .attr('height', function(d) { return size.y - y(d.y)})
 
         bars.on('mouseover', function(d) {
+            var tooltip = d3.select(this).select(".hist_tooltip")
             d3.select(this).style('opacity', 0.9)
             tooltip.transition().duration(200)
               .style('opacity', 0.9)
