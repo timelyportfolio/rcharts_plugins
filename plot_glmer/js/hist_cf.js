@@ -124,193 +124,196 @@ d3.hist_cf = function module() {
           .attr('height', size.y + 'px')
           .attr('viewBox', "0 0 " + size.x + " " + size.y)
       }
-      this_el.select('label')
-            .style('margin', '10px')
-            .text('no. bins: ' + hist_variable)
-
-      this_el.select('input')
-            .attr('value', bins)
-
-      this_el.select('.form-group .form-control')
-          .on('change', function() {
-              bins = $(this)[0].value;
-              if(bins > uniq.length) { 
-              bins = uniq.length;
-              $(this)[0].value = bins;}
-              draw_bars(bins);
-            })
-
-      var g = this_el.select('.hist_chart'),
-
-      tooltip = this_el.select('.tooltip'),
-
-      xaxdiv = g.select('.hist_xaxis');
-
-      xaxdiv.call(d3.svg.axis()
-                  .scale(d3.scale.linear()).orient('bottom'))
-                .selectAll('text')
-                .attr('dy', '1em')
-                .attr('text-anchor', 'start')
-                .attr('transform', 'translate(-10,0)rotate(-30)')
-                .style('opacity',0)
-      var yaxdiv = g.select('.hist_yaxis')
-
-      yaxdiv.call(d3.svg.axis().scale(d3.scale.linear()).orient('left'))
-          .selectAll('text')
-          .attr('text-anchor', 'middle')
-          .style('opacity',0);
-
-      var sel = this_el.select('.hist_frame')
-
-      gbrush = sel.append('g').attr('class', 'brush')
-                  .attr('id', 'hist_brush')
-                  .selectAll('rect').attr('height', size.y)
-
-      function brushed() {
-        var extent0 = brush.extent(),
-            extent1;
-
-        // if dragging, preserve the width of the extent
-        if (d3.event.mode === "move") {
-          var d0 = extent0[0],
-              d1 = extent0[1]
-          extent1 = [d0, d1];
-        }
-
-        // otherwise, if resizing, round both dates
-        else {
-          extent1 = extent0;
-
-          // if empty when rounded, use floor & ceil instead
-          if (extent1[0] >= extent1[1]) {
-            extent1[0] = Math.floor(extent0[0]);
-            extent1[1] = Math.ceil(extent0[1]);
+      
+      if(this.el.datum() !== data){
+        this_el.select('label')
+              .style('margin', '10px')
+              .text('no. bins: ' + hist_variable)
+  
+        this_el.select('input')
+              .attr('value', bins)
+  
+        this_el.select('.form-group .form-control')
+            .on('change', function() {
+                bins = $(this)[0].value;
+                if(bins > uniq.length) { 
+                bins = uniq.length;
+                $(this)[0].value = bins;}
+                draw_bars(bins);
+              })
+  
+        var g = this_el.select('.hist_chart'),
+  
+        tooltip = this_el.select('.tooltip'),
+  
+        xaxdiv = g.select('.hist_xaxis');
+  
+        xaxdiv.call(d3.svg.axis()
+                    .scale(d3.scale.linear()).orient('bottom'))
+                  .selectAll('text')
+                  .attr('dy', '1em')
+                  .attr('text-anchor', 'start')
+                  .attr('transform', 'translate(-10,0)rotate(-30)')
+                  .style('opacity',0)
+        var yaxdiv = g.select('.hist_yaxis')
+  
+        yaxdiv.call(d3.svg.axis().scale(d3.scale.linear()).orient('left'))
+            .selectAll('text')
+            .attr('text-anchor', 'middle')
+            .style('opacity',0);
+  
+        var sel = this_el.select('.hist_frame')
+  
+        gbrush = sel.append('g').attr('class', 'brush')
+                    .attr('id', 'hist_brush')
+                    .selectAll('rect').attr('height', size.y)
+  
+        function brushed() {
+          var extent0 = brush.extent(),
+              extent1;
+  
+          // if dragging, preserve the width of the extent
+          if (d3.event.mode === "move") {
+            var d0 = extent0[0],
+                d1 = extent0[1]
+            extent1 = [d0, d1];
           }
+  
+          // otherwise, if resizing, round both dates
+          else {
+            extent1 = extent0;
+  
+            // if empty when rounded, use floor & ceil instead
+            if (extent1[0] >= extent1[1]) {
+              extent1[0] = Math.floor(extent0[0]);
+              extent1[1] = Math.ceil(extent0[1]);
+            }
+          }
+  
+          d3.select(this).call(brush.extent(extent1));
         }
-
-        d3.select(this).call(brush.extent(extent1));
-      }
-      var x,y, hist_data, tickArray, tmp;
-
-      function draw_bars(bins) { 
-        var values = _.map(dimension.top(Infinity), function(d) {
-          return d[hist_variable]
-        }),
-
-        x = d3.scale.linear()
-                    .range([0, size.x])
-                    .domain(expand_extent(d3.extent(values))),
-
-        tmp = d3.scale.linear()
-                .domain([0, parseInt(bins)])
-                .range(x.domain()),
-
-        tickArray = d3.range(bins + 1).map(tmp),
-
-        hist_data = d3.layout.histogram()
-                      .bins(parseInt(bins))(values),
-
-
-
-
-        y = d3.scale.linear()
-                    .range([size.y, 0])
-                    .domain(expand_extent([0, 
-                            d3.max(_.map(hist_data, function(d) {
-                      return d.y
-                    }))], 0.05, true, false)),
-        xax = d3.svg.axis()
-                .orient('bottom')
-                .tickSize(4)
-                .tickFormat(d3.format(tickFormat))
-                .tickValues(tickArray.filter(function(d, i) { return !(i % tickdiv); }))
-                .scale(x),
-
-        yax = d3.svg.axis()
-                .scale(y)
-                .orient('left')
-                .tickFormat(d3.format(tickFormat))
-                .tickSize(-size.x)
-                .orient('left'),
-
-        brush = d3.svg.brush()
-                  .x(x)
-                  .extent(x.range())
-                  .on('brush', brushed)
-        gbrush.call(brush);
-
-        xaxdiv.transition()
-          .duration(transition_time())
-          .attr('transform', 'translate(0,' + size.y + ')')
-          .style('opacity', 1).call(xax)
-
-        yaxdiv.transition()
-          .duration(transition_time())
-          .attr('transform', 'translate(0,0)')
-          .style('opacity', 1).call(yax)
-
-        // make a rank entry in hist_data.
-
-        var bars = g.select('.bars').selectAll('rect.bar')
-                 .data(hist_data)
-
-        bars.transition().duration(transition_time())
-            .attr('x', function(d) {
+        var x,y, hist_data, tickArray, tmp;
+  
+        function draw_bars(bins) { 
+          var values = _.map(dimension.top(Infinity), function(d) {
+            return d[hist_variable]
+          }),
+  
+          x = d3.scale.linear()
+                      .range([0, size.x])
+                      .domain(expand_extent(d3.extent(values))),
+  
+          tmp = d3.scale.linear()
+                  .domain([0, parseInt(bins)])
+                  .range(x.domain()),
+  
+          tickArray = d3.range(bins + 1).map(tmp),
+  
+          hist_data = d3.layout.histogram()
+                        .bins(parseInt(bins))(values),
+  
+  
+  
+  
+          y = d3.scale.linear()
+                      .range([size.y, 0])
+                      .domain(expand_extent([0, 
+                              d3.max(_.map(hist_data, function(d) {
+                        return d.y
+                      }))], 0.05, true, false)),
+          xax = d3.svg.axis()
+                  .orient('bottom')
+                  .tickSize(4)
+                  .tickFormat(d3.format(tickFormat))
+                  .tickValues(tickArray.filter(function(d, i) { return !(i % tickdiv); }))
+                  .scale(x),
+  
+          yax = d3.svg.axis()
+                  .scale(y)
+                  .orient('left')
+                  .tickFormat(d3.format(tickFormat))
+                  .tickSize(-size.x)
+                  .orient('left'),
+  
+          brush = d3.svg.brush()
+                    .x(x)
+                    .extent(x.range())
+                    .on('brush', brushed)
+          gbrush.call(brush);
+  
+          xaxdiv.transition()
+            .duration(transition_time())
+            .attr('transform', 'translate(0,' + size.y + ')')
+            .style('opacity', 1).call(xax)
+  
+          yaxdiv.transition()
+            .duration(transition_time())
+            .attr('transform', 'translate(0,0)')
+            .style('opacity', 1).call(yax)
+  
+          // make a rank entry in hist_data.
+  
+          var bars = g.select('.bars').selectAll('rect.bar')
+                   .data(hist_data)
+  
+          bars.transition().duration(transition_time())
+              .attr('x', function(d) {
+                return x(d.x) + 1})
+              .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
+              .attr('y', function(d) { return y(d.y)})
+              .attr('height', function(d) { return size.y - y(d.y)})
+  
+          bars.enter().append('rect')
+             .attr('class', 'bar')
+             .style('fill', color)
+             .style('opacity', 0.4)
+             .attr('y', function(d) { return y(0)})
+             .attr('x', function(d) {
               return x(d.x) + 1})
-            .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
-            .attr('y', function(d) { return y(d.y)})
-            .attr('height', function(d) { return size.y - y(d.y)})
-
-        bars.enter().append('rect')
-           .attr('class', 'bar')
-           .style('fill', color)
-           .style('opacity', 0.4)
-           .attr('y', function(d) { return y(0)})
-           .attr('x', function(d) {
-            return x(d.x) + 1})
-           .attr('width', 0)
-           .transition()
-           .duration(transition_time())
-           .attr('y', function(d) { return y(d.y)})
-           .style('opacity', 0.4)
-           .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
-           .style('stroke', 'black')
-           .style('stroke-opacity', 0.4)
-           .attr('height', function(d) { return size.y - y(d.y)})
-
-        bars.on('mouseover', function(d) {
-              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
-              d3.select(this).style('opacity', 0.9)
-              tooltip.transition().duration(200)
-                .style('opacity', 0.9)
-              tooltip.html(function() { return tooltip_content(d)})
-                .style('left', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[0] + 30) + 'px')
-                .style('top', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[1] - 20)+ 'px')
-           })
-           .on('mouseout', function(d) {
-              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
-              d3.select(this).style('opacity', 0.4)
-              tooltip.transition().duration(200)
-                  .style('opacity', 0)
-           })
-           .on('mousemove', function(d) {
-              var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
-              tooltip.style('left', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[0] + 30) + 'px')
-                .style('top', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[1] + padding.top)+ 'px')
-
-           })
-
-        bars.exit().transition().duration(transition_time())
-           .delay(500*it)
-           .attr('y', function(d) { return y(0)})
-           .attr('x', function(d) {
-            return x(d.x)})
-           .attr('width', 0)
-           .style('opacity', 0)
-          .remove() 
+             .attr('width', 0)
+             .transition()
+             .duration(transition_time())
+             .attr('y', function(d) { return y(d.y)})
+             .style('opacity', 0.4)
+             .attr('width', Math.floor(((size.x)/1.2)/bins) - 2)
+             .style('stroke', 'black')
+             .style('stroke-opacity', 0.4)
+             .attr('height', function(d) { return size.y - y(d.y)})
+  
+          bars.on('mouseover', function(d) {
+                var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
+                d3.select(this).style('opacity', 0.9)
+                tooltip.transition().duration(200)
+                  .style('opacity', 0.9)
+                tooltip.html(function() { return tooltip_content(d)})
+                  .style('left', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[0] + 30) + 'px')
+                  .style('top', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[1] - 20)+ 'px')
+             })
+             .on('mouseout', function(d) {
+                var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
+                d3.select(this).style('opacity', 0.4)
+                tooltip.transition().duration(200)
+                    .style('opacity', 0)
+             })
+             .on('mousemove', function(d) {
+                var tooltip = d3.select(d3.select(this).node().parentNode.parentNode.parentNode.parentNode).select(".tooltip")
+                tooltip.style('left', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[0] + 30) + 'px')
+                  .style('top', (d3.mouse(this.parentNode.parentNode.parentNode.parentNode.parentNode)[1] + padding.top)+ 'px')
+  
+             })
+  
+          bars.exit().transition().duration(transition_time())
+             .delay(500*it)
+             .attr('y', function(d) { return y(0)})
+             .attr('x', function(d) {
+              return x(d.x)})
+             .attr('width', 0)
+             .style('opacity', 0)
+            .remove() 
+        }
+        draw_bars(bins)
+        bins = oldbin;
       }
-      draw_bars(bins)
-      bins = oldbin;
     });
   };
   // getters and setters here.
