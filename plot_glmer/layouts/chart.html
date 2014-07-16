@@ -426,7 +426,9 @@ function add_hist() {
         .transition().style("opacity","0.001")
         .remove();
         
-      hists.call(ch);        
+      hists
+        .style("width",ch.width() + "px")
+        .call(ch);        
 }
 
 update_filter();
