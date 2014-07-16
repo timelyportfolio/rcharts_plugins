@@ -300,9 +300,9 @@ function prep_formula(f) {
 }
 
 
-var coef_div = d3.select('#chart').append('div');
+var coef_div = d3.select('#coef_scatter_charts').append('div');
 coef_div
-    .attr("class", "col-md-5")
+    .attr("class", "row")
     .attr('id', 'coefficients')
     .datum(coefs[model])
 
@@ -316,10 +316,10 @@ if(params.coef_barheight){
 
 coef_div.call(coef_plot)
 
-var scatter_div = d3.select('#chart')
+var scatter_div = d3.select('#coef_scatter_charts')
       .append('div')
       .attr('id', 'scatter')
-      .attr("class","col-md-8")
+      .attr("class","row")
       .datum([0])
 // scatter_div.append('div')
 //       .attr('id', 'legend-div')
@@ -394,9 +394,8 @@ function update_hist() {
 
 
 var hist_div = d3.select('#chart').append('div')
-                .attr('class', 'row')
                 .append('div')
-                .attr('class', 'col-md-12')
+                .attr('class', 'col-md-6')
                 .style('float', 'left')
                 .append('div')
                 .attr('id', 'histograms')
