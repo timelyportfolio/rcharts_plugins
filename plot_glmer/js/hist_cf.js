@@ -24,6 +24,9 @@ d3.hist_cf = function module() {
     refitting = false;
 
     _selection.each(function(data, it) {
+      //our element
+      this_el = d3.select(this);
+      
       // functions and stuff requiring access to data.
       var tt_format = d3.format(',.2s')
       function transition_time() {return refitting ? 0:1000}
@@ -62,13 +65,13 @@ d3.hist_cf = function module() {
         bins = uniq.length
       }
 
-      if(_selection.select('.hist_chart').empty()){
-        tooltips = _selection.append('text')
+      if(this_el.select('.hist_chart').empty()){
+        tooltips = this_el.append('text')
                     .attr('class', 'tooltip')
                     // .style('width', '300px')
                     .style('opacity', 0),
 
-        bindiv = _selection.append('div')
+        bindiv = this_el.append('div')
                             .attr('class', 'form-group')
                             .style('width', size.x + 'px')
                             .style('margin', '0px')
@@ -91,7 +94,7 @@ d3.hist_cf = function module() {
               .style('margin', '5px')
               .attr('value', bins)
 
-        var sel = _selection.append('svg')
+        var sel = this_el.append('svg')
                     .attr('class', 'hist_frame')
                     .attr('width', width)
                     .attr('height', height),
@@ -121,14 +124,14 @@ d3.hist_cf = function module() {
           .attr('height', size.y + 'px')
           .attr('viewBox', "0 0 " + size.x + " " + size.y)
       }
-      _selection.select('label')
+      this_el.select('label')
             .style('margin', '10px')
             .text('no. bins: ' + hist_variable)
 
-      _selection.select('input')
+      this_el.select('input')
             .attr('value', bins)
 
-      _selection.select('.form-group .form-control')
+      this_el.select('.form-group .form-control')
           .on('change', function() {
               bins = $(this)[0].value;
               if(bins > uniq.length) { 
@@ -137,9 +140,9 @@ d3.hist_cf = function module() {
               draw_bars(bins);
             })
 
-      var g = _selection.select('.hist_chart'),
+      var g = this_el.select('.hist_chart'),
 
-      tooltip = _selection.select('.tooltip'),
+      tooltip = this_el.select('.tooltip'),
 
       xaxdiv = g.select('.hist_xaxis');
 
@@ -157,7 +160,7 @@ d3.hist_cf = function module() {
           .attr('text-anchor', 'middle')
           .style('opacity',0);
 
-      var sel = _selection.select('.hist_frame')
+      var sel = this_el.select('.hist_frame')
 
       gbrush = sel.append('g').attr('class', 'brush')
                   .attr('id', 'hist_brush')
