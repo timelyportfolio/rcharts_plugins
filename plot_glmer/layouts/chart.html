@@ -411,16 +411,16 @@ function add_hist() {
             .data(all_hist)
 
     //if(hists.empty()){
-      hist_draw = hists.enter().append('div')
+      hists.enter().append('div')
         .attr('id', function(d) { return d.vname})
         .attr('class', 'hist')
         .style('display','inline-block')
       
-      hist_draw.call(ch)
-      
-      hists.exit().select('div.hist')
+      hists.exit()
         .transition().style("opacity","0.001")
         .remove()
+        
+      hists.call(ch);        
 }
 
 update_filter();
