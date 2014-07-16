@@ -427,6 +427,7 @@ function add_hist() {
       hists.enter().insert('div')
         .attr('id', function(d) { return d.vname})
         .attr('class', function(d) { return 'hist'})
+        .style('display','inline-block')
         .each(function(d, i) {
           d3.select(this).call(ch)
         })
