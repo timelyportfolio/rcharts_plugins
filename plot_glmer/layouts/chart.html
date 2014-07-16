@@ -415,7 +415,8 @@ function add_hist() {
         .attr('id', function(d) { return d.vname})
         .attr('class', function(d) { return 'hist'})
         .style('display','inline-block')
-        .call(ch)
+        
+      hists.call(ch)
       
       hists.exit()
         .transition().style("opacity","0.001")
