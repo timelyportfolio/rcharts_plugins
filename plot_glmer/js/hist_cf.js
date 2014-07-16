@@ -125,7 +125,6 @@ d3.hist_cf = function module() {
           .attr('viewBox', "0 0 " + size.x + " " + size.y)
       }
       
-      if(this.el.datum() !== data){
         this_el.select('label')
               .style('margin', '10px')
               .text('no. bins: ' + hist_variable)
@@ -313,7 +312,7 @@ d3.hist_cf = function module() {
         }
         draw_bars(bins)
         bins = oldbin;
-      }
+        
     });
   };
   // getters and setters here.
