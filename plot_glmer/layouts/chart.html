@@ -50,9 +50,9 @@ var factor = _.filter(_.keys(dtypes), function(d) {
     params.yvar = params.yvar ? params.yvar:numeric[1]
     params.color_var = params.color_var ? params.color_var : factor[0]
     params.filter_var = params.filter_var ? params.filter_var : factor[1]
-    params.sc_width = params.sc_width ? params.sc_width:600
+    params.sc_width = params.sc_width ? params.sc_width:500
     params.sc_height = params.sc_height ? params.sc_height:400
-    params.coef_width = params.coef_width ? params.coef_width:200
+    params.coef_width = params.coef_width ? params.coef_width:300
     params.hist_width = params.hist_width ? params.hist_width:300
     params.coef_barheight = params.coef_barheight ? params.coef_barheight:undefined
 
@@ -302,7 +302,7 @@ function prep_formula(f) {
 
 var coef_div = d3.select('#coef_scatter_charts').append('div');
 coef_div
-    .attr("class", "col-md-5")
+    .attr("class", "col-md-6")
     .attr('id', 'coefficients')
     .datum(coefs[model])
 
@@ -319,7 +319,7 @@ coef_div.call(coef_plot)
 var scatter_div = d3.select('#coef_scatter_charts')
       .append('div')
       .attr('id', 'scatter')
-      .attr("class","col-md-7")
+      .attr("class","col-md-6")
       .datum([0])
 
 
