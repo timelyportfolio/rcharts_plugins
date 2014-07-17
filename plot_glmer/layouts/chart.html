@@ -412,7 +412,7 @@ function add_hist() {
             .data(all_hist)
             
     if ( parseInt( d3.select("#histograms").style("width") ) - 100  < all_hist.length * ch.width() ) {
-      ch.width ( parseInt( d3.select("#histograms").style("width") - 100 ) / all_hist.length ) ;
+      ch.width ( ( parseInt( d3.select("#histograms").style("width") ) - 100 ) / all_hist.length ) ;
     } else ch.width( params.hist_width );
 
     //if(hists.empty()){
